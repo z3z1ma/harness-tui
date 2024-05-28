@@ -5,16 +5,23 @@ Screen {
     }
 }
 
+PipelineCard {
+    margin: 1;
+}
+
 #tree-view {
-    display: none;
     scrollbar-gutter: stable;
     overflow: auto;
-    width: auto;
+    width: 40%;
     height: 100%;
     dock: left;
 }
 
-CodeBrowser.-show-tree #tree-view {
+#pipeline_desc {
+    color: rgb(128, 128, 128);
+}
+
+CodeBrowser #tree-view {
     display: block;
     max-width: 50%;
 }
