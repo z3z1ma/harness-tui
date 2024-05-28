@@ -1,3 +1,5 @@
+"""Defines components for displaying a list of pipelines."""
+
 from __future__ import annotations
 
 from api import PipelineClient
@@ -39,7 +41,7 @@ class PipelineCard(Static):
             yield Label(self.pipeline_desc, id="pipeline_desc")
 
 
-class PipelinesList(Static):
+class PipelineList(Static):
     def __init__(
         self,
         renderable: str = "",
@@ -72,7 +74,8 @@ class PipelinesList(Static):
             list_items.append(
                 ListItem(
                     PipelineCard(
-                        pipeline_name=pipeline.name, pipeline_desc=pipeline.desc
+                        pipeline_name=pipeline.name,
+                        pipeline_desc=pipeline.description,
                     )
                 )
             )

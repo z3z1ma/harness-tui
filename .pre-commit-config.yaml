@@ -33,3 +33,19 @@ repos:
     rev: v8.18.2
     hooks:
       - id: gitleaks
+  - repo: local
+    hooks:
+      - id: poetry-export-prod
+        name: poetry-export-prod
+        entry: poetry export -f requirements.txt --output requirements.txt
+        language: system
+        types: [file]
+        files: pyproject.toml
+        pass_filenames: false
+      - id: poetry-export-dev
+        name: poetry-export-dev
+        entry: poetry export -f requirements.txt --output requirements-dev.txt --with=dev
+        language: system
+        types: [file]
+        files: pyproject.toml
+        pass_filenames: false

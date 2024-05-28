@@ -12,8 +12,7 @@ import sys
 import typing as t
 from pathlib import PurePath
 
-from api import PipelineClient
-from components.pipelines_list import PipelinesList
+from components import PipelineList
 from dotenv import load_dotenv
 from rich.syntax import Syntax
 from rich.traceback import Traceback
@@ -23,7 +22,7 @@ from textual.driver import Driver
 from textual.reactive import var
 from textual.widgets import DirectoryTree, Footer, Header, ListView, Static
 
-load_dotenv()  # take environment variables from .env.
+from harness_tui.api import HarnessClient
 
 
 class HarnessTui(App):
@@ -40,12 +39,12 @@ class HarnessTui(App):
         watch_css: bool = False,
     ):
         super().__init__(driver_class, css_path, watch_css)
-        self.pipeline_client = PipelineClient.default()
+        self.api_client = HarnessClient.default()
 
     def compose(self) -> ComposeResult:
         yield Header()
         with Container():
-            yield PipelinesList(id="tree-view", api_client=self.pipeline_client)
+            yield PipelineList(id="tree-view", api_client=self.api_client.pipelines)
             with VerticalScroll(id="code-view"):
                 yield Static(id="code", expand=True)
         yield Footer()
@@ -113,5 +112,5 @@ class CodeBrowser(App):
 
 
 if __name__ == "__main__":
-    # CodeBrowser().run()
+    load_dotenv()
     HarnessTui().run()
