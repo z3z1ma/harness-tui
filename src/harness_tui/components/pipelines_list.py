@@ -1,3 +1,5 @@
+from __future__ import annotations
+
 from api import PipelineClient
 from textual.app import ComposeResult
 from textual.widgets import Input, Label, ListItem, ListView, Static

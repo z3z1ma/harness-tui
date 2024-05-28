@@ -6,6 +6,8 @@ Run with:
     python src/hrness_tui/app.py PATH
 """
 
+from __future__ import annotations
+
 import sys
 import typing as t
 from pathlib import PurePath
