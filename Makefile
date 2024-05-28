@@ -15,7 +15,7 @@ run: .venv
 format: .venv
 	.venv/bin/black src
 	.venv/bin/isort src
-	.venv/bin/ruff lint --fix src
+	.venv/bin/ruff format src
 
 lint: .venv
-	.venv/bin/ruff lint src
+	.venv/bin/ruff check src
