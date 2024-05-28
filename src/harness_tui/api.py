@@ -1,3 +1,5 @@
+"""A simple wrapper around the Harness API for managing pipelines."""
+
 import os
 import typing as t
 from urllib.parse import urljoin, urlparse
@@ -92,6 +94,7 @@ class PipelineClient:
         get_default_from_other_repo: bool = False,
         get_distinct_from_branches: bool = False,
     ):
+        """List pipelines."""
         return self._request(
             "POST",
             "pipelines/list",
@@ -115,23 +118,43 @@ class PipelineClient:
             ),
         )
 
-    def fetch_summary(
+    def pipeline_reference(self, pipeline_identifier: str) -> "Pipeline":
+        """Get a reference to a specific pipeline."""
+        return Pipeline(self, pipeline_identifier)
+
+
+class Pipeline:
+    def __init__(
         self,
+        client: PipelineClient,
         pipeline_identifier: str,
+    ) -> None:
+        """A wrapper around a Harness pipeline.
+
+        Args:
+            client (PipelineClient): The client to use for API requests.
+            pipeline_identifier (str): The identifier of the pipeline.
+        """
+        self.client = client
+        self.pipeline_identifier = pipeline_identifier
+
+    def summary(
+        self,
         branch: t.Optional[str] = None,
         repo_identifier: t.Optional[str] = None,
         get_default_from_other_repo: bool = False,
         load_from_fallback_branch: bool = False,
     ):
-        return self._request(
+        """Get a summary of the pipeline."""
+        return self.client._request(
             "GET",
-            f"pipelines/summary/{pipeline_identifier}",
+            f"pipelines/summary/{self.pipeline_identifier}",
             headers={"Load-From-Cache": "false"},
             params=_strip_unset(
                 {
-                    "accountIdentifier": self.account,
-                    "orgIdentifier": self.org,
-                    "projectIdentifier": self.project,
+                    "accountIdentifier": self.client.account,
+                    "orgIdentifier": self.client.org,
+                    "projectIdentifier": self.client.project,
                     "branch": branch,
                     "repoIdentifier": repo_identifier,
                     "getDefaultFromOtherRepo": get_default_from_other_repo,
@@ -140,22 +163,22 @@ class PipelineClient:
             ),
         )
 
-    def update_pipeline(
+    def update(
         self,
-        pipeline_identifier: str,
         pipeline_yaml: str,
         name: str,
         description: t.Optional[str] = None,
         tags: t.Optional[t.Dict[str, str]] = None,
         git_details: t.Optional[t.Dict[str, t.Any]] = None,
     ):
-        return self._request(
+        """Update the pipeline."""
+        return self.client._request(
             "PUT",
-            f"pipelines/{self.org}/{self.project}/{pipeline_identifier}",
+            f"pipelines/{self.client.org}/{self.client.project}/{self.pipeline_identifier}",
             json=_strip_unset(
                 {
                     "pipeline_yaml": pipeline_yaml,
-                    "identifier": pipeline_identifier,
+                    "identifier": self.pipeline_identifier,
                     "name": name,
                     "description": description,
                     "tags": tags,
@@ -164,9 +187,8 @@ class PipelineClient:
             ),
         )
 
-    def execute_pipeline(
+    def execute(
         self,
-        pipeline_identifier: str,
         inputs_yaml: t.Optional[str] = None,
         module: t.Optional[str] = None,
         use_fqn_if_error_response: bool = False,
@@ -176,9 +198,10 @@ class PipelineClient:
         connector_ref: t.Optional[str] = None,
         repo_name: t.Optional[str] = None,
     ):
-        return self._request(
+        """Execute the pipeline."""
+        return self.client._request(
             "POST",
-            f"orgs/{self.org}/projects/{self.project}/pipelines/{pipeline_identifier}/execute",
+            f"orgs/{self.client.org}/projects/{self.client.project}/pipelines/{self.pipeline_identifier}/execute",
             json=_strip_unset(
                 {
                     "inputs_yaml": inputs_yaml,
@@ -203,14 +226,15 @@ if __name__ == "__main__":
         project="YOUR_PROJECT_IDENTIFIER",
     )
 
-    pipeline_identifier = "YOUR_PIPELINE_IDENTIFIER"
-
     # Fetch list of pipelines
     pipelines = client.list()
     print("Pipelines:", pipelines)
 
+    # Get pipeline reference
+    pipeline = client.pipeline_reference("YOUR_PIPELINE_IDENTIFIER")
+
     # Fetch pipeline summary
-    pipeline_summary = client.fetch_summary(pipeline_identifier)
+    pipeline_summary = pipeline.summary()
     print("Pipeline Summary:", pipeline_summary)
 
     # Update pipeline
@@ -320,19 +344,12 @@ if __name__ == "__main__":
         "repo_name": "example_repository",
     }
 
-    updated_pipeline = client.update_pipeline(
-        pipeline_identifier,
-        pipeline_yaml,
-        name,
-        description,
-        tags,
-        git_details,
+    updated_pipeline = pipeline.update(
+        pipeline_yaml, name, description, tags, git_details
     )
     print("Updated Pipeline:", updated_pipeline)
 
     # Execute pipeline
     inputs_yaml = "your-inputs-yaml"
-    execution_result = client.execute_pipeline(
-        pipeline_identifier, inputs_yaml=inputs_yaml
-    )
+    execution_result = pipeline.execute(inputs_yaml=inputs_yaml)
     print("Pipeline Execution Result:", execution_result)
