@@ -1,11 +1,10 @@
 """A simple wrapper around the Harness API for managing pipelines."""
 
-import json
 import os
 import typing as t
-from urllib.parse import urljoin, urlparse, urlencode
-import models
+from urllib.parse import urlencode, urljoin, urlparse
 
+import models
 import requests
 
 
@@ -101,7 +100,7 @@ class PipelineClient:
     ):
         """List pipelines."""
 
-        result =  self._request(
+        result = self._request(
             "POST",
             "pipelines/list",
             json=_strip_unset(
@@ -125,12 +124,15 @@ class PipelineClient:
         )
         pipelines = []
         for pipeline_data in result["data"]["content"]:
-            pipeline = models.Pipeline(id=pipeline_data["identifier"], name=pipeline_data["name"], desc=pipeline_data.get("description",""))
+            pipeline = models.Pipeline(
+                id=pipeline_data["identifier"],
+                name=pipeline_data["name"],
+                desc=pipeline_data.get("description", ""),
+            )
             pipelines.append(pipeline)
 
         return pipelines
 
-        
     def pipeline_reference(self, pipeline_identifier: str) -> "Pipeline":
         """Get a reference to a specific pipeline."""
         return Pipeline(self, pipeline_identifier)

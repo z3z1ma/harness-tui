@@ -6,22 +6,20 @@ Run with:
     python src/hrness_tui/app.py PATH
 """
 
-from pathlib import PurePath
 import sys
-from typing import List
+import typing as t
+from pathlib import PurePath
 
+from api import PipelineClient
+from components.pipelines_list import PipelinesList
+from dotenv import load_dotenv
 from rich.syntax import Syntax
 from rich.traceback import Traceback
 from textual.app import App, ComposeResult
 from textual.containers import Container, VerticalScroll
 from textual.driver import Driver
 from textual.reactive import var
-from textual.widgets import DirectoryTree, Footer, Header, Static, ListView
-
-from api import PipelineClient
-from dotenv import load_dotenv
-
-from components.pipelines_list import PipelinesList
+from textual.widgets import DirectoryTree, Footer, Header, ListView, Static
 
 load_dotenv()  # take environment variables from .env.
 
@@ -30,13 +28,15 @@ class HarnessTui(App):
     """Harness Terminal UI"""
 
     CSS_PATH = "app.tcss"
-    BINDINGS = [
-        ("q", "quit", "Quit"),
-        ("s", "search", "Search")
-    ]
+    BINDINGS = [("q", "quit", "Quit"), ("s", "search", "Search")]
     show_tree = var(True)
 
-    def __init__(self, driver_class: Driver | None = None, css_path: str | PurePath | List[str | PurePath] | None = None, watch_css: bool = False):
+    def __init__(
+        self,
+        driver_class: t.Type[Driver] | None = None,
+        css_path: str | PurePath | t.List[str | PurePath] | None = None,
+        watch_css: bool = False,
+    ):
         super().__init__(driver_class, css_path, watch_css)
         self.pipeline_client = PipelineClient.default()
 
@@ -47,10 +47,13 @@ class HarnessTui(App):
             with VerticalScroll(id="code-view"):
                 yield Static(id="code", expand=True)
         yield Footer()
-    def on_mount(self) -> None:        
+
+    def on_mount(self) -> None:
         self.query_one(ListView).focus()
+
     def action_search(self) -> None:
         self.query_one("#search").focus()
+
 
 class CodeBrowser(App):
     """Textual code browser app."""
