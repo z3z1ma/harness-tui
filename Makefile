@@ -1,10 +1,21 @@
-.PHONY: install-dev run
+.PHONY: install-dev install run format lint
 
 .venv:
 	python3 -m venv .venv
 
-install-dev: .venv
+install: .venv
 	.venv/bin/pip install -r requirements.txt
+
+install-dev: .venv install
+	.venv/bin/pip install -r requirements-dev.txt
 
 run: .venv
 	.venv/bin/python src/harness_tui/app.py
+
+format: .venv
+	.venv/bin/black src
+	.venv/bin/isort src
+	.venv/bin/ruff lint --fix src
+
+lint: .venv
+	.venv/bin/ruff lint src
