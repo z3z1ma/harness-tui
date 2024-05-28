@@ -1,8 +1,10 @@
 """A simple wrapper around the Harness API for managing pipelines."""
 
+import json
 import os
 import typing as t
-from urllib.parse import urljoin, urlparse
+from urllib.parse import urljoin, urlparse, urlencode
+import models
 
 import requests
 
@@ -13,7 +15,7 @@ def _strip_unset(kwargs: t.Dict[str, t.Any]) -> t.Dict[str, t.Any]:
 
 
 class PipelineClient:
-    BASE_URL = "https://app.harness.io/pipeline/api"
+    BASE_URL = "https://app.harness.io/pipeline/api/"
 
     def __init__(
         self,
@@ -74,9 +76,12 @@ class PipelineClient:
         Returns:
             t.Any: The JSON response.
         """
+        print(kwargs)
         if not urlparse(path).scheme:
             path = urljoin(PipelineClient.BASE_URL, path)
-        response = getattr(self.session, method.lower())(path, **kwargs)
+        query_params = urlencode(kwargs["json"])
+        path = f"{path}?{query_params}"
+        response = getattr(self.session, method.lower())(path)
         response.raise_for_status()
         return response.json()
 
@@ -95,7 +100,8 @@ class PipelineClient:
         get_distinct_from_branches: bool = False,
     ):
         """List pipelines."""
-        return self._request(
+
+        result =  self._request(
             "POST",
             "pipelines/list",
             json=_strip_unset(
@@ -105,7 +111,7 @@ class PipelineClient:
                     "projectIdentifier": self.project,
                     "page": page,
                     "size": size,
-                    "filterType": filter_type,
+                    # "filterType": filter_type,
                     "sort": sort,
                     "searchTerm": search_term,
                     "module": module,
@@ -117,7 +123,14 @@ class PipelineClient:
                 }
             ),
         )
+        pipelines = []
+        for pipeline_data in result["data"]["content"]:
+            pipeline = models.Pipeline(id=pipeline_data["identifier"], name=pipeline_data["name"], desc=pipeline_data.get("description",""))
+            pipelines.append(pipeline)
 
+        return pipelines
+
+        
     def pipeline_reference(self, pipeline_identifier: str) -> "Pipeline":
         """Get a reference to a specific pipeline."""
         return Pipeline(self, pipeline_identifier)
