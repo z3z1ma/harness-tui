@@ -17,21 +17,16 @@ from textual import work
 from textual.app import App, ComposeResult
 from textual.containers import Container, VerticalScroll
 from textual.driver import Driver
-from textual.reactive import var
-from textual.widgets import (
-    Footer,
-    Header,
-    ListView,
-    Static,
-    TabbedContent,
-    TabPane,
-    TextArea,
-)
+from textual.widgets import Footer, Header, ListView, TabbedContent, TabPane, TextArea
 
 from harness_tui.api import HarnessClient
-from harness_tui.components import PipelineList
-from harness_tui.components.execution_history import ExecutionGraph, ExecutionHistory
-from harness_tui.components.pipeline_list import PipelineCard
+from harness_tui.components import (
+    ExecutionGraph,
+    ExecutionsView,
+    LogView,
+    PipelineCard,
+    PipelineList,
+)
 
 
 class HarnessTui(App):
@@ -39,7 +34,6 @@ class HarnessTui(App):
 
     CSS_PATH = "app.tcss"
     BINDINGS = [("q", "quit", "Quit"), ("s", "search", "Search")]
-    show_tree = var(True)
 
     def __init__(
         self,
@@ -53,10 +47,10 @@ class HarnessTui(App):
     def compose(self) -> ComposeResult:
         yield Header()
         with Container():
-            yield PipelineList(id="tree-view", api_client=self.api_client)
+            yield PipelineList(id="tree-view")
             with TabbedContent(initial="history-tab"):
-                with TabPane("Execution History", id="history-tab"):
-                    yield ExecutionHistory(id="history")
+                with TabPane("Executions", id="history-tab"):
+                    yield ExecutionsView(id="history")
                 with TabPane("YAML", id="yaml-tab"):
                     with VerticalScroll(id="yaml-view"):
                         yield ExecutionGraph()
@@ -67,37 +61,26 @@ class HarnessTui(App):
                             soft_wrap=False,
                             show_line_numbers=True,
                             tab_behavior="indent",
-                        )  # TODO(alex): Make this editable with a save/validate button
+                        )
                 with TabPane("Logs", id="logs-tab"):
-                    yield Static(id="logs")  # TODO(alex): Add log stuff
+                    yield LogView()
         yield Footer()
 
     def on_mount(self) -> None:
-        self.query_one("#pipeline_list").focus()
+        self.query_one("#pipeline-search").focus()
+        self.update_pipeline_list_loop()
+
+    # Custom actions (these define custom actions that can be triggered by keybindings or cmd menu)
 
     def action_search(self) -> None:
         self.query_one("#pipeline-search").focus()
 
-    @work(group="history_ui", exclusive=True)
-    async def update_execution_history(self, pipeline_identifier: str):
-        ...  # Add a spinner
-        self.query_one("#history", ExecutionHistory).is_loading = True
-        executions = await asyncio.to_thread(
-            self.api_client.pipelines.reference(pipeline_identifier).executions
-        )
-        self.query_one("#history", ExecutionHistory).executions = executions
-        self.query_one("#history", ExecutionHistory).is_loading = False
+    # Event handlers (these allow component level interaction to be handled at the app level as needed)
 
-    @work(group="yaml_ui", exclusive=True)
-    async def update_yaml_buffer(self, pipeline_identifier: str) -> None:
-        code_container = self.query_one("#yaml", TextArea)
-        content = (
-            await asyncio.to_thread(
-                self.api_client.pipelines.reference(pipeline_identifier).get
-            )
-        ).pipeline_yaml
-        code_container.load_text(content)
-        self.query_one("#yaml-view").scroll_home(animate=False)
+    async def on_pipeline_card_run_pipeline_request(
+        self, event: PipelineCard.RunPipelineRequest
+    ):
+        self.notify("Got run pipeline request")
 
     async def on_list_view_highlighted(self, event: ListView.Highlighted) -> None:
         if not event.item:
@@ -112,6 +95,41 @@ class HarnessTui(App):
         self.update_yaml_buffer(card.pipeline.identifier)
         self.query_one(ExecutionGraph).pipeline = card.pipeline
         self.sub_title = str(card.pipeline.name)
+
+    # Work methods (these update reactive attributes to lazily update the UI)
+
+    @work(group="execution_ui", exclusive=True)
+    async def update_execution_history(self, pipeline_identifier: str):
+        """Fetch execution history for a specific pipeline."""
+        execution_ui = self.query_one("#history", ExecutionsView)
+        execution_ui.is_loading = True
+        executions = await asyncio.to_thread(
+            self.api_client.pipelines.reference(pipeline_identifier).executions
+        )
+        execution_ui.executions = executions
+        execution_ui.is_loading = False
+
+    @work(group="yaml_ui", exclusive=True)
+    async def update_yaml_buffer(self, pipeline_identifier: str) -> None:
+        """Fetch pipeline YAML and update the buffer."""
+        yaml_ui = self.query_one("#yaml", TextArea)
+        content = (
+            await asyncio.to_thread(
+                self.api_client.pipelines.reference(pipeline_identifier).get
+            )
+        ).pipeline_yaml
+        yaml_ui.load_text(content)
+        self.query_one("#yaml-view").scroll_home(animate=False)
+
+    @work(group="pipeline_ui", exclusive=True)
+    async def update_pipeline_list_loop(self) -> None:
+        """Fetch pipeline data every 15 seconds."""
+        pipeline_ui = self.query_one("#tree-view", PipelineList)
+        while True:
+            pipeline_ui.pipeline_list = await asyncio.to_thread(
+                self.api_client.pipelines.list
+            )
+            await asyncio.sleep(15.0)
 
 
 if __name__ == "__main__":

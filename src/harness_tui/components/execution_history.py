@@ -20,9 +20,12 @@ STATUS_STYLE_MAP = {
     "Expired": "dim red",
     "Running": "bold yellow",
 }
+"""Map of execution statuses to Rich styles."""
 
 
 class ExecutionGraph(Static):
+    """Graph that displays the execution history of a specific pipeline."""
+
     pipeline: reactive[t.Optional[M.PipelineSummary]] = reactive(None, recompose=True)
 
     def __init__(
@@ -40,7 +43,9 @@ class ExecutionGraph(Static):
         yield Sparkline(deployments, summary_function=max)
 
 
-class ExecutionHistory(Static):
+class ExecutionsView(Static):
+    """Table that displays the execution history of a specific pipeline."""
+
     executions: reactive[t.List[M.PipelineExecution]] = reactive(list, recompose=True)
     is_loading: reactive[bool] = reactive(bool, recompose=True)
 
@@ -55,39 +60,39 @@ class ExecutionHistory(Static):
     def compose(self) -> ComposeResult:
         if self.is_loading:
             yield LoadingIndicator()
-        else:
-            data_table = DataTable()
-            data_table.add_columns(
-                "Start Time", "Started By", "Trigger Type", "Status", "Link"
+            return
+        data_table = DataTable()
+        data_table.add_columns(
+            "Start Time", "Started By", "Trigger Type", "Status", "Link"
+        )
+        for execution in self.executions:
+            exec_time = execution.start_ts.strftime("%m/%d/%Y, %H:%M:%S")
+            data_table.add_row(
+                Text(exec_time, style="bold", justify="left"),
+                Text(
+                    execution.execution_trigger_info.triggered_by.identifier,
+                    style="bold",
+                    justify="left",
+                ),
+                Text(
+                    execution.execution_trigger_info.trigger_type,
+                    style="bold",
+                    justify="left",
+                ),
+                Text(
+                    execution.status,
+                    style=STATUS_STYLE_MAP.get(execution.status, ""),
+                ),
+                Text(execution.plan_execution_id, style="blue"),
             )
-            for execution in self.executions:
-                exec_time = execution.start_ts.strftime("%m/%d/%Y, %H:%M:%S")
-                data_table.add_row(
-                    Text(exec_time, style="bold", justify="left"),
-                    Text(
-                        execution.execution_trigger_info.triggered_by.identifier,
-                        style="bold",
-                        justify="left",
-                    ),
-                    Text(
-                        execution.execution_trigger_info.trigger_type,
-                        style="bold",
-                        justify="left",
-                    ),
-                    Text(
-                        execution.status,
-                        style=STATUS_STYLE_MAP.get(execution.status, ""),
-                    ),
-                    Text(execution.plan_execution_id, style="blue"),
+            account = os.getenv("HARNESS_ACCOUNT")
+            if account:
+                self.execution_urls[execution.plan_execution_id] = (
+                    f"https://app.harness.io/ng/account/{account}/module/ci/orgs/"
+                    f"{execution.org_identifier}/projects/{execution.project_identifier}/pipelines/"
+                    f"{execution.pipeline_identifier}/executions/{execution.plan_execution_id}/pipeline"
                 )
-                account = os.getenv("HARNESS_ACCOUNT")
-                if account:
-                    self.execution_urls[execution.plan_execution_id] = (
-                        f"https://app.harness.io/ng/account/{account}/module/ci/orgs/"
-                        f"{execution.org_identifier}/projects/{execution.project_identifier}/pipelines/"
-                        f"{execution.pipeline_identifier}/executions/{execution.plan_execution_id}/pipeline"
-                    )
-            yield data_table
+        yield data_table
 
     def on_data_table_cell_selected(self, event: DataTable.CellSelected):
         if event.coordinate.column == 4:

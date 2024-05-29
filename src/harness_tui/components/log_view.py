@@ -2,21 +2,31 @@
 
 from __future__ import annotations
 
-import asyncio
 import typing as t
 
 from textual.app import ComposeResult
-from textual.message import Message
 from textual.reactive import reactive
 from textual.widgets import (
-    Button,
-    Input,
     Label,
-    ListItem,
-    ListView,
-    LoadingIndicator,
+    Log,
     Static,
+    Tree,
 )
 
 import harness_tui.models as M
-from harness_tui.api import HarnessClient
+
+
+class LogView(Static):
+    execution: reactive[t.Optional[M.PipelineExecution]] = reactive(
+        None, recompose=True
+    )
+
+    def __init__(self, *args: t.Any, **kwargs: t.Any):
+        super().__init__(*args, **kwargs)
+
+    def compose(self) -> ComposeResult:
+        if not self.execution:
+            yield Label("No pipeline execution selected")
+            return
+        yield Tree("Stages")
+        yield Log()

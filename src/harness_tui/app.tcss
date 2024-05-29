@@ -50,3 +50,7 @@ ExecutionCard {
 #failed {
     color: red;
 }
+
+.filtered {
+    display: none;
+}
