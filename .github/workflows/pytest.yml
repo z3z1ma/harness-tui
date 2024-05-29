@@ -1,13 +1,20 @@
-name: Pylint
+name: Tests
 
-on: [push]
+on:
+  push:
+    branches: [ "main" ]
+  pull_request:
+    branches: [ "main" ]
 
 jobs:
   build:
+
     runs-on: ubuntu-latest
     strategy:
+      fail-fast: false
       matrix:
         python-version: ["3.9", "3.10", "3.11"]
+
     steps:
     - uses: actions/checkout@v4
     - name: Set up Python ${{ matrix.python-version }}
@@ -17,7 +24,7 @@ jobs:
     - name: Install dependencies
       run: |
         python -m pip install --upgrade pip
-        pip install pylint -r requirements-dev.txt
-    - name: Analysing the code with pylint
+        pip install -r requirements-dev.txt .
+    - name: Test with pytest
       run: |
-        pylint $(git ls-files '*.py')
+        pytest
