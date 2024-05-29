@@ -880,6 +880,17 @@ files = [
 ]
 
 [[package]]
+name = "sseclient-py"
+version = "1.8.0"
+description = "SSE client for Python"
+optional = false
+python-versions = "*"
+files = [
+    {file = "sseclient-py-1.8.0.tar.gz", hash = "sha256:c547c5c1a7633230a38dc599a21a2dc638f9b5c297286b48b46b935c71fac3e8"},
+    {file = "sseclient_py-1.8.0-py2.py3-none-any.whl", hash = "sha256:4ecca6dc0b9f963f8384e9d7fd529bf93dd7d708144c4fb5da0e0a1a926fee83"},
+]
+
+[[package]]
 name = "textual"
 version = "0.63.5"
 description = "Modern Text User Interface framework"
@@ -974,4 +985,4 @@ zstd = ["zstandard (>=0.18.0)"]
 [metadata]
 lock-version = "2.0"
 python-versions = ">3.9,<=3.12"
-content-hash = "9f107d932614df9ebace47d4b33ef32967f63368cc513458f08d35c6cbf49367"
+content-hash = "b54725c8044f700abb52428628e4e9461a5ae493f5134f9b4be4f7ef31c77a4a"

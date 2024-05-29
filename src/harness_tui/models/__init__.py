@@ -1,3 +1,3 @@
-from harness_tui.models.pipeline import Pipeline
+from harness_tui.models.pipeline import Pipeline, PipelineSummary
 
-__all__ = ["Pipeline"]
+__all__ = ["Pipeline", "PipelineSummary"]

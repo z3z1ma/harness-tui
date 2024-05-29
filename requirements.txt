@@ -329,6 +329,9 @@ rich==13.7.1 ; python_full_version > "3.9.0" and python_full_version <= "3.12.0"
 semver==3.0.2 ; python_full_version > "3.9.0" and python_full_version <= "3.12.0" \
     --hash=sha256:6253adb39c70f6e51afed2fa7152bcd414c411286088fb4b9effb133885ab4cc \
     --hash=sha256:b1ea4686fe70b981f85359eda33199d60c53964284e0cfb4977d243e37cf4bf4
+sseclient-py==1.8.0 ; python_full_version > "3.9.0" and python_full_version <= "3.12.0" \
+    --hash=sha256:4ecca6dc0b9f963f8384e9d7fd529bf93dd7d708144c4fb5da0e0a1a926fee83 \
+    --hash=sha256:c547c5c1a7633230a38dc599a21a2dc638f9b5c297286b48b46b935c71fac3e8
 textual==0.63.5 ; python_full_version > "3.9.0" and python_full_version <= "3.12.0" \
     --hash=sha256:28ae178de544b297000b07ddf55b0f20d281c31e0956cd79cdf307208cf18095 \
     --hash=sha256:c55b7e96d4ddfd075e88d99414a53c18907e532a29d7f13931a455e66532c271

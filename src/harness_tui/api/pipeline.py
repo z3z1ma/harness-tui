@@ -53,7 +53,7 @@ class PipelineClient(ClientMixin):
         repo_identifier: t.Optional[str] = None,
         get_default_from_other_repo: bool = False,
         get_distinct_from_branches: bool = False,
-    ) -> t.List[M.Pipeline]:
+    ) -> t.List[M.PipelineSummary]:
         """List pipelines."""
         _ = filter_type
         pipelines = self._request(
@@ -77,7 +77,7 @@ class PipelineClient(ClientMixin):
                 }
             ),
         )["data"]["content"]
-        return list(map(M.Pipeline.model_validate, pipelines))
+        return list(map(M.PipelineSummary.model_validate, pipelines))
 
     def reference(self, pipeline_identifier: str) -> "PipelineReference":
         """Get a reference to a specific pipeline."""
@@ -105,24 +105,53 @@ class PipelineReference:
         repo_identifier: t.Optional[str] = None,
         get_default_from_other_repo: bool = False,
         load_from_fallback_branch: bool = False,
-    ) -> M.Pipeline:
+    ) -> M.PipelineSummary:
         """Get a summary of the pipeline."""
-        return self.client._request(
-            "GET",
-            f"pipelines/summary/{self.pipeline_identifier}",
-            headers={"Load-From-Cache": "false"},
-            params=_strip_unset(
-                {
-                    "accountIdentifier": self.client.account,
-                    "orgIdentifier": self.client.org,
-                    "projectIdentifier": self.client.project,
-                    "branch": branch,
-                    "repoIdentifier": repo_identifier,
-                    "getDefaultFromOtherRepo": get_default_from_other_repo,
-                    "loadFromFallbackBranch": load_from_fallback_branch,
-                }
-            ),
-        )["data"]
+        return M.PipelineSummary.model_validate(
+            self.client._request(
+                "GET",
+                f"pipelines/summary/{self.pipeline_identifier}",
+                headers={"Load-From-Cache": "false"},
+                params=_strip_unset(
+                    {
+                        "accountIdentifier": self.client.account,
+                        "orgIdentifier": self.client.org,
+                        "projectIdentifier": self.client.project,
+                        "branch": branch,
+                        "repoIdentifier": repo_identifier,
+                        "getDefaultFromOtherRepo": get_default_from_other_repo,
+                        "loadFromFallbackBranch": load_from_fallback_branch,
+                    }
+                ),
+            )["data"]
+        )
+
+    def get(
+        self,
+        branch: t.Optional[str] = None,
+        repo_identifier: t.Optional[str] = None,
+        get_default_from_other_repo: bool = False,
+        load_from_fallback_branch: bool = False,
+    ) -> M.Pipeline:
+        """Get the pipeline."""
+        return M.Pipeline.model_validate(
+            self.client._request(
+                "GET",
+                f"pipelines/{self.pipeline_identifier}",
+                headers={"Load-From-Cache": "false"},
+                params=_strip_unset(
+                    {
+                        "accountIdentifier": self.client.account,
+                        "orgIdentifier": self.client.org,
+                        "projectIdentifier": self.client.project,
+                        "branch": branch,
+                        "repoIdentifier": repo_identifier,
+                        "getDefaultFromOtherRepo": get_default_from_other_repo,
+                        "loadFromFallbackBranch": load_from_fallback_branch,
+                    }
+                ),
+            )["data"]
+        )
 
     def update(
         self,
