@@ -27,7 +27,15 @@ class ExecutionSummaryInfo(BaseModel):
         if isinstance(ts, (float, int)):
             return datetime.fromtimestamp(ts / 1000, tz=timezone.utc)
         return ts
+class ExecutionInfo(BaseModel):
+    trigger_type: t.Annotated[str, Field(alias="triggerType")]
+    username: t.Annotated[str, Field(alias="username")]
 
+class RecentExecutionsInfo(BaseModel):
+    plan_execution_id: t.Annotated[str, Field(alias="planExecutionId")]
+    status: t.Annotated[str, Field(alias="status")]
+    start_ts: t.Annotated[int, Field(alias="startTs")]
+    executor_info: t.Annotated[ExecutionInfo, Field(alias="executorInfo")]
 
 class GitDetails(BaseModel):
     valid: bool = True
@@ -56,6 +64,9 @@ class PipelineSummary(BaseModel):
     modules: t.List[str]
     execution_summary: t.Annotated[
         ExecutionSummaryInfo, Field(alias="executionSummaryInfo")
+    ]
+    recent_executions_info: t.Annotated[
+        t.List[RecentExecutionsInfo], Field(alias="recentExecutionsInfo")
     ]
     filters: t.Dict[str, t.Any]
     stage_names: t.Annotated[t.List[str], Field(alias="stageNames")]

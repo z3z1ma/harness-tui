@@ -9,6 +9,10 @@ PipelineCard {
     margin: 1;
 }
 
+ExecutionCard {
+    margin: 1;
+}
+
 #tree-view {
     scrollbar-gutter: stable;
     overflow: auto;
@@ -26,6 +30,9 @@ CodeBrowser #tree-view {
     max-width: 50%;
 }
 
+#execution-date {
+    color: rgb(128, 128, 128);
+}
 
 #code-view {
     overflow: auto scroll;
@@ -33,4 +40,12 @@ CodeBrowser #tree-view {
 }
 #code {
     width: auto;
+}
+
+#success {
+    color: green;
+}
+
+#failed {
+    color: red;
 }

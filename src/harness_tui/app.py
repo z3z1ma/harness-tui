@@ -23,6 +23,7 @@ from textual.widgets import DirectoryTree, Footer, Header, ListView, Static
 from harness_tui.api import HarnessClient
 from harness_tui.components import PipelineList
 from harness_tui.components.pipeline_list import PipelineCard
+from harness_tui.components.execution_history import ExecutionHistory
 
 
 class HarnessTui(App):
@@ -58,21 +59,28 @@ class HarnessTui(App):
     def on_list_view_highlighted(self, event: ListView.Highlighted) -> None:
         if not event.item:
             return
+        if event.item.id == None:
+            return
+        if not event.item.id.startswith("pipeline-list-item"):
+            return
         card = event.item.query_one(PipelineCard)
         code_container = self.query_one("#yaml", Static)
-        pipe = card.pipeline.identifier
-        syntax = Syntax(
-            self.api_client.pipelines.reference(pipe).get().pipeline_yaml,
-            lexer="yaml",
-            line_numbers=True,
-            word_wrap=False,
-            indent_guides=True,
-            theme="github-dark",
+        # pipe = card.pipeline.identifier
+        # syntax = Syntax(
+        #     self.api_client.pipelines.reference(pipe).get().pipeline_yaml,
+        #     lexer="yaml",
+        #     line_numbers=True,
+        #     word_wrap=False,
+        #     indent_guides=True,
+        #     theme="github-dark",
+        # )
+        exeution_list = ExecutionHistory (
+            executions=card.pipeline.recent_executions_info
         )
-        code_container.update(syntax)
+        code_container.remove_children()
+        code_container.mount(exeution_list)
         self.query_one("#yaml-view").scroll_home(animate=False)
         self.sub_title = str(card.pipeline.name)
-
 
 class CodeBrowser(App):
     """Textual code browser app."""
