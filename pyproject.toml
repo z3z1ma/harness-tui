@@ -6,7 +6,7 @@ authors = ["z3z1ma <butler.alex2010@gmail.com>"]
 readme = "README.md"
 
 [tool.poetry.dependencies]
-python = ">3.9,<=3.12"
+python = ">3.9,<3.13"
 textual = "^0.63.5"
 lancedb = "^0.8.0"
 python-dotenv = "^1.0.1"
