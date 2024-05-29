@@ -2,80 +2,55 @@
 
 from __future__ import annotations
 
-from api import PipelineClient
+import typing as t
+from hashlib import md5
+
 from textual.app import ComposeResult
 from textual.widgets import Input, Label, ListItem, ListView, Static
+
+from harness_tui.api import HarnessClient
 
 
 class PipelineCard(Static):
     def __init__(
         self,
-        renderable: str = "",
-        *,
-        expand: bool = False,
-        shrink: bool = False,
-        markup: bool = True,
-        name: str | None = None,
-        id: str | None = None,
-        classes: str | None = None,
-        disabled: bool = False,
+        *args: t.Any,
         pipeline_name: str,
-        pipeline_desc: str,
+        pipeline_description: str,
+        **kwargs: t.Any,
     ) -> None:
-        super().__init__(
-            renderable,
-            expand=expand,
-            shrink=shrink,
-            markup=markup,
-            name=name,
-            id=id,
-            classes=classes,
-            disabled=disabled,
-        )
+        super().__init__(*args, **kwargs)
         self.pipeline_name = pipeline_name
-        self.pipeline_desc = pipeline_desc
+        self.pipeline_description = pipeline_description
 
     def compose(self) -> ComposeResult:
-        yield Label(self.pipeline_name, id="pipeline_name")
-        if not self.pipeline_desc == "":
-            yield Label(self.pipeline_desc, id="pipeline_desc")
+        pipeline_hash = md5(
+            self.pipeline_name.encode(), usedforsecurity=False
+        ).hexdigest()
+        yield Label(self.pipeline_name, id=f"label-{pipeline_hash}")
+        if self.pipeline_description:
+            yield Label(self.pipeline_description, id=f"desc-{pipeline_hash}")
 
 
 class PipelineList(Static):
     def __init__(
         self,
-        renderable: str = "",
-        *,
-        expand: bool = False,
-        shrink: bool = False,
-        markup: bool = True,
-        name: str | None = None,
-        id: str | None = None,
-        classes: str | None = None,
-        disabled: bool = False,
-        api_client: PipelineClient,
+        *args: t.Any,
+        api_client: HarnessClient,
+        **kwargs: t.Any,
     ) -> None:
-        super().__init__(
-            renderable,
-            expand=expand,
-            shrink=shrink,
-            markup=markup,
-            name=name,
-            id=id,
-            classes=classes,
-            disabled=disabled,
-        )
-        self.pipeline_list = api_client.list()
+        super().__init__(*args, **kwargs)
+        self.pipeline_list = api_client.pipelines.list()
 
     def compose(self) -> ComposeResult:
-        yield Input(placeholder="Search", id="search")
+        yield Input(placeholder="Search", id="pipeline-search")
         list_items = []
         for pipeline in self.pipeline_list:
             list_items.append(
                 ListItem(
                     PipelineCard(
                         pipeline_name=pipeline.name,
-                        pipeline_desc=pipeline.description,
+                        pipeline_description=pipeline.description,
                     )
                 )
             )

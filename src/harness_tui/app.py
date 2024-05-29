@@ -44,7 +44,7 @@ class HarnessTui(App):
     def compose(self) -> ComposeResult:
         yield Header()
         with Container():
-            yield PipelineList(id="tree-view", api_client=self.api_client.pipelines)
+            yield PipelineList(id="tree-view", api_client=self.api_client)
             with VerticalScroll(id="code-view"):
                 yield Static(id="code", expand=True)
         yield Footer()
