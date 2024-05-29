@@ -30,3 +30,9 @@ class LogView(Static):
             return
         yield Tree("Stages")
         yield Log()
+
+    async def fetch_stage_steps(self):
+        for node_id, node in self.execution.layout_node_map.items():
+            ...
+
+    def on_mount(self) -> None: ...

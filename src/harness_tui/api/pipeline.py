@@ -4,7 +4,6 @@ import typing as t
 import warnings
 
 import requests
-import yaml
 
 import harness_tui.models as M
 from harness_tui.api.mixin import ClientMixin
@@ -14,15 +13,6 @@ from harness_tui.utils import ttl_cache
 def _strip_unset(kwargs: t.Dict[str, t.Any]) -> t.Dict[str, t.Any]:
     """Remove unset values from a dictionary."""
     return {k: v for k, v in kwargs.items() if v is not None}
-
-
-def check_yaml_validity(file_path):
-    try:
-        with open(file_path, "r") as file:
-            yaml.safe_load(file)
-        print(f"The YAML file '{file_path}' is valid.")
-    except yaml.YAMLError as exc:
-        print(f"Error in YAML file '{file_path}': {exc}")
 
 
 class PipelineClient(ClientMixin):
@@ -51,7 +41,7 @@ class PipelineClient(ClientMixin):
         self.org = org
         self.project = project
 
-    # @ttl_cache(10)
+    @ttl_cache(10)
     def list(
         self,
         filter_type: str = "PipelineSetup",

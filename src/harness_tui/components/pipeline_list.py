@@ -4,6 +4,7 @@ from __future__ import annotations
 
 import typing as t
 
+from textual import events
 from textual.app import ComposeResult
 from textual.message import Message
 from textual.reactive import reactive
@@ -48,7 +49,7 @@ class PipelineCard(Static):
         """Compose the pipeline card."""
         yield Label(self.pipeline.name, id=f"label-{self.pipeline.identifier}")
         if self.pipeline.description:
-            yield Label(self.pipeline.description, id="pipeline_desc")
+            yield Label(self.pipeline.description, id="pipeline-desc")
         last_status = self.pipeline.execution_summary.last_execution_status
         if last_status:
             last_status = last_status.upper()
@@ -61,12 +62,14 @@ class PipelineCard(Static):
             classes="run-button",
         )
 
-    def on_click(self) -> None:
+    def on_click(self, event: events.Click) -> None:
         """Post a message when the card is clicked."""
+        event.stop()
         self.post_message(self.Selected(self.pipeline))
 
     def on_button_pressed(self, event: Button.Pressed) -> None:
         """Handle button press events."""
+        event.stop()
         id_ = event.button.id
         if id_ and id_.startswith("run-pipeline-"):
             self.post_message(self.RunPipelineRequest(self.pipeline))
@@ -97,10 +100,32 @@ class PipelineList(Static):
         )
 
     def on_input_changed(self, event: Input.Changed):
+        """Filter the pipeline list based on the search input."""
+        event.stop()
         for card in self.query(PipelineCard):
             wrapper = t.cast(ListItem, card.parent)
-            wrapper.disabled = event.value not in card.pipeline.name
+            wrapper.disabled = event.value.lower() not in card.pipeline.name.lower()
             if wrapper.disabled:
                 wrapper.add_class("filtered")
             else:
                 wrapper.remove_class("filtered")
+
+    def on_key(self, event: events.Key) -> None:
+        """Allow the user to navigate the pipeline list with j/k."""
+        if event.key == "j":
+            self.query_one(ListView).action_cursor_down()
+        elif event.key == "k":
+            self.query_one(ListView).action_cursor_up()
+        elif event.key == "escape":
+            self.blur()
+
+    def on_input_submitted(self, event: Input.Submitted):
+        """Focus the pipeline list when the search input is submitted."""
+        event.stop()
+        if any(not item.disabled for item in self.query(ListItem)):
+            self.query_one(ListView).focus()
+            self.query_one(ListView).action_cursor_down()
+        else:
+            self.notify(
+                f"No pipelines found matching `{event.value}`.", severity="error"
+            )

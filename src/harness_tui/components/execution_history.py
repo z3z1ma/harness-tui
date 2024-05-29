@@ -61,7 +61,7 @@ class ExecutionsView(Static):
         if self.is_loading:
             yield LoadingIndicator()
             return
-        data_table = DataTable()
+        data_table = DataTable(header_height=2, cell_padding=2)
         data_table.add_columns(
             "Start Time", "Started By", "Trigger Type", "Status", "Link"
         )

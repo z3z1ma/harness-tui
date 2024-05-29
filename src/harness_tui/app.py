@@ -15,9 +15,17 @@ from pathlib import PurePath
 from dotenv import load_dotenv
 from textual import work
 from textual.app import App, ComposeResult
-from textual.containers import Container, VerticalScroll
+from textual.containers import Container
 from textual.driver import Driver
-from textual.widgets import Footer, Header, ListView, TabbedContent, TabPane, TextArea
+from textual.widgets import (
+    DataTable,
+    Footer,
+    Header,
+    ListView,
+    TabbedContent,
+    TabPane,
+    TextArea,
+)
 
 from harness_tui.api import HarnessClient
 from harness_tui.components import (
@@ -33,7 +41,15 @@ class HarnessTui(App):
     """Harness Terminal UI"""
 
     CSS_PATH = "app.tcss"
-    BINDINGS = [("q", "quit", "Quit"), ("s", "search", "Search")]
+    BINDINGS = [
+        ("q", "quit", "Quit"),
+        ("s,f,/", "search", "Search"),
+        ("p", "focus_pipelines", "Focus Pipelines"),
+        ("e", "focus_executions", "Focus Executions"),
+        ("y", "focus_yaml", "Focus YAML"),
+        ("l", "focus_logs", "Focus logs"),
+        ("d", "dark_mode", "Toggle Dark Mode"),
+    ]
 
     def __init__(
         self,
@@ -47,21 +63,20 @@ class HarnessTui(App):
     def compose(self) -> ComposeResult:
         yield Header()
         with Container():
-            yield PipelineList(id="tree-view")
-            with TabbedContent(initial="history-tab"):
-                with TabPane("Executions", id="history-tab"):
-                    yield ExecutionsView(id="history")
+            yield PipelineList(id="pipeline-view")
+            with TabbedContent(initial="executions-tab"):
+                with TabPane("Executions", id="executions-tab"):
+                    yield ExecutionsView(id="executions-view")
                 with TabPane("YAML", id="yaml-tab"):
-                    with VerticalScroll(id="yaml-view"):
-                        yield ExecutionGraph()
-                        yield TextArea.code_editor(
-                            id="yaml",
-                            theme="css",
-                            language="yaml",
-                            soft_wrap=False,
-                            show_line_numbers=True,
-                            tab_behavior="indent",
-                        )
+                    yield ExecutionGraph()
+                    yield TextArea.code_editor(
+                        id="yaml-view",
+                        theme="css",
+                        language="yaml",
+                        soft_wrap=False,
+                        show_line_numbers=True,
+                        tab_behavior="indent",
+                    )
                 with TabPane("Logs", id="logs-tab"):
                     yield LogView()
         yield Footer()
@@ -74,6 +89,22 @@ class HarnessTui(App):
 
     def action_search(self) -> None:
         self.query_one("#pipeline-search").focus()
+
+    def action_focus_pipelines(self) -> None:
+        self.query_one("#pipeline-view").query_one(ListView).focus()
+
+    def action_focus_executions(self) -> None:
+        self.query_one(TabbedContent).active = "executions-tab"
+        self.query_one("#executions-view").query_one(DataTable).focus()
+
+    def action_focus_yaml(self) -> None:
+        self.query_one(TabbedContent).active = "yaml-tab"
+
+    def action_focus_logs(self) -> None:
+        self.query_one(TabbedContent).active = "logs-tab"
+
+    def action_dark_mode(self) -> None:
+        self.dark = not self.dark
 
     # Event handlers (these allow component level interaction to be handled at the app level as needed)
 
@@ -101,7 +132,7 @@ class HarnessTui(App):
     @work(group="execution_ui", exclusive=True)
     async def update_execution_history(self, pipeline_identifier: str):
         """Fetch execution history for a specific pipeline."""
-        execution_ui = self.query_one("#history", ExecutionsView)
+        execution_ui = self.query_one("#executions-view", ExecutionsView)
         execution_ui.is_loading = True
         executions = await asyncio.to_thread(
             self.api_client.pipelines.reference(pipeline_identifier).executions
@@ -112,19 +143,19 @@ class HarnessTui(App):
     @work(group="yaml_ui", exclusive=True)
     async def update_yaml_buffer(self, pipeline_identifier: str) -> None:
         """Fetch pipeline YAML and update the buffer."""
-        yaml_ui = self.query_one("#yaml", TextArea)
+        yaml_ui = self.query_one("#yaml-view", TextArea)
         content = (
             await asyncio.to_thread(
                 self.api_client.pipelines.reference(pipeline_identifier).get
             )
         ).pipeline_yaml
         yaml_ui.load_text(content)
-        self.query_one("#yaml-view").scroll_home(animate=False)
+        yaml_ui.scroll_home(animate=False)
 
     @work(group="pipeline_ui", exclusive=True)
     async def update_pipeline_list_loop(self) -> None:
         """Fetch pipeline data every 15 seconds."""
-        pipeline_ui = self.query_one("#tree-view", PipelineList)
+        pipeline_ui = self.query_one("#pipeline-view", PipelineList)
         while True:
             pipeline_ui.pipeline_list = await asyncio.to_thread(
                 self.api_client.pipelines.list
