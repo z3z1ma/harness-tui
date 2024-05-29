@@ -1,0 +1,12 @@
+{"level":"INFO","pos":0,"out":"Fetching and validating connector...","time":"2024-05-26T20:14:53.172540378Z","args":null}
+{"level":"INFO","pos":0,"out":"\u001b[0;92m\u001b[40mConnector fetched\u001b[0m","time":"2024-05-26T20:14:53.178619008Z","args":null}
+{"level":"INFO","pos":0,"out":"\u001b[0;93m\u001b[40mConnector Name: rev-ops-dataops-vm\u001b[0m","time":"2024-05-26T20:14:53.182295908Z","args":null}
+{"level":"INFO","pos":0,"out":"\u001b[0;93m\u001b[40mConnector Type: KUBERNETES_CLUSTER\u001b[0m","time":"2024-05-26T20:14:53.184797288Z","args":null}
+{"level":"INFO","pos":0,"out":"\u001b[0;93m\u001b[40mConnector Status: SUCCESS\u001b[0m","time":"2024-05-26T20:14:53.187447937Z","args":null}
+{"level":"INFO","pos":0,"out":"\u001b[0;92m\u001b[40mConnector validated\u001b[0m","time":"2024-05-26T20:14:53.189898537Z","args":null}
+{"level":"INFO","pos":0,"out":"Fetching environment information...","time":"2024-05-26T20:14:53.191977787Z","args":null}
+{"level":"INFO","pos":0,"out":"Infrastructure Name: DataopsVM , Identifier: DataopsVM","time":"2024-05-26T20:14:53.199267027Z","args":null}
+{"level":"INFO","pos":0,"out":"\u001b[0;93m\u001b[40mKubernetes Namespace: cdf\u001b[0m","time":"2024-05-26T20:14:53.202454307Z","args":null}
+{"level":"INFO","pos":0,"out":"Simultaneous Deployments disabled for Infrastructure : DataopsVM. Deployments will get queued as a result. \nhttps://developer.harness.io/docs/continuous-delivery/manage-deployments/controlling-deployments-with-barriers-resource-constraints-and-queue-steps/","time":"2024-05-26T20:14:53.205739827Z","args":null}
+{"level":"INFO","pos":0,"out":"Environment Name: Prod , Identifier: Prod","time":"2024-05-26T20:14:53.213381676Z","args":null}
+{"level":"INFO","pos":0,"out":"\u001b[0;92m\u001b[40mCompleted infrastructure step\u001b[0m","time":"2024-05-26T20:14:53.30829639Z","args":null}

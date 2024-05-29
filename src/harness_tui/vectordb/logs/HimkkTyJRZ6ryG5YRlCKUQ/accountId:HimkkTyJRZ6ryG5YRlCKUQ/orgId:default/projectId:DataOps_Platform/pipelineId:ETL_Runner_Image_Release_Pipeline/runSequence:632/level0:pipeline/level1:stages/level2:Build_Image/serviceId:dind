@@ -1,0 +1,14 @@
+{"level":"info","pos":0,"out":"dind: Pulling from library/docker\n","time":"2024-05-26T20:09:30.306602525Z","args":null}
+{"level":"info","pos":1,"out":"Digest: sha256:a811114bcd41954bc9b6577469ce7e648ee600c864e815e535aac79e50439352\n","time":"2024-05-26T20:09:33.014232211Z","args":null}
+{"level":"info","pos":2,"out":"Status: Downloaded newer image for docker:dind\n","time":"2024-05-26T20:09:33.014980989Z","args":null}
+{"level":"info","pos":3,"out":"Certificate request self-signature ok\n","time":"2024-05-26T20:09:34.384053911Z","args":null}
+{"level":"info","pos":4,"out":"subject=CN=docker:dind server\n","time":"2024-05-26T20:09:34.384088959Z","args":null}
+{"level":"info","pos":5,"out":"/certs/server/cert.pem: OK\n","time":"2024-05-26T20:09:34.391294578Z","args":null}
+{"level":"info","pos":6,"out":"Certificate request self-signature ok\n","time":"2024-05-26T20:09:34.994243225Z","args":null}
+{"level":"info","pos":7,"out":"subject=CN=docker:dind client\n","time":"2024-05-26T20:09:34.994261899Z","args":null}
+{"level":"info","pos":8,"out":"/certs/client/cert.pem: OK\n","time":"2024-05-26T20:09:35.001813201Z","args":null}
+{"level":"info","pos":9,"out":"iptables v1.8.10 (legacy)\n","time":"2024-05-26T20:09:35.004891107Z","args":null}
+{"level":"info","pos":10,"out":"mount: permission denied (are you root?)\n","time":"2024-05-26T20:09:35.006400993Z","args":null}
+{"level":"info","pos":11,"out":"Could not mount /sys/kernel/security.\n","time":"2024-05-26T20:09:35.006409599Z","args":null}
+{"level":"info","pos":12,"out":"AppArmor detection and --privileged mode might break.\n","time":"2024-05-26T20:09:35.006416656Z","args":null}
+{"level":"info","pos":13,"out":"mount: permission denied (are you root?)\n","time":"2024-05-26T20:09:35.007241108Z","args":null}
