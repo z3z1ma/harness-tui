@@ -8,7 +8,7 @@ import typing as t
 from textual.app import ComposeResult
 from textual.message import Message
 from textual.reactive import reactive
-from textual.widgets import Input, Label, ListItem, ListView, Static
+from textual.widgets import Input, Label, ListItem, ListView, LoadingIndicator, Static
 
 import harness_tui.models as M
 from harness_tui.api import HarnessClient
@@ -39,6 +39,11 @@ class PipelineCard(Static):
             yield Label(
                 self.pipeline.description, id=f"desc-{self.pipeline.identifier}"
             )
+        last_status = self.pipeline.execution_summary.last_execution_status
+        if last_status:
+            last_status = last_status.upper()
+            if last_status == "RUNNING":
+                yield LoadingIndicator()
 
     def on_click(self) -> None:
         """Post a message when the card is clicked."""

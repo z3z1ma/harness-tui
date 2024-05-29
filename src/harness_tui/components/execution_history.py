@@ -6,7 +6,7 @@ import typing as t
 
 from textual.app import ComposeResult
 from textual.reactive import reactive
-from textual.widgets import Sparkline, Static
+from textual.widgets import Label, Sparkline, Static
 
 import harness_tui.models as M
 
@@ -23,8 +23,9 @@ class ExecutionGraph(Static):
 
     def compose(self) -> ComposeResult:
         deployments = (
-            self.pipeline.execution_summary.deployments * 5 if self.pipeline else []
+            self.pipeline.execution_summary.deployments if self.pipeline else []
         )
+        yield Label("Deployments")
         yield Sparkline(deployments, summary_function=max)
 
 
