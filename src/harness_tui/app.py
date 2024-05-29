@@ -30,7 +30,7 @@ from textual.widgets import (
 
 from harness_tui.api import HarnessClient
 from harness_tui.components import PipelineList
-from harness_tui.components.execution_history import ExecutionGraph
+from harness_tui.components.execution_history import ExecutionGraph, ExecutionHistory
 from harness_tui.components.pipeline_list import PipelineCard
 
 
@@ -54,11 +54,11 @@ class HarnessTui(App):
         yield Header()
         with Container():
             yield PipelineList(id="tree-view", api_client=self.api_client)
-            with TabbedContent(initial="yaml-tab"):
+            with TabbedContent(initial="history-tab"):
                 with TabPane("Execution History", id="history-tab"):
                     yield Static(
                         id="history"
-                    )  # TODO(ankush): Add ExecutionHistory stuff
+                    )
                 with TabPane("YAML", id="yaml-tab"):
                     with VerticalScroll(id="yaml-view"):
                         yield ExecutionGraph()
@@ -83,11 +83,21 @@ class HarnessTui(App):
     def on_list_view_highlighted(self, event: ListView.Highlighted) -> None:
         if not event.item:
             return
+        if event.item.id == None:
+            return
+        if not event.item.id.startswith("pipeline-list-item"):
+            return
         card = event.item.query_one(PipelineCard)
         code_container = self.query_one("#yaml", TextArea)
         pipe = card.pipeline.identifier
         content = self.api_client.pipelines.reference(pipe).get().pipeline_yaml
         code_container.load_text(content)
+        exeution_list = ExecutionHistory (
+            executions=card.pipeline.recent_executions_info
+        )
+        history_container = self.query_one("#history")
+        history_container.remove_children()
+        history_container.mount(exeution_list)
         self.query_one("#yaml-view").scroll_home(animate=False)
         self.sub_title = str(card.pipeline.name)
         self.query_one(ExecutionGraph).pipeline = card.pipeline

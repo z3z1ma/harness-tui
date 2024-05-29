@@ -37,7 +37,7 @@ class PipelineCard(Static):
         yield Label(self.pipeline.name, id=f"label-{self.pipeline.identifier}")
         if self.pipeline.description:
             yield Label(
-                self.pipeline.description, id=f"desc-{self.pipeline.identifier}"
+                self.pipeline.description, id=f"pipeline_desc"
             )
         last_status = self.pipeline.execution_summary.last_execution_status
         if last_status:
@@ -73,8 +73,8 @@ class PipelineList(Static):
                 ListItem(
                     PipelineCard(
                         pipeline=pipeline,
-                        id=f"pipeline-list-item-{pipeline.identifier}",
-                    )
+                    ),
+                    id=f"pipeline-list-item-{pipeline.identifier}"
                 )
                 for pipeline in self.pipeline_list
             ]

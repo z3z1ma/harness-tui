@@ -5,11 +5,14 @@ from __future__ import annotations
 import typing as t
 from datetime import datetime
 
+from rich.text import Text
+
 from textual.app import ComposeResult
 from textual.reactive import reactive
-from textual.widgets import Label, ListItem, ListView, Sparkline, Static
+from textual.widgets import Label, Sparkline, Static, DataTable
 
 import harness_tui.models as M
+from harness_tui.models.pipeline import RecentExecutionsInfo
 
 
 class ExecutionGraph(Static):
@@ -27,56 +30,38 @@ class ExecutionGraph(Static):
             self.pipeline.execution_summary.deployments if self.pipeline else []
         )
         yield Label("Deployments")
-        yield Sparkline(deployments, summary_function=max)
-
-
-class ExecutionCard(Static):
-    def __init__(
-        self,
-        username: str,
-        type: str,
-        status: str,
-        start_ts: int,
-        *args: t.Any,
-        **kwargs: t.Any,
-    ) -> None:
-        super().__init__(*args, **kwargs)
-        self.username = username
-        self.type = type
-        self.status = status
-        self.start_ts = start_ts
-
-    def compose(self) -> ComposeResult:
-        yield Label(self.type + " Execution by " + self.username)
-        dt = datetime.fromtimestamp(self.start_ts / 1000)
-        yield Label(dt.strftime("%m/%d/%Y, %H:%M:%S"), id="execution-date")
-        if self.status == "Success":
-            yield Label("Sucess", id="success")
-        else:
-            yield Label("Failed", id="failed")
-
+        yield Sparkline(deployments, summary_function=max)        
 
 class ExecutionHistory(Static):
     executions = reactive(list, recompose=True)
 
     def __init__(
         self,
+        executions: t.List[RecentExecutionsInfo],
         *args: t.Any,
         **kwargs: t.Any,
     ) -> None:
         super().__init__(*args, **kwargs)
+        self.executions = executions
 
     def compose(self) -> ComposeResult:
-        execution_list = []
+        rows = []
+        rows.append(("Start Time", "Started By", "Trigger Type", "Status"))
         for execution in self.executions:
-            execution_list.append(
-                ListItem(
-                    ExecutionCard(
-                        username=execution.executor_info.username,
-                        type=execution.executor_info.trigger_type,
-                        status=execution.status,
-                        start_ts=execution.start_ts,
-                    )
-                )
-            )
-        yield ListView(*execution_list)
+            dt = datetime.fromtimestamp(execution.start_ts / 1000)
+            exec_time = dt.strftime("%m/%d/%Y, %H:%M:%S")
+            row = (exec_time, execution.executor_info.username, execution.executor_info.trigger_type)
+            styled_row = [
+                Text(str(cell), style="bold", justify="left") for cell in row
+            ]
+            if execution.status == "Success":
+                styled_row.append(Text(str(execution.status), style="bold green", justify="left"))
+            elif execution.status == "Failed":
+                styled_row.append(Text(str(execution.status), style="bold red", justify="left"))
+            else:
+                styled_row.append(Text(str(execution.status), style="bold yellow", justify="left"))
+            rows.append(styled_row)
+        data_table = DataTable()
+        data_table.add_columns(*rows[0])
+        data_table.add_rows(rows=rows[1:])
+        yield data_table
