@@ -6,12 +6,22 @@ import typing as t
 from hashlib import md5
 
 from textual.app import ComposeResult
+from textual.message import Message
 from textual.widgets import Input, Label, ListItem, ListView, Static
 
 from harness_tui.api import HarnessClient
 
 
 class PipelineCard(Static):
+    """A card that represents a pipeline."""
+
+    class Selected(Message):
+        """A message that indicates a pipeline card was selected."""
+
+        def __init__(self, pipeline_name: str) -> None:
+            self.pipeline_name = pipeline_name
+            super().__init__()
+
     def __init__(
         self,
         *args: t.Any,
@@ -30,6 +40,9 @@ class PipelineCard(Static):
         yield Label(self.pipeline_name, id=f"label-{pipeline_hash}")
         if self.pipeline_description:
             yield Label(self.pipeline_description, id=f"desc-{pipeline_hash}")
+
+    def on_click(self) -> None:
+        self.post_message(self.Selected(self.pipeline_name))
 
 
 class PipelineList(Static):

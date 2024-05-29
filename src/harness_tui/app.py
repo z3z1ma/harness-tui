@@ -19,10 +19,11 @@ from textual.app import App, ComposeResult
 from textual.containers import Container, VerticalScroll
 from textual.driver import Driver
 from textual.reactive import var
-from textual.widgets import DirectoryTree, Footer, Header, ListView, Static
+from textual.widgets import DirectoryTree, Footer, Header, ListView, Log, Static
 
 from harness_tui.api import HarnessClient
 from harness_tui.components import PipelineList
+from harness_tui.components.pipeline_list import PipelineCard
 
 
 class HarnessTui(App):
@@ -45,8 +46,8 @@ class HarnessTui(App):
         yield Header()
         with Container():
             yield PipelineList(id="tree-view", api_client=self.api_client)
-            with VerticalScroll(id="code-view"):
-                yield Static(id="code", expand=True)
+            with VerticalScroll(id="log-view"):
+                yield Log(id="log")
         yield Footer()
 
     def on_mount(self) -> None:
@@ -54,6 +55,14 @@ class HarnessTui(App):
 
     def action_search(self) -> None:
         self.query_one("#search").focus()
+
+    def on_pipeline_card_selected(self, event: PipelineCard.Selected) -> None:
+        """Called when the user selects a pipeline card."""
+        event.stop()
+        log_view = self.query_one("#log", Log)
+        pipeline = self.api_client.pipelines.reference(event.pipeline_name)
+        log_view.write(pipeline.yaml())  # type: ignore
+        self.sub_title = event.pipeline_name
 
 
 class CodeBrowser(App):
