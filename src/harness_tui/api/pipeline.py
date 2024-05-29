@@ -7,6 +7,7 @@ import requests
 
 import harness_tui.models as M
 from harness_tui.api.mixin import ClientMixin
+from harness_tui.utils import ttl_cache
 
 
 def _strip_unset(kwargs: t.Dict[str, t.Any]) -> t.Dict[str, t.Any]:
@@ -40,6 +41,7 @@ class PipelineClient(ClientMixin):
         self.org = org
         self.project = project
 
+    @ttl_cache(10)
     def list(
         self,
         filter_type: str = "PipelineSetup",
@@ -99,6 +101,7 @@ class PipelineReference:
         self.client = client
         self.pipeline_identifier = pipeline_identifier
 
+    @ttl_cache(60)
     def summary(
         self,
         branch: t.Optional[str] = None,
@@ -126,6 +129,7 @@ class PipelineReference:
             )["data"]
         )
 
+    @ttl_cache(60)
     def get(
         self,
         branch: t.Optional[str] = None,
@@ -152,6 +156,10 @@ class PipelineReference:
                 ),
             )["data"]
         )
+
+    def yaml(self, **kwargs: t.Any) -> t.Dict[str, t.Any]:
+        info = self.get(**kwargs)
+        return info.resolved_template_pipeline_yaml or info.pipeline_yaml
 
     def update(
         self,

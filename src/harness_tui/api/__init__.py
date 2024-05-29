@@ -42,18 +42,24 @@ __all__ = ["HarnessClient"]
 
 # Example usage
 if __name__ == "__main__":
+    import rich
+
     client = HarnessClient.default()
 
     # Fetch list of pipelines
     pipelines = client.pipelines.list()
-    print("Pipelines:", pipelines)
+    rich.print(pipelines)
 
     # Get pipeline reference
-    pipeline = client.pipelines.reference("Confluence_Data_Pipeline")
+    pipeline = client.pipelines.reference(pipelines[0].identifier)
 
     # Fetch pipeline summary
-    pipeline_summary = pipeline.summary()
-    print("Pipeline Summary:", pipeline_summary)
+    rich.print(pipeline.summary())
+
+    # Fetch pipeline YAML
+    rich.print(pipeline.get())
+
+    exit(0)
 
     # Update pipeline
     pipeline_yaml = """pipeline:

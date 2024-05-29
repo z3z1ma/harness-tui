@@ -1,8 +1,10 @@
 """Defines the Pydantic model for a pipeline."""
 
+import io
 import typing as t
 from datetime import datetime, timezone
 
+import yaml
 from pydantic import BaseModel, Field, field_validator
 
 
@@ -78,14 +80,21 @@ class Pipeline(BaseModel):
     pipeline_yaml: t.Annotated[t.Dict[str, t.Any], Field(alias="yamlPipeline")]
     resolved_template_pipeline_yaml: t.Annotated[
         t.Dict[str, t.Any], Field(alias="resolvedTemplatePipelineYaml")
-    ]
+    ] = {}
     git_details: t.Annotated[t.Optional[GitDetails], Field(alias="gitDetails")] = None
     entity_validity: t.Annotated[
         EntityValidityDetails, Field(alias="entityValidityDetails")
     ]
     modules: t.List[str]
-    validation_uuid: t.Annotated[str, Field(alias="validationUuid")]
+    validation_uuid: t.Annotated[t.Optional[str], Field(alias="validationUuid")] = None
     store_type: t.Annotated[str, Field(alias="storeType")] = "INLINE"
     public_access: t.Annotated[
         t.Optional[PublicAccess], Field(alias="publicAccessResponse")
     ] = None
+
+    @field_validator("pipeline_yaml", "resolved_template_pipeline_yaml", mode="before")
+    @classmethod
+    def convert_yaml_to_dict(cls, raw_yaml: t.Any):
+        if isinstance(raw_yaml, str):
+            return yaml.safe_load(io.StringIO(raw_yaml))
+        return raw_yaml
