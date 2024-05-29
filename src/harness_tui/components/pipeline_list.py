@@ -70,7 +70,12 @@ class PipelineList(Static):
         yield Input(placeholder="Search", id="pipeline-search")
         yield ListView(
             *[
-                ListItem(PipelineCard(pipeline=pipeline))
+                ListItem(
+                    PipelineCard(
+                        pipeline=pipeline,
+                        id=f"pipeline-list-item-{pipeline.identifier}",
+                    )
+                )
                 for pipeline in self.pipeline_list
             ]
         )

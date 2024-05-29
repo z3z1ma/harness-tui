@@ -44,6 +44,18 @@ class PublicAccess(BaseModel):
     error_message: t.Annotated[t.Optional[str], Field(alias="errorMessage")] = None
 
 
+class ExecutionInfo(BaseModel):
+    trigger_type: t.Annotated[str, Field(alias="triggerType")]
+    username: t.Annotated[str, Field(alias="username")]
+
+
+class RecentExecutionsInfo(BaseModel):
+    plan_execution_id: t.Annotated[str, Field(alias="planExecutionId")]
+    status: t.Annotated[str, Field(alias="status")]
+    start_ts: t.Annotated[int, Field(alias="startTs")]
+    executor_info: t.Annotated[ExecutionInfo, Field(alias="executorInfo")]
+
+
 class PipelineSummary(BaseModel):
     name: str
     identifier: str
@@ -74,6 +86,10 @@ class PipelineSummary(BaseModel):
         if isinstance(ts, (float, int)):
             return datetime.fromtimestamp(ts / 1000, tz=timezone.utc)
         return ts
+
+    recent_executions_info: t.Annotated[
+        t.List[RecentExecutionsInfo], Field(alias="recentExecutionsInfo")
+    ] = []  # TODO(ankush): 90% sure we are suing a different API than you and this field will be empty?
 
 
 class Pipeline(BaseModel):

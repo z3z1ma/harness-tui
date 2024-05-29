@@ -26,11 +26,18 @@ CodeBrowser #tree-view {
     max-width: 50%;
 }
 
-
-#code-view {
-    overflow: auto scroll;
-    min-width: 100%;
+ExecutionCard {
+    margin: 1;
 }
-#code {
-    width: auto;
+
+#execution-date {
+    color: rgb(128, 128, 128);
+}
+
+#success {
+    color: green;
+}
+
+#failed {
+    color: red;
 }
