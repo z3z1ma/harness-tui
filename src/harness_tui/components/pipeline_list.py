@@ -1,5 +1,3 @@
-"""Defines components for displaying a list of pipelines."""
-
 from __future__ import annotations
 
 import asyncio
@@ -8,7 +6,7 @@ import typing as t
 from textual.app import ComposeResult
 from textual.message import Message
 from textual.reactive import reactive
-from textual.widgets import Input, Label, ListItem, ListView, LoadingIndicator, Static
+from textual.widgets import Button, Input, Label, ListItem, ListView, LoadingIndicator, Static
 
 import harness_tui.models as M
 from harness_tui.api import HarnessClient
@@ -28,26 +26,39 @@ class PipelineCard(Static):
         self,
         *args: t.Any,
         pipeline: M.PipelineSummary,
+        api_client: HarnessClient,
         **kwargs: t.Any,
     ) -> None:
         super().__init__(*args, **kwargs)
         self.pipeline = pipeline
+        self.api_client = api_client
 
     def compose(self) -> ComposeResult:
         yield Label(self.pipeline.name, id=f"label-{self.pipeline.identifier}")
         if self.pipeline.description:
-            yield Label(
-                self.pipeline.description, id=f"pipeline_desc"
-            )
+            yield Label(self.pipeline.description, id="pipeline_desc")
         last_status = self.pipeline.execution_summary.last_execution_status
         if last_status:
             last_status = last_status.upper()
             if last_status == "RUNNING":
                 yield LoadingIndicator()
+        
+        yield Button(label="RUN PIPELINE", id=f"run-pipeline-{self.pipeline.identifier}", classes="run-button")
 
     def on_click(self) -> None:
         """Post a message when the card is clicked."""
         self.post_message(self.Selected(self.pipeline))
+
+    async def handle_run_pipeline(self) -> None:
+        """Handle the run pipeline action."""
+        await self.api_client.pipelines.reference(self.pipeline.identifier).execute()
+        self.notify(f"Pipeline {self.pipeline.name} has been executed.")
+        
+
+    def on_button_pressed(self, event: Button.Pressed) -> None:
+        """Handle button press events."""
+        if event.button.id == f"run-pipeline-{self.pipeline.identifier}":
+            asyncio.create_task(self.handle_run_pipeline())
 
 
 class PipelineList(Static):
@@ -73,6 +84,7 @@ class PipelineList(Static):
                 ListItem(
                     PipelineCard(
                         pipeline=pipeline,
+                        api_client=self.api_client,
                     ),
                     id=f"pipeline-list-item-{pipeline.identifier}"
                 )
