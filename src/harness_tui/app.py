@@ -82,10 +82,12 @@ class HarnessTui(App):
     @work(thread=True, group="history", exclusive=True)
     def update_execution_history(self, pipeline_identifier: str):
         ...  # Add a spinner
+        self.query_one("#history", ExecutionHistory).is_loading = True
         executions = self.api_client.pipelines.reference(
             pipeline_identifier
         ).executions()
         self.query_one("#history", ExecutionHistory).executions = executions
+        self.query_one("#history", ExecutionHistory).is_loading = False
 
     @work(thread=True, group="yaml_view", exclusive=True)
     def update_yaml_buffer(self, pipeline_identifier: str) -> None:
