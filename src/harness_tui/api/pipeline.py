@@ -234,7 +234,7 @@ class PipelineReference:
             ),
         )
 
-    @ttl_cache(10)
+    @ttl_cache(15)
     def executions(self):
         """Get the execution history of the pipeline."""
         # TODO(Alex): Implement pagination

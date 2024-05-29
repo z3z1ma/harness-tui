@@ -283,7 +283,7 @@ class PipelineExecution(BaseModel):
     modules: t.List[str]
     starting_node_id: t.Annotated[str, Field(alias="startingNodeId")]
     start_ts: t.Annotated[datetime, Field(alias="startTs")]
-    end_ts: t.Annotated[datetime, Field(alias="endTs")]
+    end_ts: t.Annotated[t.Optional[datetime], Field(alias="endTs")] = None
 
     @field_validator("start_ts", "end_ts", mode="before")
     @classmethod

@@ -1,3 +1,5 @@
+"""Defines components for displaying the pipeline list."""
+
 from __future__ import annotations
 
 import asyncio
@@ -72,7 +74,6 @@ class PipelineCard(Static):
             asyncio.create_task(self.handle_run_pipeline())
 
 
-    
 class PipelineList(Static):
     """This component displays a list of pipeline cards."""
 
@@ -111,9 +112,9 @@ class PipelineList(Static):
                 )
                 for pipeline in filtered_pipelines
             ],
-            id="pipeline_list"
+            id="pipeline_list",
         )
-        
+
     def on_input_changed(self, event: Input.Changed):
         self.search_term = event.value
         self.call_after_refresh(self.query_one(Input).focus)
@@ -127,4 +128,3 @@ class PipelineList(Static):
         while True:
             self.pipeline_list = self.api_client.pipelines.list()
             await asyncio.sleep(15.0)
-    

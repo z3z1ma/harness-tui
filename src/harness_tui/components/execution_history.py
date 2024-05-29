@@ -2,14 +2,24 @@
 
 from __future__ import annotations
 
+import os
+import subprocess
 import typing as t
 
 from rich.text import Text
 from textual.app import ComposeResult
 from textual.reactive import reactive
-from textual.widgets import DataTable, Label, Sparkline, Static, LoadingIndicator
+from textual.widgets import DataTable, Label, LoadingIndicator, Sparkline, Static
 
 import harness_tui.models as M
+
+STATUS_STYLE_MAP = {
+    "Success": "bold green",
+    "Failed": "bold red",
+    "Aborted": "yellow",
+    "Expired": "dim red",
+    "Running": "bold yellow",
+}
 
 
 class ExecutionGraph(Static):
@@ -40,36 +50,46 @@ class ExecutionHistory(Static):
         **kwargs: t.Any,
     ) -> None:
         super().__init__(*args, **kwargs)
+        self.execution_urls = {}
 
     def compose(self) -> ComposeResult:
-
         if self.is_loading:
             yield LoadingIndicator()
         else:
-            rows = []
-            rows.append(("Start Time", "Started By", "Trigger Type", "Status"))
+            data_table = DataTable()
+            data_table.add_columns(
+                "Start Time", "Started By", "Trigger Type", "Status", "Link"
+            )
             for execution in self.executions:
                 exec_time = execution.start_ts.strftime("%m/%d/%Y, %H:%M:%S")
-                row = (
-                    exec_time,
-                    execution.execution_trigger_info.triggered_by.identifier,
-                    execution.execution_trigger_info.trigger_type,
+                data_table.add_row(
+                    Text(exec_time, style="bold", justify="left"),
+                    Text(
+                        execution.execution_trigger_info.triggered_by.identifier,
+                        style="bold",
+                        justify="left",
+                    ),
+                    Text(
+                        execution.execution_trigger_info.trigger_type,
+                        style="bold",
+                        justify="left",
+                    ),
+                    Text(
+                        execution.status,
+                        style=STATUS_STYLE_MAP.get(execution.status, ""),
+                    ),
+                    Text(execution.plan_execution_id, style="blue"),
                 )
-                styled_row = [Text(str(cell), style="bold", justify="left") for cell in row]
-                if execution.status == "Success":
-                    styled_row.append(
-                        Text(str(execution.status), style="bold green", justify="left")
+                account = os.getenv("HARNESS_ACCOUNT")
+                if account:
+                    self.execution_urls[execution.plan_execution_id] = (
+                        f"https://app.harness.io/ng/account/{account}/module/ci/orgs/"
+                        f"{execution.org_identifier}/projects/{execution.project_identifier}/pipelines/"
+                        f"{execution.pipeline_identifier}/executions/{execution.plan_execution_id}/pipeline"
                     )
-                elif execution.status == "Failed":
-                    styled_row.append(
-                        Text(str(execution.status), style="bold red", justify="left")
-                    )
-                else:
-                    styled_row.append(
-                        Text(str(execution.status), style="bold yellow", justify="left")
-                    )
-                rows.append(styled_row)
-            data_table = DataTable()
-            data_table.add_columns(*rows[0])
-            data_table.add_rows(rows=rows[1:])
             yield data_table
+
+    def on_data_table_cell_selected(self, event: DataTable.CellSelected):
+        if event.coordinate.column == 4:
+            link = self.execution_urls[str(event.value)]
+            subprocess.run(["open", link])
