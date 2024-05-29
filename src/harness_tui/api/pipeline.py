@@ -157,9 +157,9 @@ class PipelineReference:
             )["data"]
         )
 
-    def yaml(self, **kwargs: t.Any) -> t.Dict[str, t.Any]:
+    def definition(self, **kwargs: t.Any) -> t.Dict[str, t.Any]:
         info = self.get(**kwargs)
-        return info.resolved_template_pipeline_yaml or info.pipeline_yaml
+        return info.resolved_template_pipeline_dict or info.pipeline_dict
 
     def update(
         self,

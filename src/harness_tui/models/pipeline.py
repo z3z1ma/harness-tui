@@ -77,10 +77,10 @@ class PipelineSummary(BaseModel):
 
 
 class Pipeline(BaseModel):
-    pipeline_yaml: t.Annotated[t.Dict[str, t.Any], Field(alias="yamlPipeline")]
+    pipeline_yaml: t.Annotated[str, Field(alias="yamlPipeline")]
     resolved_template_pipeline_yaml: t.Annotated[
-        t.Dict[str, t.Any], Field(alias="resolvedTemplatePipelineYaml")
-    ] = {}
+        t.Optional[None], Field(alias="resolvedTemplatePipelineYaml")
+    ] = None
     git_details: t.Annotated[t.Optional[GitDetails], Field(alias="gitDetails")] = None
     entity_validity: t.Annotated[
         EntityValidityDetails, Field(alias="entityValidityDetails")
@@ -92,9 +92,12 @@ class Pipeline(BaseModel):
         t.Optional[PublicAccess], Field(alias="publicAccessResponse")
     ] = None
 
-    @field_validator("pipeline_yaml", "resolved_template_pipeline_yaml", mode="before")
-    @classmethod
-    def convert_yaml_to_dict(cls, raw_yaml: t.Any):
-        if isinstance(raw_yaml, str):
-            return yaml.safe_load(io.StringIO(raw_yaml))
-        return raw_yaml
+    @property
+    def pipeline_dict(self) -> t.Dict[str, t.Any]:
+        return yaml.safe_load(io.StringIO(self.pipeline_yaml))
+
+    @property
+    def resolved_template_pipeline_dict(self) -> t.Dict[str, t.Any]:
+        if self.resolved_template_pipeline_yaml is None:
+            return {}
+        return yaml.safe_load(io.StringIO(self.resolved_template_pipeline_yaml))
