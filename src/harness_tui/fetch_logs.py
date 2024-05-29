@@ -1,23 +1,27 @@
-import urllib.parse
-
 import requests
+import sseclient
 
 
 def fetch_logs():
-    url = "https://app.harness.io/gateway/log-service/blob"
-
-    account_id = "VRuJ8-dqQH6QZgAtoBr66g"
+    account_id = "HimkkTyJRZ6ryG5YRlCKUQ"
     org_id = "default"
-    pipeline_id = "test"
-    project_id = "TESTINTELLIGENCEMASTER"
-    run_sequence = "2"
+    project_id = "DataOps_Platform"
+    pipeline_id = "Dummy"
+    run_sequence = "12"
+
     level0 = "pipeline"
     level1 = "stages"
-    level2 = "test"
+    level2 = "SlowLog"
     level3 = "spec"
     level4 = "execution"
     level5 = "steps"
-    level6 = "ShellScript_1-commandUnit"
+    level6 = "DoStuff-commandUnit:Execute"  # -commandUnit:Execute for custom stage / CD shell step?
+
+    log_service_token = requests.get(
+        "https://app.harness.io/gateway/log-service/token",
+        params={"accountID": account_id},
+        headers={"X-Api-Key": "..."},
+    ).text
 
     key_components = [
         f"accountId:{account_id}",
@@ -34,27 +38,35 @@ def fetch_logs():
         f"level6:{level6}",
     ]
 
-    key = urllib.parse.quote("/".join(key_components))
-
-    params = {
-        "accountID": account_id,
-        "orgId": org_id,
-        "pipelineId": pipeline_id,
-        "projectId": project_id,
-        "key": key,
-    }
-
-    headers = {
-        "accept": "*/*",
-        "authorization": "Bearer <JWT_TOKEN>",
-        "content-type": "application/json",
-    }
-
-    response = requests.get(url, headers=headers, params=params)
+    response = requests.get(
+        "https://app.harness.io/gateway/log-service/stream",
+        headers={
+            "Accept": "*/*",
+            "Content-Type": "application/json",
+            "X-Harness-Token": log_service_token,
+        },
+        params={
+            "accountID": account_id,
+            "X-Harness-Token": "",
+            "key": "/".join(key_components),
+        },
+        allow_redirects=True,
+        stream=True,
+    )
+    # print(response.request.url)
 
     if response.status_code == 200:
         print("Logs fetched successfully")
-        print(response.text)
+        for sse in sseclient.SSEClient(response).events():  # type: ignore
+            if sse.event == "ping":
+                continue
+            elif sse.event == "error":
+                if sse.data.upper() == "EOF":
+                    break
+                else:
+                    raise Exception(f"Error streaming logs: {sse.data}")
+            else:
+                print(sse.data)
     else:
         print(f"Failed to fetch logs: {response.status_code}")
         print(response.text)
