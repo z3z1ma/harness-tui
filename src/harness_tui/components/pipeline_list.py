@@ -6,7 +6,15 @@ import typing as t
 from textual.app import ComposeResult
 from textual.message import Message
 from textual.reactive import reactive
-from textual.widgets import Button, Input, Label, ListItem, ListView, LoadingIndicator, Static
+from textual.widgets import (
+    Button,
+    Input,
+    Label,
+    ListItem,
+    ListView,
+    LoadingIndicator,
+    Static,
+)
 
 import harness_tui.models as M
 from harness_tui.api import HarnessClient
@@ -42,8 +50,12 @@ class PipelineCard(Static):
             last_status = last_status.upper()
             if last_status == "RUNNING":
                 yield LoadingIndicator()
-        
-        yield Button(label="RUN PIPELINE", id=f"run-pipeline-{self.pipeline.identifier}", classes="run-button")
+
+        yield Button(
+            label="RUN PIPELINE",
+            id=f"run-pipeline-{self.pipeline.identifier}",
+            classes="run-button",
+        )
 
     def on_click(self) -> None:
         """Post a message when the card is clicked."""
@@ -53,7 +65,6 @@ class PipelineCard(Static):
         """Handle the run pipeline action."""
         await self.api_client.pipelines.reference(self.pipeline.identifier).execute()
         self.notify(f"Pipeline {self.pipeline.name} has been executed.")
-        
 
     def on_button_pressed(self, event: Button.Pressed) -> None:
         """Handle button press events."""
@@ -86,7 +97,7 @@ class PipelineList(Static):
                         pipeline=pipeline,
                         api_client=self.api_client,
                     ),
-                    id=f"pipeline-list-item-{pipeline.identifier}"
+                    id=f"pipeline-list-item-{pipeline.identifier}",
                 )
                 for pipeline in self.pipeline_list
             ]

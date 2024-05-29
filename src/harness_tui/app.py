@@ -56,9 +56,7 @@ class HarnessTui(App):
             yield PipelineList(id="tree-view", api_client=self.api_client)
             with TabbedContent(initial="history-tab"):
                 with TabPane("Execution History", id="history-tab"):
-                    yield Static(
-                        id="history"
-                    )
+                    yield Static(id="history")
                 with TabPane("YAML", id="yaml-tab"):
                     with VerticalScroll(id="yaml-view"):
                         yield ExecutionGraph()
@@ -83,16 +81,16 @@ class HarnessTui(App):
     def on_list_view_highlighted(self, event: ListView.Highlighted) -> None:
         if not event.item:
             return
-        if event.item.id == None:
+        elif event.item.id is None:
             return
-        if not event.item.id.startswith("pipeline-list-item"):
+        elif not event.item.id.startswith("pipeline-list-item"):
             return
         card = event.item.query_one(PipelineCard)
         code_container = self.query_one("#yaml", TextArea)
         pipe = card.pipeline.identifier
         content = self.api_client.pipelines.reference(pipe).get().pipeline_yaml
         code_container.load_text(content)
-        exeution_list = ExecutionHistory (
+        exeution_list = ExecutionHistory(
             executions=card.pipeline.recent_executions_info
         )
         history_container = self.query_one("#history")

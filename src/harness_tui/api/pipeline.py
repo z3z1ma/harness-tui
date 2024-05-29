@@ -15,9 +15,10 @@ def _strip_unset(kwargs: t.Dict[str, t.Any]) -> t.Dict[str, t.Any]:
     """Remove unset values from a dictionary."""
     return {k: v for k, v in kwargs.items() if v is not None}
 
+
 def check_yaml_validity(file_path):
     try:
-        with open(file_path, 'r') as file:
+        with open(file_path, "r") as file:
             yaml.safe_load(file)
         print(f"The YAML file '{file_path}' is valid.")
     except yaml.YAMLError as exc:

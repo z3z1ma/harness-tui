@@ -10,15 +10,6 @@ repos:
       - id: trailing-whitespace
       - id: check-symlinks
       - id: destroyed-symlinks
-  - repo: https://github.com/psf/black
-    rev: 24.4.2
-    hooks:
-      - id: black
-  - repo: https://github.com/pycqa/isort
-    rev: 5.13.2
-    hooks:
-      - id: isort
-        name: isort (python)
   - repo: https://github.com/commitizen-tools/commitizen
     rev: v3.13.0
     hooks:

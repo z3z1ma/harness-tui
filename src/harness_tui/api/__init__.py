@@ -58,11 +58,10 @@ if __name__ == "__main__":
 
     # Fetch pipeline YAML
     rich.print(pipeline.get())
-    
+
     # Execute pipeline
     execution_result = pipeline.execute()
     rich.print(execution_result)
-    
 
     exit(0)
 
