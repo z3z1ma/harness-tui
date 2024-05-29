@@ -41,7 +41,7 @@ class PipelineClient(ClientMixin):
         self.org = org
         self.project = project
 
-    @ttl_cache(10)
+    # @ttl_cache(10)
     def list(
         self,
         filter_type: str = "PipelineSetup",
