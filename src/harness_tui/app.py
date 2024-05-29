@@ -13,7 +13,6 @@ import typing as t
 from pathlib import PurePath
 
 from dotenv import load_dotenv
-from rich.syntax import Syntax
 from textual.app import App, ComposeResult
 from textual.containers import Container, VerticalScroll
 from textual.driver import Driver
@@ -26,6 +25,7 @@ from textual.widgets import (
     Static,
     TabbedContent,
     TabPane,
+    TextArea,
 )
 
 from harness_tui.api import HarnessClient
@@ -62,8 +62,13 @@ class HarnessTui(App):
                 with TabPane("YAML", id="yaml-tab"):
                     with VerticalScroll(id="yaml-view"):
                         yield ExecutionGraph()
-                        yield Static(
-                            id="yaml"
+                        yield TextArea.code_editor(
+                            id="yaml",
+                            theme="css",
+                            language="yaml",
+                            soft_wrap=False,
+                            show_line_numbers=True,
+                            tab_behavior="indent",
                         )  # TODO(alex): Make this editable with a save/validate button
                 with TabPane("Logs", id="logs-tab"):
                     yield Static(id="logs")  # TODO(alex): Add log stuff
@@ -79,17 +84,10 @@ class HarnessTui(App):
         if not event.item:
             return
         card = event.item.query_one(PipelineCard)
-        code_container = self.query_one("#yaml", Static)
+        code_container = self.query_one("#yaml", TextArea)
         pipe = card.pipeline.identifier
-        syntax = Syntax(
-            self.api_client.pipelines.reference(pipe).get().pipeline_yaml,
-            lexer="yaml",
-            line_numbers=True,
-            word_wrap=False,
-            indent_guides=True,
-            theme="github-dark",
-        )
-        code_container.update(syntax)
+        content = self.api_client.pipelines.reference(pipe).get().pipeline_yaml
+        code_container.load_text(content)
         self.query_one("#yaml-view").scroll_home(animate=False)
         self.sub_title = str(card.pipeline.name)
         self.query_one(ExecutionGraph).pipeline = card.pipeline
