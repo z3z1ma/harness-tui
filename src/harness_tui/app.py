@@ -79,7 +79,7 @@ class HarnessTui(App):
     def action_search(self) -> None:
         self.query_one("#pipeline-search").focus()
 
-    @work(thread=True)
+    @work(thread=True, group="main", exclusive=True)
     def update_execution_history(self, pipeline_identifier: str):
         ...  # Add a spinner
         executions = self.api_client.pipelines.reference(
@@ -87,7 +87,7 @@ class HarnessTui(App):
         ).executions()
         self.query_one("#history", ExecutionHistory).executions = executions
 
-    @work(thread=True)
+    @work(thread=True, group="main", exclusive=True)
     def update_yaml_buffer(self, pipeline_identifier: str) -> None:
         code_container = self.query_one("#yaml", TextArea)
         content = (
