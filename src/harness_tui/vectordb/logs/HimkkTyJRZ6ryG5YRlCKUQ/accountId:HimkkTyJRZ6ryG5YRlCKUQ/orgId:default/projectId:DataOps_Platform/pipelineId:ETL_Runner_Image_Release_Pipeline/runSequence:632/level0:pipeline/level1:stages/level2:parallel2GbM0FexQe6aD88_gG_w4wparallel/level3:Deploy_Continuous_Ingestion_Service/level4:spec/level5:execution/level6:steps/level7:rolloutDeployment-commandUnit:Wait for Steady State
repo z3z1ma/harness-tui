@@ -1,0 +1,106 @@
+{"level":"INFO","pos":0,"out":"Watching following namespaces for events: [cdf]","time":"2024-05-26T20:15:07.734286635Z","args":null}
+{"level":"INFO","pos":0,"out":"Waiting for following workloads to finish: [Deployment/cdf-mongo-cdc-prod1-ccm, Deployment/cdf-mongo-cdc-prod1-cdcg, Deployment/cdf-mongo-cdc-prod1-cdng, Deployment/cdf-mongo-cdc-prod1-pms, Deployment/cdf-mongo-cdc-prod2-ccm, Deployment/cdf-mongo-cdc-prod2-cdcg, Deployment/cdf-mongo-cdc-prod2-cdng, Deployment/cdf-mongo-cdc-prod2-pms, Deployment/cdf-mongo-cdc-prod3-ccm, Deployment/cdf-mongo-cdc-prod3-cdcg, Deployment/cdf-mongo-cdc-prod3-cdng, Deployment/cdf-mongo-cdc-prod3-pms]","time":"2024-05-26T20:15:07.734397705Z","args":null}
+{"level":"INFO","pos":0,"out":"Waiting for deployment cdf-mongo-cdc-prod1-ccm rollout to finish: 1 old replicas are pending termination...","time":"2024-05-26T20:15:07.750118613Z","args":null}
+{"level":"INFO","pos":0,"out":"Event  : cdf-mongo-cdc-prod2-cdng-5c8567bfb-95ww5   Successfully assigned cdf/cdf-mongo-cdc-prod2-cdng-5c8567bfb-95ww5 to rev-ops-dataops-vm","time":"2024-05-26T20:15:07.797568586Z","args":null}
+{"level":"INFO","pos":0,"out":"Event  : cdf-mongo-cdc-prod2-pms-6bbcbb8c5d-cdltt   Successfully assigned cdf/cdf-mongo-cdc-prod2-pms-6bbcbb8c5d-cdltt to rev-ops-dataops-vm","time":"2024-05-26T20:15:07.808247265Z","args":null}
+{"level":"INFO","pos":0,"out":"Event  : cdf-mongo-cdc-prod3-ccm-744449544b-qz7dl   Successfully assigned cdf/cdf-mongo-cdc-prod3-ccm-744449544b-qz7dl to rev-ops-dataops-vm","time":"2024-05-26T20:15:07.812079044Z","args":null}
+{"level":"INFO","pos":0,"out":"Event  : cdf-mongo-cdc-prod3-cdcg-6df5f88956-ph7km   Successfully assigned cdf/cdf-mongo-cdc-prod3-cdcg-6df5f88956-ph7km to rev-ops-dataops-vm","time":"2024-05-26T20:15:07.819597483Z","args":null}
+{"level":"INFO","pos":0,"out":"Event  : cdf-mongo-cdc-prod3-cdng-5c5cc45995-4mslr   Successfully assigned cdf/cdf-mongo-cdc-prod3-cdng-5c5cc45995-4mslr to rev-ops-dataops-vm","time":"2024-05-26T20:15:07.828430552Z","args":null}
+{"level":"INFO","pos":0,"out":"Event  : cdf-mongo-cdc-prod3-pms-868f9ffd95-4vgtl   Successfully assigned cdf/cdf-mongo-cdc-prod3-pms-868f9ffd95-4vgtl to rev-ops-dataops-vm","time":"2024-05-26T20:15:07.831626172Z","args":null}
+{"level":"INFO","pos":0,"out":"Event  : cdf-mongo-cdc-prod3-pms-868f9ffd95   Created pod: cdf-mongo-cdc-prod3-pms-868f9ffd95-4vgtl","time":"2024-05-26T20:15:07.84437347Z","args":null}
+{"level":"INFO","pos":0,"out":"Event  : cdf-mongo-cdc-prod2-ccm-5bdc6c84ff-2zrwm   Pulling image \"us-west1-docker.pkg.dev/segment-warehouse-236622/analytics-images/etl-runner:632\"","time":"2024-05-26T20:15:08.127489982Z","args":null}
+{"level":"INFO","pos":0,"out":"Event  : cdf-mongo-cdc-prod2-pms-6bbcbb8c5d-cdltt   Pulling image \"us-west1-docker.pkg.dev/segment-warehouse-236622/analytics-images/etl-runner:632\"","time":"2024-05-26T20:15:08.154050079Z","args":null}
+{"level":"INFO","pos":0,"out":"Event  : cdf-mongo-cdc-prod1-ccm-84d9dd5db-kz4rx   Pulling image \"us-west1-docker.pkg.dev/segment-warehouse-236622/analytics-images/etl-runner:632\"","time":"2024-05-26T20:15:08.163853408Z","args":null}
+{"level":"INFO","pos":0,"out":"Event  : cdf-mongo-cdc-prod2-cdng-5c8567bfb-95ww5   Pulling image \"us-west1-docker.pkg.dev/segment-warehouse-236622/analytics-images/etl-runner:632\"","time":"2024-05-26T20:15:08.184504225Z","args":null}
+{"level":"INFO","pos":0,"out":"Event  : cdf-mongo-cdc-prod3-cdcg-6df5f88956-ph7km   Pulling image \"us-west1-docker.pkg.dev/segment-warehouse-236622/analytics-images/etl-runner:632\"","time":"2024-05-26T20:15:15.434403698Z","args":null}
+{"level":"INFO","pos":0,"out":"Event  : cdf-mongo-cdc-prod3-pms-868f9ffd95-4vgtl   Pulling image \"us-west1-docker.pkg.dev/segment-warehouse-236622/analytics-images/etl-runner:632\"","time":"2024-05-26T20:15:15.438196717Z","args":null}
+{"level":"INFO","pos":0,"out":"Event  : cdf-mongo-cdc-prod3-cdng-5c5cc45995-4mslr   Pulling image \"us-west1-docker.pkg.dev/segment-warehouse-236622/analytics-images/etl-runner:632\"","time":"2024-05-26T20:15:15.442844657Z","args":null}
+{"level":"INFO","pos":0,"out":"Event  : cdf-mongo-cdc-prod3-ccm-744449544b-qz7dl   Pulling image \"us-west1-docker.pkg.dev/segment-warehouse-236622/analytics-images/etl-runner:632\"","time":"2024-05-26T20:15:15.450323735Z","args":null}
+{"level":"INFO","pos":0,"out":"Event  : cdf-mongo-cdc-prod1-cdng-66b4457c65-nlsgr   Successfully pulled image \"us-west1-docker.pkg.dev/segment-warehouse-236622/analytics-images/etl-runner:632\" in 1m35.925919328s","time":"2024-05-26T20:16:42.646984019Z","args":null}
+{"level":"INFO","pos":0,"out":"Event  : cdf-mongo-cdc-prod1-cdng-66b4457c65-nlsgr   Created container mongo-cdc","time":"2024-05-26T20:16:43.490653056Z","args":null}
+{"level":"INFO","pos":0,"out":"Event  : cdf-mongo-cdc-prod1-cdng-66b4457c65-nlsgr   Started container mongo-cdc","time":"2024-05-26T20:16:44.426202421Z","args":null}
+{"level":"INFO","pos":0,"out":"Event  : cdf-mongo-cdc-prod3-pms-868f9ffd95-4vgtl   Successfully pulled image \"us-west1-docker.pkg.dev/segment-warehouse-236622/analytics-images/etl-runner:632\" in 1m29.536123701s","time":"2024-05-26T20:16:44.971253628Z","args":null}
+{"level":"INFO","pos":0,"out":"Event  : cdf-mongo-cdc-prod1-cdng   Scaled down replica set cdf-mongo-cdc-prod1-cdng-698bb744d8 to 0","time":"2024-05-26T20:16:45.097841211Z","args":null}
+{"level":"INFO","pos":0,"out":"Event  : cdf-mongo-cdc-prod1-cdng-698bb744d8   Deleted pod: cdf-mongo-cdc-prod1-cdng-698bb744d8-h4mps","time":"2024-05-26T20:16:45.136662837Z","args":null}
+{"level":"INFO","pos":0,"out":"Event  : cdf-mongo-cdc-prod1-cdng-698bb744d8-h4mps   Stopping container mongo-cdc","time":"2024-05-26T20:16:45.146352305Z","args":null}
+{"level":"INFO","pos":0,"out":"Event  : cdf-mongo-cdc-prod3-cdng-5c5cc45995-4mslr   Successfully pulled image \"us-west1-docker.pkg.dev/segment-warehouse-236622/analytics-images/etl-runner:632\" in 1m29.875808025s","time":"2024-05-26T20:16:45.311471843Z","args":null}
+{"level":"INFO","pos":0,"out":"Event  : cdf-mongo-cdc-prod2-pms-6bbcbb8c5d-cdltt   Successfully pulled image \"us-west1-docker.pkg.dev/segment-warehouse-236622/analytics-images/etl-runner:632\" in 1m37.593056677s","time":"2024-05-26T20:16:45.752994674Z","args":null}
+{"level":"INFO","pos":0,"out":"Event  : cdf-mongo-cdc-prod3-pms-868f9ffd95-4vgtl   Created container mongo-cdc","time":"2024-05-26T20:16:47.396916795Z","args":null}
+{"level":"INFO","pos":0,"out":"Event  : cdf-mongo-cdc-prod3-pms-868f9ffd95-4vgtl   Started container mongo-cdc","time":"2024-05-26T20:16:47.782995464Z","args":null}
+{"level":"INFO","pos":0,"out":"Event  : cdf-mongo-cdc-prod3-cdng-5c5cc45995-4mslr   Created container mongo-cdc","time":"2024-05-26T20:16:47.794994882Z","args":null}
+{"level":"INFO","pos":0,"out":"Event  : cdf-mongo-cdc-prod1-pms-b8c4d6558-9xdjs   Successfully pulled image \"us-west1-docker.pkg.dev/segment-warehouse-236622/analytics-images/etl-runner:632\" in 1m40.55927318s","time":"2024-05-26T20:16:48.206258087Z","args":null}
+{"level":"INFO","pos":0,"out":"Event  : cdf-mongo-cdc-prod3-pms    Scaled down replica set cdf-mongo-cdc-prod3-pms-6cf688ffb6 to 0","time":"2024-05-26T20:16:48.234554333Z","args":null}
+{"level":"INFO","pos":0,"out":"Event  : cdf-mongo-cdc-prod3-pms-6cf688ffb6-jz9w8   Stopping container mongo-cdc","time":"2024-05-26T20:16:48.283071687Z","args":null}
+{"level":"INFO","pos":0,"out":"Event  : cdf-mongo-cdc-prod3-pms-6cf688ffb6   Deleted pod: cdf-mongo-cdc-prod3-pms-6cf688ffb6-jz9w8","time":"2024-05-26T20:16:48.290822916Z","args":null}
+{"level":"INFO","pos":0,"out":"Event  : cdf-mongo-cdc-prod2-pms-6bbcbb8c5d-cdltt   Created container mongo-cdc","time":"2024-05-26T20:16:48.355634177Z","args":null}
+{"level":"INFO","pos":0,"out":"Event  : cdf-mongo-cdc-prod2-pms-6bbcbb8c5d-cdltt   Started container mongo-cdc","time":"2024-05-26T20:16:49.049961535Z","args":null}
+{"level":"INFO","pos":0,"out":"Event  : cdf-mongo-cdc-prod3-cdng-5c5cc45995-4mslr   Started container mongo-cdc","time":"2024-05-26T20:16:49.065844443Z","args":null}
+{"level":"INFO","pos":0,"out":"Event  : cdf-mongo-cdc-prod2-pms    Scaled down replica set cdf-mongo-cdc-prod2-pms-7b5dc885bc to 0","time":"2024-05-26T20:16:49.134934084Z","args":null}
+{"level":"INFO","pos":0,"out":"Event  : cdf-mongo-cdc-prod2-pms-7b5dc885bc   Deleted pod: cdf-mongo-cdc-prod2-pms-7b5dc885bc-lzdl6","time":"2024-05-26T20:16:49.163384019Z","args":null}
+{"level":"INFO","pos":0,"out":"Event  : cdf-mongo-cdc-prod2-pms-7b5dc885bc-lzdl6   Stopping container mongo-cdc","time":"2024-05-26T20:16:49.167967649Z","args":null}
+{"level":"INFO","pos":0,"out":"Event  : cdf-mongo-cdc-prod3-cdng   Scaled down replica set cdf-mongo-cdc-prod3-cdng-54f6db7986 to 0","time":"2024-05-26T20:16:49.182305727Z","args":null}
+{"level":"INFO","pos":0,"out":"Event  : cdf-mongo-cdc-prod3-cdng-54f6db7986   Deleted pod: cdf-mongo-cdc-prod3-cdng-54f6db7986-c6jtw","time":"2024-05-26T20:16:49.401390308Z","args":null}
+{"level":"INFO","pos":0,"out":"Event  : cdf-mongo-cdc-prod3-cdng-54f6db7986-c6jtw   Stopping container mongo-cdc","time":"2024-05-26T20:16:49.407967337Z","args":null}
+{"level":"INFO","pos":0,"out":"Event  : cdf-mongo-cdc-prod2-cdcg-97fddb597-xvxs5   Successfully pulled image \"us-west1-docker.pkg.dev/segment-warehouse-236622/analytics-images/etl-runner:632\" in 1m42.564762763s","time":"2024-05-26T20:16:50.834851927Z","args":null}
+{"level":"INFO","pos":0,"out":"Event  : cdf-mongo-cdc-prod2-ccm-5bdc6c84ff-2zrwm   Successfully pulled image \"us-west1-docker.pkg.dev/segment-warehouse-236622/analytics-images/etl-runner:632\" in 1m42.084786568s","time":"2024-05-26T20:16:50.847360385Z","args":null}
+{"level":"INFO","pos":0,"out":"Event  : cdf-mongo-cdc-prod3-ccm-744449544b-qz7dl   Successfully pulled image \"us-west1-docker.pkg.dev/segment-warehouse-236622/analytics-images/etl-runner:632\" in 1m34.780577321s","time":"2024-05-26T20:16:50.854538274Z","args":null}
+{"level":"INFO","pos":0,"out":"Event  : cdf-mongo-cdc-prod1-pms-b8c4d6558-9xdjs   Created container mongo-cdc","time":"2024-05-26T20:16:50.867496222Z","args":null}
+{"level":"INFO","pos":0,"out":"Event  : cdf-mongo-cdc-prod2-cdng-5c8567bfb-95ww5   Successfully pulled image \"us-west1-docker.pkg.dev/segment-warehouse-236622/analytics-images/etl-runner:632\" in 1m42.266485273s","time":"2024-05-26T20:16:50.877326951Z","args":null}
+{"level":"INFO","pos":0,"out":"Event  : cdf-mongo-cdc-prod1-pms-b8c4d6558-9xdjs   Started container mongo-cdc","time":"2024-05-26T20:16:50.88884913Z","args":null}
+{"level":"INFO","pos":0,"out":"Event  : cdf-mongo-cdc-prod3-cdcg-6df5f88956-ph7km   Successfully pulled image \"us-west1-docker.pkg.dev/segment-warehouse-236622/analytics-images/etl-runner:632\" in 1m35.443402273s","time":"2024-05-26T20:16:50.897391509Z","args":null}
+{"level":"INFO","pos":0,"out":"Event  : cdf-mongo-cdc-prod1-ccm-84d9dd5db-kz4rx   Successfully pulled image \"us-west1-docker.pkg.dev/segment-warehouse-236622/analytics-images/etl-runner:632\" in 1m42.712204934s","time":"2024-05-26T20:16:50.910278346Z","args":null}
+{"level":"INFO","pos":0,"out":"Event  : cdf-mongo-cdc-prod1-pms    Scaled down replica set cdf-mongo-cdc-prod1-pms-7d49b67b4c to 0","time":"2024-05-26T20:16:51.141334885Z","args":null}
+{"level":"INFO","pos":0,"out":"Event  : cdf-mongo-cdc-prod1-pms-7d49b67b4c   Deleted pod: cdf-mongo-cdc-prod1-pms-7d49b67b4c-qzwxj","time":"2024-05-26T20:16:51.161329363Z","args":null}
+{"level":"INFO","pos":0,"out":"Event  : cdf-mongo-cdc-prod1-pms-7d49b67b4c-qzwxj   Stopping container mongo-cdc","time":"2024-05-26T20:16:51.166904722Z","args":null}
+{"level":"INFO","pos":0,"out":"Event  : cdf-mongo-cdc-prod3-ccm-744449544b-qz7dl   Created container mongo-cdc","time":"2024-05-26T20:16:51.2581939Z","args":null}
+{"level":"INFO","pos":0,"out":"Event  : cdf-mongo-cdc-prod2-cdcg-97fddb597-xvxs5   Created container mongo-cdc","time":"2024-05-26T20:16:51.466506522Z","args":null}
+{"level":"INFO","pos":0,"out":"Event  : cdf-mongo-cdc-prod3-ccm-744449544b-qz7dl   Started container mongo-cdc","time":"2024-05-26T20:16:51.517647646Z","args":null}
+{"level":"INFO","pos":0,"out":"Event  : cdf-mongo-cdc-prod2-ccm-5bdc6c84ff-2zrwm   Created container mongo-cdc","time":"2024-05-26T20:16:51.615543853Z","args":null}
+{"level":"INFO","pos":0,"out":"Event  : cdf-mongo-cdc-prod2-cdng-5c8567bfb-95ww5   Created container mongo-cdc","time":"2024-05-26T20:16:51.621656291Z","args":null}
+{"level":"INFO","pos":0,"out":"Event  : cdf-mongo-cdc-prod2-cdcg-97fddb597-xvxs5   Started container mongo-cdc","time":"2024-05-26T20:16:51.644862449Z","args":null}
+{"level":"INFO","pos":0,"out":"Event  : cdf-mongo-cdc-prod3-cdcg-6df5f88956-ph7km   Created container mongo-cdc","time":"2024-05-26T20:16:51.844630682Z","args":null}
+{"level":"INFO","pos":0,"out":"Event  : cdf-mongo-cdc-prod1-ccm-84d9dd5db-kz4rx   Created container mongo-cdc","time":"2024-05-26T20:16:52.045082486Z","args":null}
+{"level":"INFO","pos":0,"out":"Event  : cdf-mongo-cdc-prod3-ccm    Scaled down replica set cdf-mongo-cdc-prod3-ccm-544cfb6bbf to 0","time":"2024-05-26T20:16:52.180793417Z","args":null}
+{"level":"INFO","pos":0,"out":"Event  : cdf-mongo-cdc-prod3-ccm-544cfb6bbf   Deleted pod: cdf-mongo-cdc-prod3-ccm-544cfb6bbf-m85pc","time":"2024-05-26T20:16:52.265306636Z","args":null}
+{"level":"INFO","pos":0,"out":"Event  : cdf-mongo-cdc-prod2-cdng-5c8567bfb-95ww5   Started container mongo-cdc","time":"2024-05-26T20:16:52.265508796Z","args":null}
+{"level":"INFO","pos":0,"out":"Event  : cdf-mongo-cdc-prod2-ccm-5bdc6c84ff-2zrwm   Started container mongo-cdc","time":"2024-05-26T20:16:52.53796535Z","args":null}
+{"level":"INFO","pos":0,"out":"Event  : cdf-mongo-cdc-prod2-cdcg   Scaled down replica set cdf-mongo-cdc-prod2-cdcg-587b77ddf6 to 0","time":"2024-05-26T20:16:52.555951557Z","args":null}
+{"level":"INFO","pos":0,"out":"Event  : cdf-mongo-cdc-prod2-cdcg-587b77ddf6   Deleted pod: cdf-mongo-cdc-prod2-cdcg-587b77ddf6-sqskv","time":"2024-05-26T20:16:52.810297834Z","args":null}
+{"level":"INFO","pos":0,"out":"Event  : cdf-mongo-cdc-prod1-ccm-84d9dd5db-kz4rx   Started container mongo-cdc","time":"2024-05-26T20:16:52.810469093Z","args":null}
+{"level":"INFO","pos":0,"out":"Event  : cdf-mongo-cdc-prod1-ccm    Scaled down replica set cdf-mongo-cdc-prod1-ccm-56dd749c6c to 0","time":"2024-05-26T20:16:52.842847189Z","args":null}
+{"level":"INFO","pos":0,"out":"Event  : cdf-mongo-cdc-prod3-cdcg-6df5f88956-ph7km   Started container mongo-cdc","time":"2024-05-26T20:16:52.960029383Z","args":null}
+{"level":"INFO","pos":0,"out":"Waiting for deployment cdf-mongo-cdc-prod1-ccm rollout to finish: 1 old replicas are pending termination...","time":"2024-05-26T20:16:52.968771692Z","args":null}
+{"level":"INFO","pos":0,"out":"Event  : cdf-mongo-cdc-prod2-ccm    Scaled down replica set cdf-mongo-cdc-prod2-ccm-dbf545474 to 0","time":"2024-05-26T20:16:53.118898452Z","args":null}
+{"level":"INFO","pos":0,"out":"Event  : cdf-mongo-cdc-prod3-ccm-544cfb6bbf-m85pc   Stopping container mongo-cdc","time":"2024-05-26T20:16:53.267133782Z","args":null}
+{"level":"INFO","pos":0,"out":"Event  : cdf-mongo-cdc-prod1-ccm-56dd749c6c   Deleted pod: cdf-mongo-cdc-prod1-ccm-56dd749c6c-92bfp","time":"2024-05-26T20:16:53.310122387Z","args":null}
+{"level":"INFO","pos":0,"out":"Event  : cdf-mongo-cdc-prod3-cdcg   Scaled down replica set cdf-mongo-cdc-prod3-cdcg-5759fdbd47 to 0","time":"2024-05-26T20:16:53.314958496Z","args":null}
+{"level":"INFO","pos":0,"out":"Event  : cdf-mongo-cdc-prod2-cdcg-587b77ddf6-sqskv   Stopping container mongo-cdc","time":"2024-05-26T20:16:53.344017932Z","args":null}
+{"level":"INFO","pos":0,"out":"Event  : cdf-mongo-cdc-prod2-ccm-dbf545474   Deleted pod: cdf-mongo-cdc-prod2-ccm-dbf545474-r5795","time":"2024-05-26T20:16:53.538278346Z","args":null}
+{"level":"INFO","pos":0,"out":"Event  : cdf-mongo-cdc-prod3-cdcg-5759fdbd47   Deleted pod: cdf-mongo-cdc-prod3-cdcg-5759fdbd47-xrfk2","time":"2024-05-26T20:16:53.554643114Z","args":null}
+{"level":"INFO","pos":0,"out":"Event  : cdf-mongo-cdc-prod2-cdng   Scaled down replica set cdf-mongo-cdc-prod2-cdng-68486f5969 to 0","time":"2024-05-26T20:16:53.554850014Z","args":null}
+{"level":"INFO","pos":0,"out":"Event  : cdf-mongo-cdc-prod2-ccm-dbf545474-r5795   Stopping container mongo-cdc","time":"2024-05-26T20:16:53.88242853Z","args":null}
+{"level":"INFO","pos":0,"out":"deployment cdf-mongo-cdc-prod1-ccm successfully rolled out with 1 available replicas.","time":"2024-05-26T20:16:53.902230648Z","args":null}
+{"level":"INFO","pos":0,"out":"Event  : cdf-mongo-cdc-prod1-ccm-56dd749c6c-92bfp   Stopping container mongo-cdc","time":"2024-05-26T20:16:53.896987379Z","args":null}
+{"level":"INFO","pos":0,"out":"Event  : cdf-mongo-cdc-prod3-cdcg-5759fdbd47-xrfk2   Stopping container mongo-cdc","time":"2024-05-26T20:16:53.913490376Z","args":null}
+{"level":"INFO","pos":0,"out":"Waiting for deployment cdf-mongo-cdc-prod1-cdcg rollout to finish: 1 old replicas are pending termination...","time":"2024-05-26T20:16:53.918117545Z","args":null}
+{"level":"INFO","pos":0,"out":"Event  : cdf-mongo-cdc-prod2-cdng-68486f5969   Deleted pod: cdf-mongo-cdc-prod2-cdng-68486f5969-nc2qx","time":"2024-05-26T20:16:54.039701149Z","args":null}
+{"level":"INFO","pos":0,"out":"Event  : cdf-mongo-cdc-prod2-cdng-68486f5969-nc2qx   Stopping container mongo-cdc","time":"2024-05-26T20:16:54.070130495Z","args":null}
+{"level":"INFO","pos":0,"out":"Event  : cdf-mongo-cdc-prod1-cdcg-569fbbcf64-ktqjk   Successfully pulled image \"us-west1-docker.pkg.dev/segment-warehouse-236622/analytics-images/etl-runner:632\" in 1m52.222772945s","time":"2024-05-26T20:16:59.166737665Z","args":null}
+{"level":"INFO","pos":0,"out":"Event  : cdf-mongo-cdc-prod1-cdcg-569fbbcf64-ktqjk   Created container mongo-cdc","time":"2024-05-26T20:16:59.319133465Z","args":null}
+{"level":"INFO","pos":0,"out":"Event  : cdf-mongo-cdc-prod1-cdcg-569fbbcf64-ktqjk   Started container mongo-cdc","time":"2024-05-26T20:16:59.465633166Z","args":null}
+{"level":"INFO","pos":0,"out":"Event  : cdf-mongo-cdc-prod1-cdcg   Scaled down replica set cdf-mongo-cdc-prod1-cdcg-6dc97fd7c7 to 0","time":"2024-05-26T20:17:00.324785371Z","args":null}
+{"level":"INFO","pos":0,"out":"Waiting for deployment cdf-mongo-cdc-prod1-cdcg rollout to finish: 1 old replicas are pending termination...","time":"2024-05-26T20:17:00.324788501Z","args":null}
+{"level":"INFO","pos":0,"out":"Event  : cdf-mongo-cdc-prod1-cdcg-6dc97fd7c7   Deleted pod: cdf-mongo-cdc-prod1-cdcg-6dc97fd7c7-8xqqf","time":"2024-05-26T20:17:00.340698089Z","args":null}
+{"level":"INFO","pos":0,"out":"deployment cdf-mongo-cdc-prod1-cdcg successfully rolled out with 1 available replicas.","time":"2024-05-26T20:17:00.356581847Z","args":null}
+{"level":"INFO","pos":0,"out":"Event  : cdf-mongo-cdc-prod1-cdcg-6dc97fd7c7-8xqqf   Stopping container mongo-cdc","time":"2024-05-26T20:17:00.346862408Z","args":null}
+{"level":"INFO","pos":0,"out":"deployment cdf-mongo-cdc-prod1-cdng successfully rolled out with 1 available replicas.","time":"2024-05-26T20:17:00.366818435Z","args":null}
+{"level":"INFO","pos":0,"out":"deployment cdf-mongo-cdc-prod1-pms successfully rolled out with 1 available replicas.","time":"2024-05-26T20:17:00.378448144Z","args":null}
+{"level":"INFO","pos":0,"out":"deployment cdf-mongo-cdc-prod2-ccm successfully rolled out with 1 available replicas.","time":"2024-05-26T20:17:00.389394782Z","args":null}
+{"level":"INFO","pos":0,"out":"deployment cdf-mongo-cdc-prod2-cdcg successfully rolled out with 1 available replicas.","time":"2024-05-26T20:17:00.399129341Z","args":null}
+{"level":"INFO","pos":0,"out":"deployment cdf-mongo-cdc-prod2-cdng successfully rolled out with 1 available replicas.","time":"2024-05-26T20:17:00.414172209Z","args":null}
+{"level":"INFO","pos":0,"out":"deployment cdf-mongo-cdc-prod2-pms successfully rolled out with 1 available replicas.","time":"2024-05-26T20:17:00.422004558Z","args":null}
+{"level":"INFO","pos":0,"out":"deployment cdf-mongo-cdc-prod3-ccm successfully rolled out with 1 available replicas.","time":"2024-05-26T20:17:00.428865417Z","args":null}
+{"level":"INFO","pos":0,"out":"deployment cdf-mongo-cdc-prod3-cdcg successfully rolled out with 1 available replicas.","time":"2024-05-26T20:17:00.448476834Z","args":null}
+{"level":"INFO","pos":0,"out":"deployment cdf-mongo-cdc-prod3-cdng successfully rolled out with 1 available replicas.","time":"2024-05-26T20:17:00.465905642Z","args":null}
+{"level":"INFO","pos":0,"out":"deployment cdf-mongo-cdc-prod3-pms successfully rolled out with 1 available replicas.","time":"2024-05-26T20:17:00.48150219Z","args":null}
+{"level":"INFO","pos":0,"out":"Done.","time":"2024-05-26T20:17:00.48264456Z","args":null}

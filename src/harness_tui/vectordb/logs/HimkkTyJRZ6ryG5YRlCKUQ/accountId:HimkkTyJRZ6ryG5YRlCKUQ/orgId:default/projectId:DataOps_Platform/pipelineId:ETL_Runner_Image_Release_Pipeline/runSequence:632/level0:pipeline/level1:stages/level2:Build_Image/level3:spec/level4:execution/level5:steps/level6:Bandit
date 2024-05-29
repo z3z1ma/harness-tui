@@ -1,0 +1,69 @@
+{"level":"info","pos":0,"out":"latest: Pulling from harness/bandit-job-runner\n","time":"2024-05-26T20:09:48.492758947Z","args":null}
+{"level":"info","pos":1,"out":"Digest: sha256:a3690aec39b196a453178cb6ebfd8dbad21cead44186556f9fd4bdb5e10b5398\n","time":"2024-05-26T20:09:52.667659688Z","args":null}
+{"level":"info","pos":2,"out":"Status: Downloaded newer image for harness/bandit-job-runner:latest\n","time":"2024-05-26T20:09:52.668335773Z","args":null}
+{"level":"info","pos":3,"out":"python3 -m sto_plugin --run-strategy single-container\n","time":"2024-05-26T20:09:53.241321133Z","args":null}
+{"level":"info","pos":4,"out":"-------------------- STO Plugin [START] --------------------\n","time":"2024-05-26T20:09:53.475458954Z","args":null}
+{"level":"info","pos":5,"out":"STO Plugin [v1.35.0-1716214771] (run_strategy=single-container)\n","time":"2024-05-26T20:09:53.475486872Z","args":null}
+{"level":"info","pos":6,"out":"----------------- CA File Register [START] -----------------\n","time":"2024-05-26T20:09:53.475498856Z","args":null}
+{"level":"info","pos":7,"out":"Looking for certificates in /shared/customer_artifacts/certificates\n","time":"2024-05-26T20:09:53.475502007Z","args":null}
+{"level":"info","pos":8,"out":"---------------- CA Folder Contents [START] ----------------\n","time":"2024-05-26T20:09:53.475660065Z","args":null}
+{"level":"info","pos":9,"out":"total 8\n","time":"2024-05-26T20:09:53.479206676Z","args":null}
+{"level":"info","pos":10,"out":"drwxr-xr-x 2 root root 4096 May 19 01:04 .\n","time":"2024-05-26T20:09:53.47921814Z","args":null}
+{"level":"info","pos":11,"out":"drwxr-xr-x 1 root root 4096 May 19 01:04 ..\n","time":"2024-05-26T20:09:53.479222195Z","args":null}
+{"level":"info","pos":12,"out":"----------------- CA Folder Contents [END] -----------------\n","time":"2024-05-26T20:09:53.479452019Z","args":null}
+{"level":"info","pos":13,"out":"Successfully updated certificates\n","time":"2024-05-26T20:09:53.739066711Z","args":null}
+{"level":"info","pos":14,"out":"------------------ CA File Register [END] ------------------\n","time":"2024-05-26T20:09:53.739088793Z","args":null}
+{"level":"info","pos":15,"out":"----------------- STO Plugin Setup [START] -----------------\n","time":"2024-05-26T20:09:53.739094486Z","args":null}
+{"level":"info","pos":16,"out":"SSL Verification is enabled\n","time":"2024-05-26T20:09:53.739363916Z","args":null}
+{"level":"info","pos":17,"out":"Target scan_type: [repository]\n","time":"2024-05-26T20:09:53.740362522Z","args":null}
+{"level":"info","pos":18,"out":"Target name: [default/DataOps_Platform/analytics-platform]\n","time":"2024-05-26T20:09:53.740368077Z","args":null}
+{"level":"info","pos":19,"out":"Target variant: [main]\n","time":"2024-05-26T20:09:53.740370097Z","args":null}
+{"level":"info","pos":20,"out":"Starting setup for product [bandit]\n","time":"2024-05-26T20:09:53.975455533Z","args":null}
+{"level":"info","pos":21,"out":"Found matching product config [('repository', 'default')]\n","time":"2024-05-26T20:09:53.980050424Z","args":null}
+{"level":"info","pos":22,"out":"------------------ STO Plugin Setup [END] ------------------\n","time":"2024-05-26T20:09:54.042849702Z","args":null}
+{"level":"info","pos":23,"out":"----------------- Runner execution [START] -----------------\n","time":"2024-05-26T20:09:54.077612955Z","args":null}
+{"level":"info","pos":24,"out":"File Inventory List (in bytes) - {'.changie.yaml': 444, '.marketo-activities.json': 47482, '.github': {'Folders': [], 'CODEOWNERS': 63}, '.dockerignore': 327, 'pyproject.toml': 2472, 'README.md': 4365, '.gitignore': 440, 'tasks.py': 366, 'poetry.lock': 528611, 'architecture': {'Folders': ['decisions']}, 'cdf.toml': 1251, '.adr-dir': 23, '.gitattributes': 172, '.changes': {'Folders': ['unreleased'], '0.2.5.md': 144, '0.4.3.md': 382, '0.3.5.md': 313, 'header.tpl.md': 304, '0.4.2.md': 171, '0.3.6.md': 158, '0.3.1.md': 129, '0.3.2.md': 77, '0.4.0.md': 1151, '0.3.0.md': 484, '0.4.1.md': 104, '0.3.7.md': 248, '0.3.4.md': 71, '0.3.3.md': 194}, 'requirements-metadata.txt': 42, 'Dockerfile': 624, '.git': {'Folders': ['info', 'objects', 'hooks', 'refs', 'logs', 'branches'], 'FETCH_HEAD': 149, 'index': 55600, 'config': 256, 'HEAD': 21, 'description': 73}, 'tests': {'Folders': ['cases'], '__init__.py': 0}, 'manifests': {'Folders': ['cdf_service', 'mongo_cdc', 'openmetadata']}, 'CHANGELOG.md': 3944, 'requirements-extras.txt': 3313, '.pre-commit-config.yaml': 989, 'requirements.txt': 68, 'rust': {'Folders': ['src'], 'Cargo.lock': 8803, 'Cargo.toml': 233}, 'workspaces': {'Folders': ['datateam', 'engineering']}, '.gitleaks.toml': 647}\n","time":"2024-05-26T20:09:54.079676971Z","args":null}
+{"level":"info","pos":25,"out":"-------------- Runner Startup Script [START] ---------------\n","time":"2024-05-26T20:09:54.081510921Z","args":null}
+{"level":"info","pos":26,"out":"--------------- Runner Startup Script [END] ----------------\n","time":"2024-05-26T20:09:54.081544842Z","args":null}
+{"level":"info","pos":27,"out":"Bandit command: python -m bandit -f json -o /tmp/output.json -r /harness \n","time":"2024-05-26T20:09:54.081558765Z","args":null}
+{"level":"info","pos":28,"out":"Command [ python -m bandit -f json -o /tmp/output.json -r /harness ]\n","time":"2024-05-26T20:09:54.08228295Z","args":null}
+{"level":"info","pos":29,"out":"[main]\tINFO\tprofile include tests: None\n","time":"2024-05-26T20:09:54.168644228Z","args":null}
+{"level":"info","pos":30,"out":"[main]\tINFO\tprofile exclude tests: None\n","time":"2024-05-26T20:09:54.16868081Z","args":null}
+{"level":"info","pos":31,"out":"[main]\tINFO\tcli include tests: None\n","time":"2024-05-26T20:09:54.168683546Z","args":null}
+{"level":"info","pos":32,"out":"[main]\tINFO\tcli exclude tests: None\n","time":"2024-05-26T20:09:54.168685279Z","args":null}
+{"level":"info","pos":33,"out":"68 [0.. 50.. ]\n","time":"2024-05-26T20:09:55.029083978Z","args":null}
+{"level":"info","pos":34,"out":"[json]\tINFO\tJSON output written to file: /tmp/output.json\n","time":"2024-05-26T20:09:55.031594416Z","args":null}
+{"level":"info","pos":35,"out":"Scan output exists inside runner at: /tmp/output.json writing to /addon/results/Cj95qXHMJoU1Hkm7E3mCkz\n","time":"2024-05-26T20:09:55.104753626Z","args":null}
+{"level":"info","pos":36,"out":"------------------ Runner execution [END] ------------------\n","time":"2024-05-26T20:09:55.105728979Z","args":null}
+{"level":"info","pos":37,"out":"------------------ Process Issues [START] ------------------\n","time":"2024-05-26T20:09:55.105751287Z","args":null}
+{"level":"info","pos":38,"out":"Number of raw issues extracted: 25\n","time":"2024-05-26T20:09:55.108884573Z","args":null}
+{"level":"info","pos":39,"out":"Count after normalization: 25\n","time":"2024-05-26T20:09:55.113535991Z","args":null}
+{"level":"info","pos":40,"out":"Count after deduplication: 10\n","time":"2024-05-26T20:09:55.114046724Z","args":null}
+{"level":"info","pos":41,"out":"Deduplicated by: [60.0%]\n","time":"2024-05-26T20:09:55.114050191Z","args":null}
+{"level":"info","pos":42,"out":"Starting issue upload\n","time":"2024-05-26T20:09:55.115065859Z","args":null}
+{"level":"info","pos":43,"out":"Issue upload complete\n","time":"2024-05-26T20:09:55.80956202Z","args":null}
+{"level":"info","pos":44,"out":"------------------- Process Issues [END] -------------------\n","time":"2024-05-26T20:09:55.898094417Z","args":null}
+{"level":"info","pos":45,"out":"Scan Results: {\n","time":"2024-05-26T20:09:55.898181193Z","args":null}
+{"level":"info","pos":46,"out":"    \"jobId\": \"Cj95qXHMJoU1Hkm7E3mCkz\",\n","time":"2024-05-26T20:09:55.898198319Z","args":null}
+{"level":"info","pos":47,"out":"    \"status\": \"Succeeded\",\n","time":"2024-05-26T20:09:55.898215147Z","args":null}
+{"level":"info","pos":48,"out":"    \"issuesCount\": 10,\n","time":"2024-05-26T20:09:55.898229547Z","args":null}
+{"level":"info","pos":49,"out":"    \"newIssuesCount\": 0,\n","time":"2024-05-26T20:09:55.898452546Z","args":null}
+{"level":"info","pos":50,"out":"    \"issuesBySeverityCount\": {\n","time":"2024-05-26T20:09:55.898476465Z","args":null}
+{"level":"info","pos":51,"out":"        \"ExternalPolicyFailures\": 0,\n","time":"2024-05-26T20:09:55.898490042Z","args":null}
+{"level":"info","pos":52,"out":"        \"NewCritical\": 0,\n","time":"2024-05-26T20:09:55.898502636Z","args":null}
+{"level":"info","pos":53,"out":"        \"NewHigh\": 0,\n","time":"2024-05-26T20:09:55.898514159Z","args":null}
+{"level":"info","pos":54,"out":"        \"NewMedium\": 0,\n","time":"2024-05-26T20:09:55.898525313Z","args":null}
+{"level":"info","pos":55,"out":"        \"NewLow\": 0,\n","time":"2024-05-26T20:09:55.898537753Z","args":null}
+{"level":"info","pos":56,"out":"        \"NewInfo\": 0,\n","time":"2024-05-26T20:09:55.898545487Z","args":null}
+{"level":"info","pos":57,"out":"        \"Unassigned\": 0,\n","time":"2024-05-26T20:09:55.898554334Z","args":null}
+{"level":"info","pos":58,"out":"        \"NewUnassigned\": 0,\n","time":"2024-05-26T20:09:55.898566569Z","args":null}
+{"level":"info","pos":59,"out":"        \"Critical\": 1,\n","time":"2024-05-26T20:09:55.898578457Z","args":null}
+{"level":"info","pos":60,"out":"        \"High\": 0,\n","time":"2024-05-26T20:09:55.898589411Z","args":null}
+{"level":"info","pos":61,"out":"        \"Medium\": 1,\n","time":"2024-05-26T20:09:55.898600448Z","args":null}
+{"level":"info","pos":62,"out":"        \"Low\": 8,\n","time":"2024-05-26T20:09:55.898612162Z","args":null}
+{"level":"info","pos":63,"out":"        \"Info\": 0,\n","time":"2024-05-26T20:09:55.898623793Z","args":null}
+{"level":"info","pos":64,"out":"        \"Ignored\": 0\n","time":"2024-05-26T20:09:55.898635036Z","args":null}
+{"level":"info","pos":65,"out":"    }\n","time":"2024-05-26T20:09:55.89864994Z","args":null}
+{"level":"info","pos":66,"out":"}\n","time":"2024-05-26T20:09:55.89869102Z","args":null}
+{"level":"info","pos":67,"out":"fail_on_severity is set to none, but this threshold was not reached.\n","time":"2024-05-26T20:09:55.899388982Z","args":null}
+{"level":"info","pos":68,"out":"--------------------- STO Plugin [END] ---------------------\n","time":"2024-05-26T20:09:55.899615143Z","args":null}

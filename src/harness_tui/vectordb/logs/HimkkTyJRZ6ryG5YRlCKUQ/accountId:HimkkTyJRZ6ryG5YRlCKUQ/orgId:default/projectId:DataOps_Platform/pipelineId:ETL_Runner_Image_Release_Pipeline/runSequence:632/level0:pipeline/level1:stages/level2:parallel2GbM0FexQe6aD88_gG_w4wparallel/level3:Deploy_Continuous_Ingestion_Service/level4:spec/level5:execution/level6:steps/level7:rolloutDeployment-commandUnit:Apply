@@ -1,0 +1,16 @@
+{"level":"INFO","pos":0,"out":"","time":"2024-05-26T20:15:05.4432313Z","args":null}
+{"level":"INFO","pos":0,"out":"kubectl --kubeconfig=config apply --filename=manifests.yaml","time":"2024-05-26T20:15:05.44590699Z","args":null}
+{"level":"INFO","pos":0,"out":"","time":"2024-05-26T20:15:05.472576086Z","args":null}
+{"level":"INFO","pos":0,"out":"deployment.apps/cdf-mongo-cdc-prod1-ccm configured","time":"2024-05-26T20:15:05.651570913Z","args":null}
+{"level":"INFO","pos":0,"out":"deployment.apps/cdf-mongo-cdc-prod1-cdcg configured","time":"2024-05-26T20:15:05.663535871Z","args":null}
+{"level":"INFO","pos":0,"out":"deployment.apps/cdf-mongo-cdc-prod1-cdng configured","time":"2024-05-26T20:15:05.67602655Z","args":null}
+{"level":"INFO","pos":0,"out":"deployment.apps/cdf-mongo-cdc-prod1-pms configured","time":"2024-05-26T20:15:05.690744607Z","args":null}
+{"level":"INFO","pos":0,"out":"deployment.apps/cdf-mongo-cdc-prod2-ccm configured","time":"2024-05-26T20:15:05.740159471Z","args":null}
+{"level":"INFO","pos":0,"out":"deployment.apps/cdf-mongo-cdc-prod2-cdcg configured","time":"2024-05-26T20:15:05.796216653Z","args":null}
+{"level":"INFO","pos":0,"out":"deployment.apps/cdf-mongo-cdc-prod2-cdng configured","time":"2024-05-26T20:15:05.843503067Z","args":null}
+{"level":"INFO","pos":0,"out":"deployment.apps/cdf-mongo-cdc-prod2-pms configured","time":"2024-05-26T20:15:05.885787561Z","args":null}
+{"level":"INFO","pos":0,"out":"deployment.apps/cdf-mongo-cdc-prod3-ccm configured","time":"2024-05-26T20:15:05.907410409Z","args":null}
+{"level":"INFO","pos":0,"out":"deployment.apps/cdf-mongo-cdc-prod3-cdcg configured","time":"2024-05-26T20:15:05.940563914Z","args":null}
+{"level":"INFO","pos":0,"out":"deployment.apps/cdf-mongo-cdc-prod3-cdng configured","time":"2024-05-26T20:15:05.953844042Z","args":null}
+{"level":"INFO","pos":0,"out":"deployment.apps/cdf-mongo-cdc-prod3-pms configured","time":"2024-05-26T20:15:05.96912072Z","args":null}
+{"level":"INFO","pos":0,"out":"\nDone.","time":"2024-05-26T20:15:05.977104609Z","args":null}

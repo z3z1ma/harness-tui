@@ -1,0 +1,887 @@
+{"level":"info","pos":0,"out":"\u001b[33;1mExecuting the following command(s):\n","time":"2024-05-26T20:09:57.6308037Z","args":null}
+{"level":"info","pos":1,"out":"\u001b[33;1mset -e; cat \u003egarjsonkey \u003c\u003cEOF\n","time":"2024-05-26T20:09:57.631676074Z","args":null}
+{"level":"info","pos":2,"out":"\u001b[33;1m**************\n","time":"2024-05-26T20:09:57.631763207Z","args":null}
+{"level":"info","pos":3,"out":"\u001b[33;1mEOF\n","time":"2024-05-26T20:09:57.631783106Z","args":null}
+{"level":"info","pos":4,"out":"\u001b[33;1mmkdir -p certs\n","time":"2024-05-26T20:09:57.631792921Z","args":null}
+{"level":"info","pos":5,"out":"\u001b[33;1mcat \u003ecerts/postgresql.key \u003c\u003c'EOF'\n","time":"2024-05-26T20:09:57.631803586Z","args":null}
+{"level":"info","pos":6,"out":"\u001b[33;1m**************\n","time":"2024-05-26T20:09:57.63182425Z","args":null}
+{"level":"info","pos":7,"out":"\u001b[33;1m**************\n","time":"2024-05-26T20:09:57.631840066Z","args":null}
+{"level":"info","pos":8,"out":"\u001b[33;1m**************\n","time":"2024-05-26T20:09:57.631851012Z","args":null}
+{"level":"info","pos":9,"out":"\u001b[33;1m**************\n","time":"2024-05-26T20:09:57.631861011Z","args":null}
+{"level":"info","pos":10,"out":"\u001b[33;1m**************\n","time":"2024-05-26T20:09:57.63186822Z","args":null}
+{"level":"info","pos":11,"out":"\u001b[33;1m**************\n","time":"2024-05-26T20:09:57.631875448Z","args":null}
+{"level":"info","pos":12,"out":"\u001b[33;1m**************\n","time":"2024-05-26T20:09:57.631894431Z","args":null}
+{"level":"info","pos":13,"out":"\u001b[33;1m**************\n","time":"2024-05-26T20:09:57.631901211Z","args":null}
+{"level":"info","pos":14,"out":"\u001b[33;1m**************\n","time":"2024-05-26T20:09:57.631907766Z","args":null}
+{"level":"info","pos":15,"out":"\u001b[33;1m**************\n","time":"2024-05-26T20:09:57.631914218Z","args":null}
+{"level":"info","pos":16,"out":"\u001b[33;1m**************\n","time":"2024-05-26T20:09:57.631920703Z","args":null}
+{"level":"info","pos":17,"out":"\u001b[33;1m**************\n","time":"2024-05-26T20:09:57.631934437Z","args":null}
+{"level":"info","pos":18,"out":"\u001b[33;1m**************\n","time":"2024-05-26T20:09:57.631941066Z","args":null}
+{"level":"info","pos":19,"out":"\u001b[33;1m**************\n","time":"2024-05-26T20:09:57.631948153Z","args":null}
+{"level":"info","pos":20,"out":"\u001b[33;1m**************\n","time":"2024-05-26T20:09:57.63195475Z","args":null}
+{"level":"info","pos":21,"out":"\u001b[33;1m**************\n","time":"2024-05-26T20:09:57.631961878Z","args":null}
+{"level":"info","pos":22,"out":"\u001b[33;1m**************\n","time":"2024-05-26T20:09:57.631968591Z","args":null}
+{"level":"info","pos":23,"out":"\u001b[33;1m**************\n","time":"2024-05-26T20:09:57.631974855Z","args":null}
+{"level":"info","pos":24,"out":"\u001b[33;1m**************\n","time":"2024-05-26T20:09:57.631988422Z","args":null}
+{"level":"info","pos":25,"out":"\u001b[33;1m**************\n","time":"2024-05-26T20:09:57.63199478Z","args":null}
+{"level":"info","pos":26,"out":"\u001b[33;1m**************\n","time":"2024-05-26T20:09:57.632001246Z","args":null}
+{"level":"info","pos":27,"out":"\u001b[33;1m**************\n","time":"2024-05-26T20:09:57.632007694Z","args":null}
+{"level":"info","pos":28,"out":"\u001b[33;1m**************\n","time":"2024-05-26T20:09:57.632014262Z","args":null}
+{"level":"info","pos":29,"out":"\u001b[33;1m**************\n","time":"2024-05-26T20:09:57.632020811Z","args":null}
+{"level":"info","pos":30,"out":"\u001b[33;1m**************\n","time":"2024-05-26T20:09:57.632029432Z","args":null}
+{"level":"info","pos":31,"out":"\u001b[33;1m**************\n","time":"2024-05-26T20:09:57.632036703Z","args":null}
+{"level":"info","pos":32,"out":"\u001b[33;1m**************\n","time":"2024-05-26T20:09:57.632043423Z","args":null}
+{"level":"info","pos":33,"out":"\u001b[33;1m\n","time":"2024-05-26T20:09:57.632063529Z","args":null}
+{"level":"info","pos":34,"out":"\u001b[33;1mEOF\n","time":"2024-05-26T20:09:57.632081544Z","args":null}
+{"level":"info","pos":35,"out":"\u001b[33;1mcat \u003ecerts/postgresql.crt \u003c\u003c'EOF'\n","time":"2024-05-26T20:09:57.632095213Z","args":null}
+{"level":"info","pos":36,"out":"\u001b[33;1m**************\n","time":"2024-05-26T20:09:57.632108567Z","args":null}
+{"level":"info","pos":37,"out":"\u001b[33;1m**************\n","time":"2024-05-26T20:09:57.63212728Z","args":null}
+{"level":"info","pos":38,"out":"\u001b[33;1m**************\n","time":"2024-05-26T20:09:57.632139789Z","args":null}
+{"level":"info","pos":39,"out":"\u001b[33;1m**************\n","time":"2024-05-26T20:09:57.632151667Z","args":null}
+{"level":"info","pos":40,"out":"\u001b[33;1m**************\n","time":"2024-05-26T20:09:57.632164497Z","args":null}
+{"level":"info","pos":41,"out":"\u001b[33;1m**************\n","time":"2024-05-26T20:09:57.632176431Z","args":null}
+{"level":"info","pos":42,"out":"\u001b[33;1m**************\n","time":"2024-05-26T20:09:57.632188854Z","args":null}
+{"level":"info","pos":43,"out":"\u001b[33;1m**************\n","time":"2024-05-26T20:09:57.632200903Z","args":null}
+{"level":"info","pos":44,"out":"\u001b[33;1m**************\n","time":"2024-05-26T20:09:57.632212712Z","args":null}
+{"level":"info","pos":45,"out":"\u001b[33;1m**************\n","time":"2024-05-26T20:09:57.632224753Z","args":null}
+{"level":"info","pos":46,"out":"\u001b[33;1m**************\n","time":"2024-05-26T20:09:57.632236436Z","args":null}
+{"level":"info","pos":47,"out":"\u001b[33;1m**************\n","time":"2024-05-26T20:09:57.632246301Z","args":null}
+{"level":"info","pos":48,"out":"\u001b[33;1m**************\n","time":"2024-05-26T20:09:57.632269799Z","args":null}
+{"level":"info","pos":49,"out":"\u001b[33;1m**************\n","time":"2024-05-26T20:09:57.63228215Z","args":null}
+{"level":"info","pos":50,"out":"\u001b[33;1m**************\n","time":"2024-05-26T20:09:57.632294788Z","args":null}
+{"level":"info","pos":51,"out":"\u001b[33;1m**************\n","time":"2024-05-26T20:09:57.632307501Z","args":null}
+{"level":"info","pos":52,"out":"\u001b[33;1m**************\n","time":"2024-05-26T20:09:57.632320709Z","args":null}
+{"level":"info","pos":53,"out":"\u001b[33;1m**************\n","time":"2024-05-26T20:09:57.632398421Z","args":null}
+{"level":"info","pos":54,"out":"\u001b[33;1m**************\n","time":"2024-05-26T20:09:57.632418608Z","args":null}
+{"level":"info","pos":55,"out":"\u001b[33;1m**************\n","time":"2024-05-26T20:09:57.632432022Z","args":null}
+{"level":"info","pos":56,"out":"\u001b[33;1m**************\n","time":"2024-05-26T20:09:57.632445771Z","args":null}
+{"level":"info","pos":57,"out":"\u001b[33;1m\n","time":"2024-05-26T20:09:57.632457896Z","args":null}
+{"level":"info","pos":58,"out":"\u001b[33;1mEOF\n","time":"2024-05-26T20:09:57.633012022Z","args":null}
+{"level":"info","pos":59,"out":"\u001b[33;1mcat \u003ecerts/root.crt \u003c\u003c'EOF'\n","time":"2024-05-26T20:09:57.633048085Z","args":null}
+{"level":"info","pos":60,"out":"\u001b[33;1m**************\n","time":"2024-05-26T20:09:57.63306212Z","args":null}
+{"level":"info","pos":61,"out":"\u001b[33;1m**************\n","time":"2024-05-26T20:09:57.633072658Z","args":null}
+{"level":"info","pos":62,"out":"\u001b[33;1m**************\n","time":"2024-05-26T20:09:57.633079409Z","args":null}
+{"level":"info","pos":63,"out":"\u001b[33;1m**************\n","time":"2024-05-26T20:09:57.633085776Z","args":null}
+{"level":"info","pos":64,"out":"\u001b[33;1m**************\n","time":"2024-05-26T20:09:57.633091844Z","args":null}
+{"level":"info","pos":65,"out":"\u001b[33;1m**************\n","time":"2024-05-26T20:09:57.633108449Z","args":null}
+{"level":"info","pos":66,"out":"\u001b[33;1m**************\n","time":"2024-05-26T20:09:57.633115488Z","args":null}
+{"level":"info","pos":67,"out":"\u001b[33;1m**************\n","time":"2024-05-26T20:09:57.633121735Z","args":null}
+{"level":"info","pos":68,"out":"\u001b[33;1m**************\n","time":"2024-05-26T20:09:57.633128023Z","args":null}
+{"level":"info","pos":69,"out":"\u001b[33;1m**************\n","time":"2024-05-26T20:09:57.633134284Z","args":null}
+{"level":"info","pos":70,"out":"\u001b[33;1m**************\n","time":"2024-05-26T20:09:57.633140304Z","args":null}
+{"level":"info","pos":71,"out":"\u001b[33;1m**************\n","time":"2024-05-26T20:09:57.633146412Z","args":null}
+{"level":"info","pos":72,"out":"\u001b[33;1m**************\n","time":"2024-05-26T20:09:57.633152983Z","args":null}
+{"level":"info","pos":73,"out":"\u001b[33;1m**************\n","time":"2024-05-26T20:09:57.633159088Z","args":null}
+{"level":"info","pos":74,"out":"\u001b[33;1m**************\n","time":"2024-05-26T20:09:57.633165365Z","args":null}
+{"level":"info","pos":75,"out":"\u001b[33;1m**************\n","time":"2024-05-26T20:09:57.633171507Z","args":null}
+{"level":"info","pos":76,"out":"\u001b[33;1m**************\n","time":"2024-05-26T20:09:57.633177793Z","args":null}
+{"level":"info","pos":77,"out":"\u001b[33;1m**************\n","time":"2024-05-26T20:09:57.633184181Z","args":null}
+{"level":"info","pos":78,"out":"\u001b[33;1m**************\n","time":"2024-05-26T20:09:57.633190339Z","args":null}
+{"level":"info","pos":79,"out":"\u001b[33;1m**************\n","time":"2024-05-26T20:09:57.633196929Z","args":null}
+{"level":"info","pos":80,"out":"\u001b[33;1m**************\n","time":"2024-05-26T20:09:57.633203519Z","args":null}
+{"level":"info","pos":81,"out":"\u001b[33;1m\n","time":"2024-05-26T20:09:57.633210314Z","args":null}
+{"level":"info","pos":82,"out":"\u001b[33;1mEOF\n","time":"2024-05-26T20:09:57.633217435Z","args":null}
+{"level":"info","pos":83,"out":"\u001b[33;1mcat garjsonkey | docker login -u _json_key_base64 --password-stdin https://us-west1-docker.pkg.dev\n","time":"2024-05-26T20:09:57.633230399Z","args":null}
+{"level":"info","pos":84,"out":"\u001b[33;1mDOCKER_BUILDKIT=1 docker build \\\n","time":"2024-05-26T20:09:57.63323985Z","args":null}
+{"level":"info","pos":85,"out":"\u001b[33;1m    --label etl-runner \\\n","time":"2024-05-26T20:09:57.633248997Z","args":null}
+{"level":"info","pos":86,"out":"\u001b[33;1m    --tag us-west1-docker.pkg.dev/segment-warehouse-236622/analytics-images/etl-runner:prod \\\n","time":"2024-05-26T20:09:57.633261489Z","args":null}
+{"level":"info","pos":87,"out":"\u001b[33;1m    --tag us-west1-docker.pkg.dev/segment-warehouse-236622/analytics-images/etl-runner:632 \\\n","time":"2024-05-26T20:09:57.63327095Z","args":null}
+{"level":"info","pos":88,"out":"\u001b[33;1m    .\n","time":"2024-05-26T20:09:57.633279144Z","args":null}
+{"level":"info","pos":89,"out":"WARNING! Your password will be stored unencrypted in /home/harness/.docker/config.json.\n","time":"2024-05-26T20:09:58.111518402Z","args":null}
+{"level":"info","pos":90,"out":"Configure a credential helper to remove this warning. See\n","time":"2024-05-26T20:09:58.111625155Z","args":null}
+{"level":"info","pos":91,"out":"https://docs.docker.com/engine/reference/commandline/login/#credentials-store\n","time":"2024-05-26T20:09:58.111633467Z","args":null}
+{"level":"info","pos":92,"out":"\n","time":"2024-05-26T20:09:58.11163805Z","args":null}
+{"level":"info","pos":93,"out":"Login Succeeded\n","time":"2024-05-26T20:09:58.112342314Z","args":null}
+{"level":"info","pos":94,"out":"#1 [internal] load build definition from Dockerfile\n","time":"2024-05-26T20:09:58.190166301Z","args":null}
+{"level":"info","pos":95,"out":"#1 sha256:4217cdd339352d2c5fa02706927a2c4a1abdc1e100668a66d0a278f473d7a2a6\n","time":"2024-05-26T20:09:58.190187662Z","args":null}
+{"level":"info","pos":96,"out":"#1 transferring dockerfile: 663B done\n","time":"2024-05-26T20:09:58.340931696Z","args":null}
+{"level":"info","pos":97,"out":"#1 DONE 0.0s\n","time":"2024-05-26T20:09:58.34097456Z","args":null}
+{"level":"info","pos":98,"out":"\n","time":"2024-05-26T20:09:58.340981237Z","args":null}
+{"level":"info","pos":99,"out":"#2 [internal] load .dockerignore\n","time":"2024-05-26T20:09:58.340987589Z","args":null}
+{"level":"info","pos":100,"out":"#2 sha256:6dfa3b047b13ab504bca501ae5e1b2c9183a7100c4a1f20a05e03a41fe0a3a01\n","time":"2024-05-26T20:09:58.340994951Z","args":null}
+{"level":"info","pos":101,"out":"#2 transferring context: 369B done\n","time":"2024-05-26T20:09:58.341003938Z","args":null}
+{"level":"info","pos":102,"out":"#2 DONE 0.0s\n","time":"2024-05-26T20:09:58.341010427Z","args":null}
+{"level":"info","pos":103,"out":"\n","time":"2024-05-26T20:09:58.341017233Z","args":null}
+{"level":"info","pos":104,"out":"#3 [internal] load metadata for docker.io/library/python:3.10-slim\n","time":"2024-05-26T20:09:58.341023959Z","args":null}
+{"level":"info","pos":105,"out":"#3 sha256:b8cce7183299ea8471dad4044ce489ad9730ef208466a01382bd3a85a0492215\n","time":"2024-05-26T20:09:58.341031249Z","args":null}
+{"level":"info","pos":106,"out":"#3 DONE 1.1s\n","time":"2024-05-26T20:09:59.394406129Z","args":null}
+{"level":"info","pos":107,"out":"\n","time":"2024-05-26T20:09:59.394430087Z","args":null}
+{"level":"info","pos":108,"out":"#7 [internal] load build context\n","time":"2024-05-26T20:09:59.394432143Z","args":null}
+{"level":"info","pos":109,"out":"#7 sha256:7d799dacc1a81c632343864649ce5691a5c9c67a9c7c9f77002da84775f770af\n","time":"2024-05-26T20:09:59.394434887Z","args":null}
+{"level":"info","pos":110,"out":"#7 transferring context: 2.37MB 0.0s done\n","time":"2024-05-26T20:09:59.394451808Z","args":null}
+{"level":"info","pos":111,"out":"#7 DONE 0.0s\n","time":"2024-05-26T20:09:59.3944542Z","args":null}
+{"level":"info","pos":112,"out":"\n","time":"2024-05-26T20:09:59.394455216Z","args":null}
+{"level":"info","pos":113,"out":"#4 [1/5] FROM docker.io/library/python:3.10-slim@sha256:31b1e4b1c4a1903649c95fa5e46c1066baf6acdd33167813af9fa7905355e1a3\n","time":"2024-05-26T20:09:59.394456094Z","args":null}
+{"level":"info","pos":114,"out":"#4 sha256:97b620f6d4e13d3875515f207acd4ee4f7bb79db0e059a967e2a343834d0d4ca\n","time":"2024-05-26T20:09:59.394461386Z","args":null}
+{"level":"info","pos":115,"out":"#4 resolve docker.io/library/python:3.10-slim@sha256:31b1e4b1c4a1903649c95fa5e46c1066baf6acdd33167813af9fa7905355e1a3 done\n","time":"2024-05-26T20:09:59.394463297Z","args":null}
+{"level":"info","pos":116,"out":"#4 sha256:31b1e4b1c4a1903649c95fa5e46c1066baf6acdd33167813af9fa7905355e1a3 1.65kB / 1.65kB done\n","time":"2024-05-26T20:09:59.496184453Z","args":null}
+{"level":"info","pos":117,"out":"#4 sha256:3892cf8c29e4947b3fde1a368a34882d09d6455f8eef4798a889c64c054d87d9 1.37kB / 1.37kB done\n","time":"2024-05-26T20:09:59.496231585Z","args":null}
+{"level":"info","pos":118,"out":"#4 sha256:61b0911887c068cba8d89304a01a8384c27dcb7000e778afd5952efb8e04ba18 6.92kB / 6.92kB done\n","time":"2024-05-26T20:09:59.496240736Z","args":null}
+{"level":"info","pos":119,"out":"#4 sha256:09f376ebb190216b0459f470e71bec7b5dfa611d66bf008492b40dcc5f1d8eae 0B / 29.15MB 0.2s\n","time":"2024-05-26T20:09:59.496247729Z","args":null}
+{"level":"info","pos":120,"out":"#4 sha256:276709cbedc1f168290ee408fca2af2aacfeb4f922ddca125e9e8047f9841479 0B / 3.51MB 0.2s\n","time":"2024-05-26T20:09:59.49625543Z","args":null}
+{"level":"info","pos":121,"out":"#4 sha256:5f3999ce93a69a1d2fcbcbc231ec98da6df54b1757b6a63e96ba9755253f8440 12.38MB / 12.38MB 0.2s done\n","time":"2024-05-26T20:09:59.496262683Z","args":null}
+{"level":"info","pos":122,"out":"#4 sha256:145bcc09fdd2578663ac95f48d3f9a0a659e2d4ffa28a0d408f62091b342bfc7 0B / 243B 0.2s\n","time":"2024-05-26T20:09:59.496288584Z","args":null}
+{"level":"info","pos":123,"out":"#4 sha256:09f376ebb190216b0459f470e71bec7b5dfa611d66bf008492b40dcc5f1d8eae 10.49MB / 29.15MB 0.3s\n","time":"2024-05-26T20:09:59.599908693Z","args":null}
+{"level":"info","pos":124,"out":"#4 sha256:276709cbedc1f168290ee408fca2af2aacfeb4f922ddca125e9e8047f9841479 3.32MB / 3.51MB 0.3s\n","time":"2024-05-26T20:09:59.59992984Z","args":null}
+{"level":"info","pos":125,"out":"#4 sha256:145bcc09fdd2578663ac95f48d3f9a0a659e2d4ffa28a0d408f62091b342bfc7 243B / 243B 0.3s done\n","time":"2024-05-26T20:09:59.599931805Z","args":null}
+{"level":"info","pos":126,"out":"#4 sha256:d4c169844379365785b5893e86d2c0068d1fdc54be63cd0702466b57a21fecf7 0B / 3.37MB 0.3s\n","time":"2024-05-26T20:09:59.599933577Z","args":null}
+{"level":"info","pos":127,"out":"#4 sha256:09f376ebb190216b0459f470e71bec7b5dfa611d66bf008492b40dcc5f1d8eae 29.15MB / 29.15MB 0.4s done\n","time":"2024-05-26T20:09:59.705916394Z","args":null}
+{"level":"info","pos":128,"out":"#4 sha256:276709cbedc1f168290ee408fca2af2aacfeb4f922ddca125e9e8047f9841479 3.51MB / 3.51MB 0.3s done\n","time":"2024-05-26T20:09:59.705932016Z","args":null}
+{"level":"info","pos":129,"out":"#4 sha256:d4c169844379365785b5893e86d2c0068d1fdc54be63cd0702466b57a21fecf7 3.37MB / 3.37MB 0.4s done\n","time":"2024-05-26T20:09:59.70593527Z","args":null}
+{"level":"info","pos":130,"out":"#4 extracting sha256:09f376ebb190216b0459f470e71bec7b5dfa611d66bf008492b40dcc5f1d8eae\n","time":"2024-05-26T20:09:59.705936335Z","args":null}
+{"level":"info","pos":131,"out":"#4 extracting sha256:09f376ebb190216b0459f470e71bec7b5dfa611d66bf008492b40dcc5f1d8eae 0.4s done\n","time":"2024-05-26T20:10:00.127926127Z","args":null}
+{"level":"info","pos":132,"out":"#4 extracting sha256:276709cbedc1f168290ee408fca2af2aacfeb4f922ddca125e9e8047f9841479\n","time":"2024-05-26T20:10:00.127959106Z","args":null}
+{"level":"info","pos":133,"out":"#4 extracting sha256:276709cbedc1f168290ee408fca2af2aacfeb4f922ddca125e9e8047f9841479 0.1s done\n","time":"2024-05-26T20:10:00.278907235Z","args":null}
+{"level":"info","pos":134,"out":"#4 extracting sha256:5f3999ce93a69a1d2fcbcbc231ec98da6df54b1757b6a63e96ba9755253f8440\n","time":"2024-05-26T20:10:00.278928833Z","args":null}
+{"level":"info","pos":135,"out":"#4 extracting sha256:5f3999ce93a69a1d2fcbcbc231ec98da6df54b1757b6a63e96ba9755253f8440 0.2s done\n","time":"2024-05-26T20:10:00.382460946Z","args":null}
+{"level":"info","pos":136,"out":"#4 extracting sha256:145bcc09fdd2578663ac95f48d3f9a0a659e2d4ffa28a0d408f62091b342bfc7 done\n","time":"2024-05-26T20:10:00.509313587Z","args":null}
+{"level":"info","pos":137,"out":"#4 extracting sha256:d4c169844379365785b5893e86d2c0068d1fdc54be63cd0702466b57a21fecf7 0.1s done\n","time":"2024-05-26T20:10:00.509336711Z","args":null}
+{"level":"info","pos":138,"out":"#4 DONE 1.2s\n","time":"2024-05-26T20:10:00.659702421Z","args":null}
+{"level":"info","pos":139,"out":"\n","time":"2024-05-26T20:10:00.659744123Z","args":null}
+{"level":"info","pos":140,"out":"#5 [2/5] RUN echo \"Installing system deps and setting up user environment\"     \u0026\u0026 apt-get update     \u0026\u0026 apt-get -y install --no-install-recommends git curl libpq-dev build-essential     \u0026\u0026 rm -rf /var/lib/apt/lists/*\n","time":"2024-05-26T20:10:00.659751517Z","args":null}
+{"level":"info","pos":141,"out":"#5 sha256:c866072c9c5a22c8ba638c66dcb48418dde19f90c4d698a861ca47ac3a5e9440\n","time":"2024-05-26T20:10:00.659772036Z","args":null}
+{"level":"info","pos":142,"out":"#5 0.177 Installing system deps and setting up user environment\n","time":"2024-05-26T20:10:00.810356542Z","args":null}
+{"level":"info","pos":143,"out":"#5 0.391 Get:1 http://deb.debian.org/debian bookworm InRelease [151 kB]\n","time":"2024-05-26T20:10:00.918354296Z","args":null}
+{"level":"info","pos":144,"out":"#5 0.443 Get:2 http://deb.debian.org/debian bookworm-updates InRelease [55.4 kB]\n","time":"2024-05-26T20:10:01.067479244Z","args":null}
+{"level":"info","pos":145,"out":"#5 0.462 Get:3 http://deb.debian.org/debian-security bookworm-security InRelease [48.0 kB]\n","time":"2024-05-26T20:10:01.067502373Z","args":null}
+{"level":"info","pos":146,"out":"#5 0.540 Get:4 http://deb.debian.org/debian bookworm/main amd64 Packages [8786 kB]\n","time":"2024-05-26T20:10:01.067506919Z","args":null}
+{"level":"info","pos":147,"out":"#5 0.659 Get:5 http://deb.debian.org/debian bookworm-updates/main amd64 Packages [13.8 kB]\n","time":"2024-05-26T20:10:01.18635684Z","args":null}
+{"level":"info","pos":148,"out":"#5 0.660 Get:6 http://deb.debian.org/debian-security bookworm-security/main amd64 Packages [157 kB]\n","time":"2024-05-26T20:10:01.33700093Z","args":null}
+{"level":"info","pos":149,"out":"#5 1.317 Fetched 9211 kB in 1s (8152 kB/s)\n","time":"2024-05-26T20:10:01.938720542Z","args":null}
+{"level":"info","pos":150,"out":"#5 1.317 Reading package lists...\n","time":"2024-05-26T20:10:02.24001966Z","args":null}
+{"level":"info","pos":151,"out":"#5 1.648 Reading package lists...\n","time":"2024-05-26T20:10:02.498960595Z","args":null}
+{"level":"info","pos":152,"out":"#5 1.972 Building dependency tree...\n","time":"2024-05-26T20:10:02.649241346Z","args":null}
+{"level":"info","pos":153,"out":"#5 2.066 Reading state information...\n","time":"2024-05-26T20:10:02.649261997Z","args":null}
+{"level":"info","pos":154,"out":"#5 2.161 The following additional packages will be installed:\n","time":"2024-05-26T20:10:02.800305955Z","args":null}
+{"level":"info","pos":155,"out":"#5 2.161   binutils binutils-common binutils-x86-64-linux-gnu bzip2 cpp cpp-12 dpkg-dev\n","time":"2024-05-26T20:10:02.800326274Z","args":null}
+{"level":"info","pos":156,"out":"#5 2.161   g++ g++-12 gcc gcc-12 git-man libasan8 libatomic1 libbinutils libbrotli1\n","time":"2024-05-26T20:10:02.800328868Z","args":null}
+{"level":"info","pos":157,"out":"#5 2.161   libc-dev-bin libc6-dev libcc1-0 libcrypt-dev libctf-nobfd0 libctf0\n","time":"2024-05-26T20:10:02.800330442Z","args":null}
+{"level":"info","pos":158,"out":"#5 2.161   libcurl3-gnutls libcurl4 libdpkg-perl liberror-perl libgcc-12-dev\n","time":"2024-05-26T20:10:02.800331951Z","args":null}
+{"level":"info","pos":159,"out":"#5 2.161   libgdbm-compat4 libgomp1 libgprofng0 libisl23 libitm1 libjansson4\n","time":"2024-05-26T20:10:02.800333591Z","args":null}
+{"level":"info","pos":160,"out":"#5 2.161   libldap-2.5-0 liblsan0 libmpc3 libmpfr6 libnghttp2-14 libnsl-dev libperl5.36\n","time":"2024-05-26T20:10:02.80033512Z","args":null}
+{"level":"info","pos":161,"out":"#5 2.162   libpq5 libpsl5 libquadmath0 librtmp1 libsasl2-2 libsasl2-modules-db\n","time":"2024-05-26T20:10:02.800336752Z","args":null}
+{"level":"info","pos":162,"out":"#5 2.162   libssh2-1 libssl-dev libstdc++-12-dev libtirpc-dev libtsan2 libubsan1\n","time":"2024-05-26T20:10:02.800338186Z","args":null}
+{"level":"info","pos":163,"out":"#5 2.162   linux-libc-dev make patch perl perl-modules-5.36 rpcsvc-proto xz-utils\n","time":"2024-05-26T20:10:02.800339596Z","args":null}
+{"level":"info","pos":164,"out":"#5 2.163 Suggested packages:\n","time":"2024-05-26T20:10:02.80034099Z","args":null}
+{"level":"info","pos":165,"out":"#5 2.163   binutils-doc bzip2-doc cpp-doc gcc-12-locales cpp-12-doc debian-keyring\n","time":"2024-05-26T20:10:02.80034476Z","args":null}
+{"level":"info","pos":166,"out":"#5 2.163   g++-multilib g++-12-multilib gcc-12-doc gcc-multilib manpages-dev autoconf\n","time":"2024-05-26T20:10:02.800346461Z","args":null}
+{"level":"info","pos":167,"out":"#5 2.163   automake libtool flex bison gdb gcc-doc gcc-12-multilib gettext-base\n","time":"2024-05-26T20:10:02.800348047Z","args":null}
+{"level":"info","pos":168,"out":"#5 2.163   git-daemon-run | git-daemon-sysvinit git-doc git-email git-gui gitk gitweb\n","time":"2024-05-26T20:10:02.800349778Z","args":null}
+{"level":"info","pos":169,"out":"#5 2.163   git-cvs git-mediawiki git-svn glibc-doc gnupg | sq | sqop | pgpainless-cli\n","time":"2024-05-26T20:10:02.800351507Z","args":null}
+{"level":"info","pos":170,"out":"#5 2.163   sensible-utils bzr postgresql-doc-15 libssl-doc libstdc++-12-doc make-doc ed\n","time":"2024-05-26T20:10:02.800353228Z","args":null}
+{"level":"info","pos":171,"out":"#5 2.163   diffutils-doc perl-doc libterm-readline-gnu-perl\n","time":"2024-05-26T20:10:02.800354963Z","args":null}
+{"level":"info","pos":172,"out":"#5 2.163   | libterm-readline-perl-perl libtap-harness-archive-perl\n","time":"2024-05-26T20:10:02.800356673Z","args":null}
+{"level":"info","pos":173,"out":"#5 2.163 Recommended packages:\n","time":"2024-05-26T20:10:02.800358267Z","args":null}
+{"level":"info","pos":174,"out":"#5 2.163   fakeroot gnupg | sq | sqop | pgpainless-cli libalgorithm-merge-perl less\n","time":"2024-05-26T20:10:02.800359916Z","args":null}
+{"level":"info","pos":175,"out":"#5 2.163   ssh-client manpages manpages-dev libc-devtools libfile-fcntllock-perl\n","time":"2024-05-26T20:10:02.800361483Z","args":null}
+{"level":"info","pos":176,"out":"#5 2.163   liblocale-gettext-perl libldap-common publicsuffix libsasl2-modules\n","time":"2024-05-26T20:10:02.800371455Z","args":null}
+{"level":"info","pos":177,"out":"#5 2.344 The following NEW packages will be installed:\n","time":"2024-05-26T20:10:02.950071299Z","args":null}
+{"level":"info","pos":178,"out":"#5 2.344   binutils binutils-common binutils-x86-64-linux-gnu build-essential bzip2 cpp\n","time":"2024-05-26T20:10:02.950111459Z","args":null}
+{"level":"info","pos":179,"out":"#5 2.344   cpp-12 curl dpkg-dev g++ g++-12 gcc gcc-12 git git-man libasan8 libatomic1\n","time":"2024-05-26T20:10:02.95011956Z","args":null}
+{"level":"info","pos":180,"out":"#5 2.344   libbinutils libbrotli1 libc-dev-bin libc6-dev libcc1-0 libcrypt-dev\n","time":"2024-05-26T20:10:02.950126082Z","args":null}
+{"level":"info","pos":181,"out":"#5 2.344   libctf-nobfd0 libctf0 libcurl3-gnutls libcurl4 libdpkg-perl liberror-perl\n","time":"2024-05-26T20:10:02.950132881Z","args":null}
+{"level":"info","pos":182,"out":"#5 2.344   libgcc-12-dev libgdbm-compat4 libgomp1 libgprofng0 libisl23 libitm1\n","time":"2024-05-26T20:10:02.950139699Z","args":null}
+{"level":"info","pos":183,"out":"#5 2.344   libjansson4 libldap-2.5-0 liblsan0 libmpc3 libmpfr6 libnghttp2-14 libnsl-dev\n","time":"2024-05-26T20:10:02.950172096Z","args":null}
+{"level":"info","pos":184,"out":"#5 2.344   libperl5.36 libpq-dev libpq5 libpsl5 libquadmath0 librtmp1 libsasl2-2\n","time":"2024-05-26T20:10:02.950176879Z","args":null}
+{"level":"info","pos":185,"out":"#5 2.345   libsasl2-modules-db libssh2-1 libssl-dev libstdc++-12-dev libtirpc-dev\n","time":"2024-05-26T20:10:02.950180674Z","args":null}
+{"level":"info","pos":186,"out":"#5 2.345   libtsan2 libubsan1 linux-libc-dev make patch perl perl-modules-5.36\n","time":"2024-05-26T20:10:02.950184277Z","args":null}
+{"level":"info","pos":187,"out":"#5 2.345   rpcsvc-proto xz-utils\n","time":"2024-05-26T20:10:02.950187764Z","args":null}
+{"level":"info","pos":188,"out":"#5 2.422 0 upgraded, 63 newly installed, 0 to remove and 0 not upgraded.\n","time":"2024-05-26T20:10:02.950193028Z","args":null}
+{"level":"info","pos":189,"out":"#5 2.422 Need to get 87.4 MB of archives.\n","time":"2024-05-26T20:10:02.950199919Z","args":null}
+{"level":"info","pos":190,"out":"#5 2.422 After this operation, 380 MB of additional disk space will be used.\n","time":"2024-05-26T20:10:02.950206052Z","args":null}
+{"level":"info","pos":191,"out":"#5 2.422 Get:1 http://deb.debian.org/debian bookworm/main amd64 perl-modules-5.36 all 5.36.0-7+deb12u1 [2815 kB]\n","time":"2024-05-26T20:10:02.95021248Z","args":null}
+{"level":"info","pos":192,"out":"#5 2.547 Get:2 http://deb.debian.org/debian bookworm/main amd64 libgdbm-compat4 amd64 1.23-3 [48.2 kB]\n","time":"2024-05-26T20:10:03.074434678Z","args":null}
+{"level":"info","pos":193,"out":"#5 2.547 Get:3 http://deb.debian.org/debian bookworm/main amd64 libperl5.36 amd64 5.36.0-7+deb12u1 [4218 kB]\n","time":"2024-05-26T20:10:03.176414807Z","args":null}
+{"level":"info","pos":194,"out":"#5 2.571 Get:4 http://deb.debian.org/debian bookworm/main amd64 perl amd64 5.36.0-7+deb12u1 [239 kB]\n","time":"2024-05-26T20:10:03.176431076Z","args":null}
+{"level":"info","pos":195,"out":"#5 2.573 Get:5 http://deb.debian.org/debian bookworm/main amd64 bzip2 amd64 1.0.8-5+b1 [49.8 kB]\n","time":"2024-05-26T20:10:03.176432665Z","args":null}
+{"level":"info","pos":196,"out":"#5 2.573 Get:6 http://deb.debian.org/debian bookworm/main amd64 xz-utils amd64 5.4.1-0.2 [471 kB]\n","time":"2024-05-26T20:10:03.176433606Z","args":null}
+{"level":"info","pos":197,"out":"#5 2.575 Get:7 http://deb.debian.org/debian bookworm/main amd64 binutils-common amd64 2.40-2 [2487 kB]\n","time":"2024-05-26T20:10:03.176434485Z","args":null}
+{"level":"info","pos":198,"out":"#5 2.590 Get:8 http://deb.debian.org/debian bookworm/main amd64 libbinutils amd64 2.40-2 [572 kB]\n","time":"2024-05-26T20:10:03.176435853Z","args":null}
+{"level":"info","pos":199,"out":"#5 2.593 Get:9 http://deb.debian.org/debian bookworm/main amd64 libctf-nobfd0 amd64 2.40-2 [153 kB]\n","time":"2024-05-26T20:10:03.176436703Z","args":null}
+{"level":"info","pos":200,"out":"#5 2.594 Get:10 http://deb.debian.org/debian bookworm/main amd64 libctf0 amd64 2.40-2 [89.8 kB]\n","time":"2024-05-26T20:10:03.17643754Z","args":null}
+{"level":"info","pos":201,"out":"#5 2.594 Get:11 http://deb.debian.org/debian bookworm/main amd64 libgprofng0 amd64 2.40-2 [812 kB]\n","time":"2024-05-26T20:10:03.176438394Z","args":null}
+{"level":"info","pos":202,"out":"#5 2.599 Get:12 http://deb.debian.org/debian bookworm/main amd64 libjansson4 amd64 2.14-2 [40.8 kB]\n","time":"2024-05-26T20:10:03.176439242Z","args":null}
+{"level":"info","pos":203,"out":"#5 2.599 Get:13 http://deb.debian.org/debian bookworm/main amd64 binutils-x86-64-linux-gnu amd64 2.40-2 [2246 kB]\n","time":"2024-05-26T20:10:03.176440085Z","args":null}
+{"level":"info","pos":204,"out":"#5 2.612 Get:14 http://deb.debian.org/debian bookworm/main amd64 binutils amd64 2.40-2 [65.0 kB]\n","time":"2024-05-26T20:10:03.176440925Z","args":null}
+{"level":"info","pos":205,"out":"#5 2.612 Get:15 http://deb.debian.org/debian-security bookworm-security/main amd64 libc-dev-bin amd64 2.36-9+deb12u7 [45.8 kB]\n","time":"2024-05-26T20:10:03.176441755Z","args":null}
+{"level":"info","pos":206,"out":"#5 2.613 Get:16 http://deb.debian.org/debian-security bookworm-security/main amd64 linux-libc-dev amd64 6.1.90-1 [1976 kB]\n","time":"2024-05-26T20:10:03.176443186Z","args":null}
+{"level":"info","pos":207,"out":"#5 2.623 Get:17 http://deb.debian.org/debian bookworm/main amd64 libcrypt-dev amd64 1:4.4.33-2 [118 kB]\n","time":"2024-05-26T20:10:03.176444077Z","args":null}
+{"level":"info","pos":208,"out":"#5 2.624 Get:18 http://deb.debian.org/debian bookworm/main amd64 libtirpc-dev amd64 1.3.3+ds-1 [191 kB]\n","time":"2024-05-26T20:10:03.17644492Z","args":null}
+{"level":"info","pos":209,"out":"#5 2.624 Get:19 http://deb.debian.org/debian bookworm/main amd64 libnsl-dev amd64 1.3.0-2 [66.4 kB]\n","time":"2024-05-26T20:10:03.176445762Z","args":null}
+{"level":"info","pos":210,"out":"#5 2.625 Get:20 http://deb.debian.org/debian bookworm/main amd64 rpcsvc-proto amd64 1.4.3-1 [63.3 kB]\n","time":"2024-05-26T20:10:03.176446607Z","args":null}
+{"level":"info","pos":211,"out":"#5 2.631 Get:21 http://deb.debian.org/debian-security bookworm-security/main amd64 libc6-dev amd64 2.36-9+deb12u7 [1899 kB]\n","time":"2024-05-26T20:10:03.176453819Z","args":null}
+{"level":"info","pos":212,"out":"#5 2.637 Get:22 http://deb.debian.org/debian bookworm/main amd64 libisl23 amd64 0.25-1.1 [683 kB]\n","time":"2024-05-26T20:10:03.176454795Z","args":null}
+{"level":"info","pos":213,"out":"#5 2.640 Get:23 http://deb.debian.org/debian bookworm/main amd64 libmpfr6 amd64 4.2.0-1 [701 kB]\n","time":"2024-05-26T20:10:03.176455665Z","args":null}
+{"level":"info","pos":214,"out":"#5 2.649 Get:24 http://deb.debian.org/debian bookworm/main amd64 libmpc3 amd64 1.3.1-1 [51.5 kB]\n","time":"2024-05-26T20:10:03.176456514Z","args":null}
+{"level":"info","pos":215,"out":"#5 2.650 Get:25 http://deb.debian.org/debian bookworm/main amd64 cpp-12 amd64 12.2.0-14 [9764 kB]\n","time":"2024-05-26T20:10:03.283354991Z","args":null}
+{"level":"info","pos":216,"out":"#5 2.707 Get:26 http://deb.debian.org/debian bookworm/main amd64 cpp amd64 4:12.2.0-3 [6836 B]\n","time":"2024-05-26T20:10:03.283374497Z","args":null}
+{"level":"info","pos":217,"out":"#5 2.707 Get:27 http://deb.debian.org/debian bookworm/main amd64 libcc1-0 amd64 12.2.0-14 [41.7 kB]\n","time":"2024-05-26T20:10:03.283384348Z","args":null}
+{"level":"info","pos":218,"out":"#5 2.707 Get:28 http://deb.debian.org/debian bookworm/main amd64 libgomp1 amd64 12.2.0-14 [116 kB]\n","time":"2024-05-26T20:10:03.283385557Z","args":null}
+{"level":"info","pos":219,"out":"#5 2.708 Get:29 http://deb.debian.org/debian bookworm/main amd64 libitm1 amd64 12.2.0-14 [26.1 kB]\n","time":"2024-05-26T20:10:03.283386585Z","args":null}
+{"level":"info","pos":220,"out":"#5 2.708 Get:30 http://deb.debian.org/debian bookworm/main amd64 libatomic1 amd64 12.2.0-14 [9328 B]\n","time":"2024-05-26T20:10:03.283387564Z","args":null}
+{"level":"info","pos":221,"out":"#5 2.708 Get:31 http://deb.debian.org/debian bookworm/main amd64 libasan8 amd64 12.2.0-14 [2195 kB]\n","time":"2024-05-26T20:10:03.283388519Z","args":null}
+{"level":"info","pos":222,"out":"#5 2.717 Get:32 http://deb.debian.org/debian bookworm/main amd64 liblsan0 amd64 12.2.0-14 [969 kB]\n","time":"2024-05-26T20:10:03.283389456Z","args":null}
+{"level":"info","pos":223,"out":"#5 2.726 Get:33 http://deb.debian.org/debian bookworm/main amd64 libtsan2 amd64 12.2.0-14 [2196 kB]\n","time":"2024-05-26T20:10:03.283390415Z","args":null}
+{"level":"info","pos":224,"out":"#5 2.737 Get:34 http://deb.debian.org/debian bookworm/main amd64 libubsan1 amd64 12.2.0-14 [883 kB]\n","time":"2024-05-26T20:10:03.283393641Z","args":null}
+{"level":"info","pos":225,"out":"#5 2.743 Get:35 http://deb.debian.org/debian bookworm/main amd64 libquadmath0 amd64 12.2.0-14 [144 kB]\n","time":"2024-05-26T20:10:03.283394627Z","args":null}
+{"level":"info","pos":226,"out":"#5 2.744 Get:36 http://deb.debian.org/debian bookworm/main amd64 libgcc-12-dev amd64 12.2.0-14 [2437 kB]\n","time":"2024-05-26T20:10:03.283395583Z","args":null}
+{"level":"info","pos":227,"out":"#5 2.756 Get:37 http://deb.debian.org/debian bookworm/main amd64 gcc-12 amd64 12.2.0-14 [19.3 MB]\n","time":"2024-05-26T20:10:03.283406655Z","args":null}
+{"level":"info","pos":228,"out":"#5 2.873 Get:38 http://deb.debian.org/debian bookworm/main amd64 gcc amd64 4:12.2.0-3 [5216 B]\n","time":"2024-05-26T20:10:03.40072642Z","args":null}
+{"level":"info","pos":229,"out":"#5 2.873 Get:39 http://deb.debian.org/debian bookworm/main amd64 libstdc++-12-dev amd64 12.2.0-14 [2046 kB]\n","time":"2024-05-26T20:10:03.400743808Z","args":null}
+{"level":"info","pos":230,"out":"#5 2.883 Get:40 http://deb.debian.org/debian bookworm/main amd64 g++-12 amd64 12.2.0-14 [10.7 MB]\n","time":"2024-05-26T20:10:03.514742353Z","args":null}
+{"level":"info","pos":231,"out":"#5 2.951 Get:41 http://deb.debian.org/debian bookworm/main amd64 g++ amd64 4:12.2.0-3 [1356 B]\n","time":"2024-05-26T20:10:03.514760829Z","args":null}
+{"level":"info","pos":232,"out":"#5 2.951 Get:42 http://deb.debian.org/debian bookworm/main amd64 make amd64 4.3-4.1 [396 kB]\n","time":"2024-05-26T20:10:03.514762218Z","args":null}
+{"level":"info","pos":233,"out":"#5 2.952 Get:43 http://deb.debian.org/debian bookworm/main amd64 libdpkg-perl all 1.21.22 [603 kB]\n","time":"2024-05-26T20:10:03.514763233Z","args":null}
+{"level":"info","pos":234,"out":"#5 2.956 Get:44 http://deb.debian.org/debian bookworm/main amd64 patch amd64 2.7.6-7 [128 kB]\n","time":"2024-05-26T20:10:03.514764197Z","args":null}
+{"level":"info","pos":235,"out":"#5 2.957 Get:45 http://deb.debian.org/debian bookworm/main amd64 dpkg-dev all 1.21.22 [1353 kB]\n","time":"2024-05-26T20:10:03.514765096Z","args":null}
+{"level":"info","pos":236,"out":"#5 2.963 Get:46 http://deb.debian.org/debian bookworm/main amd64 build-essential amd64 12.9 [7704 B]\n","time":"2024-05-26T20:10:03.514766002Z","args":null}
+{"level":"info","pos":237,"out":"#5 2.963 Get:47 http://deb.debian.org/debian bookworm/main amd64 libbrotli1 amd64 1.0.9-2+b6 [275 kB]\n","time":"2024-05-26T20:10:03.514766893Z","args":null}
+{"level":"info","pos":238,"out":"#5 2.965 Get:48 http://deb.debian.org/debian bookworm/main amd64 libsasl2-modules-db amd64 2.1.28+dfsg-10 [20.3 kB]\n","time":"2024-05-26T20:10:03.514767799Z","args":null}
+{"level":"info","pos":239,"out":"#5 2.965 Get:49 http://deb.debian.org/debian bookworm/main amd64 libsasl2-2 amd64 2.1.28+dfsg-10 [59.7 kB]\n","time":"2024-05-26T20:10:03.514768857Z","args":null}
+{"level":"info","pos":240,"out":"#5 2.971 Get:50 http://deb.debian.org/debian bookworm/main amd64 libldap-2.5-0 amd64 2.5.13+dfsg-5 [183 kB]\n","time":"2024-05-26T20:10:03.514769778Z","args":null}
+{"level":"info","pos":241,"out":"#5 2.972 Get:51 http://deb.debian.org/debian bookworm/main amd64 libnghttp2-14 amd64 1.52.0-1+deb12u1 [72.4 kB]\n","time":"2024-05-26T20:10:03.514770673Z","args":null}
+{"level":"info","pos":242,"out":"#5 2.988 Get:52 http://deb.debian.org/debian bookworm/main amd64 libpsl5 amd64 0.21.2-1 [58.7 kB]\n","time":"2024-05-26T20:10:03.514771578Z","args":null}
+{"level":"info","pos":243,"out":"#5 2.988 Get:53 http://deb.debian.org/debian bookworm/main amd64 librtmp1 amd64 2.4+20151223.gitfa8646d.1-2+b2 [60.8 kB]\n","time":"2024-05-26T20:10:03.66481831Z","args":null}
+{"level":"info","pos":244,"out":"#5 2.989 Get:54 http://deb.debian.org/debian bookworm/main amd64 libssh2-1 amd64 1.10.0-3+b1 [179 kB]\n","time":"2024-05-26T20:10:03.664833809Z","args":null}
+{"level":"info","pos":245,"out":"#5 2.989 Get:55 http://deb.debian.org/debian bookworm/main amd64 libcurl4 amd64 7.88.1-10+deb12u5 [390 kB]\n","time":"2024-05-26T20:10:03.664835297Z","args":null}
+{"level":"info","pos":246,"out":"#5 2.991 Get:56 http://deb.debian.org/debian bookworm/main amd64 curl amd64 7.88.1-10+deb12u5 [315 kB]\n","time":"2024-05-26T20:10:03.664836259Z","args":null}
+{"level":"info","pos":247,"out":"#5 2.992 Get:57 http://deb.debian.org/debian bookworm/main amd64 libcurl3-gnutls amd64 7.88.1-10+deb12u5 [385 kB]\n","time":"2024-05-26T20:10:03.664837164Z","args":null}
+{"level":"info","pos":248,"out":"#5 2.996 Get:58 http://deb.debian.org/debian bookworm/main amd64 liberror-perl all 0.17029-2 [29.0 kB]\n","time":"2024-05-26T20:10:03.664838057Z","args":null}
+{"level":"info","pos":249,"out":"#5 2.996 Get:59 http://deb.debian.org/debian bookworm/main amd64 git-man all 1:2.39.2-1.1 [2049 kB]\n","time":"2024-05-26T20:10:03.664838936Z","args":null}
+{"level":"info","pos":250,"out":"#5 3.024 Get:60 http://deb.debian.org/debian bookworm/main amd64 git amd64 1:2.39.2-1.1 [7171 kB]\n","time":"2024-05-26T20:10:03.664839823Z","args":null}
+{"level":"info","pos":251,"out":"#5 3.066 Get:61 http://deb.debian.org/debian-security bookworm-security/main amd64 libpq5 amd64 15.6-0+deb12u1 [188 kB]\n","time":"2024-05-26T20:10:03.664840679Z","args":null}
+{"level":"info","pos":252,"out":"#5 3.068 Get:62 http://deb.debian.org/debian bookworm/main amd64 libssl-dev amd64 3.0.11-1~deb12u2 [2430 kB]\n","time":"2024-05-26T20:10:03.664841577Z","args":null}
+{"level":"info","pos":253,"out":"#5 3.081 Get:63 http://deb.debian.org/debian-security bookworm-security/main amd64 libpq-dev amd64 15.6-0+deb12u1 [142 kB]\n","time":"2024-05-26T20:10:03.664842464Z","args":null}
+{"level":"info","pos":254,"out":"#5 3.162 debconf: delaying package configuration, since apt-utils is not installed\n","time":"2024-05-26T20:10:03.815116054Z","args":null}
+{"level":"info","pos":255,"out":"#5 3.178 Fetched 87.4 MB in 1s (119 MB/s)\n","time":"2024-05-26T20:10:03.81513329Z","args":null}
+{"level":"info","pos":256,"out":"#5 3.189 Selecting previously unselected package perl-modules-5.36.\r\n","time":"2024-05-26T20:10:03.815134803Z","args":null}
+{"level":"info","pos":257,"out":"#5 3.189 (Reading database ... \r(Reading database ... 5%\r(Reading database ... 10%\r(Reading database ... 15%\r(Reading database ... 20%\r(Reading database ... 25%\r(Reading database ... 30%\r(Reading database ... 35%\r(Reading database ... 40%\r(Reading database ... 45%\r(Reading database ... 50%\r(Reading database ... 55%\r(Reading database ... 60%\r(Reading database ... 65%\r(Reading database ... 70%\r(Reading database ... 75%\r(Reading database ... 80%\r(Reading database ... 85%\r(Reading database ... 90%\r(Reading database ... 95%\r(Reading database ... 100%\r(Reading database ... 6697 files and directories currently installed.)\r\n","time":"2024-05-26T20:10:03.815138687Z","args":null}
+{"level":"info","pos":258,"out":"#5 3.194 Preparing to unpack .../00-perl-modules-5.36_5.36.0-7+deb12u1_all.deb ...\r\n","time":"2024-05-26T20:10:03.815162399Z","args":null}
+{"level":"info","pos":259,"out":"#5 3.195 Unpacking perl-modules-5.36 (5.36.0-7+deb12u1) ...\r\n","time":"2024-05-26T20:10:03.815164308Z","args":null}
+{"level":"info","pos":260,"out":"#5 3.394 Selecting previously unselected package libgdbm-compat4:amd64.\r\n","time":"2024-05-26T20:10:03.921280236Z","args":null}
+{"level":"info","pos":261,"out":"#5 3.395 Preparing to unpack .../01-libgdbm-compat4_1.23-3_amd64.deb ...\r\n","time":"2024-05-26T20:10:04.072017068Z","args":null}
+{"level":"info","pos":262,"out":"#5 3.396 Unpacking libgdbm-compat4:amd64 (1.23-3) ...\r\n","time":"2024-05-26T20:10:04.072037086Z","args":null}
+{"level":"info","pos":263,"out":"#5 3.407 Selecting previously unselected package libperl5.36:amd64.\r\n","time":"2024-05-26T20:10:04.072039504Z","args":null}
+{"level":"info","pos":264,"out":"#5 3.408 Preparing to unpack .../02-libperl5.36_5.36.0-7+deb12u1_amd64.deb ...\r\n","time":"2024-05-26T20:10:04.072041496Z","args":null}
+{"level":"info","pos":265,"out":"#5 3.409 Unpacking libperl5.36:amd64 (5.36.0-7+deb12u1) ...\r\n","time":"2024-05-26T20:10:04.072043223Z","args":null}
+{"level":"info","pos":266,"out":"#5 3.637 Selecting previously unselected package perl.\r\n","time":"2024-05-26T20:10:04.188036479Z","args":null}
+{"level":"info","pos":267,"out":"#5 3.638 Preparing to unpack .../03-perl_5.36.0-7+deb12u1_amd64.deb ...\r\n","time":"2024-05-26T20:10:04.188052455Z","args":null}
+{"level":"info","pos":268,"out":"#5 3.641 Unpacking perl (5.36.0-7+deb12u1) ...\r\n","time":"2024-05-26T20:10:04.188054134Z","args":null}
+{"level":"info","pos":269,"out":"#5 3.661 Selecting previously unselected package bzip2.\r\n","time":"2024-05-26T20:10:04.188055321Z","args":null}
+{"level":"info","pos":270,"out":"#5 3.662 Preparing to unpack .../04-bzip2_1.0.8-5+b1_amd64.deb ...\r\n","time":"2024-05-26T20:10:04.338777104Z","args":null}
+{"level":"info","pos":271,"out":"#5 3.662 Unpacking bzip2 (1.0.8-5+b1) ...\r\n","time":"2024-05-26T20:10:04.338796949Z","args":null}
+{"level":"info","pos":272,"out":"#5 3.674 Selecting previously unselected package xz-utils.\r\n","time":"2024-05-26T20:10:04.338798545Z","args":null}
+{"level":"info","pos":273,"out":"#5 3.675 Preparing to unpack .../05-xz-utils_5.4.1-0.2_amd64.deb ...\r\n","time":"2024-05-26T20:10:04.338799505Z","args":null}
+{"level":"info","pos":274,"out":"#5 3.675 Unpacking xz-utils (5.4.1-0.2) ...\r\n","time":"2024-05-26T20:10:04.338800437Z","args":null}
+{"level":"info","pos":275,"out":"#5 3.710 Selecting previously unselected package binutils-common:amd64.\r\n","time":"2024-05-26T20:10:04.33880129Z","args":null}
+{"level":"info","pos":276,"out":"#5 3.711 Preparing to unpack .../06-binutils-common_2.40-2_amd64.deb ...\r\n","time":"2024-05-26T20:10:04.338802512Z","args":null}
+{"level":"info","pos":277,"out":"#5 3.711 Unpacking binutils-common:amd64 (2.40-2) ...\r\n","time":"2024-05-26T20:10:04.338803398Z","args":null}
+{"level":"info","pos":278,"out":"#5 3.851 Selecting previously unselected package libbinutils:amd64.\r\n","time":"2024-05-26T20:10:04.449570013Z","args":null}
+{"level":"info","pos":279,"out":"#5 3.852 Preparing to unpack .../07-libbinutils_2.40-2_amd64.deb ...\r\n","time":"2024-05-26T20:10:04.449586316Z","args":null}
+{"level":"info","pos":280,"out":"#5 3.852 Unpacking libbinutils:amd64 (2.40-2) ...\r\n","time":"2024-05-26T20:10:04.449587674Z","args":null}
+{"level":"info","pos":281,"out":"#5 3.891 Selecting previously unselected package libctf-nobfd0:amd64.\r\n","time":"2024-05-26T20:10:04.449588839Z","args":null}
+{"level":"info","pos":282,"out":"#5 3.892 Preparing to unpack .../08-libctf-nobfd0_2.40-2_amd64.deb ...\r\n","time":"2024-05-26T20:10:04.449589747Z","args":null}
+{"level":"info","pos":283,"out":"#5 3.893 Unpacking libctf-nobfd0:amd64 (2.40-2) ...\r\n","time":"2024-05-26T20:10:04.449590873Z","args":null}
+{"level":"info","pos":284,"out":"#5 3.908 Selecting previously unselected package libctf0:amd64.\r\n","time":"2024-05-26T20:10:04.449591702Z","args":null}
+{"level":"info","pos":285,"out":"#5 3.909 Preparing to unpack .../09-libctf0_2.40-2_amd64.deb ...\r\n","time":"2024-05-26T20:10:04.449592545Z","args":null}
+{"level":"info","pos":286,"out":"#5 3.910 Unpacking libctf0:amd64 (2.40-2) ...\r\n","time":"2024-05-26T20:10:04.449597881Z","args":null}
+{"level":"info","pos":287,"out":"#5 3.922 Selecting previously unselected package libgprofng0:amd64.\r\n","time":"2024-05-26T20:10:04.449598881Z","args":null}
+{"level":"info","pos":288,"out":"#5 3.923 Preparing to unpack .../10-libgprofng0_2.40-2_amd64.deb ...\r\n","time":"2024-05-26T20:10:04.59990532Z","args":null}
+{"level":"info","pos":289,"out":"#5 3.924 Unpacking libgprofng0:amd64 (2.40-2) ...\r\n","time":"2024-05-26T20:10:04.599922115Z","args":null}
+{"level":"info","pos":290,"out":"#5 3.977 Selecting previously unselected package libjansson4:amd64.\r\n","time":"2024-05-26T20:10:04.599923671Z","args":null}
+{"level":"info","pos":291,"out":"#5 3.978 Preparing to unpack .../11-libjansson4_2.14-2_amd64.deb ...\r\n","time":"2024-05-26T20:10:04.599924619Z","args":null}
+{"level":"info","pos":292,"out":"#5 3.978 Unpacking libjansson4:amd64 (2.14-2) ...\r\n","time":"2024-05-26T20:10:04.599925546Z","args":null}
+{"level":"info","pos":293,"out":"#5 3.988 Selecting previously unselected package binutils-x86-64-linux-gnu.\r\n","time":"2024-05-26T20:10:04.599926438Z","args":null}
+{"level":"info","pos":294,"out":"#5 3.989 Preparing to unpack .../12-binutils-x86-64-linux-gnu_2.40-2_amd64.deb ...\r\n","time":"2024-05-26T20:10:04.599927664Z","args":null}
+{"level":"info","pos":295,"out":"#5 3.989 Unpacking binutils-x86-64-linux-gnu (2.40-2) ...\r\n","time":"2024-05-26T20:10:04.599928573Z","args":null}
+{"level":"info","pos":296,"out":"#5 4.130 Selecting previously unselected package binutils.\r\n","time":"2024-05-26T20:10:04.750667577Z","args":null}
+{"level":"info","pos":297,"out":"#5 4.131 Preparing to unpack .../13-binutils_2.40-2_amd64.deb ...\r\n","time":"2024-05-26T20:10:04.750684621Z","args":null}
+{"level":"info","pos":298,"out":"#5 4.131 Unpacking binutils (2.40-2) ...\r\n","time":"2024-05-26T20:10:04.750685903Z","args":null}
+{"level":"info","pos":299,"out":"#5 4.143 Selecting previously unselected package libc-dev-bin.\r\n","time":"2024-05-26T20:10:04.750687021Z","args":null}
+{"level":"info","pos":300,"out":"#5 4.144 Preparing to unpack .../14-libc-dev-bin_2.36-9+deb12u7_amd64.deb ...\r\n","time":"2024-05-26T20:10:04.750687854Z","args":null}
+{"level":"info","pos":301,"out":"#5 4.145 Unpacking libc-dev-bin (2.36-9+deb12u7) ...\r\n","time":"2024-05-26T20:10:04.750689005Z","args":null}
+{"level":"info","pos":302,"out":"#5 4.155 Selecting previously unselected package linux-libc-dev:amd64.\r\n","time":"2024-05-26T20:10:04.750689855Z","args":null}
+{"level":"info","pos":303,"out":"#5 4.156 Preparing to unpack .../15-linux-libc-dev_6.1.90-1_amd64.deb ...\r\n","time":"2024-05-26T20:10:04.750690721Z","args":null}
+{"level":"info","pos":304,"out":"#5 4.156 Unpacking linux-libc-dev:amd64 (6.1.90-1) ...\r\n","time":"2024-05-26T20:10:04.750691551Z","args":null}
+{"level":"info","pos":305,"out":"#5 4.243 Selecting previously unselected package libcrypt-dev:amd64.\r\n","time":"2024-05-26T20:10:04.901793595Z","args":null}
+{"level":"info","pos":306,"out":"#5 4.244 Preparing to unpack .../16-libcrypt-dev_1%3a4.4.33-2_amd64.deb ...\r\n","time":"2024-05-26T20:10:04.901809765Z","args":null}
+{"level":"info","pos":307,"out":"#5 4.247 Unpacking libcrypt-dev:amd64 (1:4.4.33-2) ...\r\n","time":"2024-05-26T20:10:04.901811614Z","args":null}
+{"level":"info","pos":308,"out":"#5 4.261 Selecting previously unselected package libtirpc-dev:amd64.\r\n","time":"2024-05-26T20:10:04.901812521Z","args":null}
+{"level":"info","pos":309,"out":"#5 4.262 Preparing to unpack .../17-libtirpc-dev_1.3.3+ds-1_amd64.deb ...\r\n","time":"2024-05-26T20:10:04.901813435Z","args":null}
+{"level":"info","pos":310,"out":"#5 4.262 Unpacking libtirpc-dev:amd64 (1.3.3+ds-1) ...\r\n","time":"2024-05-26T20:10:04.901814298Z","args":null}
+{"level":"info","pos":311,"out":"#5 4.280 Selecting previously unselected package libnsl-dev:amd64.\r\n","time":"2024-05-26T20:10:04.901815163Z","args":null}
+{"level":"info","pos":312,"out":"#5 4.281 Preparing to unpack .../18-libnsl-dev_1.3.0-2_amd64.deb ...\r\n","time":"2024-05-26T20:10:04.901816012Z","args":null}
+{"level":"info","pos":313,"out":"#5 4.281 Unpacking libnsl-dev:amd64 (1.3.0-2) ...\r\n","time":"2024-05-26T20:10:04.901816856Z","args":null}
+{"level":"info","pos":314,"out":"#5 4.292 Selecting previously unselected package rpcsvc-proto.\r\n","time":"2024-05-26T20:10:04.9018179Z","args":null}
+{"level":"info","pos":315,"out":"#5 4.293 Preparing to unpack .../19-rpcsvc-proto_1.4.3-1_amd64.deb ...\r\n","time":"2024-05-26T20:10:04.901818807Z","args":null}
+{"level":"info","pos":316,"out":"#5 4.294 Unpacking rpcsvc-proto (1.4.3-1) ...\r\n","time":"2024-05-26T20:10:04.901819745Z","args":null}
+{"level":"info","pos":317,"out":"#5 4.306 Selecting previously unselected package libc6-dev:amd64.\r\n","time":"2024-05-26T20:10:04.901820604Z","args":null}
+{"level":"info","pos":318,"out":"#5 4.307 Preparing to unpack .../20-libc6-dev_2.36-9+deb12u7_amd64.deb ...\r\n","time":"2024-05-26T20:10:04.901821426Z","args":null}
+{"level":"info","pos":319,"out":"#5 4.307 Unpacking libc6-dev:amd64 (2.36-9+deb12u7) ...\r\n","time":"2024-05-26T20:10:04.901822265Z","args":null}
+{"level":"info","pos":320,"out":"#5 4.426 Selecting previously unselected package libisl23:amd64.\r\n","time":"2024-05-26T20:10:05.026473962Z","args":null}
+{"level":"info","pos":321,"out":"#5 4.427 Preparing to unpack .../21-libisl23_0.25-1.1_amd64.deb ...\r\n","time":"2024-05-26T20:10:05.026490161Z","args":null}
+{"level":"info","pos":322,"out":"#5 4.427 Unpacking libisl23:amd64 (0.25-1.1) ...\r\n","time":"2024-05-26T20:10:05.026491437Z","args":null}
+{"level":"info","pos":323,"out":"#5 4.470 Selecting previously unselected package libmpfr6:amd64.\r\n","time":"2024-05-26T20:10:05.026492623Z","args":null}
+{"level":"info","pos":324,"out":"#5 4.471 Preparing to unpack .../22-libmpfr6_4.2.0-1_amd64.deb ...\r\n","time":"2024-05-26T20:10:05.026493489Z","args":null}
+{"level":"info","pos":325,"out":"#5 4.471 Unpacking libmpfr6:amd64 (4.2.0-1) ...\r\n","time":"2024-05-26T20:10:05.026494375Z","args":null}
+{"level":"info","pos":326,"out":"#5 4.499 Selecting previously unselected package libmpc3:amd64.\r\n","time":"2024-05-26T20:10:05.026495238Z","args":null}
+{"level":"info","pos":327,"out":"#5 4.500 Preparing to unpack .../23-libmpc3_1.3.1-1_amd64.deb ...\r\n","time":"2024-05-26T20:10:05.177189903Z","args":null}
+{"level":"info","pos":328,"out":"#5 4.501 Unpacking libmpc3:amd64 (1.3.1-1) ...\r\n","time":"2024-05-26T20:10:05.177207983Z","args":null}
+{"level":"info","pos":329,"out":"#5 4.511 Selecting previously unselected package cpp-12.\r\n","time":"2024-05-26T20:10:05.1772095Z","args":null}
+{"level":"info","pos":330,"out":"#5 4.512 Preparing to unpack .../24-cpp-12_12.2.0-14_amd64.deb ...\r\n","time":"2024-05-26T20:10:05.177210445Z","args":null}
+{"level":"info","pos":331,"out":"#5 4.512 Unpacking cpp-12 (12.2.0-14) ...\r\n","time":"2024-05-26T20:10:05.177211377Z","args":null}
+{"level":"info","pos":332,"out":"#5 4.941 Selecting previously unselected package cpp.\r\n","time":"2024-05-26T20:10:05.468517251Z","args":null}
+{"level":"info","pos":333,"out":"#5 4.943 Preparing to unpack .../25-cpp_4%3a12.2.0-3_amd64.deb ...\r\n","time":"2024-05-26T20:10:05.618633751Z","args":null}
+{"level":"info","pos":334,"out":"#5 4.943 Unpacking cpp (4:12.2.0-3) ...\r\n","time":"2024-05-26T20:10:05.618649289Z","args":null}
+{"level":"info","pos":335,"out":"#5 4.951 Selecting previously unselected package libcc1-0:amd64.\r\n","time":"2024-05-26T20:10:05.61865069Z","args":null}
+{"level":"info","pos":336,"out":"#5 4.952 Preparing to unpack .../26-libcc1-0_12.2.0-14_amd64.deb ...\r\n","time":"2024-05-26T20:10:05.61865156Z","args":null}
+{"level":"info","pos":337,"out":"#5 4.953 Unpacking libcc1-0:amd64 (12.2.0-14) ...\r\n","time":"2024-05-26T20:10:05.618652437Z","args":null}
+{"level":"info","pos":338,"out":"#5 4.962 Selecting previously unselected package libgomp1:amd64.\r\n","time":"2024-05-26T20:10:05.61865339Z","args":null}
+{"level":"info","pos":339,"out":"#5 4.963 Preparing to unpack .../27-libgomp1_12.2.0-14_amd64.deb ...\r\n","time":"2024-05-26T20:10:05.618654212Z","args":null}
+{"level":"info","pos":340,"out":"#5 4.964 Unpacking libgomp1:amd64 (12.2.0-14) ...\r\n","time":"2024-05-26T20:10:05.618655043Z","args":null}
+{"level":"info","pos":341,"out":"#5 4.978 Selecting previously unselected package libitm1:amd64.\r\n","time":"2024-05-26T20:10:05.61865587Z","args":null}
+{"level":"info","pos":342,"out":"#5 4.979 Preparing to unpack .../28-libitm1_12.2.0-14_amd64.deb ...\r\n","time":"2024-05-26T20:10:05.618656697Z","args":null}
+{"level":"info","pos":343,"out":"#5 4.979 Unpacking libitm1:amd64 (12.2.0-14) ...\r\n","time":"2024-05-26T20:10:05.618657524Z","args":null}
+{"level":"info","pos":344,"out":"#5 4.988 Selecting previously unselected package libatomic1:amd64.\r\n","time":"2024-05-26T20:10:05.618658319Z","args":null}
+{"level":"info","pos":345,"out":"#5 4.989 Preparing to unpack .../29-libatomic1_12.2.0-14_amd64.deb ...\r\n","time":"2024-05-26T20:10:05.618659125Z","args":null}
+{"level":"info","pos":346,"out":"#5 4.990 Unpacking libatomic1:amd64 (12.2.0-14) ...\r\n","time":"2024-05-26T20:10:05.618660269Z","args":null}
+{"level":"info","pos":347,"out":"#5 4.998 Selecting previously unselected package libasan8:amd64.\r\n","time":"2024-05-26T20:10:05.618661075Z","args":null}
+{"level":"info","pos":348,"out":"#5 4.999 Preparing to unpack .../30-libasan8_12.2.0-14_amd64.deb ...\r\n","time":"2024-05-26T20:10:05.618661882Z","args":null}
+{"level":"info","pos":349,"out":"#5 4.999 Unpacking libasan8:amd64 (12.2.0-14) ...\r\n","time":"2024-05-26T20:10:05.618662698Z","args":null}
+{"level":"info","pos":350,"out":"#5 5.128 Selecting previously unselected package liblsan0:amd64.\r\n","time":"2024-05-26T20:10:05.769658911Z","args":null}
+{"level":"info","pos":351,"out":"#5 5.129 Preparing to unpack .../31-liblsan0_12.2.0-14_amd64.deb ...\r\n","time":"2024-05-26T20:10:05.769676473Z","args":null}
+{"level":"info","pos":352,"out":"#5 5.129 Unpacking liblsan0:amd64 (12.2.0-14) ...\r\n","time":"2024-05-26T20:10:05.769677796Z","args":null}
+{"level":"info","pos":353,"out":"#5 5.189 Selecting previously unselected package libtsan2:amd64.\r\n","time":"2024-05-26T20:10:05.769679168Z","args":null}
+{"level":"info","pos":354,"out":"#5 5.190 Preparing to unpack .../32-libtsan2_12.2.0-14_amd64.deb ...\r\n","time":"2024-05-26T20:10:05.769680039Z","args":null}
+{"level":"info","pos":355,"out":"#5 5.190 Unpacking libtsan2:amd64 (12.2.0-14) ...\r\n","time":"2024-05-26T20:10:05.769680884Z","args":null}
+{"level":"info","pos":356,"out":"#5 5.320 Selecting previously unselected package libubsan1:amd64.\r\n","time":"2024-05-26T20:10:05.904031528Z","args":null}
+{"level":"info","pos":357,"out":"#5 5.321 Preparing to unpack .../33-libubsan1_12.2.0-14_amd64.deb ...\r\n","time":"2024-05-26T20:10:05.904048076Z","args":null}
+{"level":"info","pos":358,"out":"#5 5.322 Unpacking libubsan1:amd64 (12.2.0-14) ...\r\n","time":"2024-05-26T20:10:05.904049332Z","args":null}
+{"level":"info","pos":359,"out":"#5 5.377 Selecting previously unselected package libquadmath0:amd64.\r\n","time":"2024-05-26T20:10:05.904050593Z","args":null}
+{"level":"info","pos":360,"out":"#5 5.378 Preparing to unpack .../34-libquadmath0_12.2.0-14_amd64.deb ...\r\n","time":"2024-05-26T20:10:06.045227777Z","args":null}
+{"level":"info","pos":361,"out":"#5 5.378 Unpacking libquadmath0:amd64 (12.2.0-14) ...\r\n","time":"2024-05-26T20:10:06.045248924Z","args":null}
+{"level":"info","pos":362,"out":"#5 5.393 Selecting previously unselected package libgcc-12-dev:amd64.\r\n","time":"2024-05-26T20:10:06.045250433Z","args":null}
+{"level":"info","pos":363,"out":"#5 5.394 Preparing to unpack .../35-libgcc-12-dev_12.2.0-14_amd64.deb ...\r\n","time":"2024-05-26T20:10:06.045252783Z","args":null}
+{"level":"info","pos":364,"out":"#5 5.394 Unpacking libgcc-12-dev:amd64 (12.2.0-14) ...\r\n","time":"2024-05-26T20:10:06.045253734Z","args":null}
+{"level":"info","pos":365,"out":"#5 5.518 Selecting previously unselected package gcc-12.\r\n","time":"2024-05-26T20:10:06.045254569Z","args":null}
+{"level":"info","pos":366,"out":"#5 5.519 Preparing to unpack .../36-gcc-12_12.2.0-14_amd64.deb ...\r\n","time":"2024-05-26T20:10:06.195677204Z","args":null}
+{"level":"info","pos":367,"out":"#5 5.520 Unpacking gcc-12 (12.2.0-14) ...\r\n","time":"2024-05-26T20:10:06.195697617Z","args":null}
+{"level":"info","pos":368,"out":"#5 6.014 Selecting previously unselected package gcc.\r\n","time":"2024-05-26T20:10:06.64666019Z","args":null}
+{"level":"info","pos":369,"out":"#5 6.015 Preparing to unpack .../37-gcc_4%3a12.2.0-3_amd64.deb ...\r\n","time":"2024-05-26T20:10:06.64667806Z","args":null}
+{"level":"info","pos":370,"out":"#5 6.015 Unpacking gcc (4:12.2.0-3) ...\r\n","time":"2024-05-26T20:10:06.646679396Z","args":null}
+{"level":"info","pos":371,"out":"#5 6.025 Selecting previously unselected package libstdc++-12-dev:amd64.\r\n","time":"2024-05-26T20:10:06.64668026Z","args":null}
+{"level":"info","pos":372,"out":"#5 6.026 Preparing to unpack .../38-libstdc++-12-dev_12.2.0-14_amd64.deb ...\r\n","time":"2024-05-26T20:10:06.646681332Z","args":null}
+{"level":"info","pos":373,"out":"#5 6.026 Unpacking libstdc++-12-dev:amd64 (12.2.0-14) ...\r\n","time":"2024-05-26T20:10:06.646682158Z","args":null}
+{"level":"info","pos":374,"out":"#5 6.154 Selecting previously unselected package g++-12.\r\n","time":"2024-05-26T20:10:06.797035095Z","args":null}
+{"level":"info","pos":375,"out":"#5 6.155 Preparing to unpack .../39-g++-12_12.2.0-14_amd64.deb ...\r\n","time":"2024-05-26T20:10:06.797051362Z","args":null}
+{"level":"info","pos":376,"out":"#5 6.156 Unpacking g++-12 (12.2.0-14) ...\r\n","time":"2024-05-26T20:10:06.797052649Z","args":null}
+{"level":"info","pos":377,"out":"#5 6.595 Selecting previously unselected package g++.\r\n","time":"2024-05-26T20:10:07.19884864Z","args":null}
+{"level":"info","pos":378,"out":"#5 6.596 Preparing to unpack .../40-g++_4%3a12.2.0-3_amd64.deb ...\r\n","time":"2024-05-26T20:10:07.198863611Z","args":null}
+{"level":"info","pos":379,"out":"#5 6.597 Unpacking g++ (4:12.2.0-3) ...\r\n","time":"2024-05-26T20:10:07.198866265Z","args":null}
+{"level":"info","pos":380,"out":"#5 6.604 Selecting previously unselected package make.\r\n","time":"2024-05-26T20:10:07.198867272Z","args":null}
+{"level":"info","pos":381,"out":"#5 6.605 Preparing to unpack .../41-make_4.3-4.1_amd64.deb ...\r\n","time":"2024-05-26T20:10:07.198868195Z","args":null}
+{"level":"info","pos":382,"out":"#5 6.606 Unpacking make (4.3-4.1) ...\r\n","time":"2024-05-26T20:10:07.198869132Z","args":null}
+{"level":"info","pos":383,"out":"#5 6.635 Selecting previously unselected package libdpkg-perl.\r\n","time":"2024-05-26T20:10:07.198870113Z","args":null}
+{"level":"info","pos":384,"out":"#5 6.636 Preparing to unpack .../42-libdpkg-perl_1.21.22_all.deb ...\r\n","time":"2024-05-26T20:10:07.198871025Z","args":null}
+{"level":"info","pos":385,"out":"#5 6.637 Unpacking libdpkg-perl (1.21.22) ...\r\n","time":"2024-05-26T20:10:07.198871943Z","args":null}
+{"level":"info","pos":386,"out":"#5 6.670 Selecting previously unselected package patch.\r\n","time":"2024-05-26T20:10:07.19887286Z","args":null}
+{"level":"info","pos":387,"out":"#5 6.672 Preparing to unpack .../43-patch_2.7.6-7_amd64.deb ...\r\n","time":"2024-05-26T20:10:07.198873754Z","args":null}
+{"level":"info","pos":388,"out":"#5 6.672 Unpacking patch (2.7.6-7) ...\r\n","time":"2024-05-26T20:10:07.317189943Z","args":null}
+{"level":"info","pos":389,"out":"#5 6.686 Selecting previously unselected package dpkg-dev.\r\n","time":"2024-05-26T20:10:07.317206808Z","args":null}
+{"level":"info","pos":390,"out":"#5 6.687 Preparing to unpack .../44-dpkg-dev_1.21.22_all.deb ...\r\n","time":"2024-05-26T20:10:07.317208285Z","args":null}
+{"level":"info","pos":391,"out":"#5 6.688 Unpacking dpkg-dev (1.21.22) ...\r\n","time":"2024-05-26T20:10:07.317209184Z","args":null}
+{"level":"info","pos":392,"out":"#5 6.755 Selecting previously unselected package build-essential.\r\n","time":"2024-05-26T20:10:07.317210022Z","args":null}
+{"level":"info","pos":393,"out":"#5 6.756 Preparing to unpack .../45-build-essential_12.9_amd64.deb ...\r\n","time":"2024-05-26T20:10:07.317210922Z","args":null}
+{"level":"info","pos":394,"out":"#5 6.757 Unpacking build-essential (12.9) ...\r\n","time":"2024-05-26T20:10:07.317212185Z","args":null}
+{"level":"info","pos":395,"out":"#5 6.765 Selecting previously unselected package libbrotli1:amd64.\r\n","time":"2024-05-26T20:10:07.317213Z","args":null}
+{"level":"info","pos":396,"out":"#5 6.766 Preparing to unpack .../46-libbrotli1_1.0.9-2+b6_amd64.deb ...\r\n","time":"2024-05-26T20:10:07.317213847Z","args":null}
+{"level":"info","pos":397,"out":"#5 6.767 Unpacking libbrotli1:amd64 (1.0.9-2+b6) ...\r\n","time":"2024-05-26T20:10:07.317214686Z","args":null}
+{"level":"info","pos":398,"out":"#5 6.790 Selecting previously unselected package libsasl2-modules-db:amd64.\r\n","time":"2024-05-26T20:10:07.317215507Z","args":null}
+{"level":"info","pos":399,"out":"#5 6.791 Preparing to unpack .../47-libsasl2-modules-db_2.1.28+dfsg-10_amd64.deb ...\r\n","time":"2024-05-26T20:10:07.419032311Z","args":null}
+{"level":"info","pos":400,"out":"#5 6.792 Unpacking libsasl2-modules-db:amd64 (2.1.28+dfsg-10) ...\r\n","time":"2024-05-26T20:10:07.419068278Z","args":null}
+{"level":"info","pos":401,"out":"#5 6.801 Selecting previously unselected package libsasl2-2:amd64.\r\n","time":"2024-05-26T20:10:07.419125573Z","args":null}
+{"level":"info","pos":402,"out":"#5 6.802 Preparing to unpack .../48-libsasl2-2_2.1.28+dfsg-10_amd64.deb ...\r\n","time":"2024-05-26T20:10:07.419278484Z","args":null}
+{"level":"info","pos":403,"out":"#5 6.803 Unpacking libsasl2-2:amd64 (2.1.28+dfsg-10) ...\r\n","time":"2024-05-26T20:10:07.419280812Z","args":null}
+{"level":"info","pos":404,"out":"#5 6.814 Selecting previously unselected package libldap-2.5-0:amd64.\r\n","time":"2024-05-26T20:10:07.419282744Z","args":null}
+{"level":"info","pos":405,"out":"#5 6.815 Preparing to unpack .../49-libldap-2.5-0_2.5.13+dfsg-5_amd64.deb ...\r\n","time":"2024-05-26T20:10:07.419284531Z","args":null}
+{"level":"info","pos":406,"out":"#5 6.815 Unpacking libldap-2.5-0:amd64 (2.5.13+dfsg-5) ...\r\n","time":"2024-05-26T20:10:07.419286164Z","args":null}
+{"level":"info","pos":407,"out":"#5 6.833 Selecting previously unselected package libnghttp2-14:amd64.\r\n","time":"2024-05-26T20:10:07.419288049Z","args":null}
+{"level":"info","pos":408,"out":"#5 6.835 Preparing to unpack .../50-libnghttp2-14_1.52.0-1+deb12u1_amd64.deb ...\r\n","time":"2024-05-26T20:10:07.419289749Z","args":null}
+{"level":"info","pos":409,"out":"#5 6.835 Unpacking libnghttp2-14:amd64 (1.52.0-1+deb12u1) ...\r\n","time":"2024-05-26T20:10:07.419291504Z","args":null}
+{"level":"info","pos":410,"out":"#5 6.847 Selecting previously unselected package libpsl5:amd64.\r\n","time":"2024-05-26T20:10:07.419293317Z","args":null}
+{"level":"info","pos":411,"out":"#5 6.848 Preparing to unpack .../51-libpsl5_0.21.2-1_amd64.deb ...\r\n","time":"2024-05-26T20:10:07.419295216Z","args":null}
+{"level":"info","pos":412,"out":"#5 6.849 Unpacking libpsl5:amd64 (0.21.2-1) ...\r\n","time":"2024-05-26T20:10:07.419297127Z","args":null}
+{"level":"info","pos":413,"out":"#5 6.860 Selecting previously unselected package librtmp1:amd64.\r\n","time":"2024-05-26T20:10:07.41930339Z","args":null}
+{"level":"info","pos":414,"out":"#5 6.861 Preparing to unpack .../52-librtmp1_2.4+20151223.gitfa8646d.1-2+b2_amd64.deb ...\r\n","time":"2024-05-26T20:10:07.419305499Z","args":null}
+{"level":"info","pos":415,"out":"#5 6.862 Unpacking librtmp1:amd64 (2.4+20151223.gitfa8646d.1-2+b2) ...\r\n","time":"2024-05-26T20:10:07.41930786Z","args":null}
+{"level":"info","pos":416,"out":"#5 6.873 Selecting previously unselected package libssh2-1:amd64.\r\n","time":"2024-05-26T20:10:07.419309787Z","args":null}
+{"level":"info","pos":417,"out":"#5 6.874 Preparing to unpack .../53-libssh2-1_1.10.0-3+b1_amd64.deb ...\r\n","time":"2024-05-26T20:10:07.419311684Z","args":null}
+{"level":"info","pos":418,"out":"#5 6.875 Unpacking libssh2-1:amd64 (1.10.0-3+b1) ...\r\n","time":"2024-05-26T20:10:07.419313637Z","args":null}
+{"level":"info","pos":419,"out":"#5 6.892 Selecting previously unselected package libcurl4:amd64.\r\n","time":"2024-05-26T20:10:07.419315495Z","args":null}
+{"level":"info","pos":420,"out":"#5 6.893 Preparing to unpack .../54-libcurl4_7.88.1-10+deb12u5_amd64.deb ...\r\n","time":"2024-05-26T20:10:07.570012981Z","args":null}
+{"level":"info","pos":421,"out":"#5 6.894 Unpacking libcurl4:amd64 (7.88.1-10+deb12u5) ...\r\n","time":"2024-05-26T20:10:07.570031253Z","args":null}
+{"level":"info","pos":422,"out":"#5 6.919 Selecting previously unselected package curl.\r\n","time":"2024-05-26T20:10:07.57003333Z","args":null}
+{"level":"info","pos":423,"out":"#5 6.920 Preparing to unpack .../55-curl_7.88.1-10+deb12u5_amd64.deb ...\r\n","time":"2024-05-26T20:10:07.570035226Z","args":null}
+{"level":"info","pos":424,"out":"#5 6.920 Unpacking curl (7.88.1-10+deb12u5) ...\r\n","time":"2024-05-26T20:10:07.570036195Z","args":null}
+{"level":"info","pos":425,"out":"#5 6.945 Selecting previously unselected package libcurl3-gnutls:amd64.\r\n","time":"2024-05-26T20:10:07.570037071Z","args":null}
+{"level":"info","pos":426,"out":"#5 6.946 Preparing to unpack .../56-libcurl3-gnutls_7.88.1-10+deb12u5_amd64.deb ...\r\n","time":"2024-05-26T20:10:07.570038014Z","args":null}
+{"level":"info","pos":427,"out":"#5 6.946 Unpacking libcurl3-gnutls:amd64 (7.88.1-10+deb12u5) ...\r\n","time":"2024-05-26T20:10:07.570038966Z","args":null}
+{"level":"info","pos":428,"out":"#5 6.970 Selecting previously unselected package liberror-perl.\r\n","time":"2024-05-26T20:10:07.570039866Z","args":null}
+{"level":"info","pos":429,"out":"#5 6.971 Preparing to unpack .../57-liberror-perl_0.17029-2_all.deb ...\r\n","time":"2024-05-26T20:10:07.570040778Z","args":null}
+{"level":"info","pos":430,"out":"#5 6.973 Unpacking liberror-perl (0.17029-2) ...\r\n","time":"2024-05-26T20:10:07.570041647Z","args":null}
+{"level":"info","pos":431,"out":"#5 6.982 Selecting previously unselected package git-man.\r\n","time":"2024-05-26T20:10:07.570042509Z","args":null}
+{"level":"info","pos":432,"out":"#5 6.983 Preparing to unpack .../58-git-man_1%3a2.39.2-1.1_all.deb ...\r\n","time":"2024-05-26T20:10:07.570043358Z","args":null}
+{"level":"info","pos":433,"out":"#5 6.984 Unpacking git-man (1:2.39.2-1.1) ...\r\n","time":"2024-05-26T20:10:07.570044218Z","args":null}
+{"level":"info","pos":434,"out":"#5 7.052 Selecting previously unselected package git.\r\n","time":"2024-05-26T20:10:07.720178068Z","args":null}
+{"level":"info","pos":435,"out":"#5 7.053 Preparing to unpack .../59-git_1%3a2.39.2-1.1_amd64.deb ...\r\n","time":"2024-05-26T20:10:07.720196375Z","args":null}
+{"level":"info","pos":436,"out":"#5 7.057 Unpacking git (1:2.39.2-1.1) ...\r\n","time":"2024-05-26T20:10:07.720197872Z","args":null}
+{"level":"info","pos":437,"out":"#5 7.279 Selecting previously unselected package libpq5:amd64.\r\n","time":"2024-05-26T20:10:07.826323751Z","args":null}
+{"level":"info","pos":438,"out":"#5 7.280 Preparing to unpack .../60-libpq5_15.6-0+deb12u1_amd64.deb ...\r\n","time":"2024-05-26T20:10:07.826343502Z","args":null}
+{"level":"info","pos":439,"out":"#5 7.281 Unpacking libpq5:amd64 (15.6-0+deb12u1) ...\r\n","time":"2024-05-26T20:10:07.826345841Z","args":null}
+{"level":"info","pos":440,"out":"#5 7.299 Selecting previously unselected package libssl-dev:amd64.\r\n","time":"2024-05-26T20:10:07.826347511Z","args":null}
+{"level":"info","pos":441,"out":"#5 7.300 Preparing to unpack .../61-libssl-dev_3.0.11-1~deb12u2_amd64.deb ...\r\n","time":"2024-05-26T20:10:07.947497279Z","args":null}
+{"level":"info","pos":442,"out":"#5 7.301 Unpacking libssl-dev:amd64 (3.0.11-1~deb12u2) ...\r\n","time":"2024-05-26T20:10:07.947513691Z","args":null}
+{"level":"info","pos":443,"out":"#5 7.420 Selecting previously unselected package libpq-dev.\r\n","time":"2024-05-26T20:10:07.947515259Z","args":null}
+{"level":"info","pos":444,"out":"#5 7.422 Preparing to unpack .../62-libpq-dev_15.6-0+deb12u1_amd64.deb ...\r\n","time":"2024-05-26T20:10:08.048373795Z","args":null}
+{"level":"info","pos":445,"out":"#5 7.422 Unpacking libpq-dev (15.6-0+deb12u1) ...\r\n","time":"2024-05-26T20:10:08.048389473Z","args":null}
+{"level":"info","pos":446,"out":"#5 7.443 Setting up libpsl5:amd64 (0.21.2-1) ...\r\n","time":"2024-05-26T20:10:08.048390868Z","args":null}
+{"level":"info","pos":447,"out":"#5 7.445 Setting up libbrotli1:amd64 (1.0.9-2+b6) ...\r\n","time":"2024-05-26T20:10:08.048391809Z","args":null}
+{"level":"info","pos":448,"out":"#5 7.446 Setting up binutils-common:amd64 (2.40-2) ...\r\n","time":"2024-05-26T20:10:08.048392921Z","args":null}
+{"level":"info","pos":449,"out":"#5 7.447 Setting up libnghttp2-14:amd64 (1.52.0-1+deb12u1) ...\r\n","time":"2024-05-26T20:10:08.048393767Z","args":null}
+{"level":"info","pos":450,"out":"#5 7.449 Setting up linux-libc-dev:amd64 (6.1.90-1) ...\r\n","time":"2024-05-26T20:10:08.048394611Z","args":null}
+{"level":"info","pos":451,"out":"#5 7.450 Setting up libctf-nobfd0:amd64 (2.40-2) ...\r\n","time":"2024-05-26T20:10:08.048395455Z","args":null}
+{"level":"info","pos":452,"out":"#5 7.451 Setting up libgomp1:amd64 (12.2.0-14) ...\r\n","time":"2024-05-26T20:10:08.048396286Z","args":null}
+{"level":"info","pos":453,"out":"#5 7.452 Setting up bzip2 (1.0.8-5+b1) ...\r\n","time":"2024-05-26T20:10:08.048397111Z","args":null}
+{"level":"info","pos":454,"out":"#5 7.452 Setting up libjansson4:amd64 (2.14-2) ...\r\n","time":"2024-05-26T20:10:08.048397945Z","args":null}
+{"level":"info","pos":455,"out":"#5 7.454 Setting up libsasl2-modules-db:amd64 (2.1.28+dfsg-10) ...\r\n","time":"2024-05-26T20:10:08.048398786Z","args":null}
+{"level":"info","pos":456,"out":"#5 7.455 Setting up perl-modules-5.36 (5.36.0-7+deb12u1) ...\r\n","time":"2024-05-26T20:10:08.048399792Z","args":null}
+{"level":"info","pos":457,"out":"#5 7.456 Setting up libtirpc-dev:amd64 (1.3.3+ds-1) ...\r\n","time":"2024-05-26T20:10:08.048400645Z","args":null}
+{"level":"info","pos":458,"out":"#5 7.457 Setting up rpcsvc-proto (1.4.3-1) ...\r\n","time":"2024-05-26T20:10:08.048401488Z","args":null}
+{"level":"info","pos":459,"out":"#5 7.458 Setting up make (4.3-4.1) ...\r\n","time":"2024-05-26T20:10:08.048402408Z","args":null}
+{"level":"info","pos":460,"out":"#5 7.459 Setting up libmpfr6:amd64 (4.2.0-1) ...\r\n","time":"2024-05-26T20:10:08.048403229Z","args":null}
+{"level":"info","pos":461,"out":"#5 7.460 Setting up librtmp1:amd64 (2.4+20151223.gitfa8646d.1-2+b2) ...\r\n","time":"2024-05-26T20:10:08.048404053Z","args":null}
+{"level":"info","pos":462,"out":"#5 7.460 Setting up xz-utils (5.4.1-0.2) ...\r\n","time":"2024-05-26T20:10:08.048404908Z","args":null}
+{"level":"info","pos":463,"out":"#5 7.463 update-alternatives: using /usr/bin/xz to provide /usr/bin/lzma (lzma) in auto mode\r\n","time":"2024-05-26T20:10:08.048405727Z","args":null}
+{"level":"info","pos":464,"out":"#5 7.463 update-alternatives: warning: skip creation of /usr/share/man/man1/lzma.1.gz because associated file /usr/share/man/man1/xz.1.gz (of link group lzma) doesn't exist\r\n","time":"2024-05-26T20:10:08.048407105Z","args":null}
+{"level":"info","pos":465,"out":"#5 7.463 update-alternatives: warning: skip creation of /usr/share/man/man1/unlzma.1.gz because associated file /usr/share/man/man1/unxz.1.gz (of link group lzma) doesn't exist\r\n","time":"2024-05-26T20:10:08.048410173Z","args":null}
+{"level":"info","pos":466,"out":"#5 7.463 update-alternatives: warning: skip creation of /usr/share/man/man1/lzcat.1.gz because associated file /usr/share/man/man1/xzcat.1.gz (of link group lzma) doesn't exist\r\n","time":"2024-05-26T20:10:08.04841121Z","args":null}
+{"level":"info","pos":467,"out":"#5 7.463 update-alternatives: warning: skip creation of /usr/share/man/man1/lzmore.1.gz because associated file /usr/share/man/man1/xzmore.1.gz (of link group lzma) doesn't exist\r\n","time":"2024-05-26T20:10:08.048412192Z","args":null}
+{"level":"info","pos":468,"out":"#5 7.463 update-alternatives: warning: skip creation of /usr/share/man/man1/lzless.1.gz because associated file /usr/share/man/man1/xzless.1.gz (of link group lzma) doesn't exist\r\n","time":"2024-05-26T20:10:08.048413242Z","args":null}
+{"level":"info","pos":469,"out":"#5 7.463 update-alternatives: warning: skip creation of /usr/share/man/man1/lzdiff.1.gz because associated file /usr/share/man/man1/xzdiff.1.gz (of link group lzma) doesn't exist\r\n","time":"2024-05-26T20:10:08.048414215Z","args":null}
+{"level":"info","pos":470,"out":"#5 7.463 update-alternatives: warning: skip creation of /usr/share/man/man1/lzcmp.1.gz because associated file /usr/share/man/man1/xzcmp.1.gz (of link group lzma) doesn't exist\r\n","time":"2024-05-26T20:10:08.048415134Z","args":null}
+{"level":"info","pos":471,"out":"#5 7.463 update-alternatives: warning: skip creation of /usr/share/man/man1/lzgrep.1.gz because associated file /usr/share/man/man1/xzgrep.1.gz (of link group lzma) doesn't exist\r\n","time":"2024-05-26T20:10:08.048416055Z","args":null}
+{"level":"info","pos":472,"out":"#5 7.463 update-alternatives: warning: skip creation of /usr/share/man/man1/lzegrep.1.gz because associated file /usr/share/man/man1/xzegrep.1.gz (of link group lzma) doesn't exist\r\n","time":"2024-05-26T20:10:08.048416974Z","args":null}
+{"level":"info","pos":473,"out":"#5 7.463 update-alternatives: warning: skip creation of /usr/share/man/man1/lzfgrep.1.gz because associated file /usr/share/man/man1/xzfgrep.1.gz (of link group lzma) doesn't exist\r\n","time":"2024-05-26T20:10:08.048417888Z","args":null}
+{"level":"info","pos":474,"out":"#5 7.465 Setting up libquadmath0:amd64 (12.2.0-14) ...\r\n","time":"2024-05-26T20:10:08.048418812Z","args":null}
+{"level":"info","pos":475,"out":"#5 7.466 Setting up libssl-dev:amd64 (3.0.11-1~deb12u2) ...\r\n","time":"2024-05-26T20:10:08.048419652Z","args":null}
+{"level":"info","pos":476,"out":"#5 7.467 Setting up libmpc3:amd64 (1.3.1-1) ...\r\n","time":"2024-05-26T20:10:08.048420492Z","args":null}
+{"level":"info","pos":477,"out":"#5 7.468 Setting up libatomic1:amd64 (12.2.0-14) ...\r\n","time":"2024-05-26T20:10:08.048421334Z","args":null}
+{"level":"info","pos":478,"out":"#5 7.469 Setting up patch (2.7.6-7) ...\r\n","time":"2024-05-26T20:10:08.048422183Z","args":null}
+{"level":"info","pos":479,"out":"#5 7.470 Setting up libgdbm-compat4:amd64 (1.23-3) ...\r\n","time":"2024-05-26T20:10:08.048423005Z","args":null}
+{"level":"info","pos":480,"out":"#5 7.472 Setting up libsasl2-2:amd64 (2.1.28+dfsg-10) ...\r\n","time":"2024-05-26T20:10:08.048423835Z","args":null}
+{"level":"info","pos":481,"out":"#5 7.474 Setting up libubsan1:amd64 (12.2.0-14) ...\r\n","time":"2024-05-26T20:10:08.048424664Z","args":null}
+{"level":"info","pos":482,"out":"#5 7.475 Setting up libnsl-dev:amd64 (1.3.0-2) ...\r\n","time":"2024-05-26T20:10:08.048425501Z","args":null}
+{"level":"info","pos":483,"out":"#5 7.476 Setting up libcrypt-dev:amd64 (1:4.4.33-2) ...\r\n","time":"2024-05-26T20:10:08.048426326Z","args":null}
+{"level":"info","pos":484,"out":"#5 7.480 Setting up libasan8:amd64 (12.2.0-14) ...\r\n","time":"2024-05-26T20:10:08.048427177Z","args":null}
+{"level":"info","pos":485,"out":"#5 7.481 Setting up git-man (1:2.39.2-1.1) ...\r\n","time":"2024-05-26T20:10:08.048427987Z","args":null}
+{"level":"info","pos":486,"out":"#5 7.482 Setting up libssh2-1:amd64 (1.10.0-3+b1) ...\r\n","time":"2024-05-26T20:10:08.048428814Z","args":null}
+{"level":"info","pos":487,"out":"#5 7.483 Setting up libtsan2:amd64 (12.2.0-14) ...\r\n","time":"2024-05-26T20:10:08.048429665Z","args":null}
+{"level":"info","pos":488,"out":"#5 7.485 Setting up libbinutils:amd64 (2.40-2) ...\r\n","time":"2024-05-26T20:10:08.048430498Z","args":null}
+{"level":"info","pos":489,"out":"#5 7.486 Setting up libisl23:amd64 (0.25-1.1) ...\r\n","time":"2024-05-26T20:10:08.048444737Z","args":null}
+{"level":"info","pos":490,"out":"#5 7.487 Setting up libc-dev-bin (2.36-9+deb12u7) ...\r\n","time":"2024-05-26T20:10:08.048445732Z","args":null}
+{"level":"info","pos":491,"out":"#5 7.488 Setting up libcc1-0:amd64 (12.2.0-14) ...\r\n","time":"2024-05-26T20:10:08.048446602Z","args":null}
+{"level":"info","pos":492,"out":"#5 7.489 Setting up libperl5.36:amd64 (5.36.0-7+deb12u1) ...\r\n","time":"2024-05-26T20:10:08.048447451Z","args":null}
+{"level":"info","pos":493,"out":"#5 7.491 Setting up liblsan0:amd64 (12.2.0-14) ...\r\n","time":"2024-05-26T20:10:08.048448312Z","args":null}
+{"level":"info","pos":494,"out":"#5 7.492 Setting up libitm1:amd64 (12.2.0-14) ...\r\n","time":"2024-05-26T20:10:08.048449187Z","args":null}
+{"level":"info","pos":495,"out":"#5 7.493 Setting up libctf0:amd64 (2.40-2) ...\r\n","time":"2024-05-26T20:10:08.048450079Z","args":null}
+{"level":"info","pos":496,"out":"#5 7.494 Setting up cpp-12 (12.2.0-14) ...\r\n","time":"2024-05-26T20:10:08.048450944Z","args":null}
+{"level":"info","pos":497,"out":"#5 7.495 Setting up libldap-2.5-0:amd64 (2.5.13+dfsg-5) ...\r\n","time":"2024-05-26T20:10:08.048451783Z","args":null}
+{"level":"info","pos":498,"out":"#5 7.496 Setting up perl (5.36.0-7+deb12u1) ...\r\n","time":"2024-05-26T20:10:08.048452615Z","args":null}
+{"level":"info","pos":499,"out":"#5 7.501 Setting up libgprofng0:amd64 (2.40-2) ...\r\n","time":"2024-05-26T20:10:08.048453616Z","args":null}
+{"level":"info","pos":500,"out":"#5 7.502 Setting up libgcc-12-dev:amd64 (12.2.0-14) ...\r\n","time":"2024-05-26T20:10:08.048454476Z","args":null}
+{"level":"info","pos":501,"out":"#5 7.503 Setting up libdpkg-perl (1.21.22) ...\r\n","time":"2024-05-26T20:10:08.04845534Z","args":null}
+{"level":"info","pos":502,"out":"#5 7.504 Setting up cpp (4:12.2.0-3) ...\r\n","time":"2024-05-26T20:10:08.048456205Z","args":null}
+{"level":"info","pos":503,"out":"#5 7.507 Setting up libcurl4:amd64 (7.88.1-10+deb12u5) ...\r\n","time":"2024-05-26T20:10:08.048457022Z","args":null}
+{"level":"info","pos":504,"out":"#5 7.508 Setting up libc6-dev:amd64 (2.36-9+deb12u7) ...\r\n","time":"2024-05-26T20:10:08.048457859Z","args":null}
+{"level":"info","pos":505,"out":"#5 7.509 Setting up curl (7.88.1-10+deb12u5) ...\r\n","time":"2024-05-26T20:10:08.048458744Z","args":null}
+{"level":"info","pos":506,"out":"#5 7.510 Setting up binutils-x86-64-linux-gnu (2.40-2) ...\r\n","time":"2024-05-26T20:10:08.048460623Z","args":null}
+{"level":"info","pos":507,"out":"#5 7.511 Setting up libstdc++-12-dev:amd64 (12.2.0-14) ...\r\n","time":"2024-05-26T20:10:08.048461532Z","args":null}
+{"level":"info","pos":508,"out":"#5 7.512 Setting up libpq5:amd64 (15.6-0+deb12u1) ...\r\n","time":"2024-05-26T20:10:08.048462373Z","args":null}
+{"level":"info","pos":509,"out":"#5 7.513 Setting up libpq-dev (15.6-0+deb12u1) ...\r\n","time":"2024-05-26T20:10:08.048463219Z","args":null}
+{"level":"info","pos":510,"out":"#5 7.514 Setting up libcurl3-gnutls:amd64 (7.88.1-10+deb12u5) ...\r\n","time":"2024-05-26T20:10:08.048464063Z","args":null}
+{"level":"info","pos":511,"out":"#5 7.515 Setting up binutils (2.40-2) ...\r\n","time":"2024-05-26T20:10:08.048464933Z","args":null}
+{"level":"info","pos":512,"out":"#5 7.516 Setting up dpkg-dev (1.21.22) ...\r\n","time":"2024-05-26T20:10:08.048465753Z","args":null}
+{"level":"info","pos":513,"out":"#5 7.518 Setting up liberror-perl (0.17029-2) ...\r\n","time":"2024-05-26T20:10:08.048472593Z","args":null}
+{"level":"info","pos":514,"out":"#5 7.520 Setting up gcc-12 (12.2.0-14) ...\r\n","time":"2024-05-26T20:10:08.048473634Z","args":null}
+{"level":"info","pos":515,"out":"#5 7.521 Setting up git (1:2.39.2-1.1) ...\r\n","time":"2024-05-26T20:10:08.048474502Z","args":null}
+{"level":"info","pos":516,"out":"#5 7.525 Setting up g++-12 (12.2.0-14) ...\r\n","time":"2024-05-26T20:10:08.199326973Z","args":null}
+{"level":"info","pos":517,"out":"#5 7.526 Setting up gcc (4:12.2.0-3) ...\r\n","time":"2024-05-26T20:10:08.199345997Z","args":null}
+{"level":"info","pos":518,"out":"#5 7.531 Setting up g++ (4:12.2.0-3) ...\r\n","time":"2024-05-26T20:10:08.199347435Z","args":null}
+{"level":"info","pos":519,"out":"#5 7.533 update-alternatives: using /usr/bin/g++ to provide /usr/bin/c++ (c++) in auto mode\r\n","time":"2024-05-26T20:10:08.199348488Z","args":null}
+{"level":"info","pos":520,"out":"#5 7.534 Setting up build-essential (12.9) ...\r\n","time":"2024-05-26T20:10:08.199350422Z","args":null}
+{"level":"info","pos":521,"out":"#5 7.535 Processing triggers for libc-bin (2.36-9+deb12u7) ...\r\n","time":"2024-05-26T20:10:08.199351368Z","args":null}
+{"level":"info","pos":522,"out":"#5 DONE 7.8s\n","time":"2024-05-26T20:10:08.30740675Z","args":null}
+{"level":"info","pos":523,"out":"\n","time":"2024-05-26T20:10:08.457493307Z","args":null}
+{"level":"info","pos":524,"out":"#6 [3/5] WORKDIR /cdf\n","time":"2024-05-26T20:10:08.4575175Z","args":null}
+{"level":"info","pos":525,"out":"#6 sha256:59ae08bdc36ac61c8d48ec3a4bbfd214bf02af3a6af11f73b139c1cf0a20b2ce\n","time":"2024-05-26T20:10:08.45752013Z","args":null}
+{"level":"info","pos":526,"out":"#6 DONE 0.0s\n","time":"2024-05-26T20:10:08.457525364Z","args":null}
+{"level":"info","pos":527,"out":"\n","time":"2024-05-26T20:10:08.457526854Z","args":null}
+{"level":"info","pos":528,"out":"#8 [4/5] COPY . .\n","time":"2024-05-26T20:10:08.457528277Z","args":null}
+{"level":"info","pos":529,"out":"#8 sha256:0eba76c77a203ccca54c70a8ab11b28814430521e4c815cf0876013235c02c95\n","time":"2024-05-26T20:10:08.457529532Z","args":null}
+{"level":"info","pos":530,"out":"#8 DONE 0.0s\n","time":"2024-05-26T20:10:08.457542753Z","args":null}
+{"level":"info","pos":531,"out":"\n","time":"2024-05-26T20:10:08.457544294Z","args":null}
+{"level":"info","pos":532,"out":"#9 [5/5] RUN pip install --no-cache-dir -r requirements.txt   \u0026\u0026 poetry config virtualenvs.create false   \u0026\u0026 poetry install --no-cache --no-interaction --compile   \u0026\u0026 mkdir -p .cache ~/.postgresql workspaces/datateam/.cache   \u0026\u0026 cp certs/* ~/.postgresql/   \u0026\u0026 chmod 600 ~/.postgresql/*\n","time":"2024-05-26T20:10:08.457545669Z","args":null}
+{"level":"info","pos":533,"out":"#9 sha256:0686955e5a3f22b1ccfd5b5017f8781a226094765c05b001396dfc6108a98e60\n","time":"2024-05-26T20:10:08.457551451Z","args":null}
+{"level":"info","pos":534,"out":"#9 1.194 Collecting poetry@ git+https://github.com/radoering/poetry.git@pep621-support\n","time":"2024-05-26T20:10:09.660850589Z","args":null}
+{"level":"info","pos":535,"out":"#9 1.194   Cloning https://github.com/radoering/poetry.git (to revision pep621-support) to /tmp/pip-install-cvhnr677/poetry_03e2b839a27b43bc985bc6a2f896f6fd\n","time":"2024-05-26T20:10:09.660925389Z","args":null}
+{"level":"info","pos":536,"out":"#9 1.195   Running command git clone --filter=blob:none --quiet https://github.com/radoering/poetry.git /tmp/pip-install-cvhnr677/poetry_03e2b839a27b43bc985bc6a2f896f6fd\n","time":"2024-05-26T20:10:09.660937514Z","args":null}
+{"level":"info","pos":537,"out":"#9 2.387   Running command git checkout -b pep621-support --track origin/pep621-support\n","time":"2024-05-26T20:10:10.864680762Z","args":null}
+{"level":"info","pos":538,"out":"#9 2.738   Switched to a new branch 'pep621-support'\n","time":"2024-05-26T20:10:11.165054022Z","args":null}
+{"level":"info","pos":539,"out":"#9 2.738   branch 'pep621-support' set up to track 'origin/pep621-support'.\n","time":"2024-05-26T20:10:11.165069594Z","args":null}
+{"level":"info","pos":540,"out":"#9 2.738   Resolved https://github.com/radoering/poetry.git to commit 52b65aca9746f9c940bf684e833a14b88b0ee038\n","time":"2024-05-26T20:10:11.165071143Z","args":null}
+{"level":"info","pos":541,"out":"#9 2.742   Installing build dependencies: started\n","time":"2024-05-26T20:10:11.165073829Z","args":null}
+{"level":"info","pos":542,"out":"#9 3.633   Installing build dependencies: finished with status 'done'\n","time":"2024-05-26T20:10:12.024788464Z","args":null}
+{"level":"info","pos":543,"out":"#9 3.634   Getting requirements to build wheel: started\n","time":"2024-05-26T20:10:12.024805794Z","args":null}
+{"level":"info","pos":544,"out":"#9 3.688   Getting requirements to build wheel: finished with status 'done'\n","time":"2024-05-26T20:10:12.024807136Z","args":null}
+{"level":"info","pos":545,"out":"#9 3.689   Preparing metadata (pyproject.toml): started\n","time":"2024-05-26T20:10:12.175522551Z","args":null}
+{"level":"info","pos":546,"out":"#9 3.851   Preparing metadata (pyproject.toml): finished with status 'done'\n","time":"2024-05-26T20:10:12.326788815Z","args":null}
+{"level":"info","pos":547,"out":"#9 3.868 Collecting poetry-core@ git+https://github.com/radoering/poetry-core.git@pep621-support\n","time":"2024-05-26T20:10:12.326824955Z","args":null}
+{"level":"info","pos":548,"out":"#9 3.868   Cloning https://github.com/radoering/poetry-core.git (to revision pep621-support) to /tmp/pip-install-cvhnr677/poetry-core_4e8efe0366c741c58ee3a17df53abf9e\n","time":"2024-05-26T20:10:12.326832967Z","args":null}
+{"level":"info","pos":549,"out":"#9 3.869   Running command git clone --filter=blob:none --quiet https://github.com/radoering/poetry-core.git /tmp/pip-install-cvhnr677/poetry-core_4e8efe0366c741c58ee3a17df53abf9e\n","time":"2024-05-26T20:10:12.326838135Z","args":null}
+{"level":"info","pos":550,"out":"#9 4.674   Running command git checkout -b pep621-support --track origin/pep621-support\n","time":"2024-05-26T20:10:13.079203496Z","args":null}
+{"level":"info","pos":551,"out":"#9 4.997   Switched to a new branch 'pep621-support'\n","time":"2024-05-26T20:10:13.33357613Z","args":null}
+{"level":"info","pos":552,"out":"#9 4.997   branch 'pep621-support' set up to track 'origin/pep621-support'.\n","time":"2024-05-26T20:10:13.484160899Z","args":null}
+{"level":"info","pos":553,"out":"#9 4.998   Resolved https://github.com/radoering/poetry-core.git to commit c80dcc53793316104862d2c3ac888dde3c263b08\n","time":"2024-05-26T20:10:13.484180303Z","args":null}
+{"level":"info","pos":554,"out":"#9 5.001   Getting requirements to build wheel: started\n","time":"2024-05-26T20:10:13.48418273Z","args":null}
+{"level":"info","pos":555,"out":"#9 5.084   Getting requirements to build wheel: finished with status 'done'\n","time":"2024-05-26T20:10:13.484184702Z","args":null}
+{"level":"info","pos":556,"out":"#9 5.085   Preparing metadata (pyproject.toml): started\n","time":"2024-05-26T20:10:13.484186428Z","args":null}
+{"level":"info","pos":557,"out":"#9 5.296   Preparing metadata (pyproject.toml): finished with status 'done'\n","time":"2024-05-26T20:10:13.632325219Z","args":null}
+{"level":"info","pos":558,"out":"#9 5.405 Collecting installer\u003c0.8.0,\u003e=0.7.0\n","time":"2024-05-26T20:10:13.741157675Z","args":null}
+{"level":"info","pos":559,"out":"#9 5.581   Downloading installer-0.7.0-py3-none-any.whl (453 kB)\n","time":"2024-05-26T20:10:14.042624844Z","args":null}
+{"level":"info","pos":560,"out":"#9 5.642      ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 453.8/453.8 kB 7.8 MB/s eta 0:00:00\n","time":"2024-05-26T20:10:14.04264548Z","args":null}
+{"level":"info","pos":561,"out":"#9 5.768 Collecting virtualenv\u003c21.0.0,\u003e=20.23.0\n","time":"2024-05-26T20:10:14.170670339Z","args":null}
+{"level":"info","pos":562,"out":"#9 5.785   Downloading virtualenv-20.26.2-py3-none-any.whl (3.9 MB)\n","time":"2024-05-26T20:10:14.170692857Z","args":null}
+{"level":"info","pos":563,"out":"#9 5.834      ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 3.9/3.9 MB 83.2 MB/s eta 0:00:00\n","time":"2024-05-26T20:10:14.288566405Z","args":null}
+{"level":"info","pos":564,"out":"#9 5.875 Collecting fastjsonschema\u003c3.0.0,\u003e=2.18.0\n","time":"2024-05-26T20:10:14.310063303Z","args":null}
+{"level":"info","pos":565,"out":"#9 5.894   Downloading fastjsonschema-2.19.1-py3-none-any.whl (23 kB)\n","time":"2024-05-26T20:10:14.310092368Z","args":null}
+{"level":"info","pos":566,"out":"#9 5.933 Collecting pexpect\u003c5.0.0,\u003e=4.7.0\n","time":"2024-05-26T20:10:14.310096674Z","args":null}
+{"level":"info","pos":567,"out":"#9 5.952   Downloading pexpect-4.9.0-py2.py3-none-any.whl (63 kB)\n","time":"2024-05-26T20:10:14.310111712Z","args":null}
+{"level":"info","pos":568,"out":"#9 5.957      ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 63.8/63.8 kB 143.4 MB/s eta 0:00:00\n","time":"2024-05-26T20:10:14.439274984Z","args":null}
+{"level":"info","pos":569,"out":"#9 6.183 Collecting dulwich\u003c0.22.0,\u003e=0.21.2\n","time":"2024-05-26T20:10:14.54146836Z","args":null}
+{"level":"info","pos":570,"out":"#9 6.202   Downloading dulwich-0.21.7-cp310-cp310-manylinux_2_17_x86_64.manylinux2014_x86_64.whl (514 kB)\n","time":"2024-05-26T20:10:14.541483818Z","args":null}
+{"level":"info","pos":571,"out":"#9 6.205      ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 514.7/514.7 kB 432.3 MB/s eta 0:00:00\n","time":"2024-05-26T20:10:14.676252125Z","args":null}
+{"level":"info","pos":572,"out":"#9 6.279 Collecting keyring\u003c25.0.0,\u003e=24.3.1\n","time":"2024-05-26T20:10:14.676268599Z","args":null}
+{"level":"info","pos":573,"out":"#9 6.296   Downloading keyring-24.3.1-py3-none-any.whl (38 kB)\n","time":"2024-05-26T20:10:14.676269991Z","args":null}
+{"level":"info","pos":574,"out":"#9 6.340 Collecting platformdirs\u003c5,\u003e=3.0.0\n","time":"2024-05-26T20:10:14.676271235Z","args":null}
+{"level":"info","pos":575,"out":"#9 6.358   Downloading platformdirs-4.2.2-py3-none-any.whl (18 kB)\n","time":"2024-05-26T20:10:14.80624665Z","args":null}
+{"level":"info","pos":576,"out":"#9 6.398 Collecting tomli\u003c3.0.0,\u003e=2.0.1\n","time":"2024-05-26T20:10:14.806263139Z","args":null}
+{"level":"info","pos":577,"out":"#9 6.416   Downloading tomli-2.0.1-py3-none-any.whl (12 kB)\n","time":"2024-05-26T20:10:14.806264901Z","args":null}
+{"level":"info","pos":578,"out":"#9 6.470 Collecting cleo\u003c3.0.0,\u003e=2.1.0\n","time":"2024-05-26T20:10:14.806265825Z","args":null}
+{"level":"info","pos":579,"out":"#9 6.488   Downloading cleo-2.1.0-py3-none-any.whl (78 kB)\n","time":"2024-05-26T20:10:14.927300875Z","args":null}
+{"level":"info","pos":580,"out":"#9 6.491      ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 78.7/78.7 kB 228.1 MB/s eta 0:00:00\n","time":"2024-05-26T20:10:14.927316514Z","args":null}
+{"level":"info","pos":581,"out":"#9 6.524 Collecting cachecontrol[filecache]\u003c0.15.0,\u003e=0.14.0\n","time":"2024-05-26T20:10:14.927320714Z","args":null}
+{"level":"info","pos":582,"out":"#9 6.542   Downloading cachecontrol-0.14.0-py3-none-any.whl (22 kB)\n","time":"2024-05-26T20:10:14.927321881Z","args":null}
+{"level":"info","pos":583,"out":"#9 6.591 Collecting packaging\u003e=24.0\n","time":"2024-05-26T20:10:14.927322764Z","args":null}
+{"level":"info","pos":584,"out":"#9 6.609   Downloading packaging-24.0-py3-none-any.whl (53 kB)\n","time":"2024-05-26T20:10:15.027449646Z","args":null}
+{"level":"info","pos":585,"out":"#9 6.611      ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 53.5/53.5 kB 202.8 MB/s eta 0:00:00\n","time":"2024-05-26T20:10:15.027471213Z","args":null}
+{"level":"info","pos":586,"out":"#9 6.671 Collecting requests\u003c3.0,\u003e=2.26\n","time":"2024-05-26T20:10:15.027473361Z","args":null}
+{"level":"info","pos":587,"out":"#9 6.689   Downloading requests-2.32.2-py3-none-any.whl (63 kB)\n","time":"2024-05-26T20:10:15.027474943Z","args":null}
+{"level":"info","pos":588,"out":"#9 6.691      ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 63.9/63.9 kB 322.8 MB/s eta 0:00:00\n","time":"2024-05-26T20:10:15.137499063Z","args":null}
+{"level":"info","pos":589,"out":"#9 6.731 Collecting shellingham\u003c2.0,\u003e=1.5\n","time":"2024-05-26T20:10:15.137538048Z","args":null}
+{"level":"info","pos":590,"out":"#9 6.748   Downloading shellingham-1.5.4-py2.py3-none-any.whl (9.8 kB)\n","time":"2024-05-26T20:10:15.137545311Z","args":null}
+{"level":"info","pos":591,"out":"#9 6.782 Collecting pyproject-hooks\u003c2.0.0,\u003e=1.0.0\n","time":"2024-05-26T20:10:15.137549011Z","args":null}
+{"level":"info","pos":592,"out":"#9 6.801   Downloading pyproject_hooks-1.1.0-py3-none-any.whl (9.2 kB)\n","time":"2024-05-26T20:10:15.137552311Z","args":null}
+{"level":"info","pos":593,"out":"#9 6.851 Collecting pkginfo\u003c2.0,\u003e=1.10\n","time":"2024-05-26T20:10:15.248942189Z","args":null}
+{"level":"info","pos":594,"out":"#9 6.869   Downloading pkginfo-1.10.0-py3-none-any.whl (30 kB)\n","time":"2024-05-26T20:10:15.24896141Z","args":null}
+{"level":"info","pos":595,"out":"#9 6.913 Collecting poetry-plugin-export\u003c2.0.0,\u003e=1.8.0\n","time":"2024-05-26T20:10:15.24896356Z","args":null}
+{"level":"info","pos":596,"out":"#9 6.931   Downloading poetry_plugin_export-1.8.0-py3-none-any.whl (10 kB)\n","time":"2024-05-26T20:10:15.372518273Z","args":null}
+{"level":"info","pos":597,"out":"#9 6.979 Collecting build\u003c2.0.0,\u003e=1.2.1\n","time":"2024-05-26T20:10:15.372536256Z","args":null}
+{"level":"info","pos":598,"out":"#9 6.996   Downloading build-1.2.1-py3-none-any.whl (21 kB)\n","time":"2024-05-26T20:10:15.37253914Z","args":null}
+{"level":"info","pos":599,"out":"#9 7.036 Collecting requests-toolbelt\u003c2.0.0,\u003e=1.0.0\n","time":"2024-05-26T20:10:15.372541218Z","args":null}
+{"level":"info","pos":600,"out":"#9 7.055   Downloading requests_toolbelt-1.0.0-py2.py3-none-any.whl (54 kB)\n","time":"2024-05-26T20:10:15.522636614Z","args":null}
+{"level":"info","pos":601,"out":"#9 7.060      ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 54.5/54.5 kB 118.7 MB/s eta 0:00:00\n","time":"2024-05-26T20:10:15.522659123Z","args":null}
+{"level":"info","pos":602,"out":"#9 7.119 Collecting tomlkit\u003c1.0.0,\u003e=0.11.4\n","time":"2024-05-26T20:10:15.52266128Z","args":null}
+{"level":"info","pos":603,"out":"#9 7.136   Downloading tomlkit-0.12.5-py3-none-any.whl (37 kB)\n","time":"2024-05-26T20:10:15.522662636Z","args":null}
+{"level":"info","pos":604,"out":"#9 7.187 Collecting trove-classifiers\u003e=2022.5.19\n","time":"2024-05-26T20:10:15.673296099Z","args":null}
+{"level":"info","pos":605,"out":"#9 7.205   Downloading trove_classifiers-2024.5.22-py3-none-any.whl (13 kB)\n","time":"2024-05-26T20:10:15.673314621Z","args":null}
+{"level":"info","pos":606,"out":"#9 7.388 Collecting msgpack\u003c2.0.0,\u003e=0.5.2\n","time":"2024-05-26T20:10:15.790143581Z","args":null}
+{"level":"info","pos":607,"out":"#9 7.407   Downloading msgpack-1.0.8-cp310-cp310-manylinux_2_17_x86_64.manylinux2014_x86_64.whl (385 kB)\n","time":"2024-05-26T20:10:15.79016212Z","args":null}
+{"level":"info","pos":608,"out":"#9 7.410      ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 385.1/385.1 kB 434.0 MB/s eta 0:00:00\n","time":"2024-05-26T20:10:15.790164005Z","args":null}
+{"level":"info","pos":609,"out":"#9 7.454 Collecting filelock\u003e=3.8.0\n","time":"2024-05-26T20:10:15.790166045Z","args":null}
+{"level":"info","pos":610,"out":"#9 7.471   Downloading filelock-3.14.0-py3-none-any.whl (12 kB)\n","time":"2024-05-26T20:10:15.940935228Z","args":null}
+{"level":"info","pos":611,"out":"#9 8.533 Collecting rapidfuzz\u003c4.0.0,\u003e=3.0.0\n","time":"2024-05-26T20:10:16.955596556Z","args":null}
+{"level":"info","pos":612,"out":"#9 8.552   Downloading rapidfuzz-3.9.1-cp310-cp310-manylinux_2_17_x86_64.manylinux2014_x86_64.whl (3.4 MB)\n","time":"2024-05-26T20:10:16.955619923Z","args":null}
+{"level":"info","pos":613,"out":"#9 8.571      ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 3.4/3.4 MB 204.2 MB/s eta 0:00:00\n","time":"2024-05-26T20:10:16.955623221Z","args":null}
+{"level":"info","pos":614,"out":"#9 8.601 Collecting crashtest\u003c0.5.0,\u003e=0.4.1\n","time":"2024-05-26T20:10:16.955626673Z","args":null}
+{"level":"info","pos":615,"out":"#9 8.619   Downloading crashtest-0.4.1-py3-none-any.whl (7.6 kB)\n","time":"2024-05-26T20:10:16.955629185Z","args":null}
+{"level":"info","pos":616,"out":"#9 8.689 Collecting urllib3\u003e=1.25\n","time":"2024-05-26T20:10:17.094447538Z","args":null}
+{"level":"info","pos":617,"out":"#9 8.706   Downloading urllib3-2.2.1-py3-none-any.whl (121 kB)\n","time":"2024-05-26T20:10:17.094466985Z","args":null}
+{"level":"info","pos":618,"out":"#9 8.708      ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 121.1/121.1 kB 363.5 MB/s eta 0:00:00\n","time":"2024-05-26T20:10:17.09446841Z","args":null}
+{"level":"info","pos":619,"out":"#9 8.758 Collecting SecretStorage\u003e=3.2\n","time":"2024-05-26T20:10:17.094470143Z","args":null}
+{"level":"info","pos":620,"out":"#9 8.776   Downloading SecretStorage-3.3.3-py3-none-any.whl (15 kB)\n","time":"2024-05-26T20:10:17.245462465Z","args":null}
+{"level":"info","pos":621,"out":"#9 8.816 Collecting jaraco.classes\n","time":"2024-05-26T20:10:17.245478082Z","args":null}
+{"level":"info","pos":622,"out":"#9 8.835   Downloading jaraco.classes-3.4.0-py3-none-any.whl (6.8 kB)\n","time":"2024-05-26T20:10:17.245479615Z","args":null}
+{"level":"info","pos":623,"out":"#9 8.916 Collecting importlib-metadata\u003e=4.11.4\n","time":"2024-05-26T20:10:17.359416093Z","args":null}
+{"level":"info","pos":624,"out":"#9 8.933   Downloading importlib_metadata-7.1.0-py3-none-any.whl (24 kB)\n","time":"2024-05-26T20:10:17.359432474Z","args":null}
+{"level":"info","pos":625,"out":"#9 8.967 Collecting jeepney\u003e=0.4.2\n","time":"2024-05-26T20:10:17.35943404Z","args":null}
+{"level":"info","pos":626,"out":"#9 8.985   Downloading jeepney-0.8.0-py3-none-any.whl (48 kB)\n","time":"2024-05-26T20:10:17.359435306Z","args":null}
+{"level":"info","pos":627,"out":"#9 8.988      ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 48.4/48.4 kB 156.9 MB/s eta 0:00:00\n","time":"2024-05-26T20:10:17.359436606Z","args":null}
+{"level":"info","pos":628,"out":"#9 9.023 Collecting ptyprocess\u003e=0.5\n","time":"2024-05-26T20:10:17.359438337Z","args":null}
+{"level":"info","pos":629,"out":"#9 9.042   Downloading ptyprocess-0.7.0-py2.py3-none-any.whl (13 kB)\n","time":"2024-05-26T20:10:17.468591114Z","args":null}
+{"level":"info","pos":630,"out":"#9 9.115 Collecting certifi\u003e=2017.4.17\n","time":"2024-05-26T20:10:17.468609005Z","args":null}
+{"level":"info","pos":631,"out":"#9 9.132   Downloading certifi-2024.2.2-py3-none-any.whl (163 kB)\n","time":"2024-05-26T20:10:17.468611322Z","args":null}
+{"level":"info","pos":632,"out":"#9 9.135      ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 163.8/163.8 kB 370.1 MB/s eta 0:00:00\n","time":"2024-05-26T20:10:17.606476995Z","args":null}
+{"level":"info","pos":633,"out":"#9 9.270 Collecting charset-normalizer\u003c4,\u003e=2\n","time":"2024-05-26T20:10:17.606493411Z","args":null}
+{"level":"info","pos":634,"out":"#9 9.288   Downloading charset_normalizer-3.3.2-cp310-cp310-manylinux_2_17_x86_64.manylinux2014_x86_64.whl (142 kB)\n","time":"2024-05-26T20:10:17.753295074Z","args":null}
+{"level":"info","pos":635,"out":"#9 9.290      ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 142.1/142.1 kB 405.4 MB/s eta 0:00:00\n","time":"2024-05-26T20:10:17.753310962Z","args":null}
+{"level":"info","pos":636,"out":"#9 9.324 Collecting idna\u003c4,\u003e=2.5\n","time":"2024-05-26T20:10:17.753313079Z","args":null}
+{"level":"info","pos":637,"out":"#9 9.341   Downloading idna-3.7-py3-none-any.whl (66 kB)\n","time":"2024-05-26T20:10:17.75331431Z","args":null}
+{"level":"info","pos":638,"out":"#9 9.344      ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 66.8/66.8 kB 217.6 MB/s eta 0:00:00\n","time":"2024-05-26T20:10:17.753317415Z","args":null}
+{"level":"info","pos":639,"out":"#9 9.417 Collecting distlib\u003c1,\u003e=0.3.7\n","time":"2024-05-26T20:10:17.753318862Z","args":null}
+{"level":"info","pos":640,"out":"#9 9.437   Downloading distlib-0.3.8-py2.py3-none-any.whl (468 kB)\n","time":"2024-05-26T20:10:17.861612746Z","args":null}
+{"level":"info","pos":641,"out":"#9 9.440      ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 468.9/468.9 kB 452.5 MB/s eta 0:00:00\n","time":"2024-05-26T20:10:17.861634046Z","args":null}
+{"level":"info","pos":642,"out":"#9 9.525 Collecting zipp\u003e=0.5\n","time":"2024-05-26T20:10:17.861636255Z","args":null}
+{"level":"info","pos":643,"out":"#9 9.543   Downloading zipp-3.19.0-py3-none-any.whl (8.3 kB)\n","time":"2024-05-26T20:10:18.012407295Z","args":null}
+{"level":"info","pos":644,"out":"#9 9.910 Collecting cryptography\u003e=2.0\n","time":"2024-05-26T20:10:18.265772188Z","args":null}
+{"level":"info","pos":645,"out":"#9 9.929   Downloading cryptography-42.0.7-cp39-abi3-manylinux_2_28_x86_64.whl (3.8 MB)\n","time":"2024-05-26T20:10:18.26578899Z","args":null}
+{"level":"info","pos":646,"out":"#9 9.950      ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 3.8/3.8 MB 206.3 MB/s eta 0:00:00\n","time":"2024-05-26T20:10:18.367496938Z","args":null}
+{"level":"info","pos":647,"out":"#9 10.01 Collecting more-itertools\n","time":"2024-05-26T20:10:18.367516573Z","args":null}
+{"level":"info","pos":648,"out":"#9 10.03   Downloading more_itertools-10.2.0-py3-none-any.whl (57 kB)\n","time":"2024-05-26T20:10:18.367518549Z","args":null}
+{"level":"info","pos":649,"out":"#9 10.03      ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 57.0/57.0 kB 250.5 MB/s eta 0:00:00\n","time":"2024-05-26T20:10:18.517866938Z","args":null}
+{"level":"info","pos":650,"out":"#9 10.25 Collecting cffi\u003e=1.12\n","time":"2024-05-26T20:10:18.662716042Z","args":null}
+{"level":"info","pos":651,"out":"#9 10.27   Downloading cffi-1.16.0-cp310-cp310-manylinux_2_17_x86_64.manylinux2014_x86_64.whl (443 kB)\n","time":"2024-05-26T20:10:18.662737015Z","args":null}
+{"level":"info","pos":652,"out":"#9 10.27      ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 443.9/443.9 kB 350.0 MB/s eta 0:00:00\n","time":"2024-05-26T20:10:18.662738752Z","args":null}
+{"level":"info","pos":653,"out":"#9 10.33 Collecting pycparser\n","time":"2024-05-26T20:10:18.66274069Z","args":null}
+{"level":"info","pos":654,"out":"#9 10.34   Downloading pycparser-2.22-py3-none-any.whl (117 kB)\n","time":"2024-05-26T20:10:18.813295968Z","args":null}
+{"level":"info","pos":655,"out":"#9 10.35      ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 117.6/117.6 kB 192.9 MB/s eta 0:00:00\n","time":"2024-05-26T20:10:18.813312955Z","args":null}
+{"level":"info","pos":656,"out":"#9 10.36 Building wheels for collected packages: poetry, poetry-core\n","time":"2024-05-26T20:10:18.81331543Z","args":null}
+{"level":"info","pos":657,"out":"#9 10.36   Building wheel for poetry (pyproject.toml): started\n","time":"2024-05-26T20:10:18.813316525Z","args":null}
+{"level":"info","pos":658,"out":"#9 10.58   Building wheel for poetry (pyproject.toml): finished with status 'done'\n","time":"2024-05-26T20:10:18.916389102Z","args":null}
+{"level":"info","pos":659,"out":"#9 10.58   Created wheel for poetry: filename=poetry-1.9.0.dev0-py3-none-any.whl size=248443 sha256=f5cd79f990ad2854a4642d5a5836965cd286f564775a0d81afca3bcef88918b1\n","time":"2024-05-26T20:10:19.067447407Z","args":null}
+{"level":"info","pos":660,"out":"#9 10.58   Stored in directory: /tmp/pip-ephem-wheel-cache-rbfd0d5c/wheels/bb/9f/fc/e8963efdd8e558b06c5325a7beb4fd4bb34b7718d55445d8d5\n","time":"2024-05-26T20:10:19.067463472Z","args":null}
+{"level":"info","pos":661,"out":"#9 10.58   Building wheel for poetry-core (pyproject.toml): started\n","time":"2024-05-26T20:10:19.067467746Z","args":null}
+{"level":"info","pos":662,"out":"#9 10.81   Building wheel for poetry-core (pyproject.toml): finished with status 'done'\n","time":"2024-05-26T20:10:19.218072322Z","args":null}
+{"level":"info","pos":663,"out":"#9 10.81   Created wheel for poetry-core: filename=poetry_core-2.0.0.dev0-py3-none-any.whl size=313133 sha256=623fdace3b43938bf91040c6710843d5d9599898057aa974adb32136daa6d716\n","time":"2024-05-26T20:10:19.218088166Z","args":null}
+{"level":"info","pos":664,"out":"#9 10.81   Stored in directory: /tmp/pip-ephem-wheel-cache-rbfd0d5c/wheels/f0/ee/69/73a1a19f413b2d33a89720f6835dfa66a06ff9d549c1135552\n","time":"2024-05-26T20:10:19.218089806Z","args":null}
+{"level":"info","pos":665,"out":"#9 10.81 Successfully built poetry poetry-core\n","time":"2024-05-26T20:10:19.218091064Z","args":null}
+{"level":"info","pos":666,"out":"#9 11.00 Installing collected packages: trove-classifiers, ptyprocess, fastjsonschema, distlib, zipp, urllib3, tomlkit, tomli, shellingham, rapidfuzz, pyproject-hooks, pycparser, poetry-core, platformdirs, pkginfo, pexpect, packaging, msgpack, more-itertools, jeepney, installer, idna, filelock, crashtest, charset-normalizer, certifi, virtualenv, requests, jaraco.classes, importlib-metadata, dulwich, cleo, cffi, build, requests-toolbelt, cryptography, cachecontrol, SecretStorage, keyring, poetry-plugin-export, poetry\n","time":"2024-05-26T20:10:19.339575978Z","args":null}
+{"level":"info","pos":667,"out":"#9 12.40 Successfully installed SecretStorage-3.3.3 build-1.2.1 cachecontrol-0.14.0 certifi-2024.2.2 cffi-1.16.0 charset-normalizer-3.3.2 cleo-2.1.0 crashtest-0.4.1 cryptography-42.0.7 distlib-0.3.8 dulwich-0.21.7 fastjsonschema-2.19.1 filelock-3.14.0 idna-3.7 importlib-metadata-7.1.0 installer-0.7.0 jaraco.classes-3.4.0 jeepney-0.8.0 keyring-24.3.1 more-itertools-10.2.0 msgpack-1.0.8 packaging-24.0 pexpect-4.9.0 pkginfo-1.10.0 platformdirs-4.2.2 poetry-1.9.0.dev0 poetry-core-2.0.0.dev0 poetry-plugin-export-1.8.0 ptyprocess-0.7.0 pycparser-2.22 pyproject-hooks-1.1.0 rapidfuzz-3.9.1 requests-2.32.2 requests-toolbelt-1.0.0 shellingham-1.5.4 tomli-2.0.1 tomlkit-0.12.5 trove-classifiers-2024.5.22 urllib3-2.2.1 virtualenv-20.26.2 zipp-3.19.0\n","time":"2024-05-26T20:10:20.844072718Z","args":null}
+{"level":"info","pos":668,"out":"#9 12.40 WARNING: Running pip as the 'root' user can result in broken permissions and conflicting behaviour with the system package manager. It is recommended to use a virtual environment instead: https://pip.pypa.io/warnings/venv\n","time":"2024-05-26T20:10:20.844091517Z","args":null}
+{"level":"info","pos":669,"out":"#9 12.53 \n","time":"2024-05-26T20:10:20.99446953Z","args":null}
+{"level":"info","pos":670,"out":"#9 12.53 [notice] A new release of pip is available: 23.0.1 -\u003e 24.0\n","time":"2024-05-26T20:10:20.99448827Z","args":null}
+{"level":"info","pos":671,"out":"#9 12.53 [notice] To update, run: pip install --upgrade pip\n","time":"2024-05-26T20:10:20.994490199Z","args":null}
+{"level":"info","pos":672,"out":"#9 13.85 Skipping virtualenv creation, as specified in config file.\n","time":"2024-05-26T20:10:22.187810002Z","args":null}
+{"level":"info","pos":673,"out":"#9 13.96 Installing dependencies from lock file\n","time":"2024-05-26T20:10:22.298663082Z","args":null}
+{"level":"info","pos":674,"out":"#9 14.63 \n","time":"2024-05-26T20:10:23.050857252Z","args":null}
+{"level":"info","pos":675,"out":"#9 14.63 Package operations: 199 installs, 1 update, 0 removals\n","time":"2024-05-26T20:10:23.050891973Z","args":null}
+{"level":"info","pos":676,"out":"#9 14.63 \n","time":"2024-05-26T20:10:23.050897423Z","args":null}
+{"level":"info","pos":677,"out":"#9 14.63   - Installing attrs (23.2.0)\n","time":"2024-05-26T20:10:23.050900861Z","args":null}
+{"level":"info","pos":678,"out":"#9 14.63   - Installing rpds-py (0.18.1)\n","time":"2024-05-26T20:10:23.050904879Z","args":null}
+{"level":"info","pos":679,"out":"#9 14.97   - Installing referencing (0.35.1)\n","time":"2024-05-26T20:10:23.303244678Z","args":null}
+{"level":"info","pos":680,"out":"#9 14.97   - Installing six (1.16.0)\n","time":"2024-05-26T20:10:23.454144362Z","args":null}
+{"level":"info","pos":681,"out":"#9 15.05   - Installing jsonschema-specifications (2023.12.1)\n","time":"2024-05-26T20:10:23.454161497Z","args":null}
+{"level":"info","pos":682,"out":"#9 15.05   - Installing python-dateutil (2.9.0.post0)\n","time":"2024-05-26T20:10:23.454163131Z","args":null}
+{"level":"info","pos":683,"out":"#9 15.05   - Installing traitlets (5.14.3)\n","time":"2024-05-26T20:10:23.454164278Z","args":null}
+{"level":"info","pos":684,"out":"#9 15.05   - Installing types-python-dateutil (2.9.0.20240316)\n","time":"2024-05-26T20:10:23.454165081Z","args":null}
+{"level":"info","pos":685,"out":"#9 15.30   - Installing arrow (1.3.0)\n","time":"2024-05-26T20:10:23.754886876Z","args":null}
+{"level":"info","pos":686,"out":"#9 15.30   - Installing jsonschema (4.22.0)\n","time":"2024-05-26T20:10:23.754904837Z","args":null}
+{"level":"info","pos":687,"out":"#9 15.30   - Installing pyasn1 (0.6.0)\n","time":"2024-05-26T20:10:23.754910639Z","args":null}
+{"level":"info","pos":688,"out":"#9 15.30   - Installing jupyter-core (5.7.2)\n","time":"2024-05-26T20:10:23.754911629Z","args":null}
+{"level":"info","pos":689,"out":"#9 15.30   - Installing tornado (6.4)\n","time":"2024-05-26T20:10:23.754912511Z","args":null}
+{"level":"info","pos":690,"out":"#9 15.30   - Installing pyzmq (26.0.3)\n","time":"2024-05-26T20:10:23.754913333Z","args":null}
+{"level":"info","pos":691,"out":"#9 15.75   - Installing asttokens (2.4.1)\n","time":"2024-05-26T20:10:24.179237113Z","args":null}
+{"level":"info","pos":692,"out":"#9 15.75   - Installing cachetools (5.3.3)\n","time":"2024-05-26T20:10:24.179252464Z","args":null}
+{"level":"info","pos":693,"out":"#9 15.75   - Installing executing (2.0.1)\n","time":"2024-05-26T20:10:24.179253636Z","args":null}
+{"level":"info","pos":694,"out":"#9 15.75   - Installing fqdn (1.5.1)\n","time":"2024-05-26T20:10:24.17925452Z","args":null}
+{"level":"info","pos":695,"out":"#9 15.75   - Installing isoduration (20.11.0)\n","time":"2024-05-26T20:10:24.179255767Z","args":null}
+{"level":"info","pos":696,"out":"#9 15.75   - Installing jsonpointer (2.4)\n","time":"2024-05-26T20:10:24.179256615Z","args":null}
+{"level":"info","pos":697,"out":"#9 15.75   - Installing jupyter-client (8.6.2)\n","time":"2024-05-26T20:10:24.179257474Z","args":null}
+{"level":"info","pos":698,"out":"#9 15.75   - Installing nbformat (5.10.4)\n","time":"2024-05-26T20:10:24.179258335Z","args":null}
+{"level":"info","pos":699,"out":"#9 15.75   - Installing markupsafe (2.1.5)\n","time":"2024-05-26T20:10:24.179259271Z","args":null}
+{"level":"info","pos":700,"out":"#9 15.75   - Installing protobuf (4.25.3)\n","time":"2024-05-26T20:10:24.179260079Z","args":null}
+{"level":"info","pos":701,"out":"#9 15.75   - Installing parso (0.8.4)\n","time":"2024-05-26T20:10:24.179260894Z","args":null}
+{"level":"info","pos":702,"out":"#9 15.75   - Installing rfc3339-validator (0.1.4)\n","time":"2024-05-26T20:10:24.179261722Z","args":null}
+{"level":"info","pos":703,"out":"#9 15.76   - Installing pyasn1-modules (0.4.0)\n","time":"2024-05-26T20:10:24.179262564Z","args":null}
+{"level":"info","pos":704,"out":"#9 15.76   - Installing pure-eval (0.2.2)\n","time":"2024-05-26T20:10:24.17926784Z","args":null}
+{"level":"info","pos":705,"out":"#9 15.80   - Installing rfc3986-validator (0.1.1)\n","time":"2024-05-26T20:10:24.179268812Z","args":null}
+{"level":"info","pos":706,"out":"#9 15.84   - Installing rsa (4.9)\n","time":"2024-05-26T20:10:24.179269667Z","args":null}
+{"level":"info","pos":707,"out":"#9 15.85   - Installing soupsieve (2.5)\n","time":"2024-05-26T20:10:24.304500435Z","args":null}
+{"level":"info","pos":708,"out":"#9 15.87   - Installing uri-template (1.3.0)\n","time":"2024-05-26T20:10:24.304516206Z","args":null}
+{"level":"info","pos":709,"out":"#9 15.92   - Installing wcwidth (0.2.13)\n","time":"2024-05-26T20:10:24.304517557Z","args":null}
+{"level":"info","pos":710,"out":"#9 15.92   - Installing webcolors (1.13)\n","time":"2024-05-26T20:10:24.304518528Z","args":null}
+{"level":"info","pos":711,"out":"#9 15.97   - Installing webencodings (0.5.1)\n","time":"2024-05-26T20:10:24.304519416Z","args":null}
+{"level":"info","pos":712,"out":"#9 16.32   - Installing argon2-cffi-bindings (21.2.0)\n","time":"2024-05-26T20:10:24.756185455Z","args":null}
+{"level":"info","pos":713,"out":"#9 16.32   - Installing beautifulsoup4 (4.12.3)\n","time":"2024-05-26T20:10:24.756201711Z","args":null}
+{"level":"info","pos":714,"out":"#9 16.32   - Installing bleach (6.1.0)\n","time":"2024-05-26T20:10:24.756203037Z","args":null}
+{"level":"info","pos":715,"out":"#9 16.32   - Installing decorator (5.1.1)\n","time":"2024-05-26T20:10:24.756204361Z","args":null}
+{"level":"info","pos":716,"out":"#9 16.32   - Installing defusedxml (0.7.1)\n","time":"2024-05-26T20:10:24.756205292Z","args":null}
+{"level":"info","pos":717,"out":"#9 16.32   - Installing exceptiongroup (1.2.1)\n","time":"2024-05-26T20:10:24.756206149Z","args":null}
+{"level":"info","pos":718,"out":"#9 16.32   - Installing google-auth (2.29.0)\n","time":"2024-05-26T20:10:24.756206998Z","args":null}
+{"level":"info","pos":719,"out":"#9 16.32   - Installing googleapis-common-protos (1.63.0)\n","time":"2024-05-26T20:10:24.7562078Z","args":null}
+{"level":"info","pos":720,"out":"#9 16.32   - Installing jedi (0.19.1)\n","time":"2024-05-26T20:10:24.756209104Z","args":null}
+{"level":"info","pos":721,"out":"#9 16.33   - Installing jinja2 (3.1.4)\n","time":"2024-05-26T20:10:24.756210131Z","args":null}
+{"level":"info","pos":722,"out":"#9 16.33   - Installing jupyterlab-pygments (0.3.0)\n","time":"2024-05-26T20:10:24.756211001Z","args":null}
+{"level":"info","pos":723,"out":"#9 16.33   - Installing matplotlib-inline (0.1.7)\n","time":"2024-05-26T20:10:24.756211827Z","args":null}
+{"level":"info","pos":724,"out":"#9 16.33   - Installing mistune (3.0.2)\n","time":"2024-05-26T20:10:24.756212652Z","args":null}
+{"level":"info","pos":725,"out":"#9 16.33   - Installing nbclient (0.10.0)\n","time":"2024-05-26T20:10:24.756216548Z","args":null}
+{"level":"info","pos":726,"out":"#9 16.43   - Installing pandocfilters (1.5.1)\n","time":"2024-05-26T20:10:24.859997752Z","args":null}
+{"level":"info","pos":727,"out":"#9 16.49   - Installing prompt-toolkit (3.0.43)\n","time":"2024-05-26T20:10:24.860018922Z","args":null}
+{"level":"info","pos":728,"out":"#9 16.49   - Installing proto-plus (1.23.0)\n","time":"2024-05-26T20:10:24.860020921Z","args":null}
+{"level":"info","pos":729,"out":"#9 16.51   - Installing pygments (2.18.0)\n","time":"2024-05-26T20:10:24.860022688Z","args":null}
+{"level":"info","pos":730,"out":"#9 16.52   - Installing python-json-logger (2.0.7)\n","time":"2024-05-26T20:10:24.860024237Z","args":null}
+{"level":"info","pos":731,"out":"#9 16.52   - Installing pyyaml (6.0.1)\n","time":"2024-05-26T20:10:24.860029255Z","args":null}
+{"level":"info","pos":732,"out":"#9 16.52   - Installing sniffio (1.3.1)\n","time":"2024-05-26T20:10:24.98815666Z","args":null}
+{"level":"info","pos":733,"out":"#9 16.61   - Installing stack-data (0.6.3)\n","time":"2024-05-26T20:10:24.990173335Z","args":null}
+{"level":"info","pos":734,"out":"#9 16.65   - Installing terminado (0.18.1)\n","time":"2024-05-26T20:10:24.990184486Z","args":null}
+{"level":"info","pos":735,"out":"#9 16.69   - Installing tinycss2 (1.3.0)\n","time":"2024-05-26T20:10:25.138709731Z","args":null}
+{"level":"info","pos":736,"out":"#9 16.75   - Installing typing-extensions (4.11.0)\n","time":"2024-05-26T20:10:25.138731649Z","args":null}
+{"level":"info","pos":737,"out":"#9 18.00   - Installing anyio (4.3.0)\n","time":"2024-05-26T20:10:26.338053021Z","args":null}
+{"level":"info","pos":738,"out":"#9 18.00   - Installing argon2-cffi (23.1.0)\n","time":"2024-05-26T20:10:26.462732586Z","args":null}
+{"level":"info","pos":739,"out":"#9 18.00   - Installing comm (0.2.2)\n","time":"2024-05-26T20:10:26.462764932Z","args":null}
+{"level":"info","pos":740,"out":"#9 18.00   - Installing frozenlist (1.4.1)\n","time":"2024-05-26T20:10:26.462766556Z","args":null}
+{"level":"info","pos":741,"out":"#9 18.00   - Installing google-api-core (2.19.0)\n","time":"2024-05-26T20:10:26.462767513Z","args":null}
+{"level":"info","pos":742,"out":"#9 18.01   - Installing grpcio (1.64.0)\n","time":"2024-05-26T20:10:26.462768448Z","args":null}
+{"level":"info","pos":743,"out":"#9 18.01   - Installing google-crc32c (1.5.0)\n","time":"2024-05-26T20:10:26.462769271Z","args":null}
+{"level":"info","pos":744,"out":"#9 18.01   - Installing jupyter-events (0.10.0)\n","time":"2024-05-26T20:10:26.462770078Z","args":null}
+{"level":"info","pos":745,"out":"#9 18.01   - Installing jupyter-server-terminals (0.5.3)\n","time":"2024-05-26T20:10:26.4627709Z","args":null}
+{"level":"info","pos":746,"out":"#9 18.01   - Installing mdurl (0.1.2)\n","time":"2024-05-26T20:10:26.462771798Z","args":null}
+{"level":"info","pos":747,"out":"#9 18.01   - Installing ipython (8.18.1)\n","time":"2024-05-26T20:10:26.46277262Z","args":null}
+{"level":"info","pos":748,"out":"#9 18.01   - Installing h11 (0.14.0)\n","time":"2024-05-26T20:10:26.462773467Z","args":null}
+{"level":"info","pos":749,"out":"#9 18.01   - Installing jupyterlab-widgets (3.0.10)\n","time":"2024-05-26T20:10:26.462774332Z","args":null}
+{"level":"info","pos":750,"out":"#9 18.01   - Installing multidict (6.0.5)\n","time":"2024-05-26T20:10:26.462775162Z","args":null}
+{"level":"info","pos":751,"out":"#9 18.13   - Installing nbconvert (7.16.4)\n","time":"2024-05-26T20:10:26.462775979Z","args":null}
+{"level":"info","pos":752,"out":"#9 18.15   - Installing numpy (1.26.4)\n","time":"2024-05-26T20:10:26.585777778Z","args":null}
+{"level":"info","pos":753,"out":"#9 18.16   - Installing oauthlib (3.2.2)\n","time":"2024-05-26T20:10:26.585819585Z","args":null}
+{"level":"info","pos":754,"out":"#9 18.20   - Installing overrides (7.7.0)\n","time":"2024-05-26T20:10:26.585821496Z","args":null}
+{"level":"info","pos":755,"out":"#9 18.20   - Installing prometheus-client (0.20.0)\n","time":"2024-05-26T20:10:26.585822422Z","args":null}
+{"level":"info","pos":756,"out":"#9 18.20   - Installing pytz (2024.1)\n","time":"2024-05-26T20:10:26.585823347Z","args":null}
+{"level":"info","pos":757,"out":"#9 18.25   - Installing send2trash (1.8.3)\n","time":"2024-05-26T20:10:26.585824196Z","args":null}
+{"level":"info","pos":758,"out":"#9 18.30   - Installing smmap (5.0.1)\n","time":"2024-05-26T20:10:26.692674426Z","args":null}
+{"level":"info","pos":759,"out":"#9 18.36   - Installing tzdata (2024.1)\n","time":"2024-05-26T20:10:26.692691039Z","args":null}
+{"level":"info","pos":760,"out":"#9 18.38   - Installing websocket-client (1.8.0)\n","time":"2024-05-26T20:10:26.843554576Z","args":null}
+{"level":"info","pos":761,"out":"#9 18.40   - Installing widgetsnbextension (4.0.10)\n","time":"2024-05-26T20:10:26.843570992Z","args":null}
+{"level":"info","pos":762,"out":"#9 20.83   - Installing aiosignal (1.3.1)\n","time":"2024-05-26T20:10:29.230784858Z","args":null}
+{"level":"info","pos":763,"out":"#9 20.83   - Installing annotated-types (0.7.0)\n","time":"2024-05-26T20:10:29.230811922Z","args":null}
+{"level":"info","pos":764,"out":"#9 20.83   - Installing asn1crypto (1.5.1)\n","time":"2024-05-26T20:10:29.230813583Z","args":null}
+{"level":"info","pos":765,"out":"#9 20.83   - Installing click (8.1.7)\n","time":"2024-05-26T20:10:29.230814547Z","args":null}
+{"level":"info","pos":766,"out":"#9 20.83   - Installing debugpy (1.8.1)\n","time":"2024-05-26T20:10:29.230817341Z","args":null}
+{"level":"info","pos":767,"out":"#9 20.83   - Installing babel (2.15.0)\n","time":"2024-05-26T20:10:29.230818246Z","args":null}
+{"level":"info","pos":768,"out":"#9 20.83   - Installing async-timeout (4.0.3)\n","time":"2024-05-26T20:10:29.230819108Z","args":null}
+{"level":"info","pos":769,"out":"#9 20.83   - Installing grpcio-status (1.62.2)\n","time":"2024-05-26T20:10:29.230819971Z","args":null}
+{"level":"info","pos":770,"out":"#9 20.83   - Installing gitdb (4.0.11)\n","time":"2024-05-26T20:10:29.230820798Z","args":null}
+{"level":"info","pos":771,"out":"#9 20.83   - Installing ipywidgets (8.1.2)\n","time":"2024-05-26T20:10:29.230821618Z","args":null}
+{"level":"info","pos":772,"out":"#9 20.83   - Installing json5 (0.9.25)\n","time":"2024-05-26T20:10:29.230822572Z","args":null}
+{"level":"info","pos":773,"out":"#9 20.83   - Installing google-cloud-core (2.4.1)\n","time":"2024-05-26T20:10:29.23082384Z","args":null}
+{"level":"info","pos":774,"out":"#9 20.83   - Installing google-resumable-media (2.7.0)\n","time":"2024-05-26T20:10:29.230825352Z","args":null}
+{"level":"info","pos":775,"out":"#9 20.84   - Installing httpcore (1.0.5)\n","time":"2024-05-26T20:10:29.230826936Z","args":null}
+{"level":"info","pos":776,"out":"#9 20.89   - Installing jupyter-server (2.14.0)\n","time":"2024-05-26T20:10:29.230828493Z","args":null}
+{"level":"info","pos":777,"out":"#9 20.94   - Installing markdown-it-py (3.0.0)\n","time":"2024-05-26T20:10:29.381943921Z","args":null}
+{"level":"info","pos":778,"out":"#9 20.95   - Installing nest-asyncio (1.6.0)\n","time":"2024-05-26T20:10:29.382050861Z","args":null}
+{"level":"info","pos":779,"out":"#9 21.11   - Installing pandas (2.2.2)\n","time":"2024-05-26T20:10:29.532920648Z","args":null}
+{"level":"info","pos":780,"out":"#9 21.11   - Installing ply (3.11)\n","time":"2024-05-26T20:10:29.533021327Z","args":null}
+{"level":"info","pos":781,"out":"#9 21.26   - Installing psutil (5.9.8)\n","time":"2024-05-26T20:10:29.683433275Z","args":null}
+{"level":"info","pos":782,"out":"#9 21.43   - Installing pyarrow (16.1.0)\n","time":"2024-05-26T20:10:29.790450652Z","args":null}
+{"level":"info","pos":783,"out":"#9 21.45   - Installing pydantic-core (2.18.2)\n","time":"2024-05-26T20:10:29.790498547Z","args":null}
+{"level":"info","pos":784,"out":"#9 21.59   - Installing regex (2024.5.15)\n","time":"2024-05-26T20:10:29.922971725Z","args":null}
+{"level":"info","pos":785,"out":"#9 21.61   - Installing requests-oauthlib (2.0.0)\n","time":"2024-05-26T20:10:30.04153664Z","args":null}
+{"level":"info","pos":786,"out":"#9 21.71   - Installing ruamel-yaml-clib (0.2.8)\n","time":"2024-05-26T20:10:30.041595529Z","args":null}
+{"level":"info","pos":787,"out":"#9 21.72   - Installing sqlglotrs (0.2.5)\n","time":"2024-05-26T20:10:30.19217716Z","args":null}
+{"level":"info","pos":788,"out":"#9 22.00   - Installing types-setuptools (70.0.0.20240523)\n","time":"2024-05-26T20:10:30.340486702Z","args":null}
+{"level":"info","pos":789,"out":"#9 22.16   - Installing tzlocal (5.2)\n","time":"2024-05-26T20:10:30.64148247Z","args":null}
+{"level":"info","pos":790,"out":"#9 22.35   - Installing yarl (1.9.4)\n","time":"2024-05-26T20:10:30.792320208Z","args":null}
+{"level":"info","pos":791,"out":"#9 27.92   - Installing aiohttp (3.9.5)\n","time":"2024-05-26T20:10:36.319986721Z","args":null}
+{"level":"info","pos":792,"out":"#9 27.92   - Installing ansicolors (1.1.8)\n","time":"2024-05-26T20:10:36.320024769Z","args":null}
+{"level":"info","pos":793,"out":"#9 27.92   - Installing astor (0.8.1)\n","time":"2024-05-26T20:10:36.320027653Z","args":null}
+{"level":"info","pos":794,"out":"#9 27.92   - Installing async-lru (2.0.4)\n","time":"2024-05-26T20:10:36.320029568Z","args":null}
+{"level":"info","pos":795,"out":"#9 27.92   - Installing croniter (2.0.5)\n","time":"2024-05-26T20:10:36.320031186Z","args":null}
+{"level":"info","pos":796,"out":"#9 27.92   - Installing dateparser (1.2.0)\n","time":"2024-05-26T20:10:36.32003277Z","args":null}
+{"level":"info","pos":797,"out":"#9 27.92   - Installing db-dtypes (1.2.0)\n","time":"2024-05-26T20:10:36.320033956Z","args":null}
+{"level":"info","pos":798,"out":"#9 27.92   - Installing astunparse (1.6.3)\n","time":"2024-05-26T20:10:36.320034827Z","args":null}
+{"level":"info","pos":799,"out":"#9 27.92   - Installing dnspython (2.6.1)\n","time":"2024-05-26T20:10:36.320039423Z","args":null}
+{"level":"info","pos":800,"out":"#9 27.92   - Installing entrypoints (0.4)\n","time":"2024-05-26T20:10:36.320040379Z","args":null}
+{"level":"info","pos":801,"out":"#9 27.92   - Installing freezegun (1.5.1)\n","time":"2024-05-26T20:10:36.320041313Z","args":null}
+{"level":"info","pos":802,"out":"#9 27.92   - Installing duckdb (0.9.2)\n","time":"2024-05-26T20:10:36.320042146Z","args":null}
+{"level":"info","pos":803,"out":"#9 27.92   - Installing fsspec (2024.5.0)\n","time":"2024-05-26T20:10:36.320043002Z","args":null}
+{"level":"info","pos":804,"out":"#9 27.92   - Installing gitpython (3.1.43)\n","time":"2024-05-26T20:10:36.320043828Z","args":null}
+{"level":"info","pos":805,"out":"#9 27.98   - Installing giturlparse (0.12.0)\n","time":"2024-05-26T20:10:36.320044648Z","args":null}
+{"level":"info","pos":806,"out":"#9 28.01   - Installing google-auth-oauthlib (1.2.0)\n","time":"2024-05-26T20:10:36.425791694Z","args":null}
+{"level":"info","pos":807,"out":"#9 28.01   - Installing google-cloud-storage (2.16.0)\n","time":"2024-05-26T20:10:36.425820686Z","args":null}
+{"level":"info","pos":808,"out":"#9 28.04   - Installing hexbytes (1.2.0)\n","time":"2024-05-26T20:10:36.42582215Z","args":null}
+{"level":"info","pos":809,"out":"#9 28.08   - Installing httptools (0.6.1)\n","time":"2024-05-26T20:10:36.425823151Z","args":null}
+{"level":"info","pos":810,"out":"#9 28.09   - Installing httpx (0.27.0)\n","time":"2024-05-26T20:10:36.425823973Z","args":null}
+{"level":"info","pos":811,"out":"#9 28.16   - Installing humanize (4.9.0)\n","time":"2024-05-26T20:10:36.541794948Z","args":null}
+{"level":"info","pos":812,"out":"#9 28.16   - Installing hyperscript (0.0.3)\n","time":"2024-05-26T20:10:36.541815099Z","args":null}
+{"level":"info","pos":813,"out":"#9 28.21   - Installing ipykernel (6.29.4)\n","time":"2024-05-26T20:10:36.541816481Z","args":null}
+{"level":"info","pos":814,"out":"#9 28.23   - Installing isodate (0.6.1)\n","time":"2024-05-26T20:10:36.692139565Z","args":null}
+{"level":"info","pos":815,"out":"#9 28.25   - Installing jsonpath-ng (1.6.1)\n","time":"2024-05-26T20:10:36.692157634Z","args":null}
+{"level":"info","pos":816,"out":"#9 28.36   - Installing jupyter-lsp (2.2.5)\n","time":"2024-05-26T20:10:36.692158927Z","args":null}
+{"level":"info","pos":817,"out":"#9 28.37   - Installing jupyterlab-server (2.27.2)\n","time":"2024-05-26T20:10:36.842750674Z","args":null}
+{"level":"info","pos":818,"out":"#9 28.39   - Installing lxml (5.2.2)\n","time":"2024-05-26T20:10:36.842774267Z","args":null}
+{"level":"info","pos":819,"out":"#9 28.52   - Installing makefun (1.15.2)\n","time":"2024-05-26T20:10:36.993558095Z","args":null}
+{"level":"info","pos":820,"out":"#9 28.56   - Installing mmh3 (4.1.0)\n","time":"2024-05-26T20:10:36.993574789Z","args":null}
+{"level":"info","pos":821,"out":"#9 28.57   - Installing notebook-shim (0.2.4)\n","time":"2024-05-26T20:10:36.993576428Z","args":null}
+{"level":"info","pos":822,"out":"#9 28.61   - Installing orjson (3.9.10)\n","time":"2024-05-26T20:10:36.993577383Z","args":null}
+{"level":"info","pos":823,"out":"#9 28.67   - Installing pathvalidate (3.2.0)\n","time":"2024-05-26T20:10:37.121232882Z","args":null}
+{"level":"info","pos":824,"out":"#9 28.71   - Installing pendulum (3.0.0)\n","time":"2024-05-26T20:10:37.121248662Z","args":null}
+{"level":"info","pos":825,"out":"#9 28.73   - Installing pydantic (2.7.1)\n","time":"2024-05-26T20:10:37.121249879Z","args":null}
+{"level":"info","pos":826,"out":"#9 28.78   - Installing pyjwt (2.8.0)\n","time":"2024-05-26T20:10:37.121250821Z","args":null}
+{"level":"info","pos":827,"out":"#9 28.79   - Installing python-dotenv (1.0.1)\n","time":"2024-05-26T20:10:37.272023724Z","args":null}
+{"level":"info","pos":828,"out":"#9 28.87   - Installing requests-file (2.1.0)\n","time":"2024-05-26T20:10:37.272039971Z","args":null}
+{"level":"info","pos":829,"out":"#9 28.87   - Installing requirements-parser (0.9.0)\n","time":"2024-05-26T20:10:37.272041216Z","args":null}
+{"level":"info","pos":830,"out":"#9 28.98   - Installing rich (13.7.1)\n","time":"2024-05-26T20:10:37.416654672Z","args":null}
+{"level":"info","pos":831,"out":"#9 29.00   - Installing ruamel-yaml (0.18.6)\n","time":"2024-05-26T20:10:37.416695059Z","args":null}
+{"level":"info","pos":832,"out":"#9 29.03   - Installing scramp (1.4.5)\n","time":"2024-05-26T20:10:37.416697193Z","args":null}
+{"level":"info","pos":833,"out":"#9 29.08   - Installing semver (3.0.2)\n","time":"2024-05-26T20:10:37.41669813Z","args":null}
+{"level":"info","pos":834,"out":"#9 29.11   - Updating setuptools (65.5.1 -\u003e 70.0.0)\n","time":"2024-05-26T20:10:37.567329733Z","args":null}
+{"level":"info","pos":835,"out":"#9 29.13   - Installing simplejson (3.19.2)\n","time":"2024-05-26T20:10:37.567345723Z","args":null}
+{"level":"info","pos":836,"out":"#9 29.24   - Installing sqlglot (24.0.1)\n","time":"2024-05-26T20:10:37.717889158Z","args":null}
+{"level":"info","pos":837,"out":"#9 29.24   - Installing starlette (0.37.2)\n","time":"2024-05-26T20:10:37.717906642Z","args":null}
+{"level":"info","pos":838,"out":"#9 29.32   - Installing tenacity (8.2.2)\n","time":"2024-05-26T20:10:37.717908031Z","args":null}
+{"level":"info","pos":839,"out":"#9 29.58   - Installing tqdm (4.66.4)\n","time":"2024-05-26T20:10:38.018640837Z","args":null}
+{"level":"info","pos":840,"out":"#9 29.59   - Installing uvicorn (0.22.0)\n","time":"2024-05-26T20:10:38.01865709Z","args":null}
+{"level":"info","pos":841,"out":"#9 29.92   - Installing uvloop (0.19.0)\n","time":"2024-05-26T20:10:38.307481025Z","args":null}
+{"level":"info","pos":842,"out":"#9 29.93   - Installing watchfiles (0.21.0)\n","time":"2024-05-26T20:10:38.307497811Z","args":null}
+{"level":"info","pos":843,"out":"#9 29.97   - Installing websockets (12.0)\n","time":"2024-05-26T20:10:38.307499141Z","args":null}
+{"level":"info","pos":844,"out":"#9 31.42   - Installing asyncpg (0.29.0)\n","time":"2024-05-26T20:10:39.760551826Z","args":null}
+{"level":"info","pos":845,"out":"#9 31.42   - Installing backoff (2.2.1)\n","time":"2024-05-26T20:10:39.760571611Z","args":null}
+{"level":"info","pos":846,"out":"#9 31.42   - Installing dlt (0.4.11 6923202)\n","time":"2024-05-26T20:10:39.76057337Z","args":null}
+{"level":"info","pos":847,"out":"#9 31.42   - Installing dynaconf (3.2.5)\n","time":"2024-05-26T20:10:39.760574975Z","args":null}
+{"level":"info","pos":848,"out":"#9 31.42   - Installing fastapi (0.110.2)\n","time":"2024-05-26T20:10:39.760576511Z","args":null}
+{"level":"info","pos":849,"out":"#9 31.42   - Installing gcsfs (2024.5.0)\n","time":"2024-05-26T20:10:39.760591092Z","args":null}
+{"level":"info","pos":850,"out":"#9 31.42   - Installing google-cloud-bigquery (3.23.1)\n","time":"2024-05-26T20:10:39.760592758Z","args":null}
+{"level":"info","pos":851,"out":"#9 31.42   - Installing google-cloud-bigquery-storage (2.25.0)\n","time":"2024-05-26T20:10:39.760593731Z","args":null}
+{"level":"info","pos":852,"out":"#9 31.42   - Installing harness-featureflags (1.6.0)\n","time":"2024-05-26T20:10:39.760594988Z","args":null}
+{"level":"info","pos":853,"out":"#9 31.43   - Installing jupyterlab (4.2.1)\n","time":"2024-05-26T20:10:39.911410513Z","args":null}
+{"level":"info","pos":854,"out":"#9 31.43   - Installing monotonic (1.6)\n","time":"2024-05-26T20:10:39.911430971Z","args":null}
+{"level":"info","pos":855,"out":"#9 31.43   - Installing immutabledict (4.1.0)\n","time":"2024-05-26T20:10:39.911433057Z","args":null}
+{"level":"info","pos":856,"out":"#9 31.43   - Installing papermill (2.6.0)\n","time":"2024-05-26T20:10:39.911434501Z","args":null}
+{"level":"info","pos":857,"out":"#9 31.43   - Installing pex (2.1.164)\n","time":"2024-05-26T20:10:39.911435906Z","args":null}
+{"level":"info","pos":858,"out":"#9 31.47   - Installing pg8000 (1.30.3)\n","time":"2024-05-26T20:10:39.911437775Z","args":null}
+{"level":"info","pos":859,"out":"#9 31.48   - Installing psycopg2 (2.9.9)\n","time":"2024-05-26T20:10:39.911439206Z","args":null}
+{"level":"info","pos":860,"out":"#9 31.69   - Installing pymongo (4.6.1)\n","time":"2024-05-26T20:10:40.026849576Z","args":null}
+{"level":"info","pos":861,"out":"#9 31.73   - Installing sqlmesh (0.99.0)\n","time":"2024-05-26T20:10:40.129933616Z","args":null}
+{"level":"info","pos":862,"out":"#9 31.79   - Installing sse-starlette (2.1.0)\n","time":"2024-05-26T20:10:40.129954423Z","args":null}
+{"level":"info","pos":863,"out":"#9 31.87   - Installing typer (0.12.3)\n","time":"2024-05-26T20:10:40.280415141Z","args":null}
+{"level":"info","pos":864,"out":"#9 31.89   - Installing zeep (4.2.1)\n","time":"2024-05-26T20:10:40.280436674Z","args":null}
+{"level":"info","pos":865,"out":"#9 40.54   - Installing asana (5.0.3 232a3dc)\n","time":"2024-05-26T20:10:49.001704916Z","args":null}
+{"level":"info","pos":866,"out":"#9 40.54   - Installing cdf (0.7.0 4269566)\n","time":"2024-05-26T20:10:49.001728977Z","args":null}
+{"level":"info","pos":867,"out":"#9 40.54   - Installing connectorx (0.3.3)\n","time":"2024-05-26T20:10:49.001730255Z","args":null}
+{"level":"info","pos":868,"out":"#9 40.54   - Installing diskcache (5.6.3)\n","time":"2024-05-26T20:10:49.001731213Z","args":null}
+{"level":"info","pos":869,"out":"#9 40.54   - Installing marketorestpython (0.5.24)\n","time":"2024-05-26T20:10:49.001732069Z","args":null}
+{"level":"info","pos":870,"out":"#9 40.54   - Installing cloud-sql-python-connector (1.4.3)\n","time":"2024-05-26T20:10:49.001732974Z","args":null}
+{"level":"info","pos":871,"out":"#9 40.55   - Installing motor (3.4.0)\n","time":"2024-05-26T20:10:49.001734035Z","args":null}
+{"level":"info","pos":872,"out":"#9 40.55   - Installing segment-analytics-python (2.2.3)\n","time":"2024-05-26T20:10:49.001735112Z","args":null}
+{"level":"info","pos":873,"out":"#9 40.55   - Installing python-bsonjs (0.4.0)\n","time":"2024-05-26T20:10:49.001735982Z","args":null}
+{"level":"info","pos":874,"out":"#9 40.55   - Installing zstandard (0.22.0)\n","time":"2024-05-26T20:10:49.001736821Z","args":null}
+{"level":"info","pos":875,"out":"#9 40.55   - Installing simple-salesforce (1.12.6 1d28fa1)\n","time":"2024-05-26T20:10:49.001737643Z","args":null}
+{"level":"info","pos":876,"out":"#9 40.55   - Installing sentry-sdk (1.5.12)\n","time":"2024-05-26T20:10:49.001738472Z","args":null}
+{"level":"info","pos":877,"out":"#9 DONE 44.1s\n","time":"2024-05-26T20:10:52.609516453Z","args":null}
+{"level":"info","pos":878,"out":"\n","time":"2024-05-26T20:10:52.609542316Z","args":null}
+{"level":"info","pos":879,"out":"#10 exporting to image\n","time":"2024-05-26T20:10:52.609547638Z","args":null}
+{"level":"info","pos":880,"out":"#10 sha256:e8c613e07b0b7ff33893b694f7759a10d42e180f2b4dc349fb57dc6b71dcab00\n","time":"2024-05-26T20:10:52.609558262Z","args":null}
+{"level":"info","pos":881,"out":"#10 exporting layers\n","time":"2024-05-26T20:10:52.609561588Z","args":null}
+{"level":"info","pos":882,"out":"#10 exporting layers 4.5s done\n","time":"2024-05-26T20:10:56.976649349Z","args":null}
+{"level":"info","pos":883,"out":"#10 writing image sha256:2ef969f9ff00c2421171abacbd36e1a2e4ff68f5c851d8b96db55a7fee389ae1 done\n","time":"2024-05-26T20:10:56.976671942Z","args":null}
+{"level":"info","pos":884,"out":"#10 naming to us-west1-docker.pkg.dev/segment-warehouse-236622/analytics-images/etl-runner:prod done\n","time":"2024-05-26T20:10:56.976674215Z","args":null}
+{"level":"info","pos":885,"out":"#10 naming to us-west1-docker.pkg.dev/segment-warehouse-236622/analytics-images/etl-runner:632 done\n","time":"2024-05-26T20:10:56.976676007Z","args":null}
+{"level":"info","pos":886,"out":"#10 DONE 4.5s\n","time":"2024-05-26T20:10:56.976677687Z","args":null}
