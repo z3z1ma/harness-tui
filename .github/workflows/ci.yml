@@ -28,7 +28,7 @@ jobs:
       run: |
         pytest
       env:
-          HARNESS_API_KEY: ${{ secrects.HARNESS_API_KEY }}
-          HARNESS_ACCOUNT: ${{ secrects.HARNESS_ACCOUNT }}
-          HARNESS_ORG: ${{ secrects.HARNESS_ORG }}
-          HARNESS_PROJECT: ${{ secrects.HARNESS_PROJECT }}
+          HARNESS_API_KEY: ${{ secrets.HARNESS_API_KEY }}
+          HARNESS_ACCOUNT: ${{ secrets.HARNESS_ACCOUNT }}
+          HARNESS_ORG: ${{ secrets.HARNESS_ORG }}
+          HARNESS_PROJECT: ${{ secrets.HARNESS_PROJECT }}
