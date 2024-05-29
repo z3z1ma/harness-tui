@@ -72,10 +72,12 @@ class PipelineCard(Static):
             asyncio.create_task(self.handle_run_pipeline())
 
 
+    
 class PipelineList(Static):
     """This component displays a list of pipeline cards."""
 
     pipeline_list = reactive(list, recompose=True)
+    search_term = reactive(str, recompose=True)
 
     def __init__(
         self,
@@ -89,7 +91,15 @@ class PipelineList(Static):
 
     def compose(self) -> ComposeResult:
         """Compose the pipeline list."""
-        yield Input(placeholder="Search", id="pipeline-search")
+        yield Static(id="list-place-holder")
+        input = Input(self.search_term, placeholder="Search", id="pipeline-search")
+        yield input
+        filtered_pipelines = []
+        for pipeline in self.pipeline_list:
+            if self.search_term in pipeline.name:
+                filtered_pipelines.append(pipeline)
+        if self.search_term == "":
+            filtered_pipelines = self.pipeline_list
         yield ListView(
             *[
                 ListItem(
@@ -99,23 +109,22 @@ class PipelineList(Static):
                     ),
                     id=f"pipeline-list-item-{pipeline.identifier}",
                 )
-                for pipeline in self.pipeline_list
-            ]
+                for pipeline in filtered_pipelines
+            ],
+            id="pipeline_list"
         )
+        
+    def on_input_changed(self, event: Input.Changed):
+        self.search_term = event.value
+        self.call_after_refresh(self.query_one(Input).focus)
 
     async def on_mount(self) -> None:
         """Run the data fetcher worker."""
         self.run_worker(self.data_fetcher(), exclusive=True)
-
-    async def on_list_view_highlighted(self, event: ListView.Highlighted) -> None:
-        """Notify when a pipeline is highlighted."""
-        if event.item:
-            self.notify(
-                f"Selected {event.item.query_one(PipelineCard).pipeline.name}..."
-            )
 
     async def data_fetcher(self) -> None:
         """Fetch pipeline data every 15 seconds."""
         while True:
             self.pipeline_list = self.api_client.pipelines.list()
             await asyncio.sleep(15.0)
+    

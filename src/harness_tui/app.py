@@ -14,6 +14,7 @@ import typing as t
 from pathlib import PurePath
 
 from dotenv import load_dotenv
+from textual import worker
 from textual.app import App, ComposeResult
 from textual.containers import Container, VerticalScroll
 from textual.driver import Driver
@@ -74,10 +75,10 @@ class HarnessTui(App):
         yield Footer()
 
     def on_mount(self) -> None:
-        self.query_one(ListView).focus()
+        self.query_one("#pipeline_list").focus()
 
     def action_search(self) -> None:
-        self.query_one("#search").focus()
+        self.query_one("#pipeline-search").focus()
 
     async def on_list_view_highlighted(self, event: ListView.Highlighted) -> None:
         if not event.item:
