@@ -12,7 +12,6 @@ import sys
 import typing as t
 from pathlib import PurePath
 
-from components import PipelineList
 from dotenv import load_dotenv
 from rich.syntax import Syntax
 from rich.traceback import Traceback
@@ -23,6 +22,7 @@ from textual.reactive import var
 from textual.widgets import DirectoryTree, Footer, Header, ListView, Static
 
 from harness_tui.api import HarnessClient
+from harness_tui.components import PipelineList
 
 
 class HarnessTui(App):
