@@ -18,7 +18,15 @@ from textual.app import App, ComposeResult
 from textual.containers import Container, VerticalScroll
 from textual.driver import Driver
 from textual.reactive import var
-from textual.widgets import DirectoryTree, Footer, Header, ListView, Static
+from textual.widgets import (
+    DirectoryTree,
+    Footer,
+    Header,
+    ListView,
+    Static,
+    TabbedContent,
+    TabPane,
+)
 
 from harness_tui.api import HarnessClient
 from harness_tui.components import PipelineList
@@ -46,9 +54,19 @@ class HarnessTui(App):
         yield Header()
         with Container():
             yield PipelineList(id="tree-view", api_client=self.api_client)
-            with VerticalScroll(id="yaml-view"):
-                yield ExecutionGraph()
-                yield Static(id="yaml")
+            with TabbedContent(initial="yaml-tab"):
+                with TabPane("Execution History", id="history-tab"):
+                    yield Static(
+                        id="history"
+                    )  # TODO(ankush): Add ExecutionHistory stuff
+                with TabPane("YAML", id="yaml-tab"):
+                    with VerticalScroll(id="yaml-view"):
+                        yield ExecutionGraph()
+                        yield Static(
+                            id="yaml"
+                        )  # TODO(alex): Make this editable with a save/validate button
+                with TabPane("Logs", id="logs-tab"):
+                    yield Static(id="logs")  # TODO(alex): Add log stuff
         yield Footer()
 
     def on_mount(self) -> None:
