@@ -58,18 +58,18 @@ class VectorDatabase:
     async def vector_search(self, query, limit=2):
         return await self.async_tbl.vector_search(self.hash_to_vector(query)).limit(limit).to_pandas()
 
-# Usage example
-async def main():
-    uri = "data/sample-lancedb"
-    db = VectorDatabase(uri)
-    await db.connect()
+# Usncomment to test code
+# async def main():
+#     uri = "data/sample-lancedb"
+#     db = VectorDatabase(uri)
+#     await db.connect()
 
-    directory_path = "./logs"
-    log_list = db.get_log_dict_from_directory(directory_path)
-    await db.create_table("vector_idss", log_list)
+#     directory_path = "./logs"
+#     log_list = db.get_log_dict_from_directory(directory_path)
+#     await db.create_table("vector_idss", log_list)
 
-    search_result = await db.vector_search("Aqua")
-    print(search_result)
+#     search_result = await db.vector_search("Aqua")
+#     print(search_result)
 
-# Running the async main function
-asyncio.run(main())
+# # Running the async main function
+# asyncio.run(main())
