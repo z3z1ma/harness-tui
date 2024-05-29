@@ -22,6 +22,7 @@ from textual.widgets import DirectoryTree, Footer, Header, ListView, Static
 
 from harness_tui.api import HarnessClient
 from harness_tui.components import PipelineList
+from harness_tui.components.execution_history import ExecutionGraph
 from harness_tui.components.pipeline_list import PipelineCard
 
 
@@ -46,6 +47,7 @@ class HarnessTui(App):
         with Container():
             yield PipelineList(id="tree-view", api_client=self.api_client)
             with VerticalScroll(id="yaml-view"):
+                yield ExecutionGraph()
                 yield Static(id="yaml")
         yield Footer()
 
@@ -72,6 +74,7 @@ class HarnessTui(App):
         code_container.update(syntax)
         self.query_one("#yaml-view").scroll_home(animate=False)
         self.sub_title = str(card.pipeline.name)
+        self.query_one(ExecutionGraph).pipeline = card.pipeline
 
 
 class CodeBrowser(App):
