@@ -117,3 +117,189 @@ class Pipeline(BaseModel):
         if self.resolved_template_pipeline_yaml is None:
             return {}
         return yaml.safe_load(io.StringIO(self.resolved_template_pipeline_yaml))
+
+
+class ExtraInfo(BaseModel):
+    execution_trigger_tag_needed_for_abort: t.Optional[str] = None
+    trigger_ref: t.Annotated[t.Optional[str], Field(alias="triggerRef")] = None
+    event_correlation_id: t.Annotated[
+        t.Optional[str], Field(alias="eventCorrelationId")
+    ] = None
+
+
+class TriggeredBy(BaseModel):
+    uuid: str
+    identifier: str
+    extra_info: t.Annotated[ExtraInfo, Field(alias="extraInfo")]
+    trigger_identifier: t.Annotated[str, Field(alias="triggerIdentifier")]
+    trigger_name: t.Annotated[str, Field(alias="triggerName")]
+
+
+class ExecutionTriggerInfo(BaseModel):
+    trigger_type: t.Annotated[str, Field(alias="triggerType")]
+    triggered_by: TriggeredBy = Field(alias="triggeredBy")
+    is_rerun: t.Annotated[bool, Field(alias="isRerun")]
+
+
+class GovernanceMetadata(BaseModel):
+    id: str
+    deny: bool
+    details: t.List[t.Any] = []
+    message: str
+    timestamp: str
+    status: str
+    account_id: t.Annotated[str, Field(alias="accountId")]
+    org_id: t.Annotated[str, Field(alias="orgId")]
+    project_id: t.Annotated[str, Field(alias="projectId")]
+    entity: str
+    type: str
+    action: str
+    created: str
+
+
+class CIImageDetails(BaseModel):
+    image_name: t.Annotated[str, Field(alias="imageName")]
+    image_tag: t.Annotated[str, Field(alias="imageTag")]
+
+
+class CIInfraDetails(BaseModel):
+    infra_type: t.Annotated[str, Field(alias="infraType")]
+    infra_os_type: t.Annotated[str, Field(alias="infraOSType")]
+    infra_host_type: t.Annotated[str, Field(alias="infraHostType")]
+    infra_arch_type: t.Annotated[str, Field(alias="infraArchType")]
+
+
+class CIModuleInfo(BaseModel):
+    ci_edition_type: t.Annotated[t.Optional[str], Field(alias="ciEditionType")] = None
+    ci_license_type: t.Annotated[t.Optional[str], Field(alias="ciLicenseType")] = None
+    image_details_list: t.Annotated[
+        t.List[CIImageDetails], Field(alias="imageDetailsList")
+    ] = []
+    infra_details_list: t.Annotated[
+        t.List[CIInfraDetails], Field(alias="infraDetailsList")
+    ] = []
+    is_private_repo: t.Annotated[bool, Field(alias="isPrivateRepo")] = False
+    scm_details_list: t.Annotated[t.List[t.Any], Field(alias="scmDetailsList")] = []
+    ti_build_details_list: t.Annotated[
+        t.List[t.Any], Field(alias="tiBuildDetailsList")
+    ] = []
+
+
+class ModuleInfo(BaseModel):
+    ci: t.Annotated[t.Optional[CIModuleInfo], Field(alias="ci")] = None
+
+
+class FailureInfoDTO(BaseModel):
+    message: str
+    failure_type_list: t.Annotated[t.List[t.Any], Field(alias="failureTypeList")] = []
+    response_messages: t.Annotated[t.List[t.Any], Field(alias="responseMessages")] = []
+
+
+class NodeRunInfo(BaseModel):
+    when_condition: t.Annotated[t.Optional[str], Field(alias="whenCondition")] = None
+    evaluated_condition: t.Annotated[
+        t.Optional[bool], Field(alias="evaluatedCondition")
+    ] = None
+    expressions: t.List[dict] = []
+
+
+class EdgeLayoutList(BaseModel):
+    current_node_children: t.Annotated[
+        t.List[str], Field(alias="currentNodeChildren")
+    ] = []
+    next_ids: t.Annotated[t.List[str], Field(alias="nextIds")] = []
+
+
+class LayoutNode(BaseModel):
+    node_type: t.Annotated[str, Field(alias="nodeType")]
+    node_group: t.Annotated[str, Field(alias="nodeGroup")]
+    node_identifier: t.Annotated[str, Field(alias="nodeIdentifier")]
+    name: str
+    node_uuid: t.Annotated[str, Field(alias="nodeUuid")]
+    status: str
+    module: t.Annotated[t.Optional[str], Field(alias="module")] = None
+    module_info: t.Annotated[t.Optional[ModuleInfo], Field(alias="moduleInfo")] = None
+    start_ts: t.Annotated[t.Optional[int], Field(alias="startTs")] = None
+    end_ts: t.Annotated[t.Optional[int], Field(alias="endTs")] = None
+    edge_layout_list: t.Annotated[EdgeLayoutList, Field(alias="edgeLayoutList")] = (
+        EdgeLayoutList()
+    )
+    node_run_info: t.Annotated[t.Optional[NodeRunInfo], Field(alias="nodeRunInfo")] = (
+        None
+    )
+    failure_info: t.Annotated[t.Dict[str, t.Any], Field(alias="failureInfo")] = {}
+    failure_info_dto: t.Annotated[
+        t.Optional[FailureInfoDTO], Field(alias="failureInfoDTO")
+    ] = None
+    node_execution_id: t.Annotated[t.Optional[str], Field(alias="nodeExecutionId")] = (
+        None
+    )
+    execution_input_configured: t.Annotated[
+        bool, Field(alias="executionInputConfigured")
+    ] = True
+    is_rollback_stage_node: t.Annotated[bool, Field(alias="isRollbackStageNode")] = (
+        False
+    )
+
+
+class ParentStageInfo(BaseModel):
+    hasparentpipeline: bool
+    stagenodeid: str
+    executionid: str
+    identifier: str
+    projectid: str
+    orgid: str
+    runsequence: int
+
+
+class PipelineExecution(BaseModel):
+    pipeline_identifier: t.Annotated[str, Field(alias="pipelineIdentifier")]
+    org_identifier: t.Annotated[str, Field(alias="orgIdentifier")]
+    project_identifier: t.Annotated[str, Field(alias="projectIdentifier")]
+    plan_execution_id: t.Annotated[str, Field(alias="planExecutionId")]
+    name: str
+    yaml_version: t.Annotated[str, Field(alias="yamlVersion")] = "0"
+    status: str
+    tags: t.List[t.Any] = []
+    labels: t.List[t.Any] = []
+    execution_trigger_info: t.Annotated[
+        ExecutionTriggerInfo, Field(alias="executionTriggerInfo")
+    ]
+    governance_metadata: t.Annotated[
+        t.Optional[GovernanceMetadata], Field(alias="governanceMetadata")
+    ] = None
+    module_info: t.Annotated[t.Optional[ModuleInfo], Field(alias="moduleInfo")] = None
+    layout_node_map: t.Annotated[
+        t.Dict[str, LayoutNode], Field(alias="layoutNodeMap")
+    ] = {}
+    modules: t.List[str]
+    starting_node_id: t.Annotated[str, Field(alias="startingNodeId")]
+    start_ts: t.Annotated[int, Field(alias="startTs")]
+    end_ts: t.Annotated[int, Field(alias="endTs")]
+    created_at: t.Annotated[int, Field(alias="createdAt")]
+    can_retry: t.Annotated[bool, Field(alias="canRetry")] = False
+    can_re_execute: t.Annotated[bool, Field(alias="canReExecute")] = False
+    show_retry_history: t.Annotated[bool, Field(alias="showRetryHistory")] = False
+    run_sequence: t.Annotated[int, Field(alias="runSequence")]
+    successful_stages_count: t.Annotated[int, Field(alias="successfulStagesCount")] = 0
+    running_stages_count: t.Annotated[int, Field(alias="runningStagesCount")] = 0
+    failed_stages_count: t.Annotated[int, Field(alias="failedStagesCount")] = 0
+    total_stages_count: t.Annotated[int, Field(alias="totalStagesCount")] = 0
+    store_type: t.Annotated[str, Field(alias="storeType")] = "INLINE"
+    execution_input_configured: t.Annotated[
+        bool, Field(alias="executionInputConfigured")
+    ] = True
+    parent_stage_info: t.Annotated[
+        t.Optional[ParentStageInfo], Field(alias="parentStageInfo")
+    ] = None
+    allow_stage_executions: t.Annotated[bool, Field(alias="allowStageExecutions")] = (
+        False
+    )
+    execution_mode: t.Annotated[str, Field(alias="executionMode")]
+    notes_exist_for_plan_execution_id: t.Annotated[
+        bool, Field(alias="notesExistForPlanExecutionId")
+    ] = False
+    should_use_simplified_key: t.Annotated[
+        bool, Field(alias="shouldUseSimplifiedKey")
+    ] = False
+    stages_execution: t.Annotated[bool, Field(alias="stagesExecution")] = False

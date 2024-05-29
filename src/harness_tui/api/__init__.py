@@ -48,20 +48,20 @@ if __name__ == "__main__":
 
     # Fetch list of pipelines
     pipelines = client.pipelines.list()
-    rich.print(pipelines)
+    # rich.print(pipelines)
 
     # Get pipeline reference
-    pipeline = client.pipelines.reference(pipelines[0].identifier)
+    pipeline = client.pipelines.reference("TimescaleDB_Pipeline")
 
     # Fetch pipeline summary
-    rich.print(pipeline.summary())
+    # rich.print(pipeline.summary())
 
     # Fetch pipeline YAML
-    rich.print(pipeline.get())
+    rich.print(pipeline.executions())
 
     # Execute pipeline
-    execution_result = pipeline.execute()
-    rich.print(execution_result)
+    # execution_result = pipeline.execute()
+    # rich.print(execution_result)
 
     exit(0)
 

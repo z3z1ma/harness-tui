@@ -233,3 +233,22 @@ class PipelineReference:
                 }
             ),
         )
+
+    @ttl_cache(10)
+    def executions(self):
+        """Get the execution history of the pipeline."""
+        return list(
+            map(
+                M.PipelineExecution.model_validate,
+                self.client._request(
+                    "POST",
+                    "pipelines/execution/summary",
+                    params={
+                        "accountIdentifier": self.client.account,
+                        "orgIdentifier": self.client.org,
+                        "projectIdentifier": self.client.project,
+                        "pipelineIdentifier": self.pipeline_identifier,
+                    },
+                )["data"]["content"],
+            )
+        )

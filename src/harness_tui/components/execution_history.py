@@ -11,7 +11,6 @@ from textual.reactive import reactive
 from textual.widgets import DataTable, Label, Sparkline, Static
 
 import harness_tui.models as M
-from harness_tui.models.pipeline import RecentExecutionsInfo
 
 
 class ExecutionGraph(Static):
@@ -33,16 +32,14 @@ class ExecutionGraph(Static):
 
 
 class ExecutionHistory(Static):
-    executions = reactive(list, recompose=True)
+    executions: reactive[t.List[M.PipelineExecution]] = reactive(list, recompose=True)
 
     def __init__(
         self,
-        executions: t.List[RecentExecutionsInfo],
         *args: t.Any,
         **kwargs: t.Any,
     ) -> None:
         super().__init__(*args, **kwargs)
-        self.executions = executions
 
     def compose(self) -> ComposeResult:
         rows = []
@@ -52,8 +49,8 @@ class ExecutionHistory(Static):
             exec_time = dt.strftime("%m/%d/%Y, %H:%M:%S")
             row = (
                 exec_time,
-                execution.executor_info.username,
-                execution.executor_info.trigger_type,
+                execution.execution_trigger_info.triggered_by.identifier,
+                execution.execution_trigger_info.trigger_type,
             )
             styled_row = [Text(str(cell), style="bold", justify="left") for cell in row]
             if execution.status == "Success":

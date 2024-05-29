@@ -8,6 +8,7 @@ Run with:
 
 from __future__ import annotations
 
+import asyncio
 import sys
 import typing as t
 from pathlib import PurePath
@@ -56,7 +57,7 @@ class HarnessTui(App):
             yield PipelineList(id="tree-view", api_client=self.api_client)
             with TabbedContent(initial="history-tab"):
                 with TabPane("Execution History", id="history-tab"):
-                    yield Static(id="history")
+                    yield ExecutionHistory(id="history")
                 with TabPane("YAML", id="yaml-tab"):
                     with VerticalScroll(id="yaml-view"):
                         yield ExecutionGraph()
@@ -78,7 +79,7 @@ class HarnessTui(App):
     def action_search(self) -> None:
         self.query_one("#search").focus()
 
-    def on_list_view_highlighted(self, event: ListView.Highlighted) -> None:
+    async def on_list_view_highlighted(self, event: ListView.Highlighted) -> None:
         if not event.item:
             return
         elif event.item.id is None:
@@ -88,16 +89,17 @@ class HarnessTui(App):
         card = event.item.query_one(PipelineCard)
         code_container = self.query_one("#yaml", TextArea)
         pipe = card.pipeline.identifier
-        content = self.api_client.pipelines.reference(pipe).get().pipeline_yaml
+        content = (
+            await asyncio.to_thread(self.api_client.pipelines.reference(pipe).get)
+        ).pipeline_yaml
         code_container.load_text(content)
-        exeution_list = ExecutionHistory(
-            executions=card.pipeline.recent_executions_info
-        )
-        history_container = self.query_one("#history")
-        history_container.remove_children()
-        history_container.mount(exeution_list)
         self.query_one("#yaml-view").scroll_home(animate=False)
         self.sub_title = str(card.pipeline.name)
+        self.query_one(
+            "#history", ExecutionHistory
+        ).executions = await asyncio.to_thread(
+            self.api_client.pipelines.reference(pipe).executions
+        )
         self.query_one(ExecutionGraph).pipeline = card.pipeline
 
 
