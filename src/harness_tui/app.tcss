@@ -21,6 +21,15 @@ PipelineCard {
     color: rgb(128, 128, 128);
 }
 
+.run-button {
+    background: #4dc952;
+    color: white;
+    dock: right;
+    border-top: none;
+    border-bottom: none;
+    min-width: 10;
+}
+
 CodeBrowser #tree-view {
     display: block;
     max-width: 50%;

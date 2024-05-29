@@ -54,7 +54,7 @@ class PipelineCard(Static):
                 yield LoadingIndicator()
 
         yield Button(
-            label="RUN PIPELINE",
+            label="▶ Run Pipeline",
             id=f"run-pipeline-{self.pipeline.identifier}",
             classes="run-button",
         )
