@@ -1,9 +1,11 @@
-import os
-import json
 import hashlib
+import json
+import os
+import typing as t
+
 import lancedb
 import numpy as np
-import asyncio
+
 
 class VectorDatabase:
     def __init__(self, uri, vector_size=128):
@@ -16,37 +18,40 @@ class VectorDatabase:
         self.async_db = await lancedb.connect_async(self.uri)
 
     async def table_exists(self, table_name):
+        if self.async_db is None:
+            raise RuntimeError("Database is not connected.")
         tables = await self.async_db.table_names()
         return table_name in tables
 
-    async def create_table(self, table_name, data):
+    async def create_table(self, table_name: str, data: t.Any):
+        if self.async_db is None:
+            raise RuntimeError("Database is not connected.")
         if not await self.table_exists(table_name):
             self.async_tbl = await self.async_db.create_table(table_name, data=data)
         else:
             self.async_tbl = await self.async_db.open_table(table_name)
 
-    def hash_to_vector(self, s):
-        hash_bytes = hashlib.sha256(s.encode('utf-8')).digest()
-        hash_vector = np.frombuffer(hash_bytes, dtype=np.uint8)[:self.vector_size]
+    def hash_to_vector(self, s: str):
+        hash_bytes = hashlib.sha256(s.encode("utf-8")).digest()
+        hash_vector = np.frombuffer(hash_bytes, dtype=np.uint8)[: self.vector_size]
         return hash_vector.tolist()
 
-    def get_log_dict_from_directory(self, directory_path):
+    def get_log_dict_from_directory(self, directory_path: str):
         log_list = []
-        for root, dirs, files in os.walk(directory_path):
+        for root, _, files in os.walk(directory_path):
             for file in files:
                 if file != ".DS_Store":
                     full_path = os.path.join(root, file)
-                    with open(full_path, 'r', encoding='utf-8') as file:
+                    with open(full_path, "r", encoding="utf-8") as file:
                         content = file.read()
 
                     try:
                         log_entries = [
-                            json.loads(line)
-                            for line in content.strip().split('\n')
+                            json.loads(line) for line in content.strip().split("\n")
                         ]
                         obj = {
                             "vector": self.hash_to_vector(full_path),
-                            "log_content": str(log_entries)
+                            "log_content": str(log_entries),
                         }
                         log_list.append(obj)
                     except json.JSONDecodeError:
@@ -55,8 +60,15 @@ class VectorDatabase:
 
         return log_list
 
-    async def vector_search(self, query, limit=2):
-        return await self.async_tbl.vector_search(self.hash_to_vector(query)).limit(limit).to_pandas()
+    async def vector_search(self, query: str, limit: int = 2):
+        if self.async_tbl is None:
+            raise RuntimeError("Table is not created.")
+        return (
+            await self.async_tbl.vector_search(self.hash_to_vector(query))  # type: ignore
+            .limit(limit)
+            .to_pandas()
+        )
+
 
 # Usncomment to test code
 # async def main():
@@ -72,4 +84,5 @@ class VectorDatabase:
 #     print(search_result)
 
 # # Running the async main function
+# import asyncio
 # asyncio.run(main())
