@@ -37,14 +37,14 @@ repos:
     hooks:
       - id: poetry-export-prod
         name: poetry-export-prod
-        entry: poetry export -f requirements.txt --output requirements.txt
+        entry: poetry export -f requirements.txt --output requirements.txt --without-hashes
         language: system
         types: [file]
         files: pyproject.toml
         pass_filenames: false
       - id: poetry-export-dev
         name: poetry-export-dev
-        entry: poetry export -f requirements.txt --output requirements-dev.txt --with=dev
+        entry: poetry export -f requirements.txt --output requirements-dev.txt --only=dev --without-hashes
         language: system
         types: [file]
         files: pyproject.toml
