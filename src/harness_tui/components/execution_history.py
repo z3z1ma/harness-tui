@@ -3,7 +3,6 @@
 from __future__ import annotations
 
 import typing as t
-from datetime import datetime
 
 from rich.text import Text
 from textual.app import ComposeResult
@@ -45,8 +44,7 @@ class ExecutionHistory(Static):
         rows = []
         rows.append(("Start Time", "Started By", "Trigger Type", "Status"))
         for execution in self.executions:
-            dt = datetime.fromtimestamp(execution.start_ts / 1000)
-            exec_time = dt.strftime("%m/%d/%Y, %H:%M:%S")
+            exec_time = execution.start_ts.strftime("%m/%d/%Y, %H:%M:%S")
             row = (
                 exec_time,
                 execution.execution_trigger_info.triggered_by.identifier,

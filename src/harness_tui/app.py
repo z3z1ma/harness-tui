@@ -8,13 +8,12 @@ Run with:
 
 from __future__ import annotations
 
-import asyncio
 import sys
 import typing as t
 from pathlib import PurePath
 
 from dotenv import load_dotenv
-from textual import worker
+from textual import work
 from textual.app import App, ComposeResult
 from textual.containers import Container, VerticalScroll
 from textual.driver import Driver
@@ -80,6 +79,23 @@ class HarnessTui(App):
     def action_search(self) -> None:
         self.query_one("#pipeline-search").focus()
 
+    @work(thread=True)
+    def update_execution_history(self, pipeline_identifier: str):
+        ...  # Add a spinner
+        executions = self.api_client.pipelines.reference(
+            pipeline_identifier
+        ).executions()
+        self.query_one("#history", ExecutionHistory).executions = executions
+
+    @work(thread=True)
+    def update_yaml_buffer(self, pipeline_identifier: str) -> None:
+        code_container = self.query_one("#yaml", TextArea)
+        content = (
+            self.api_client.pipelines.reference(pipeline_identifier).get()
+        ).pipeline_yaml
+        code_container.load_text(content)
+        self.query_one("#yaml-view").scroll_home(animate=False)
+
     async def on_list_view_highlighted(self, event: ListView.Highlighted) -> None:
         if not event.item:
             return
@@ -87,20 +103,11 @@ class HarnessTui(App):
             return
         elif not event.item.id.startswith("pipeline-list-item"):
             return
+
         card = event.item.query_one(PipelineCard)
-        code_container = self.query_one("#yaml", TextArea)
-        pipe = card.pipeline.identifier
-        content = (
-            await asyncio.to_thread(self.api_client.pipelines.reference(pipe).get)
-        ).pipeline_yaml
-        code_container.load_text(content)
-        self.query_one("#yaml-view").scroll_home(animate=False)
+        self.update_execution_history(card.pipeline.identifier)
+        self.update_yaml_buffer(card.pipeline.identifier)
         self.sub_title = str(card.pipeline.name)
-        self.query_one(
-            "#history", ExecutionHistory
-        ).executions = await asyncio.to_thread(
-            self.api_client.pipelines.reference(pipe).executions
-        )
         self.query_one(ExecutionGraph).pipeline = card.pipeline
 
 

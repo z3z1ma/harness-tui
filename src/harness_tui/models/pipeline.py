@@ -219,8 +219,16 @@ class LayoutNode(BaseModel):
     status: str
     module: t.Annotated[t.Optional[str], Field(alias="module")] = None
     module_info: t.Annotated[t.Optional[ModuleInfo], Field(alias="moduleInfo")] = None
-    start_ts: t.Annotated[t.Optional[int], Field(alias="startTs")] = None
-    end_ts: t.Annotated[t.Optional[int], Field(alias="endTs")] = None
+    start_ts: t.Annotated[t.Optional[datetime], Field(alias="startTs")] = None
+    end_ts: t.Annotated[t.Optional[datetime], Field(alias="endTs")] = None
+
+    @field_validator("start_ts", "end_ts", mode="before")
+    @classmethod
+    def convert_epoch_to_datetime(cls, ts: t.Any):
+        if isinstance(ts, (float, int)):
+            return datetime.fromtimestamp(ts / 1000, tz=timezone.utc)
+        return ts
+
     edge_layout_list: t.Annotated[EdgeLayoutList, Field(alias="edgeLayoutList")] = (
         EdgeLayoutList()
     )
@@ -274,8 +282,16 @@ class PipelineExecution(BaseModel):
     ] = {}
     modules: t.List[str]
     starting_node_id: t.Annotated[str, Field(alias="startingNodeId")]
-    start_ts: t.Annotated[int, Field(alias="startTs")]
-    end_ts: t.Annotated[int, Field(alias="endTs")]
+    start_ts: t.Annotated[datetime, Field(alias="startTs")]
+    end_ts: t.Annotated[datetime, Field(alias="endTs")]
+
+    @field_validator("start_ts", "end_ts", mode="before")
+    @classmethod
+    def convert_epoch_to_datetime(cls, ts: t.Any):
+        if isinstance(ts, (float, int)):
+            return datetime.fromtimestamp(ts / 1000, tz=timezone.utc)
+        return ts
+
     created_at: t.Annotated[int, Field(alias="createdAt")]
     can_retry: t.Annotated[bool, Field(alias="canRetry")] = False
     can_re_execute: t.Annotated[bool, Field(alias="canReExecute")] = False
