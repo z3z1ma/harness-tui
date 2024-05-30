@@ -3,6 +3,8 @@ from functools import lru_cache, wraps
 
 
 def ttl_cache(seconds: int):
+    """A decorator that caches the result of a function for a given time."""
+
     def decorator(func):
         @lru_cache(maxsize=None)
         def cached_func(*args, _ttl_time, **kwargs):

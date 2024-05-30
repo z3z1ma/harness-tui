@@ -5,18 +5,6 @@ Screen {
     }
 }
 
-PipelineCard {
-    margin: 1;
-}
-
-#pipeline-view {
-    scrollbar-gutter: stable;
-    overflow: auto;
-    width: 40%;
-    height: 100%;
-    dock: left;
-}
-
 #pipeline-desc {
     color: rgb(128, 128, 128);
 }
@@ -50,12 +38,36 @@ ExecutionCard {
     display: none;
 }
 
-#log-tailer {
-    padding: 1;
-}
-
 YamlEditor Horizontal {
     dock: bottom;
     height: 4;
     content-align: right middle;
+}
+
+LogView Tree {
+    dock: top;
+    height: 18;
+    background: $background;
+    padding: 1;
+}
+
+LogView Log {
+    background: $background;
+    padding: 1;
+}
+
+PipelineList {
+    dock: left;
+    width: 35%;
+    height: 100%;
+    overflow: auto;
+    scrollbar-gutter: stable;
+}
+
+PipelineCard {
+    margin: 1;
+}
+
+PipelineCard LoadingIndicator {
+  margin: 1;
 }
