@@ -112,7 +112,9 @@ class HarnessTui(App):
     async def on_pipeline_card_run_pipeline_request(
         self, event: PipelineCard.RunPipelineRequest
     ):
-        self.notify(f"Got run pipeline request for {event.pipeline.identifier}")
+        ref = self.api_client.pipelines.reference(event.pipeline.identifier)
+        resp = ref.execute()
+        self.notify(f"Pipeline {event.pipeline.name} started with execution {resp}")
 
     async def on_log_view_fetch_logs_request(self, event: LogView.FetchLogsRequest):
         key = t.cast(str, event.node.log_base_key)

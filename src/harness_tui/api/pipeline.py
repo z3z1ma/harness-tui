@@ -202,14 +202,9 @@ class PipelineReference:
         repo_name: t.Optional[str] = None,
     ):
         """Execute the pipeline."""
-        warnings.warn(
-            "Execute is a no-op for development purposes. This will be enabled later.",
-            FutureWarning,
-        )
-        return {}
         return self.client._request(
             "POST",
-            f"orgs/{self.client.org}/projects/{self.client.project}/pipelines/{self.pipeline_identifier}/execute",
+            f"https://app.harness.io/v1/orgs/{self.client.org}/projects/{self.client.project}/pipelines/{self.pipeline_identifier}/execute",
             json=_strip_unset(
                 {
                     "inputs_yaml": inputs_yaml,
