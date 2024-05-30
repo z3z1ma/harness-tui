@@ -77,13 +77,20 @@ class LogView(Static):
         def _open_logs():
             tree.select_node(node_to_expand)
             tree.action_select_cursor()
+            tree.focus()
 
         self.call_after_refresh(_open_logs)
 
         log = Log(highlight=True, id="log-tailer")
+        log.border_title = (
+            t.cast(M.ExecutionGraphNode, node_to_expand.data).name + ".log"
+        )
         log.write("Select a node in the tree to view logs")
         yield log
 
     def on_tree_node_selected(self, event: Tree.NodeSelected):
         if event.node.data:
             self.post_message(self.FetchLogsRequest(event.node.data))
+            self.query_one(Log).border_title = (
+                t.cast(M.ExecutionGraphNode, event.node.data).name + ".log"
+            )

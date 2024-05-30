@@ -54,6 +54,8 @@ LogView Tree {
 LogView Log {
     background: $background;
     padding: 1;
+    border-top: panel $panel;
+    border-title-color: $text;
 }
 
 PipelineList {
