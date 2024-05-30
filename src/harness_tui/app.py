@@ -41,6 +41,7 @@ from harness_tui.components import (
     PipelineList,
     YamlEditor,
 )
+from harness_tui.vectordb.interface import LogVectorDB
 
 DATA_DIR = os.path.expanduser("~/.harness-tui")
 
@@ -57,6 +58,7 @@ class HarnessTui(App):
         ("y", "focus_yaml", "Focus YAML"),
         ("l", "focus_logs", "Focus logs"),
         ("d", "dark_mode", "Toggle Dark Mode"),
+        ("v", "vector_search", "Vector Search"),
     ]
 
     def __init__(
@@ -68,6 +70,7 @@ class HarnessTui(App):
         super().__init__(driver_class, css_path, watch_css)
         self.api_client = HarnessClient.default()
         self.scraper_task = None
+        self.db = None
 
     def compose(self) -> ComposeResult:
         yield Header()
@@ -85,6 +88,7 @@ class HarnessTui(App):
     def on_mount(self) -> None:
         self.query_one("#pipeline-search").focus()
         self.update_pipeline_list_loop()
+        self.build_vectordb()
 
     # Custom actions (these define custom actions that can be triggered by keybindings or cmd menu)
 
@@ -167,6 +171,15 @@ class HarnessTui(App):
         execution_ui.executions = executions
         await execution_ui.set_loading(False)
 
+    @work(group="setup_vectordb", exclusive=True)
+    async def build_vectordb(self) -> None:
+        """Setup the VectorDB instance."""
+        try:
+            self.db = await LogVectorDB.build(self.data_dir)
+            self.notify("VectorDB index built.")
+        except Exception as e:
+            self.notify(f"Could not setup VectorDB: {e}", severity="error")
+
     @work(group="yaml_ui", exclusive=True)
     async def update_yaml_buffer(self, pipeline_identifier: str) -> None:
         """Fetch pipeline YAML and update the buffer."""
@@ -237,13 +250,7 @@ class HarnessTui(App):
         scrape logs for all pipelines in the pipeline list. The cache is used to drive semantic search capabilities.
         """
         start = time.time()
-        base_dir = (
-            Path(DATA_DIR)
-            / self.api_client.account
-            / self.api_client.org
-            / self.api_client.project
-        )
-        base_dir.mkdir(parents=True, exist_ok=True)
+        base_dir = self.data_dir
         stamp = base_dir.joinpath("last_update")
         mtime = stamp.stat().st_mtime if stamp.exists() else 0
         if mtime + (60 * 60) > time.time():
@@ -284,6 +291,20 @@ class HarnessTui(App):
         )
         stamp.touch()
         stamp.write_text(str(time.time()))
+        self.build_vectordb()
+
+    # Auxiliary methods (these are helper methods that are called by other methods)
+
+    @property
+    def data_dir(self) -> Path:
+        d = (
+            Path(DATA_DIR)
+            / self.api_client.account
+            / self.api_client.org
+            / self.api_client.project
+        )
+        d.mkdir(parents=True, exist_ok=True)
+        return d
 
 
 if __name__ == "__main__":

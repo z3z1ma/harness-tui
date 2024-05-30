@@ -1,7 +1,0 @@
-{"level":"INFO","pos":0,"out":"Starting service step...","time":"2024-05-26T20:14:52.551973707Z","args":null}
-{"level":"INFO","pos":0,"out":"Service Name: MongoDB CDC , Identifier: MongoDB_CDC","time":"2024-05-26T20:14:52.56562339Z","args":null}
-{"level":"INFO","pos":0,"out":"Processed service \u0026 environment variables","time":"2024-05-26T20:14:52.617131471Z","args":null}
-{"level":"INFO","pos":0,"out":"Adding manifest from service","time":"2024-05-26T20:14:52.737277247Z","args":null}
-{"level":"WARN","pos":0,"out":"\u001b[1;93m\u001b[40mNo config files configured in the service or in overrides. configFiles expressions will not work\u001b[0m","time":"2024-05-26T20:14:52.740458347Z","args":null}
-{"level":"WARN","pos":0,"out":"\u001b[1;93m\u001b[40mNo service hooks configured in the service. hooks expressions will not work\u001b[0m","time":"2024-05-26T20:14:52.745965563Z","args":null}
-{"level":"INFO","pos":0,"out":"Completed service step","time":"2024-05-26T20:14:52.897202406Z","args":null}
