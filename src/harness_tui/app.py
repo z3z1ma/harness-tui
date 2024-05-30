@@ -41,7 +41,7 @@ from harness_tui.components import (
     PipelineList,
     YamlEditor,
 )
-from harness_tui.vectordb.interface import LogVectorDB
+from harness_tui.vectordb import LogVectorDB
 
 DATA_DIR = os.path.expanduser("~/.harness-tui")
 
