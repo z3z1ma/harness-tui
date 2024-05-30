@@ -11,6 +11,9 @@ from textual.widgets import Label, Log, Static, Tree
 
 import harness_tui.models as M
 
+if t.TYPE_CHECKING:
+    from textual.widgets.tree import TreeNode
+
 
 class LogView(Static):
     """Component that displays the log view of a specific pipeline."""
@@ -51,8 +54,22 @@ class LogView(Static):
                 current = nodes[part]
             current.add_leaf(node.name, node)
 
+        def _find(parent: "TreeNode", depth: int = 0):
+            yield parent, depth
+            for child in parent.children:
+                yield from _find(child, depth + 1)
+
         tree.root.expand_all()
         yield tree
+        sorted_nodes = sorted(_find(tree.root), key=lambda x: x[1], reverse=True)
+        node_to_expand, _ = sorted_nodes[0]
+
+        def _open_logs():
+            tree.select_node(node_to_expand)
+            tree.action_select_cursor()
+
+        self.call_after_refresh(_open_logs)
+
         log = Log(highlight=True, id="log-tailer")
         log.write("Select a node in the tree to view logs")
         yield log

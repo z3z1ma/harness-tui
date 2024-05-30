@@ -9,12 +9,10 @@ Run with:
 from __future__ import annotations
 
 import asyncio
-import atexit
 import itertools
 import os
+import time
 import typing as t
-from concurrent.futures import ProcessPoolExecutor
-from multiprocessing import set_start_method
 from pathlib import Path, PurePath
 
 from dotenv import load_dotenv
@@ -45,7 +43,6 @@ from harness_tui.components import (
 )
 
 DATA_DIR = os.path.expanduser("~/.harness-tui")
-set_start_method("spawn", force=True)
 
 
 class HarnessTui(App):
@@ -70,8 +67,7 @@ class HarnessTui(App):
     ):
         super().__init__(driver_class, css_path, watch_css)
         self.api_client = HarnessClient.default()
-        self.run_once_scraper = False
-        self.bg_pool = ProcessPoolExecutor(max_workers=1)
+        self.scraper_task = None
 
     def compose(self) -> ComposeResult:
         yield Header()
@@ -127,7 +123,10 @@ class HarnessTui(App):
         self.notify(f"Got run pipeline request for {event.pipeline.identifier}")
 
     async def on_log_view_fetch_logs_request(self, event: LogView.FetchLogsRequest):
-        self.update_log_view(event.node.log_base_key)
+        key = t.cast(str, event.node.log_base_key)
+        if event.node.step_type == "ShellScript":
+            key += "-commandUnit:Execute"
+        self.update_log_view(key)
 
     async def on_list_view_highlighted(self, event: ListView.Highlighted) -> None:
         if not event.item:
@@ -147,6 +146,7 @@ class HarnessTui(App):
         plan_id = str(event.data_table.get_cell_at(Coordinate(event.coordinate.row, 4)))
         self.update_log_tree(plan_id)
         self.notify(f"Selected execution {plan_id}")
+        self.query_one(TabbedContent).active = "logs-tab"
 
     # Work methods (these update reactive attributes to lazily update the UI)
 
@@ -183,13 +183,8 @@ class HarnessTui(App):
             pipeline_list = await asyncio.to_thread(self.api_client.pipelines.list)
             pipeline_ui.pipeline_list = pipeline_list
             await asyncio.sleep(15.0)
-            if not self.run_once_scraper:
-                proc = self.bg_pool.submit(
-                    scrape_logs_background_job, pipeline_list, self.api_client
-                )
-                atexit.register(proc.cancel)
-                self.run_once_scraper = True
-                self.notify("Started log scraper background job.")
+            if self.scraper_task is None:
+                self.scraper_task = self.scrape_logs_background_job(pipeline_list)
 
     @work(group="log_tree_ui", exclusive=True)
     async def update_log_tree(self, plan_execution_identifier: str):
@@ -211,58 +206,76 @@ class HarnessTui(App):
             self.api_client.logs.stream(log_key),
             self.api_client.logs.blob(log_key),
         )
-        # {'level': 'info', 'pos': 0, 'out': '1.6.14: Pulling from plugins/cache\n', 'time': '2024-05-28T20:00:37.637136016Z', 'args': None}
-        first = next(log_source_chain)
-        if first:
-            log_handle.write(first["out"])
-            for line in log_source_chain:
-                log_handle.write(line["out"])  # type: ignore
+
+        def _write(payload: dict) -> None:
+            # {'level': 'info', 'pos': 0, 'out': '1.6.14: Pulling from plugins/cache\n', 'time': '2024-05-28T20:00:37.637136016Z', 'args': None}
+            line = payload["out"]
+            if not line.endswith("\n"):
+                line += "\n"
+            log_handle.write(line)
+
+        seen = next(log_source_chain)
+        if seen:
+            _write(seen)
+            for payload in log_source_chain:
+                _write(payload)
         else:
-            log_handle.write("No logs to display for the given key.")
+            log_handle.write("\nNo logs to display for the given key.")
 
+    @work(group="log_scraper", exclusive=True, thread=True)
+    def scrape_logs_background_job(self, pipeline_list: t.List[M.PipelineSummary]):
+        """Scrape logs for all pipelines in the pipeline list.
 
-def scrape_logs_background_job(
-    pipeline_list: t.List[M.PipelineSummary], api_client: HarnessClient
-):
-    """Scrape logs for all pipelines in the pipeline list.
-
-    This function is run in a separate process to avoid blocking the main event loop and is a best-effort attempt to
-    scrape logs for all pipelines in the pipeline list. The cache is used to drive semantic search capabilities.
-    """
-    for pipeline in pipeline_list:
-        ref = api_client.pipelines.reference(pipeline.identifier)
-        try:
-            executions = ref.executions(size=5)
-        except Exception:
-            continue
-        for execution in executions:
+        i   This function is run in a separate process to avoid blocking the main event loop and is a best-effort attempt to
+        scrape logs for all pipelines in the pipeline list. The cache is used to drive semantic search capabilities.
+        """
+        start = time.time()
+        base_dir = (
+            Path(DATA_DIR)
+            / self.api_client.account
+            / self.api_client.org
+            / self.api_client.project
+        )
+        stamp = base_dir.joinpath("last_update")
+        mtime = stamp.stat().st_mtime if stamp.exists() else 0
+        if mtime + (60 * 60) > time.time():
+            self.notify("Skipping log scraper background job. Cache is valid.")
+            return
+        else:
+            self.notify("Running log scraper background job.")
+        for pipeline in pipeline_list:
+            ref = self.api_client.pipelines.reference(pipeline.identifier)
             try:
-                details = ref.execution_details(execution.plan_execution_id)
+                executions = ref.executions(size=5)
             except Exception:
                 continue
-            for node in details.execution_graph.node_map.values():
-                if not node.log_base_key:
-                    continue
+            for execution in executions:
                 try:
-                    lines = list(api_client.logs.blob(node.log_base_key))
+                    details = ref.execution_details(execution.plan_execution_id)
                 except Exception:
                     continue
-                if not lines:
-                    continue
-                parts = node.log_base_key.split("/")
-                file_key = "__".join(map(lambda v: v.split(":", 1)[-1], parts[3:]))
-                log_path = (
-                    Path(DATA_DIR)
-                    / api_client.account
-                    / api_client.org
-                    / api_client.project
-                    / f"{file_key}.log"
-                )
-                log_path.parent.mkdir(parents=True, exist_ok=True)
-                with open(log_path, "w") as f:
-                    for line in lines:
-                        f.write(line["out"])
-                        f.write("\n")
+                for node in details.execution_graph.node_map.values():
+                    if not node.log_base_key:
+                        continue
+                    try:
+                        lines = list(self.api_client.logs.blob(node.log_base_key))
+                    except Exception:
+                        continue
+                    if not lines:
+                        continue
+                    parts = node.log_base_key.split("/")
+                    file_key = "__".join(map(lambda v: v.split(":", 1)[-1], parts[3:]))
+                    log_path = base_dir / f"{file_key}.log"
+                    log_path.parent.mkdir(parents=True, exist_ok=True)
+                    with open(log_path, "w") as f:
+                        for line in lines:
+                            f.write(line["out"])
+                            f.write("\n")
+        self.notify(
+            f"Finished log scraper background job in {(time.time() - start):.2f}s."
+        )
+        stamp.touch()
+        stamp.write_text(str(time.time()))
 
 
 if __name__ == "__main__":
