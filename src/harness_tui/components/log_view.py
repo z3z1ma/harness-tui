@@ -15,6 +15,16 @@ if t.TYPE_CHECKING:
     from textual.widgets.tree import TreeNode
 
 
+EMOJI_STATUS_MAP = {
+    "RUNNING": "🟡 ",
+    "Running": "🟡 ",
+    "Failed": "🔴 ",
+    "Succeeded": "🟢 ",
+    "Skipped": "🔵 ",
+    "Not Started": "⚪ ",
+}
+
+
 class LogView(Static):
     """Component that displays the log view of a specific pipeline."""
 
@@ -52,7 +62,7 @@ class LogView(Static):
                     else:
                         nodes[part] = current.add(part)
                 current = nodes[part]
-            current.add_leaf(node.name, node)
+            current.add_leaf(EMOJI_STATUS_MAP.get(node.status, "") + node.name, node)
 
         def _depth(parent: "TreeNode", score: int = 0):
             yield parent, score

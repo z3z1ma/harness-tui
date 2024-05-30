@@ -64,10 +64,10 @@ PipelineList {
     scrollbar-gutter: stable;
 }
 
-PipelineCard {
+PipelineList PipelineCard {
     margin: 1;
 }
 
-PipelineCard LoadingIndicator {
+PipelineList PipelineCard LoadingIndicator {
   margin: 1;
 }
