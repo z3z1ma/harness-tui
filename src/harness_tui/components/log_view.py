@@ -53,7 +53,9 @@ class LogView(Static):
 
         tree.root.expand_all()
         yield tree
-        yield Log(highlight=True, id="log-tailer")
+        log = Log(highlight=True, id="log-tailer")
+        log.write("Select a node in the tree to view logs")
+        yield log
 
     def on_tree_node_selected(self, event: Tree.NodeSelected):
         if event.node.data:

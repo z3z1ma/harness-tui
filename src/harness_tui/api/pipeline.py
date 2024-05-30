@@ -225,7 +225,7 @@ class PipelineReference:
         )
 
     @ttl_cache(15)
-    def executions(self):
+    def executions(self, size: int = 25):
         """Get the execution history of the pipeline."""
         # TODO(Alex): Implement pagination
         return list(
@@ -239,7 +239,7 @@ class PipelineReference:
                         "orgIdentifier": self.client.org,
                         "projectIdentifier": self.client.project,
                         "pipelineIdentifier": self.pipeline_identifier,
-                        "size": 25,
+                        "size": size,
                     },
                 )["data"]["content"],
             )

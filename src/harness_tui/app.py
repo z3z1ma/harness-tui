@@ -9,9 +9,13 @@ Run with:
 from __future__ import annotations
 
 import asyncio
+import atexit
 import itertools
+import os
 import typing as t
-from pathlib import PurePath
+from concurrent.futures import ProcessPoolExecutor
+from multiprocessing import set_start_method
+from pathlib import Path, PurePath
 
 from dotenv import load_dotenv
 from textual import work
@@ -30,6 +34,7 @@ from textual.widgets import (
     TextArea,
 )
 
+import harness_tui.models as M
 from harness_tui.api import HarnessClient
 from harness_tui.components import (
     ExecutionGraph,
@@ -38,6 +43,9 @@ from harness_tui.components import (
     PipelineCard,
     PipelineList,
 )
+
+DATA_DIR = os.path.expanduser("~/.harness-tui")
+set_start_method("spawn", force=True)
 
 
 class HarnessTui(App):
@@ -62,6 +70,8 @@ class HarnessTui(App):
     ):
         super().__init__(driver_class, css_path, watch_css)
         self.api_client = HarnessClient.default()
+        self.run_once_scraper = False
+        self.bg_pool = ProcessPoolExecutor(max_workers=1)
 
     def compose(self) -> ComposeResult:
         yield Header()
@@ -136,6 +146,7 @@ class HarnessTui(App):
     def on_data_table_cell_selected(self, event: DataTable.CellSelected) -> None:
         plan_id = str(event.data_table.get_cell_at(Coordinate(event.coordinate.row, 4)))
         self.update_log_tree(plan_id)
+        self.notify(f"Selected execution {plan_id}")
 
     # Work methods (these update reactive attributes to lazily update the UI)
 
@@ -143,17 +154,18 @@ class HarnessTui(App):
     async def update_execution_history(self, pipeline_identifier: str):
         """Fetch execution history for a specific pipeline."""
         execution_ui = self.query_one("#executions-view", ExecutionsView)
-        execution_ui.is_loading = True
+        await execution_ui.set_loading(True)
         executions = await asyncio.to_thread(
-            self.api_client.pipelines.reference(pipeline_identifier).executions
+            self.api_client.pipelines.reference(pipeline_identifier).executions, size=35
         )
         execution_ui.executions = executions
-        execution_ui.is_loading = False
+        await execution_ui.set_loading(False)
 
     @work(group="yaml_ui", exclusive=True)
     async def update_yaml_buffer(self, pipeline_identifier: str) -> None:
         """Fetch pipeline YAML and update the buffer."""
         yaml_ui = self.query_one("#yaml-view", TextArea)
+        await yaml_ui.set_loading(True)
         content = (
             await asyncio.to_thread(
                 self.api_client.pipelines.reference(pipeline_identifier).get
@@ -161,25 +173,34 @@ class HarnessTui(App):
         ).pipeline_yaml
         yaml_ui.load_text(content)
         yaml_ui.scroll_home(animate=False)
+        await yaml_ui.set_loading(False)
 
     @work(group="pipeline_ui", exclusive=True)
     async def update_pipeline_list_loop(self) -> None:
         """Fetch pipeline data every 15 seconds."""
         pipeline_ui = self.query_one("#pipeline-view", PipelineList)
         while True:
-            pipeline_ui.pipeline_list = await asyncio.to_thread(
-                self.api_client.pipelines.list
-            )
+            pipeline_list = await asyncio.to_thread(self.api_client.pipelines.list)
+            pipeline_ui.pipeline_list = pipeline_list
             await asyncio.sleep(15.0)
+            if not self.run_once_scraper:
+                proc = self.bg_pool.submit(
+                    scrape_logs_background_job, pipeline_list, self.api_client
+                )
+                atexit.register(proc.cancel)
+                self.run_once_scraper = True
+                self.notify("Started log scraper background job.")
 
     @work(group="log_tree_ui", exclusive=True)
     async def update_log_tree(self, plan_execution_identifier: str):
+        log_ui = self.query_one("#logs-view", LogView)
+        await log_ui.set_loading(True)
         details = await asyncio.to_thread(
             self.api_client.pipelines.reference("<none>").execution_details,
             plan_execution_identifier,
         )
-        log_ui = self.query_one("#logs-view", LogView)
         log_ui.execution = details
+        await log_ui.set_loading(False)
 
     @work(group="log_view_ui", exclusive=True, thread=True)
     def update_log_view(self, log_key: str):
@@ -198,6 +219,50 @@ class HarnessTui(App):
                 log_handle.write(line["out"])  # type: ignore
         else:
             log_handle.write("No logs to display for the given key.")
+
+
+def scrape_logs_background_job(
+    pipeline_list: t.List[M.PipelineSummary], api_client: HarnessClient
+):
+    """Scrape logs for all pipelines in the pipeline list.
+
+    This function is run in a separate process to avoid blocking the main event loop and is a best-effort attempt to
+    scrape logs for all pipelines in the pipeline list. The cache is used to drive semantic search capabilities.
+    """
+    for pipeline in pipeline_list:
+        ref = api_client.pipelines.reference(pipeline.identifier)
+        try:
+            executions = ref.executions(size=5)
+        except Exception:
+            continue
+        for execution in executions:
+            try:
+                details = ref.execution_details(execution.plan_execution_id)
+            except Exception:
+                continue
+            for node in details.execution_graph.node_map.values():
+                if not node.log_base_key:
+                    continue
+                try:
+                    lines = list(api_client.logs.blob(node.log_base_key))
+                except Exception:
+                    continue
+                if not lines:
+                    continue
+                parts = node.log_base_key.split("/")
+                file_key = "__".join(map(lambda v: v.split(":", 1)[-1], parts[3:]))
+                log_path = (
+                    Path(DATA_DIR)
+                    / api_client.account
+                    / api_client.org
+                    / api_client.project
+                    / f"{file_key}.log"
+                )
+                log_path.parent.mkdir(parents=True, exist_ok=True)
+                with open(log_path, "w") as f:
+                    for line in lines:
+                        f.write(line["out"])
+                        f.write("\n")
 
 
 if __name__ == "__main__":

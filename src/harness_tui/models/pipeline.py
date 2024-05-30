@@ -366,7 +366,13 @@ class ExecutionGraphNode(BaseModel):
         t.Dict[str, t.Any], Field(alias="strategyMetadata")
     ] = {}
 
-    @field_validator("strategy_metadata", "step_details", "failure_info", mode="before")
+    @field_validator(
+        "strategy_metadata",
+        "step_details",
+        "failure_info",
+        "step_parameters",
+        mode="before",
+    )
     @classmethod
     def uniform_empty_dicts(cls, v: t.Any):
         if not v:

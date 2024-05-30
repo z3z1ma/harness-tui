@@ -43,6 +43,7 @@ class LogClient(ClientMixin):
             "GET", "token", params={"accountID": self.account}, parse_json=False
         ).text
 
+    @ttl_cache(300)
     def blob(self, log_key: str) -> t.Iterable[dict]:
         """Get a new line delimited json blob of log data."""
         with suppress(RequestException):

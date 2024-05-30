@@ -2,21 +2,18 @@ import time
 from functools import lru_cache, wraps
 
 
-def ttl_cache(ttl_seconds: int):
-    def compute_hash():
-        round(time.time() / ttl_seconds)
-
+def ttl_cache(seconds: int):
     def decorator(func):
-        @wraps(func)
-        @lru_cache(maxsize=10)
-        def func_wrapper(*args, ttl_hash=None, **kwargs):
-            _ = ttl_hash
+        @lru_cache(maxsize=None)
+        def cached_func(*args, _ttl_time, **kwargs):
+            _ = _ttl_time
             return func(*args, **kwargs)
 
         @wraps(func)
-        def with_ttl(*args, **kwargs):
-            return func_wrapper(*args, **kwargs, ttl_hash=compute_hash())
+        def wrapper(*args, **kwargs):
+            _ttl_time = round(time.time() / seconds)
+            return cached_func(*args, _ttl_time=_ttl_time, **kwargs)
 
-        return with_ttl
+        return wrapper
 
     return decorator

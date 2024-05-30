@@ -9,7 +9,7 @@ import typing as t
 from rich.text import Text
 from textual.app import ComposeResult
 from textual.reactive import reactive
-from textual.widgets import DataTable, Label, LoadingIndicator, Sparkline, Static
+from textual.widgets import DataTable, Label, Sparkline, Static
 
 import harness_tui.models as M
 
@@ -49,7 +49,6 @@ class ExecutionsView(Static):
     executions: reactive[t.List[M.PipelineExecutionSummary]] = reactive(
         list, recompose=True
     )
-    is_loading: reactive[bool] = reactive(bool, recompose=True)
 
     def __init__(
         self,
@@ -60,10 +59,7 @@ class ExecutionsView(Static):
         self.execution_urls = {}
 
     def compose(self) -> ComposeResult:
-        if self.is_loading:
-            yield LoadingIndicator()
-            return
-        data_table = DataTable(header_height=2, cell_padding=2)
+        data_table = DataTable(header_height=2, cell_padding=2, cursor_type="cell")
         data_table.add_columns(
             "Start Time", "Started By", "Trigger Type", "Status", "Link"
         )
@@ -95,6 +91,9 @@ class ExecutionsView(Static):
                     f"{execution.pipeline_identifier}/executions/{execution.plan_execution_id}/pipeline"
                 )
         yield data_table
+
+    def on_mount(self) -> None:
+        self.set_loading(True)
 
     def on_data_table_cell_selected(self, event: DataTable.CellSelected):
         if event.coordinate.column == 4:

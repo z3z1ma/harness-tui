@@ -38,6 +38,17 @@ class HarnessClient:
             project=os.environ["HARNESS_PROJECT"],
         )
 
+    def __getstate__(self):
+        return {
+            "api_key": self.api_key,
+            "account": self.account,
+            "org": self.org,
+            "project": self.project,
+        }
+
+    def __setstate__(self, state):
+        self.__init__(**state)
+
 
 __all__ = ["HarnessClient"]
 

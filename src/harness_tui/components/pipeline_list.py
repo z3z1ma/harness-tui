@@ -87,7 +87,7 @@ class PipelineList(Static):
     def compose(self) -> ComposeResult:
         """Compose the pipeline list."""
         yield Static(id="list-place-holder")
-        yield Input(placeholder="Search", id="pipeline-search")
+        yield Input(placeholder="Filter", id="pipeline-search")
         yield ListView(
             *[
                 ListItem(
