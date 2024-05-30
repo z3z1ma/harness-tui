@@ -27,7 +27,6 @@ from textual.widgets import (
     Header,
     ListView,
     Log,
-    Pretty,
     TabbedContent,
     TabPane,
     TextArea,
@@ -162,8 +161,12 @@ class HarnessTui(App):
         self, event: LogView.VectorSearchRequest
     ):
         if self.db:
+            container = self.query_one(LogView).query_one("#vector-result", Log)
+            container.clear()
             result = await self.db.search(event.query)
-            self.query_one(LogView).query_one("#vector-result", Pretty).update(result)
+            logs = result["log_content"]
+            for log in logs:
+                container.write(str(log).rstrip("\n"))
             self.notify(
                 f"Vector search for {event.query} returned {len(result)} results."
             )
@@ -231,7 +234,7 @@ class HarnessTui(App):
 
     @work(group="log_view_ui", exclusive=True, thread=True)
     def update_log_view(self, log_key: str):
-        log_handle = self.query_one("#logs-view", LogView).query_one(Log)
+        log_handle = self.query_one("#logs-view", LogView).query_one("#log-tailer", Log)
         log_handle.clear()
         # Its cheaper to just try both sources than deal with race conditions otherwise
         log_source_chain = itertools.chain(

@@ -45,15 +45,20 @@ YamlEditor Horizontal {
 }
 
 LogView #log-view-top {
-  height: 19;
+  height: 23;
 }
+
+LogView #log-view-top  Log {
+  margin: 1;
+}
+
 
 LogView #vector-result {
   padding: 1;
 }
 
 LogView Tree {
-    height: 18;
+    height: 21;
     background: $background;
     padding: 1;
     width: 45%;

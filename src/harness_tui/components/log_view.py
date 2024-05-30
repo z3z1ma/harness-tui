@@ -8,7 +8,7 @@ from textual.app import ComposeResult
 from textual.containers import Horizontal, Vertical
 from textual.message import Message
 from textual.reactive import reactive
-from textual.widgets import Input, Label, Log, Pretty, Static, Tree
+from textual.widgets import Input, Label, Log, Static, Tree
 
 import harness_tui.models as M
 
@@ -83,7 +83,7 @@ class LogView(Static):
             yield tree
             with Vertical():
                 yield Input(placeholder="Vector search log cache")
-                yield Pretty({}, id="vector-result")
+                yield Log(highlight=True, id="vector-result")
 
         def _open_logs():
             tree.select_node(node_to_expand)
@@ -102,7 +102,7 @@ class LogView(Static):
     def on_tree_node_selected(self, event: Tree.NodeSelected):
         if event.node.data:
             self.post_message(self.FetchLogsRequest(event.node.data))
-            self.query_one(Log).border_title = (
+            self.query_one("#log-tailer", Log).border_title = (
                 t.cast(M.ExecutionGraphNode, event.node.data).name + ".log"
             )
 
