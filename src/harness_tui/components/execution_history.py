@@ -46,7 +46,9 @@ class ExecutionGraph(Static):
 class ExecutionsView(Static):
     """Table that displays the execution history of a specific pipeline."""
 
-    executions: reactive[t.List[M.PipelineExecution]] = reactive(list, recompose=True)
+    executions: reactive[t.List[M.PipelineExecutionSummary]] = reactive(
+        list, recompose=True
+    )
     is_loading: reactive[bool] = reactive(bool, recompose=True)
 
     def __init__(

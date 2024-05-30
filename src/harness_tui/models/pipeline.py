@@ -260,7 +260,7 @@ class ParentStageInfo(BaseModel):
     runsequence: int
 
 
-class PipelineExecution(BaseModel):
+class PipelineExecutionSummary(BaseModel):
     pipeline_identifier: t.Annotated[str, Field(alias="pipelineIdentifier")]
     org_identifier: t.Annotated[str, Field(alias="orgIdentifier")]
     project_identifier: t.Annotated[str, Field(alias="projectIdentifier")]
@@ -319,3 +319,90 @@ class PipelineExecution(BaseModel):
         bool, Field(alias="shouldUseSimplifiedKey")
     ] = False
     stages_execution: t.Annotated[bool, Field(alias="stagesExecution")] = False
+
+
+class ExecutionGraphNode(BaseModel):
+    uuid: t.Annotated[str, Field(alias="uuid")]
+    setup_id: t.Annotated[str, Field(alias="setupId")]
+    name: t.Annotated[str, Field(alias="name")]
+    identifier: t.Annotated[str, Field(alias="identifier")]
+    base_fqn: t.Annotated[str, Field(alias="baseFqn")]
+    outcomes: t.Annotated[t.Dict[str, t.Any], Field(alias="outcomes")] = {}
+    step_parameters: t.Annotated[t.Dict[str, t.Any], Field(alias="stepParameters")] = {}
+    start_ts: t.Annotated[t.Optional[datetime], Field(alias="startTs")] = None
+    end_ts: t.Annotated[t.Optional[datetime], Field(alias="endTs")] = None
+
+    @field_validator("start_ts", "end_ts", mode="before")
+    @classmethod
+    def convert_epoch_to_datetime(cls, ts: t.Any):
+        if isinstance(ts, (float, int)):
+            return datetime.fromtimestamp(ts / 1000, tz=timezone.utc)
+        return ts
+
+    step_type: t.Annotated[str, Field(alias="stepType")]
+    status: t.Annotated[str, Field(alias="status")]
+    failure_info: t.Annotated[t.Dict[str, t.Any], Field(alias="failureInfo")] = {}
+    skip_info: t.Annotated[t.Optional[t.Dict[str, t.Any]], Field(alias="skipInfo")] = (
+        None
+    )
+    node_run_info: t.Annotated[t.Optional[NodeRunInfo], Field(alias="nodeRunInfo")] = (
+        None
+    )
+    executable_responses: t.Annotated[
+        t.List[t.Dict[str, t.Any]], Field(alias="executableResponses")
+    ] = []
+    unit_progresses: t.Annotated[
+        t.List[t.Dict[str, t.Any]], Field(alias="unitProgresses")
+    ] = []
+    progress_data: t.Annotated[t.Dict[str, t.Any], Field(alias="progressData")] = {}
+    delegate_info_list: t.Annotated[
+        t.List[t.Dict[str, t.Any]], Field(alias="delegateInfoList")
+    ] = []
+    interrupt_histories: t.Annotated[
+        t.List[t.Dict[str, t.Any]], Field(alias="interruptHistories")
+    ] = []
+    step_details: t.Annotated[t.Dict[str, t.Any], Field(alias="stepDetails")] = {}
+    strategy_metadata: t.Annotated[
+        t.Dict[str, t.Any], Field(alias="strategyMetadata")
+    ] = {}
+
+    @field_validator("strategy_metadata", "step_details", "failure_info", mode="before")
+    @classmethod
+    def uniform_empty_dicts(cls, v: t.Any):
+        if not v:
+            return {}
+        return v
+
+    execution_input_configured: t.Annotated[
+        bool, Field(alias="executionInputConfigured")
+    ] = True
+    log_base_key: t.Annotated[t.Optional[str], Field(alias="logBaseKey")]
+
+
+class ExecutionGraph(BaseModel):
+    root_node_id: t.Annotated[str, Field(alias="rootNodeId")]
+    node_map: t.Annotated[t.Dict[str, ExecutionGraphNode], Field(alias="nodeMap")] = {}
+    node_adjacency_list_map: t.Annotated[
+        t.Dict[str, t.Any], Field(alias="nodeAdjacencyListMap")
+    ] = {}
+
+
+class ExecutionMetadata(BaseModel):
+    account_id: t.Annotated[str, Field(alias="accountId")]
+    pipeline_identifier: t.Annotated[str, Field(alias="pipelineIdentifier")]
+    org_identifier: t.Annotated[str, Field(alias="orgIdentifier")]
+    project_identifier: t.Annotated[str, Field(alias="projectIdentifier")]
+    plan_execution_id: t.Annotated[str, Field(alias="planExecutionId")]
+
+
+class PipelineExecution(BaseModel):
+    pipeline_execution_summary: t.Annotated[
+        PipelineExecutionSummary, Field(alias="pipelineExecutionSummary")
+    ]
+    execution_graph: t.Annotated[ExecutionGraph, Field(alias="executionGraph")]
+    execution_metadata: t.Annotated[
+        t.Optional[ExecutionMetadata], Field(alias="executionMetadata")
+    ] = None
+    representation_strategy: t.Annotated[str, Field(alias="representationStrategy")] = (
+        "camelCase"
+    )

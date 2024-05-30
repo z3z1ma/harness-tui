@@ -230,7 +230,7 @@ class PipelineReference:
         # TODO(Alex): Implement pagination
         return list(
             map(
-                M.PipelineExecution.model_validate,
+                M.PipelineExecutionSummary.model_validate,
                 self.client._request(
                     "POST",
                     "pipelines/execution/summary",
@@ -243,4 +243,20 @@ class PipelineReference:
                     },
                 )["data"]["content"],
             )
+        )
+
+    @ttl_cache(15)
+    def execution_details(self, plan_execution_id: str):
+        """Get the execution details of a specific pipeline execution."""
+        return M.PipelineExecution.model_validate(
+            self.client._request(
+                "GET",
+                f"pipelines/execution/v2/{plan_execution_id}",
+                params={
+                    "accountIdentifier": self.client.account,
+                    "orgIdentifier": self.client.org,
+                    "projectIdentifier": self.client.project,
+                    "renderFullBottomGraph": True,
+                },
+            )["data"]
         )

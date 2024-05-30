@@ -16,6 +16,7 @@ from dotenv import load_dotenv
 from textual import work
 from textual.app import App, ComposeResult
 from textual.containers import Container
+from textual.coordinate import Coordinate
 from textual.driver import Driver
 from textual.widgets import (
     DataTable,
@@ -78,7 +79,7 @@ class HarnessTui(App):
                         tab_behavior="indent",
                     )
                 with TabPane("Logs", id="logs-tab"):
-                    yield LogView()
+                    yield LogView(id="logs-view")
         yield Footer()
 
     def on_mount(self) -> None:
@@ -113,6 +114,9 @@ class HarnessTui(App):
     ):
         self.notify("Got run pipeline request")
 
+    async def on_log_view_fetch_logs_request(self, event: LogView.FetchLogsRequest):
+        self.notify("Got fetch logs request")
+
     async def on_list_view_highlighted(self, event: ListView.Highlighted) -> None:
         if not event.item:
             return
@@ -126,6 +130,10 @@ class HarnessTui(App):
         self.update_yaml_buffer(card.pipeline.identifier)
         self.query_one(ExecutionGraph).pipeline = card.pipeline
         self.sub_title = str(card.pipeline.name)
+
+    def on_data_table_cell_selected(self, event: DataTable.CellSelected) -> None:
+        plan_id = str(event.data_table.get_cell_at(Coordinate(event.coordinate.row, 4)))
+        self.update_logs(plan_id)
 
     # Work methods (these update reactive attributes to lazily update the UI)
 
@@ -161,6 +169,16 @@ class HarnessTui(App):
                 self.api_client.pipelines.list
             )
             await asyncio.sleep(15.0)
+
+    @work(group="execution_ui", exclusive=True)
+    async def update_logs(self, plan_execution_identifier: str):
+        details = await asyncio.to_thread(
+            self.api_client.pipelines.reference("<none>").execution_details,
+            plan_execution_identifier,
+        )
+        log_ui = self.query_one("#logs-view", LogView)
+        log_ui.execution = details
+        self.notify(f"Loaded logs for {plan_execution_identifier}")
 
 
 if __name__ == "__main__":

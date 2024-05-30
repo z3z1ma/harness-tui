@@ -45,19 +45,11 @@ if __name__ == "__main__":
     import rich
 
     client = HarnessClient.default()
-
-    # Fetch list of pipelines
     pipelines = client.pipelines.list()
-    # rich.print(pipelines)
-
-    # Get pipeline reference
     pipeline = client.pipelines.reference("TimescaleDB_Pipeline")
-
-    # Fetch pipeline summary
-    # rich.print(pipeline.summary())
-
-    # Fetch pipeline YAML
-    rich.print(pipeline.executions())
+    executions = pipeline.executions()
+    details = pipeline.execution_details(executions[0].plan_execution_id)
+    rich.print(details)
 
     # Execute pipeline
     # execution_result = pipeline.execute()
