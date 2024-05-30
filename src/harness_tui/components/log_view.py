@@ -54,14 +54,14 @@ class LogView(Static):
                 current = nodes[part]
             current.add_leaf(node.name, node)
 
-        def _find(parent: "TreeNode", depth: int = 0):
-            yield parent, depth
+        def _depth(parent: "TreeNode", score: int = 0):
+            yield parent, score
             for child in parent.children:
-                yield from _find(child, depth + 1)
+                yield from _depth(child, score + 1)
 
         tree.root.expand_all()
         yield tree
-        sorted_nodes = sorted(_find(tree.root), key=lambda x: x[1], reverse=True)
+        sorted_nodes = sorted(_depth(tree.root), key=lambda x: x[1], reverse=True)
         node_to_expand, _ = sorted_nodes[0]
 
         def _open_logs():
