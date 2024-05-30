@@ -35,11 +35,11 @@ from textual.widgets import (
 import harness_tui.models as M
 from harness_tui.api import HarnessClient
 from harness_tui.components import (
-    ExecutionGraph,
     ExecutionsView,
     LogView,
     PipelineCard,
     PipelineList,
+    YamlEditor,
 )
 
 DATA_DIR = os.path.expanduser("~/.harness-tui")
@@ -77,15 +77,7 @@ class HarnessTui(App):
                 with TabPane("Executions", id="executions-tab"):
                     yield ExecutionsView(id="executions-view")
                 with TabPane("YAML", id="yaml-tab"):
-                    yield ExecutionGraph()
-                    yield TextArea.code_editor(
-                        id="yaml-view",
-                        theme="css",
-                        language="yaml",
-                        soft_wrap=False,
-                        show_line_numbers=True,
-                        tab_behavior="indent",
-                    )
+                    yield YamlEditor(id="yaml-view")
                 with TabPane("Logs", id="logs-tab"):
                     yield LogView(id="logs-view")
         yield Footer()
@@ -139,7 +131,6 @@ class HarnessTui(App):
         card = event.item.query_one(PipelineCard)
         self.update_execution_history(card.pipeline.identifier)
         self.update_yaml_buffer(card.pipeline.identifier)
-        self.query_one(ExecutionGraph).pipeline = card.pipeline
         self.query_one(LogView).execution = None
         self.sub_title = str(card.pipeline.name)
 
@@ -165,15 +156,16 @@ class HarnessTui(App):
     @work(group="yaml_ui", exclusive=True)
     async def update_yaml_buffer(self, pipeline_identifier: str) -> None:
         """Fetch pipeline YAML and update the buffer."""
-        yaml_ui = self.query_one("#yaml-view", TextArea)
+        yaml_ui = self.query_one("#yaml-view", YamlEditor)
         await yaml_ui.set_loading(True)
         content = (
             await asyncio.to_thread(
                 self.api_client.pipelines.reference(pipeline_identifier).get
             )
         ).pipeline_yaml
-        yaml_ui.load_text(content)
-        yaml_ui.scroll_home(animate=False)
+        editor = yaml_ui.query_one(TextArea)
+        editor.load_text(content)
+        editor.scroll_home(animate=False)
         await yaml_ui.set_loading(False)
 
     @work(group="pipeline_ui", exclusive=True)
@@ -227,7 +219,7 @@ class HarnessTui(App):
     def scrape_logs_background_job(self, pipeline_list: t.List[M.PipelineSummary]):
         """Scrape logs for all pipelines in the pipeline list.
 
-        i   This function is run in a separate process to avoid blocking the main event loop and is a best-effort attempt to
+        This function is run in a separate process to avoid blocking the main event loop and is a best-effort attempt to
         scrape logs for all pipelines in the pipeline list. The cache is used to drive semantic search capabilities.
         """
         start = time.time()
