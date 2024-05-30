@@ -147,8 +147,12 @@ class HarnessTui(App):
     ):
         self.notify("Saving pipeline...")
         pipe = event.obj["pipeline"]["identifier"]
-        resp = self.api_client.pipelines.reference(pipe).update(event.yaml)
-        self.notify(f"Pipeline saved. {resp}")
+        try:
+            resp = self.api_client.pipelines.reference(pipe).update(event.yaml)
+            self.query_one(YamlEditor).base_content = event.yaml
+            self.notify(f"Pipeline saved. {resp}")
+        except Exception as e:
+            self.notify(f"Could not save pipeline: {e}", severity="error")
 
     # Work methods (these update reactive attributes to lazily update the UI)
 
@@ -173,8 +177,8 @@ class HarnessTui(App):
                 self.api_client.pipelines.reference(pipeline_identifier).get
             )
         ).pipeline_yaml
+        yaml_ui.base_content = content
         editor = yaml_ui.query_one(TextArea)
-        editor.load_text(content)
         editor.scroll_home(animate=False)
         await yaml_ui.set_loading(False)
 

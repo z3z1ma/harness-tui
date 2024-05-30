@@ -14,6 +14,7 @@ from textual import work
 from textual.app import ComposeResult
 from textual.containers import Horizontal
 from textual.message import Message
+from textual.reactive import reactive
 from textual.widgets import Button, Static, TextArea
 
 REGISTRY = "https://raw.githubusercontent.com/harness/harness-schema/main/v0"
@@ -29,12 +30,15 @@ class YamlEditor(Static):
             self.obj = obj
             super().__init__()
 
+    base_content = reactive("", recompose=True)
+
     def __init__(self, *args: t.Any, **kwargs: t.Any):
         super().__init__(*args, **kwargs)
         self.validator = None
 
     def compose(self) -> ComposeResult:
         yield TextArea.code_editor(
+            self.base_content,
             id="yaml-editor",
             theme="css",
             language="yaml",
@@ -52,7 +56,7 @@ class YamlEditor(Static):
         self.get_schema()
         self.query_one("#save-button", Button).disabled = True
 
-    def on_button_pressed(self, event: Button.Pressed):
+    async def on_button_pressed(self, event: Button.Pressed):
         """Handle button presses."""
         if event.button.id == "validate-button":
             valid = self.validate_yaml()
@@ -63,6 +67,9 @@ class YamlEditor(Static):
             if self.validator:
                 self.validator.validate(obj)
             self.post_message(self.SavePipelineRequest(text, obj))
+        elif event.button.id == "reset-button":
+            await self.recompose()
+            self.notify("YAML reset to original state", severity="information")
 
     @work(group="fetch_schema", exclusive=True)
     async def get_schema(self) -> None:
