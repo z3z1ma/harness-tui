@@ -236,6 +236,7 @@ class HarnessTui(App):
             / self.api_client.org
             / self.api_client.project
         )
+        base_dir.mkdir(parents=True, exist_ok=True)
         stamp = base_dir.joinpath("last_update")
         mtime = stamp.stat().st_mtime if stamp.exists() else 0
         if mtime + (60 * 60) > time.time():
