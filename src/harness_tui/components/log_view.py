@@ -5,9 +5,10 @@ from __future__ import annotations
 import typing as t
 
 from textual.app import ComposeResult
+from textual.containers import Horizontal, Vertical
 from textual.message import Message
 from textual.reactive import reactive
-from textual.widgets import Label, Log, Static, Tree
+from textual.widgets import Input, Label, Log, Pretty, Static, Tree
 
 import harness_tui.models as M
 
@@ -35,6 +36,11 @@ class LogView(Static):
     class FetchLogsRequest(Message):
         def __init__(self, node: M.ExecutionGraphNode) -> None:
             self.node = node
+            super().__init__()
+
+    class VectorSearchRequest(Message):
+        def __init__(self, query: str) -> None:
+            self.query = query
             super().__init__()
 
     def __init__(self, *args: t.Any, **kwargs: t.Any):
@@ -70,9 +76,14 @@ class LogView(Static):
                 yield from _depth(child, score + 1)
 
         tree.root.expand_all()
-        yield tree
         sorted_nodes = sorted(_depth(tree.root), key=lambda x: x[1], reverse=True)
         node_to_expand, _ = sorted_nodes[0]
+
+        with Horizontal(id="log-view-top"):
+            yield tree
+            with Vertical():
+                yield Input(placeholder="Vector search log cache")
+                yield Pretty({}, id="vector-result")
 
         def _open_logs():
             tree.select_node(node_to_expand)
@@ -94,3 +105,6 @@ class LogView(Static):
             self.query_one(Log).border_title = (
                 t.cast(M.ExecutionGraphNode, event.node.data).name + ".log"
             )
+
+    def on_input_submitted(self, event: Input.Submitted):
+        self.post_message(self.VectorSearchRequest(event.value))

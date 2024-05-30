@@ -61,7 +61,7 @@ class LogVectorDB:
         if self.table is None:
             raise RuntimeError("Table is not created.")
         return (
-            await self.table.vector_search(self._hash_to_vector(query))  # type: ignore
+            self.table.search(self._hash_to_vector(query))  # type: ignore
             .limit(limit)
             .to_pandas()
         )

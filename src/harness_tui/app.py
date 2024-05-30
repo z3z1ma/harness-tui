@@ -27,6 +27,7 @@ from textual.widgets import (
     Header,
     ListView,
     Log,
+    Pretty,
     TabbedContent,
     TabPane,
     TextArea,
@@ -58,7 +59,6 @@ class HarnessTui(App):
         ("y", "focus_yaml", "Focus YAML"),
         ("l", "focus_logs", "Focus logs"),
         ("d", "dark_mode", "Toggle Dark Mode"),
-        ("v", "vector_search", "Vector Search"),
     ]
 
     def __init__(
@@ -157,6 +157,18 @@ class HarnessTui(App):
             self.notify(f"Pipeline saved. {resp}")
         except Exception as e:
             self.notify(f"Could not save pipeline: {e}", severity="error")
+
+    async def on_log_view_vector_search_request(
+        self, event: LogView.VectorSearchRequest
+    ):
+        if self.db:
+            result = await self.db.search(event.query)
+            self.query_one(LogView).query_one("#vector-result", Pretty).update(result)
+            self.notify(
+                f"Vector search for {event.query} returned {len(result)} results."
+            )
+        else:
+            self.notify("VectorDB not setup. Logs not indexed.", severity="warning")
 
     # Work methods (these update reactive attributes to lazily update the UI)
 
