@@ -5,7 +5,8 @@ from __future__ import annotations
 import typing as t
 
 from textual.app import ComposeResult
-from textual.widgets import Static, TextArea
+from textual.containers import Horizontal
+from textual.widgets import Button, Static, TextArea
 
 
 class YamlEditor(Static):
@@ -23,3 +24,6 @@ class YamlEditor(Static):
             show_line_numbers=True,
             tab_behavior="indent",
         )
+        with Horizontal():
+            yield Button("Save", variant="success")
+            yield Button("Reset", variant="error")

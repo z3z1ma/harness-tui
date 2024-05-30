@@ -53,3 +53,9 @@ ExecutionCard {
 #log-tailer {
     padding: 1;
 }
+
+YamlEditor Horizontal {
+    dock: bottom;
+    height: 4;
+    content-align: right middle;
+}
