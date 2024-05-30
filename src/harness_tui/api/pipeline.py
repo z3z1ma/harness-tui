@@ -1,7 +1,6 @@
 """A simple wrapper around the Harness API for managing pipelines."""
 
 import typing as t
-import warnings
 
 import requests
 
@@ -164,30 +163,18 @@ class PipelineReference:
     def update(
         self,
         pipeline_yaml: str,
-        name: str,
-        description: t.Optional[str] = None,
-        tags: t.Optional[t.Dict[str, str]] = None,
-        git_details: t.Optional[t.Dict[str, t.Any]] = None,
     ):
         """Update the pipeline."""
-        warnings.warn(
-            "Update is a no-op for development purposes. This will be enabled later.",
-            FutureWarning,
-        )
-        return {}
         return self.client._request(
             "PUT",
-            f"pipelines/{self.client.org}/{self.client.project}/{self.pipeline_identifier}",
-            json=_strip_unset(
-                {
-                    "pipeline_yaml": pipeline_yaml,
-                    "identifier": self.pipeline_identifier,
-                    "name": name,
-                    "description": description,
-                    "tags": tags,
-                    "git_details": git_details,
-                }
-            ),
+            f"pipelines/v2/{self.pipeline_identifier}",
+            params={
+                "accountIdentifier": self.client.account,
+                "orgIdentifier": self.client.org,
+                "projectIdentifier": self.client.project,
+            },
+            headers={"Content-Type": "application/yaml"},
+            data=pipeline_yaml,
         )
 
     def execute(

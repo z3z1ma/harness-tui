@@ -13,6 +13,7 @@ from referencing.jsonschema import DRAFT202012
 from textual import work
 from textual.app import ComposeResult
 from textual.containers import Horizontal
+from textual.message import Message
 from textual.widgets import Button, Static, TextArea
 
 REGISTRY = "https://raw.githubusercontent.com/harness/harness-schema/main/v0"
@@ -21,6 +22,12 @@ PIPELINE_SCHEMA = f"{REGISTRY}/pipeline.json"
 
 class YamlEditor(Static):
     """Component that displays the YAML editor for a specific pipeline."""
+
+    class SavePipelineRequest(Message):
+        def __init__(self, yaml: str, obj: dict) -> None:
+            self.yaml = yaml
+            self.obj = obj
+            super().__init__()
 
     def __init__(self, *args: t.Any, **kwargs: t.Any):
         super().__init__(*args, **kwargs)
@@ -50,6 +57,12 @@ class YamlEditor(Static):
         if event.button.id == "validate-button":
             valid = self.validate_yaml()
             self.query_one("#save-button", Button).disabled = not valid
+        elif event.button.id == "save-button":
+            text = self.query_one("#yaml-editor", TextArea).text
+            obj = yaml.safe_load(text)
+            if self.validator:
+                self.validator.validate(obj)
+            self.post_message(self.SavePipelineRequest(text, obj))
 
     @work(group="fetch_schema", exclusive=True)
     async def get_schema(self) -> None:

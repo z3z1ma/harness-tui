@@ -142,6 +142,14 @@ class HarnessTui(App):
         self.notify(f"Selected execution {plan_id}")
         self.query_one(TabbedContent).active = "logs-tab"
 
+    def on_yaml_editor_save_pipeline_request(
+        self, event: YamlEditor.SavePipelineRequest
+    ):
+        self.notify("Saving pipeline...")
+        pipe = event.obj["pipeline"]["identifier"]
+        resp = self.api_client.pipelines.reference(pipe).update(event.yaml)
+        self.notify(f"Pipeline saved. {resp}")
+
     # Work methods (these update reactive attributes to lazily update the UI)
 
     @work(group="execution_ui", exclusive=True)
