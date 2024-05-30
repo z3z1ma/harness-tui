@@ -1,3 +1,7 @@
+"""A simple vector database for storing and searching log vectors."""
+
+from __future__ import annotations
+
 import hashlib
 import typing as t
 from pathlib import Path
