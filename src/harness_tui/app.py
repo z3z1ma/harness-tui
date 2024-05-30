@@ -140,6 +140,7 @@ class HarnessTui(App):
         self.update_execution_history(card.pipeline.identifier)
         self.update_yaml_buffer(card.pipeline.identifier)
         self.query_one(ExecutionGraph).pipeline = card.pipeline
+        self.query_one(LogView).execution = None
         self.sub_title = str(card.pipeline.name)
 
     def on_data_table_cell_selected(self, event: DataTable.CellSelected) -> None:
