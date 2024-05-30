@@ -9,6 +9,7 @@ Run with:
 from __future__ import annotations
 
 import asyncio
+import itertools
 import typing as t
 from pathlib import PurePath
 
@@ -184,9 +185,19 @@ class HarnessTui(App):
     def update_log_view(self, log_key: str):
         log_handle = self.query_one("#logs-view", LogView).query_one(Log)
         log_handle.clear()
-        for line in self.api_client.logs.blob(log_key):
-            # {'level': 'info', 'pos': 0, 'out': '1.6.14: Pulling from plugins/cache\n', 'time': '2024-05-28T20:00:37.637136016Z', 'args': None}
-            log_handle.write(line["out"])  # type: ignore
+        # Its cheaper to just try both sources than deal with race conditions otherwise
+        log_source_chain = itertools.chain(
+            self.api_client.logs.stream(log_key),
+            self.api_client.logs.blob(log_key),
+        )
+        # {'level': 'info', 'pos': 0, 'out': '1.6.14: Pulling from plugins/cache\n', 'time': '2024-05-28T20:00:37.637136016Z', 'args': None}
+        first = next(log_source_chain)
+        if first:
+            log_handle.write(first["out"])
+            for line in log_source_chain:
+                log_handle.write(line["out"])  # type: ignore
+        else:
+            log_handle.write("No logs to display for the given key.")
 
 
 if __name__ == "__main__":

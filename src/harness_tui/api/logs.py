@@ -1,8 +1,10 @@
 import json
 import typing as t
+from contextlib import suppress
 
 import requests
 import sseclient
+from requests.exceptions import RequestException
 
 from harness_tui.api.mixin import ClientMixin
 from harness_tui.utils import ttl_cache
@@ -41,42 +43,52 @@ class LogClient(ClientMixin):
             "GET", "token", params={"accountID": self.account}, parse_json=False
         ).text
 
-    def blob(self, log_key: str) -> t.Iterable[str]:
+    def blob(self, log_key: str) -> t.Iterable[dict]:
         """Get a new line delimited json blob of log data."""
-        for line in self._request(
-            "GET",
-            "blob",
-            headers={
-                "Accept": "*/*",
-                "Content-Type": "application/json",
-                "X-Harness-Token": self.get_log_token(),
-            },
-            params={"accountID": self.account, "X-Harness-Token": "", "key": log_key},
-            parse_json=False,
-        ).iter_lines():
-            yield json.loads(line.decode("utf-8"))
+        with suppress(RequestException):
+            for line in self._request(
+                "GET",
+                "blob",
+                headers={
+                    "Accept": "*/*",
+                    "Content-Type": "application/json",
+                    "X-Harness-Token": self.get_log_token(),
+                },
+                params={
+                    "accountID": self.account,
+                    "X-Harness-Token": "",
+                    "key": log_key,
+                },
+                parse_json=False,
+            ).iter_lines():
+                yield json.loads(line.decode("utf-8"))
 
-    def stream(self, log_key: str) -> t.Iterable[str]:
+    def stream(self, log_key: str) -> t.Iterable[dict]:
         """Stream log data."""
-        response = self._request(
-            "GET",
-            "stream",
-            headers={
-                "Accept": "*/*",
-                "Content-Type": "application/json",
-                "X-Harness-Token": self.get_log_token(),
-            },
-            params={"accountID": self.account, "X-Harness-Token": "", "key": log_key},
-            stream=True,
-            parse_json=False,
-        )
-        for sse in sseclient.SSEClient(response).events():  # type: ignore
-            if sse.event == "ping":
-                continue
-            elif sse.event == "error":
-                if sse.data.upper() == "EOF":
-                    break
+        with suppress(RequestException):
+            response = self._request(
+                "GET",
+                "stream",
+                headers={
+                    "Accept": "*/*",
+                    "Content-Type": "application/json",
+                    "X-Harness-Token": self.get_log_token(),
+                },
+                params={
+                    "accountID": self.account,
+                    "X-Harness-Token": "",
+                    "key": log_key,
+                },
+                stream=True,
+                parse_json=False,
+            )
+            for sse in sseclient.SSEClient(response).events():  # type: ignore
+                if sse.event == "ping":
+                    continue
+                elif sse.event == "error":
+                    if sse.data.upper() == "EOF":
+                        break
+                    else:
+                        raise Exception(f"Error streaming logs: {sse.data}")
                 else:
-                    raise Exception(f"Error streaming logs: {sse.data}")
-            else:
-                yield json.loads(sse.data)
+                    yield json.loads(sse.data)

@@ -49,3 +49,7 @@ ExecutionCard {
 .filtered {
     display: none;
 }
+
+#log-tailer {
+    padding: 1;
+}
