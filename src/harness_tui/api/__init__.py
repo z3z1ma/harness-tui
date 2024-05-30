@@ -3,6 +3,7 @@ import os
 import requests
 import requests.adapters
 
+from harness_tui.api.logs import LogClient
 from harness_tui.api.pipeline import PipelineClient
 
 
@@ -25,6 +26,7 @@ class HarnessClient:
         self.pipelines = PipelineClient(
             session, account=account, org=org, project=project
         )
+        self.logs = LogClient(session, account=account, org=org, project=project)
 
     @classmethod
     def default(cls) -> "HarnessClient":

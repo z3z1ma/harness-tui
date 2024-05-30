@@ -14,7 +14,11 @@ class ClientMixin:
     """A requests session to use for making requests."""
 
     def _request(
-        self, method: t.Literal["GET", "POST", "PUT", "DELETE"], path: str, **kwargs
+        self,
+        method: t.Literal["GET", "POST", "PUT", "DELETE"],
+        path: str,
+        parse_json: bool = True,
+        **kwargs,
     ) -> t.Any:
         """Make a request to the Harness API.
 
@@ -33,7 +37,9 @@ class ClientMixin:
             path = urljoin(self.BASE_URL, path)
         response = getattr(self.session, method.lower())(path, **kwargs)
         response.raise_for_status()
-        return response.json()
+        if parse_json:
+            return response.json()
+        return response
 
     def get(self, path: str, **kwargs) -> t.Any:
         """Make a GET request to the Harness API.

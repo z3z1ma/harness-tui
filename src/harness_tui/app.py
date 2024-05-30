@@ -1,5 +1,5 @@
 """
-Code browser example. A starting point for our hackweek app.
+A full fledged terminal UI for Harness CI/CD.
 
 Run with:
 
@@ -23,6 +23,7 @@ from textual.widgets import (
     Footer,
     Header,
     ListView,
+    Log,
     TabbedContent,
     TabPane,
     TextArea,
@@ -112,10 +113,10 @@ class HarnessTui(App):
     async def on_pipeline_card_run_pipeline_request(
         self, event: PipelineCard.RunPipelineRequest
     ):
-        self.notify("Got run pipeline request")
+        self.notify(f"Got run pipeline request for {event.pipeline.identifier}")
 
     async def on_log_view_fetch_logs_request(self, event: LogView.FetchLogsRequest):
-        self.notify("Got fetch logs request")
+        self.update_log_view(event.node.log_base_key)
 
     async def on_list_view_highlighted(self, event: ListView.Highlighted) -> None:
         if not event.item:
@@ -133,7 +134,7 @@ class HarnessTui(App):
 
     def on_data_table_cell_selected(self, event: DataTable.CellSelected) -> None:
         plan_id = str(event.data_table.get_cell_at(Coordinate(event.coordinate.row, 4)))
-        self.update_logs(plan_id)
+        self.update_log_tree(plan_id)
 
     # Work methods (these update reactive attributes to lazily update the UI)
 
@@ -170,15 +171,22 @@ class HarnessTui(App):
             )
             await asyncio.sleep(15.0)
 
-    @work(group="execution_ui", exclusive=True)
-    async def update_logs(self, plan_execution_identifier: str):
+    @work(group="log_tree_ui", exclusive=True)
+    async def update_log_tree(self, plan_execution_identifier: str):
         details = await asyncio.to_thread(
             self.api_client.pipelines.reference("<none>").execution_details,
             plan_execution_identifier,
         )
         log_ui = self.query_one("#logs-view", LogView)
         log_ui.execution = details
-        self.notify(f"Loaded logs for {plan_execution_identifier}")
+
+    @work(group="log_view_ui", exclusive=True, thread=True)
+    def update_log_view(self, log_key: str):
+        log_handle = self.query_one("#logs-view", LogView).query_one(Log)
+        log_handle.clear()
+        for line in self.api_client.logs.blob(log_key):
+            # {'level': 'info', 'pos': 0, 'out': '1.6.14: Pulling from plugins/cache\n', 'time': '2024-05-28T20:00:37.637136016Z', 'args': None}
+            log_handle.write(line["out"])  # type: ignore
 
 
 if __name__ == "__main__":
