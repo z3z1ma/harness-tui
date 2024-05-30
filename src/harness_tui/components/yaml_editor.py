@@ -34,14 +34,22 @@ class YamlEditor(Static):
             soft_wrap=False,
             show_line_numbers=True,
             tab_behavior="indent",
-        )
+        )  # TODO: set the border to red if the yaml is invalid
         with Horizontal():
-            yield Button("Save", variant="success")
-            yield Button("Reset", variant="error")
+            yield Button("Save", id="save-button", variant="success")
+            yield Button("Validate", id="validate-button", variant="default")
+            yield Button("Reset", id="reset-button", variant="error")
 
     def on_mount(self) -> None:
         """Load the pipeline YAML into the text area."""
         self.get_schema()
+        self.query_one("#save-button", Button).disabled = True
+
+    def on_button_pressed(self, event: Button.Pressed):
+        """Handle button presses."""
+        if event.button.id == "validate-button":
+            valid = self.validate_yaml()
+            self.query_one("#save-button", Button).disabled = not valid
 
     @work(group="fetch_schema", exclusive=True)
     async def get_schema(self) -> None:
@@ -62,12 +70,16 @@ class YamlEditor(Static):
             )
 
     def on_text_area_changed(self, event: TextArea.Changed) -> None:
+        self.query_one("#save-button", Button).disabled = True
+
+    def validate_yaml(self) -> bool:
         """Update the text area with the new text."""
+        text = self.query_one("#yaml-editor", TextArea).text
         try:
-            obj = yaml.safe_load(event.text_area.text)
+            obj = yaml.safe_load(text)
         except yaml.YAMLError as e:
             self.notify(f"YAML error: {e}", severity="error")
-            return
+            return False
 
         if self.validator:
             try:
@@ -76,3 +88,7 @@ class YamlEditor(Static):
                 self.notify(
                     f"Validation error at {e.json_path}: {e.message}", severity="error"
                 )
+                return False
+
+        self.notify("YAML is valid!", severity="information")
+        return True
