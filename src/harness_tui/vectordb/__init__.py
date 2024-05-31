@@ -2,82 +2,67 @@
 
 from __future__ import annotations
 
-import hashlib
+import random
 import typing as t
 from pathlib import Path
 
-import lancedb
-import numpy as np
-import pandas as pd
+from langchain.chains import create_retrieval_chain
+from langchain.chains.combine_documents import create_stuff_documents_chain
+from langchain.document_loaders import TextLoader
+from langchain_community.embeddings import OllamaEmbeddings
+from langchain_community.llms import Ollama
+from langchain_community.vectorstores import LanceDB
+from langchain_core.prompts import ChatPromptTemplate
+
+EMBEDDINGS = OllamaEmbeddings()
+PROMPT = ChatPromptTemplate.from_template(
+    """Answer the following question based on the provided log file information:
+
+<context>
+{context}
+</context>
+
+Question: {input}"""
+)
+CHAIN = create_stuff_documents_chain(Ollama(model="llama2"), PROMPT)
+
+FILTERED_STEPS = [
+    "save-cache-harness",
+    "restore-cache-harness",
+    "liteEngineTask",
+]
+
+SAMPLE_SIZE = 100
 
 
-class LogVectorDB:
-    """A simple vector database for storing and searching log vectors."""
+def predicate(path: Path) -> bool:
+    return not any(step.lower() in path.stem.lower() for step in FILTERED_STEPS)
 
-    TABLE = "vector_idsss"
 
-    def __init__(self, uri, vector_size=128):
-        self.uri = uri
-        self.vector_size = vector_size
-        self._db = None
-        self._table = None
-        self._new = True
+class LogAgent:
+    """A simple agent for answering questions based on log files."""
 
-    @property
-    def db(self):
-        if self._db is None:
-            self._db = lancedb.connect(self.uri)
-        return self._db
+    def __init__(self, directory: t.Union[str, Path]):
+        self.directory = Path(directory)
+        self.responder = None
 
-    @property
-    def table(self):
-        if self._table is None:
-            if self.TABLE in list(self.db.table_names()):
-                self._table = self.db.open_table(self.TABLE)
-                self._new = False
-            else:
-                self._table = self.db.create_table(self.TABLE)
-        return self._table
+    def load(self):
+        """Load the logs from the provided directory and return a responder."""
+        documents = []
+        paths = list(filter(predicate, Path(self.directory).rglob("*.log")))
+        random.shuffle(paths)
+        sample_size = min(SAMPLE_SIZE, len(paths))
+        if paths:
+            for path in paths[:sample_size]:
+                loader = TextLoader(path)
+                docs = loader.load()
+                documents.extend(docs)
+        vector = LanceDB.from_documents(documents, EMBEDDINGS)
+        retriever = vector.as_retriever()
+        self.responder = create_retrieval_chain(retriever, CHAIN)
 
-    def _hash_to_vector(self, s: str) -> t.List[int]:
-        """Hash a string to a vector."""
-        hash_bytes = hashlib.sha256(s.encode("utf-8")).digest()
-        hash_vector = np.frombuffer(hash_bytes, dtype=np.uint8)[: self.vector_size]
-        return hash_vector.tolist()
-
-    def _read_logs(self, directory_path: str | Path) -> t.List[t.Dict[str, t.Any]]:
-        """Read log files from a directory and hash them to vectors."""
-        log_list = []
-        for path in Path(directory_path).rglob("*.log"):
-            with open(path, "r", encoding="utf-8") as file:
-                content = file.read()
-            log_list.append(
-                {
-                    "vector": self._hash_to_vector(str(path) + content),
-                    "log_content": content,
-                }
-            )
-
-        return log_list
-
-    async def search(self, query: str, limit: int = 2) -> pd.DataFrame:
-        """Search for similar vectors in the database."""
-        if self.table is None:
-            raise RuntimeError("Table is not created.")
-        return (
-            self.table.search(self._hash_to_vector(query))  # type: ignore
-            .limit(limit)
-            .to_pandas()
-        )
-
-    @classmethod
-    async def build(cls, log_dir: str | Path):
-        """Build a VectorDatabase from a directory of log files."""
-        path = Path(log_dir)
-        uri = path / "lancedb"
-        db = cls(uri)
-        if db._new:
-            # TODO: add a disk cache
-            log_list = db._read_logs(log_dir)
-            db.table.add(log_list)
-        return db
+    def answer(self, question: str) -> str:
+        if not self.responder:
+            raise ValueError("You must load the logs before asking a question.")
+        response = self.responder.invoke({"input": question})
+        return response["answer"]

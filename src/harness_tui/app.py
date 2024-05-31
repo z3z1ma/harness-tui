@@ -41,7 +41,7 @@ from harness_tui.components import (
     PipelineList,
     YamlEditor,
 )
-from harness_tui.vectordb import LogVectorDB
+from harness_tui.vectordb import LogAgent
 
 DATA_DIR = os.path.expanduser("~/.harness-tui")
 
@@ -163,13 +163,13 @@ class HarnessTui(App):
         if self.db:
             container = self.query_one(LogView).query_one("#vector-result", Log)
             container.clear()
-            result = await self.db.search(event.query)
-            logs = result["log_content"]
-            for log in logs:
-                container.write(str(log).rstrip("\n"))
-            self.notify(
-                f"Vector search for {event.query} returned {len(result)} results."
-            )
+            container.set_loading(True)
+            try:
+                container.write(await asyncio.to_thread(self.db.answer, event.query))
+            except Exception as e:
+                self.notify(f"Could not generate a response: {e}", severity="error")
+            finally:
+                container.set_loading(False)
         else:
             self.notify("VectorDB not setup. Logs not indexed.", severity="warning")
 
@@ -186,11 +186,13 @@ class HarnessTui(App):
         execution_ui.executions = executions
         await execution_ui.set_loading(False)
 
-    @work(group="setup_vectordb", exclusive=True)
+    @work(group="setup_vectordb", exclusive=True, thread=True)
     async def build_vectordb(self) -> None:
         """Setup the VectorDB instance."""
         try:
-            self.db = await LogVectorDB.build(self.data_dir)
+            self.notify("Building VectorDB index...")
+            self.db = LogAgent(self.data_dir)
+            self.db.load()
             self.notify("VectorDB index built.")
         except Exception as e:
             self.notify(f"Could not setup VectorDB: {e}", severity="error")
@@ -245,9 +247,7 @@ class HarnessTui(App):
         def _write(payload: dict) -> None:
             # {'level': 'info', 'pos': 0, 'out': '1.6.14: Pulling from plugins/cache\n', 'time': '2024-05-28T20:00:37.637136016Z', 'args': None}
             line = payload["out"]
-            if not line.endswith("\n"):
-                line += "\n"
-            log_handle.write(line)
+            log_handle.write_line(line.rstrip())
 
         seen = next(log_source_chain)
         if seen:
@@ -276,7 +276,7 @@ class HarnessTui(App):
         for pipeline in pipeline_list:
             ref = self.api_client.pipelines.reference(pipeline.identifier)
             try:
-                executions = ref.executions(size=5)
+                executions = ref.executions(size=2)
             except Exception:
                 continue
             for execution in executions:
@@ -286,6 +286,12 @@ class HarnessTui(App):
                     continue
                 for node in details.execution_graph.node_map.values():
                     if not node.log_base_key:
+                        continue
+                    if node.identifier in (
+                        "liteEngineTask",
+                        "save-cache-harness",
+                        "restore-cache-harness",
+                    ):
                         continue
                     try:
                         lines = list(self.api_client.logs.blob(node.log_base_key))
@@ -299,8 +305,7 @@ class HarnessTui(App):
                     log_path.parent.mkdir(parents=True, exist_ok=True)
                     with open(log_path, "w") as f:
                         for line in lines:
-                            f.write(line["out"])
-                            f.write("\n")
+                            f.write(line["out"].rstrip() + "\n")
         self.notify(
             f"Finished log scraper background job in {(time.time() - start):.2f}s."
         )

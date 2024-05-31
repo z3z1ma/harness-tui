@@ -81,7 +81,7 @@ class LogView(Static):
 
         with Horizontal(id="log-view-top"):
             yield tree
-            with Vertical():
+            with Vertical(id="vector-result-container"):
                 yield Input(placeholder="Vector search log cache")
                 yield Log(highlight=True, id="vector-result")
 
