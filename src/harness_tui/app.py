@@ -299,13 +299,15 @@ class HarnessTui(App):
                         continue
                     if not lines:
                         continue
+                    if len(lines) > 2000:
+                        lines = [*lines[:1000], {"out": "..."}, *lines[-1000:]]
+                    content = "\n".join(line["out"].rstrip() for line in lines)
                     parts = node.log_base_key.split("/")
                     file_key = "__".join(map(lambda v: v.split(":", 1)[-1], parts[3:]))
                     log_path = base_dir / f"{file_key}.log"
                     log_path.parent.mkdir(parents=True, exist_ok=True)
                     with open(log_path, "w") as f:
-                        for line in lines:
-                            f.write(line["out"].rstrip() + "\n")
+                        f.write(content)
         self.notify(
             f"Finished log scraper background job in {(time.time() - start):.2f}s."
         )
