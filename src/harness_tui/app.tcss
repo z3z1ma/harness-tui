@@ -45,11 +45,11 @@ YamlEditor Horizontal {
 }
 
 LogView #log-view-top {
-  height: 23;
+    height: 23;
 }
 
 LogView #log-view-top  Log {
-  margin: 1;
+    margin: 1;
 }
 
 
@@ -89,5 +89,9 @@ PipelineList PipelineCard {
 }
 
 PipelineList PipelineCard LoadingIndicator {
-  margin: 1;
+    margin: 1;
+}
+
+PipelineList Input {
+    margin-bottom: 1;
 }

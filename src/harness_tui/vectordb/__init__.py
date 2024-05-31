@@ -1,4 +1,4 @@
-"""A simple vector database for storing and searching log vectors."""
+"""A simple agent for answering questions based on log files."""
 
 from __future__ import annotations
 
@@ -8,7 +8,7 @@ from pathlib import Path
 
 from langchain.chains import create_retrieval_chain
 from langchain.chains.combine_documents import create_stuff_documents_chain
-from langchain.document_loaders import TextLoader
+from langchain_community.document_loaders import TextLoader
 from langchain_community.embeddings import OllamaEmbeddings
 from langchain_community.llms import Ollama
 from langchain_community.vectorstores import LanceDB
@@ -33,6 +33,7 @@ FILTERED_STEPS = [
 ]
 
 SAMPLE_SIZE = 100
+"""The number of log files to sample when loading the logs."""
 
 
 def predicate(path: Path) -> bool:
