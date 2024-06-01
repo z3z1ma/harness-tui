@@ -41,7 +41,6 @@ from harness_tui.components import (
     PipelineList,
     YamlEditor,
 )
-from harness_tui.vectordb import LogAgent
 
 DATA_DIR = os.path.expanduser("~/.harness-tui")
 
@@ -191,8 +190,8 @@ class HarnessTui(App):
         """Setup the VectorDB instance."""
         try:
             self.notify("Building VectorDB index...")
-            self.db = LogAgent(self.data_dir)
-            self.db.load()
+            # self.db = LogAgent(self.data_dir)
+            # self.db.load()
             self.notify("VectorDB index built.")
         except Exception as e:
             self.notify(f"Could not setup VectorDB: {e}", severity="error")
