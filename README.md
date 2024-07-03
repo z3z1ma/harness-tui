@@ -2,6 +2,32 @@
 
 A [Textual](https://https://textual.textualize.io/) App that allows you to interact with your [Harness](https://harness.io/) account.
 
+## Installation
+
+### Prerequisites
+
+- Python 3.9 or higher
+- [Pipx](https://pipxproject.github.io/pipx/) (optional, but recommended)
+
+
+### Using pipx
+
+The recommended way to install the app is to use [pipx](https://pipxproject.github.io/pipx/). This will install the app in an isolated environment and make it available globally.
+
+```bash
+pipx install harness-tui
+```
+
+### Using pip
+
+You can also install the app using pip. This will install the app in the user's environment.
+
+```bash
+# Optionally create a virtual environment for the tool
+# python -m venv /opt/harness-tui/.venv
+# source /opt/harness-tui/.venv/bin/activate
+pip install harness-tui
+```
 
 ## Development
 
