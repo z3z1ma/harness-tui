@@ -13,8 +13,6 @@ run: .venv
 	.venv/bin/python src/harness_tui/app.py
 
 format: .venv
-	.venv/bin/black src
-	.venv/bin/isort src
 	.venv/bin/ruff format src
 
 lint: .venv
