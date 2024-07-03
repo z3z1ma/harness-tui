@@ -1,3 +1,5 @@
+/* vim:ft=css */
+
 Screen {
     background: $surface-darken-1;
     &:inline {
