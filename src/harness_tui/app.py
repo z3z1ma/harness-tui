@@ -41,7 +41,7 @@ from harness_tui.components import (
     PipelineList,
     YamlEditor,
 )
-from harness_tui.vectordb import LogAgent
+
 
 DATA_DIR = os.path.expanduser("~/.harness-tui")
 
@@ -190,6 +190,8 @@ class HarnessTui(App):
     async def build_vectordb(self) -> None:
         """Setup the VectorDB instance."""
         return
+        from harness_tui.vectordb import LogAgent
+
         try:
             self.notify("Building VectorDB index...")
             self.db = LogAgent(self.data_dir)
