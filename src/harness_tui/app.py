@@ -41,6 +41,7 @@ from harness_tui.components import (
     PipelineList,
     YamlEditor,
 )
+from harness_tui.vectordb import LogAgent
 
 DATA_DIR = os.path.expanduser("~/.harness-tui")
 
@@ -188,10 +189,11 @@ class HarnessTui(App):
     @work(group="setup_vectordb", exclusive=True, thread=True)
     async def build_vectordb(self) -> None:
         """Setup the VectorDB instance."""
+        return
         try:
             self.notify("Building VectorDB index...")
-            # self.db = LogAgent(self.data_dir)
-            # self.db.load()
+            self.db = LogAgent(self.data_dir)
+            self.db.load()
             self.notify("VectorDB index built.")
         except Exception as e:
             self.notify(f"Could not setup VectorDB: {e}", severity="error")
@@ -275,7 +277,7 @@ class HarnessTui(App):
         for pipeline in pipeline_list:
             ref = self.api_client.pipelines.reference(pipeline.identifier)
             try:
-                executions = ref.executions(size=2)
+                executions = ref.executions(size=1)
             except Exception:
                 continue
             for execution in executions:
@@ -298,8 +300,8 @@ class HarnessTui(App):
                         continue
                     if not lines:
                         continue
-                    if len(lines) > 2000:
-                        lines = [*lines[:1000], {"out": "..."}, *lines[-1000:]]
+                    if len(lines) > 500:
+                        lines = [*lines[:249], {"out": "..."}, *lines[-250:]]
                     content = "\n".join(line["out"].rstrip() for line in lines)
                     parts = node.log_base_key.split("/")
                     file_key = "__".join(map(lambda v: v.split(":", 1)[-1], parts[3:]))
