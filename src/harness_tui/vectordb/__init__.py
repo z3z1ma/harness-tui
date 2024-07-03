@@ -9,12 +9,12 @@ from pathlib import Path
 from langchain.chains import create_retrieval_chain
 from langchain.chains.combine_documents import create_stuff_documents_chain
 from langchain_community.document_loaders import TextLoader
-from langchain_community.embeddings import OllamaEmbeddings
-from langchain_community.llms import Ollama
 from langchain_community.vectorstores import LanceDB
 from langchain_core.prompts import ChatPromptTemplate
+from langchain_openai.embeddings import OpenAIEmbeddings
+from langchain_openai.llms import OpenAI
 
-EMBEDDINGS = OllamaEmbeddings()
+EMBEDDINGS = OpenAIEmbeddings()
 PROMPT = ChatPromptTemplate.from_template(
     """Answer the following question based on the provided log file information:
 
@@ -24,7 +24,7 @@ PROMPT = ChatPromptTemplate.from_template(
 
 Question: {input}"""
 )
-CHAIN = create_stuff_documents_chain(Ollama(model="llama2"), PROMPT)
+CHAIN = create_stuff_documents_chain(OpenAI(), PROMPT)
 
 FILTERED_STEPS = [
     "save-cache-harness",
