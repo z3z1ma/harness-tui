@@ -27,6 +27,7 @@ You can also install the app using pip. This will install the app in the user's 
 # python -m venv /opt/harness-tui/.venv
 # source /opt/harness-tui/.venv/bin/activate
 pip install harness-tui
+# echo "export PATH=\$PATH:/opt/harness-tui/.venv/bin" >> ~/.bashrc
 ```
 
 ## Development
